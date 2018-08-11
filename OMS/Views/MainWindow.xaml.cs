@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using OMS.ViewModels;
 
 namespace OMS.Views
 {
@@ -10,6 +11,8 @@ namespace OMS.Views
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
+
         }
     }
 }
