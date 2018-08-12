@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="False"
-        Title="{Binding Title}" Height="800" Width="1200" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="{Binding Title}" Height="800" Width="1200" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Background="LightGray">
         <Grid.Resources>
             <Style TargetType="Border">
@@ -23,25 +24,21 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border>
-            <ContentControl FontSize="46" Margin="10">
+            <ContentControl Margin="10">
                 <ContentControl.Content>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="HOME" Margin="20,0,50,0"/>
+                        <Button Margin="20,0,50,0" FontSize="36" Content="Home"/>
                         <TextBlock >
-                            <Run Text="{Binding Title}"/>
-                            <Run Text=" - "/>
-                            <Run Text="{Binding State}"/>
+                            <Run Text="{Binding Title}" FontSize="36"/>
+                            <Run Text=" - " FontSize="36"/>
+                            <Run Text="{Binding State}" FontSize="30"/>
                         </TextBlock>
                     </StackPanel>
                 </ContentControl.Content>
             </ContentControl>
         </Border>
         <Border Grid.Row="1">
-            <ContentControl prism:RegionManager.RegionName="ContentRegion">
-                <!--<ContentControl.Content>
-                    <TextBlock Text="Static Content" HorizontalAlignment="Center" FontSize="40"/>
-                </ContentControl.Content>-->
-            </ContentControl>
+            <ContentControl prism:RegionManager.RegionName="ContentRegion"/>
         </Border>
     </Grid>
 </Window>

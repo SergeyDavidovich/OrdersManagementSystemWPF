@@ -1,18 +1,15 @@
 ﻿using System.Windows;
 using OMS.ViewModels;
+using System;
 
 namespace OMS.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
-
         }
     }
 }

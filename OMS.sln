@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS", "OMS\OMS.csproj", "{6BEC7D9C-F6F7-42CD-AD4A-566A6A8CC267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{84709585-62A4-419C-B0D9-56B2BC8149A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6BEC7D9C-F6F7-42CD-AD4A-566A6A8CC267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BEC7D9C-F6F7-42CD-AD4A-566A6A8CC267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BEC7D9C-F6F7-42CD-AD4A-566A6A8CC267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84709585-62A4-419C-B0D9-56B2BC8149A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84709585-62A4-419C-B0D9-56B2BC8149A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84709585-62A4-419C-B0D9-56B2BC8149A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84709585-62A4-419C-B0D9-56B2BC8149A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
