@@ -1,12 +1,24 @@
-﻿using Prism.Mvvm;
+﻿using Dashboard.Views;
+using Microsoft.Practices.Unity;
+using Prism.Mvvm;
+using Prism.Regions;
 
 namespace OMS.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        public MainWindowViewModel()
+        private IRegionManager _regionManager;
+        private IUnityContainer _unityContainer;
+
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer unityContainer)
         {
             this.State = "Dashboard";
+            _regionManager = regionManager;
+            _unityContainer = unityContainer;
+        }
+        public void ConfigureRegionManager()
+        {
+            _regionManager.AddToRegion("ContentRegion", _unityContainer.Resolve<ViewA>());
         }
 
         #region Bindable properties
