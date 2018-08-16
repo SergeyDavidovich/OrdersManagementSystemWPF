@@ -1,18 +1,18 @@
-﻿using Dashboard.Views;
+﻿using Entities.Views;
 using Prism.Modularity;
 using Prism.Regions;
 using System;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
 
-namespace Dashboard
+namespace Entities
 {
-    public class DashboardModule : IModule
+    public class EntitiesModule : IModule
     {
         private IRegionManager _regionManager;
         private IUnityContainer _container;
 
-        public DashboardModule(IUnityContainer container, IRegionManager regionManager)
+        public EntitiesModule(IUnityContainer container, IRegionManager regionManager)
         {
             _container = container;
             _regionManager = regionManager;
@@ -20,8 +20,7 @@ namespace Dashboard
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<OrdersStat>();
+            _container.RegisterTypeForNavigation<ViewA>();
         }
-
     }
 }

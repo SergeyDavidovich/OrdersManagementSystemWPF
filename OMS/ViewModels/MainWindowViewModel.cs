@@ -18,12 +18,12 @@ namespace OMS.ViewModels
         }
         public void ConfigureRegionManager()
         {
-            _regionManager.AddToRegion("ContentRegion", _unityContainer.Resolve<ViewA>());
+            _regionManager.AddToRegion("ContentRegion", _unityContainer.Resolve<OrdersStat>());
         }
 
         #region Bindable properties
 
-        private string _title = "Orders Management System";
+        private string _title = "Orders Management";
         public string Title
         {
             get { return _title; }

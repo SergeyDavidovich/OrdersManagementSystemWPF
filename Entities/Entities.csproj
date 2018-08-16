@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84709585-62A4-419C-B0D9-56B2BC8149A1}</ProjectGuid>
+    <ProjectGuid>{57F74996-A7BD-41A8-A71B-EC21C3EFB639}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dashboard</RootNamespace>
-    <AssemblyName>Dashboard</AssemblyName>
+    <RootNamespace>Entities</RootNamespace>
+    <AssemblyName>Entities</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -48,8 +48,9 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="DashboardModule.cs" />
+    <Compile Include="EntitiesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,9 +64,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\OrdersStatViewModel.cs" />
-    <Compile Include="Views\OrdersStat.xaml.cs">
-      <DependentUpon>OrdersStat.xaml</DependentUpon>
+    <Compile Include="ViewModels\ViewAViewModel.cs" />
+    <Compile Include="Views\ViewA.xaml.cs">
+      <DependentUpon>ViewA.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,14 +79,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup />
+
   <ItemGroup>
-    <Page Include="Views\OrdersStat.xaml">
+    <Page Include="Views\ViewA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

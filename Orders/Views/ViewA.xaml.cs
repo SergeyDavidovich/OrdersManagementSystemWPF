@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dashboard.Views
+namespace Orders.Views
 {
     /// <summary>
     /// Interaction logic for ViewA.xaml

@@ -8,15 +8,18 @@
     <Grid Background="LightGray">
         <Grid.Resources>
             <Style TargetType="Border">
-                <Setter Property="Background" Value="White"/>
+                <Setter Property="Background" Value="WhiteSmoke" />
                 <Setter Property="Margin" Value="10"/>
-                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="CornerRadius" Value="6"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Effect">
                     <Setter.Value>
                         <DropShadowEffect Color="Black" Opacity="0.7" ShadowDepth="1"/>
                     </Setter.Value>
                 </Setter>
+            </Style>
+            <Style x:Key="HeaderStyle" TargetType="HeaderedContentControl">
+                <Setter Property="FontSize" Value="40"/>
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -38,7 +41,7 @@
             </ContentControl>
         </Border>
         <Border Grid.Row="1">
-            <ContentControl prism:RegionManager.RegionName="ContentRegion"/>
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="20"/>
         </Border>
     </Grid>
 </Window>
