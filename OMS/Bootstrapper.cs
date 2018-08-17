@@ -24,7 +24,7 @@ namespace OMS
             shellViewModel.ConfigureRegionManager();
             Application.Current.MainWindow.Show();
         }
-
+         
         protected override void ConfigureModuleCatalog()
         {
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
