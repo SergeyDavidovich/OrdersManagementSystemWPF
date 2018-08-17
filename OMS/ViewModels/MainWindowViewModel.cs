@@ -1,5 +1,4 @@
-﻿using Dashboard.Views;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -18,7 +17,7 @@ namespace OMS.ViewModels
         }
         public void ConfigureRegionManager()
         {
-            _regionManager.AddToRegion("ContentRegion", _unityContainer.Resolve<OrdersStat>());
+            _regionManager.AddToRegion("ContentRegion", _unityContainer.Resolve<Dashboard.Views.DashboardView>());
         }
 
         #region Bindable properties

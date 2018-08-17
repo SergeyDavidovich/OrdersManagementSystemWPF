@@ -1,47 +1,49 @@
-﻿<Window x:Class="OMS.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="False"
-        Title="{Binding Title}" Height="800" Width="1200" 
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <Grid Background="LightGray">
+﻿<Window
+    x:Class="OMS.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="{Binding Title}"
+    Width="1200"
+    Height="800"
+    prism:ViewModelLocator.AutoWireViewModel="False"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized">
+    <Grid>
         <Grid.Resources>
             <Style TargetType="Border">
                 <Setter Property="Background" Value="WhiteSmoke" />
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="CornerRadius" Value="6"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect Color="Black" Opacity="0.7" ShadowDepth="1"/>
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
             <Style x:Key="HeaderStyle" TargetType="HeaderedContentControl">
-                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontSize" Value="40" />
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Border>
             <ContentControl Margin="10">
                 <ContentControl.Content>
                     <StackPanel Orientation="Horizontal">
-                        <Button Margin="20,0,50,0" FontSize="36" Content="Home"/>
-                        <TextBlock >
-                            <Run Text="{Binding Title}" FontSize="36"/>
-                            <Run Text=" - " FontSize="36"/>
-                            <Run Text="{Binding State}" FontSize="30"/>
+                        <Button
+                            Margin="20,0,50,0"
+                            Content="Home"
+                            FontSize="36" />
+                        <TextBlock>
+                            <Run FontSize="36" Text="{Binding Title}" />
+                            <Run FontSize="36" Text=" - " />
+                            <Run FontSize="30" Text="{Binding State}" />
                         </TextBlock>
                     </StackPanel>
                 </ContentControl.Content>
             </ContentControl>
         </Border>
         <Border Grid.Row="1">
-            <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="20"/>
+            <ContentControl Margin="20" prism:RegionManager.RegionName="ContentRegion" />
         </Border>
     </Grid>
 </Window>

@@ -49,7 +49,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerStatistics\CustomerStatsView.xaml.cs">
+      <DependentUpon>CustomerStatsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DashboardModule.cs" />
+    <Compile Include="EmployeeStatistics\EmployeeStatsView.xaml.cs">
+      <DependentUpon>EmployeeStatsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,9 +69,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\OrdersStatViewModel.cs" />
-    <Compile Include="Views\OrdersStat.xaml.cs">
-      <DependentUpon>OrdersStat.xaml</DependentUpon>
+    <Compile Include="OrderStatistics\OrdersStatViewModel.cs" />
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderStatistics\OrderStatsView.xaml.cs">
+      <DependentUpon>OrderStatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductStatistics\ProductStatsView.xaml.cs">
+      <DependentUpon>ProductStatsView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,9 +89,30 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\OrdersStat.xaml">
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{8a7d988c-b192-4d03-8f8b-1f35c9855fb3}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CustomerStatistics\CustomerStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeStatistics\EmployeeStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderStatistics\OrderStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductStatistics\ProductStatsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

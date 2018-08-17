@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dashboard.Views
+namespace Dashboard.EmployeeStatistics
 {
     /// <summary>
-    /// Interaction logic for OrdersStat.xaml
+    /// Interaction logic for EmployeesStat.xaml
     /// </summary>
-    public partial class OrdersStat : UserControl
+    public partial class EmployeeStatsView : UserControl
     {
-        public OrdersStat()
+        public EmployeeStatsView()
         {
             InitializeComponent();
         }
