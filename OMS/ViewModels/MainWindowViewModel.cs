@@ -19,6 +19,8 @@ namespace OMS.ViewModels
             _unityContainer = unityContainer;
             NavigateToCommand = new DelegateCommand<string>(NavigateContentTo);
             NavigateHomeCommand = new DelegateCommand(NavigateHome);
+            NavigateToManageEntityViewCommand = new DelegateCommand<string>(NavigateToManageEntityView);
+            GlobalCommands.NavigateToManageEntityViewCompositeCommand.RegisterCommand(NavigateToManageEntityViewCommand);
             GlobalCommands.NavigateToCompositeCommand.RegisterCommand(NavigateToCommand);
         }
         public void ConfigureRegionManager()
@@ -27,7 +29,13 @@ namespace OMS.ViewModels
         }
 
         #region Commands
-
+        
+        public DelegateCommand<string> NavigateToManageEntityViewCommand { get; set; }
+        private void NavigateToManageEntityView(string entityName)
+        {
+            var navParamaters = new NavigationParameters(){ {"Entity", entityName } };
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "ManageEntityView", navParamaters);
+        }
         public DelegateCommand<string> NavigateToCommand { get; set; }
         private void NavigateContentTo(string target)
         {
@@ -35,7 +43,6 @@ namespace OMS.ViewModels
         }
 
         public DelegateCommand NavigateHomeCommand { get; set; }
-
         private void NavigateHome()
         {
             var contentRegion = _regionManager.Regions[RegionNames.ContentRegion];
@@ -43,7 +50,7 @@ namespace OMS.ViewModels
             {
                 contentRegion.Deactivate(view);
             }
-            contentRegion.Activate(contentRegion.Views.FirstOrDefault());
+            contentRegion.Activate(contentRegion.Views.FirstOrDefault(v => v is Dashboard.Views.DashboardView));
             
         }
         #endregion

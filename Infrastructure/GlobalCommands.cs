@@ -10,5 +10,6 @@ namespace Infrastructure
    public class GlobalCommands
     {
          public static CompositeCommand NavigateToCompositeCommand = new CompositeCommand();
+        public static CompositeCommand NavigateToManageEntityViewCompositeCommand = new CompositeCommand();
     }
 }

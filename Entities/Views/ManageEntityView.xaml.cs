@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Entities.ViewModels;
+using Microsoft.Practices.Unity;
 
 namespace Entities.Views
 {
@@ -20,9 +22,10 @@ namespace Entities.Views
     /// </summary>
     public partial class ManageEntityView : UserControl
     {
-        public ManageEntityView()
+        public ManageEntityView(IUnityContainer container)
         {
             InitializeComponent();
+            this.DataContext = container.Resolve<ManageEntityViewModel>();
         }
     }
 }

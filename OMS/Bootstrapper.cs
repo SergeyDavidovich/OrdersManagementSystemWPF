@@ -2,6 +2,7 @@
 using System.Windows;
 using Customers;
 using Dashboard.OrderStatistics;
+using Employees;
 using Entities;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
@@ -36,6 +37,8 @@ namespace OMS
             moduleCatalog.AddModule(typeof(OrdersModule));
             moduleCatalog.AddModule(typeof(CustomersModule));
             moduleCatalog.AddModule(typeof(EntitiesModule));
+            moduleCatalog.AddModule(typeof(EmployeesModule));
+
         }
     }
 }

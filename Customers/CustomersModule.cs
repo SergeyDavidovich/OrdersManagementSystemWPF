@@ -22,7 +22,9 @@ namespace Customers
 
         public void Initialize()
         {
-            
+            _container.RegisterTypeForNavigation<CustomerListView>();
+            _container.RegisterTypeForNavigation<CustomerAddView>();
+
         }
     }
 }

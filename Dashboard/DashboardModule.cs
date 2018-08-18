@@ -3,6 +3,7 @@ using Prism.Regions;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
 using Dashboard.OrderStatistics;
+using Dashboard.Views;
 using Infrastructure;
 
 namespace Dashboard
@@ -20,12 +21,12 @@ namespace Dashboard
 
         public void Initialize()
         {
+            _container.RegisterTypeForNavigation<DashboardView>();
             _container.RegisterTypeForNavigation<OrderStatsView>();
             _regionManager.RegisterViewWithRegion(RegionNames.CustomersStatRegion, typeof(CustomerStatistics.CustomerStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ProductsStatRegion, typeof(ProductStatistics.ProductStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.EmployeesStatRegion, typeof(EmployeeStatistics.EmployeeStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.OrdersStatRegion, typeof(OrderStatistics.OrderStatsView));
-
         }
 
     }

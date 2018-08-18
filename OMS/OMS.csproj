@@ -111,6 +111,10 @@
       <Project>{84709585-62a4-419c-b0d9-56b2bc8149a1}</Project>
       <Name>Dashboard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Employees\Employees.csproj">
+      <Project>{e761cbd0-b4d7-4bac-8474-d5f71367b76f}</Project>
+      <Name>Employees</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{57f74996-a7bd-41a8-a71b-ec21c3efb639}</Project>
       <Name>Entities</Name>

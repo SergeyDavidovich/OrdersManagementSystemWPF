@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.ViewModels
+namespace Employees.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {

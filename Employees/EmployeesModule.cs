@@ -1,18 +1,20 @@
-﻿using Entities.Views;
+﻿using Employees.Views;
 using Prism.Modularity;
 using Prism.Regions;
 using System;
+using Employees.Add;
+using Employees.List;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
 
-namespace Entities
+namespace Employees
 {
-    public class EntitiesModule : IModule
+    public class EmployeesModule : IModule
     {
         private IRegionManager _regionManager;
         private IUnityContainer _container;
 
-        public EntitiesModule(IUnityContainer container, IRegionManager regionManager)
+        public EmployeesModule(IUnityContainer container, IRegionManager regionManager)
         {
             _container = container;
             _regionManager = regionManager;
@@ -20,8 +22,9 @@ namespace Entities
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<ManageEntityView>();
-            //_regionManager.RegisterViewWithRegion()
+            _container.RegisterTypeForNavigation<EmployeeAddView>();
+            _container.RegisterTypeForNavigation<EmployeeListView>();
+
         }
     }
 }

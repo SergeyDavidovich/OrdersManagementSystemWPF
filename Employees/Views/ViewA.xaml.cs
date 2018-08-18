@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Practices.Unity;
 
-namespace Dashboard.CustomerStatistics
+namespace Employees.Views
 {
     /// <summary>
-    /// Interaction logic for CustomersStat.xaml
+    /// Interaction logic for ViewA.xaml
     /// </summary>
-    public partial class CustomerStatsView : UserControl
+    public partial class ViewA : UserControl
     {
-        public CustomerStatsView(IUnityContainer container)
+        public ViewA()
         {
             InitializeComponent();
-            this.DataContext = container.Resolve<CustomerStatsViewModel>();
         }
     }
 }
