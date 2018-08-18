@@ -19,7 +19,7 @@ namespace Orders.ViewModels
 
         public ViewAViewModel()
         {
-            Message = "View A from your Prism Module";
+           
         }
     }
 }

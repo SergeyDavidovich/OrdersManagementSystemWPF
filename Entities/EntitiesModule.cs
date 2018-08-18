@@ -20,7 +20,7 @@ namespace Entities
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<ViewA>();
+            //_regionManager.RegisterViewWithRegion()
         }
     }
 }

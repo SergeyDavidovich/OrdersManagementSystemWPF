@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57F74996-A7BD-41A8-A71B-EC21C3EFB639}</ProjectGuid>
+    <ProjectGuid>{90EB2EB3-8F64-4613-8F61-BEC2E61B2384}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>Customers</RootNamespace>
+    <AssemblyName>Customers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,7 +49,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntitiesModule.cs" />
+    <Compile Include="Add\CustomerAddView.xaml.cs">
+      <DependentUpon>CustomerAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersModule.cs" />
+    <Compile Include="List\CustomerListView.xaml.cs">
+      <DependentUpon>CustomerListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,10 +69,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\ViewAViewModel.cs" />
-    <Compile Include="Views\ManageEntityView.xaml.cs">
-      <DependentUpon>ManageEntityView.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,19 +80,23 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{8a7d988c-b192-4d03-8f8b-1f35c9855fb3}</Project>
-      <Name>Infrastructure</Name>
-    </ProjectReference>
+    <Page Include="Add\CustomerAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="List\CustomerListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\ManageEntityView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

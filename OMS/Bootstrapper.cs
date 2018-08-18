@@ -1,9 +1,13 @@
 ﻿using OMS.Views;
 using System.Windows;
+using Customers;
+using Dashboard.OrderStatistics;
+using Entities;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
 using OMS.ViewModels;
+using Orders;
 
 namespace OMS
 {
@@ -29,6 +33,9 @@ namespace OMS
         {
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             moduleCatalog.AddModule(typeof(Dashboard.DashboardModule));
+            moduleCatalog.AddModule(typeof(OrdersModule));
+            moduleCatalog.AddModule(typeof(CustomersModule));
+            moduleCatalog.AddModule(typeof(EntitiesModule));
         }
     }
 }

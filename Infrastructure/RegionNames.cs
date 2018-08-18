@@ -8,6 +8,9 @@ namespace Infrastructure
 {
     public class RegionNames
     {
+        public static string ContentRegion = "ContentRegion";
+        public static string EntityViewAddEditRegion = "EntityViewAddEditRegion";
+        public static string EntityListRegion = "EntityListRegion";
         public static string OrdersStatRegion = "OrdersStatRegion";
         public static string ProductsStatRegion = "ProductsStatRegion";
         public static string CustomersStatRegion = "CustomersStatRegion";

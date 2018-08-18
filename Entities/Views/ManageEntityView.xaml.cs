@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Entities.Views
 {
     /// <summary>
-    /// Interaction logic for ViewA.xaml
+    /// Interaction logic for ManageEntityView.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class ManageEntityView : UserControl
     {
-        public ViewA()
+        public ManageEntityView()
         {
             InitializeComponent();
         }

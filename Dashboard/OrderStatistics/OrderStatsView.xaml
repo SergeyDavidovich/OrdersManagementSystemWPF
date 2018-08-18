@@ -5,11 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Dashboard.OrderStatistics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid Background="#FFF54A4A" >
-        <Button Style="{StaticResource ManageButtonStyle}">
+        <Button CommandParameter="ViewA" Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}" Style="{StaticResource ManageButtonStyle}">
         </Button>
     </Grid>
 </UserControl>

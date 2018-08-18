@@ -30,6 +30,7 @@
                 <ContentControl.Content>
                     <StackPanel Orientation="Horizontal">
                         <Button
+                            Command="{Binding NavigateHomeCommand}"
                             Margin="20,0,50,0"
                             Content="Home"
                             FontSize="36" />
