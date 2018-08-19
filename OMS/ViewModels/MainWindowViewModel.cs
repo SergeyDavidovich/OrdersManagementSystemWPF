@@ -51,7 +51,7 @@ namespace OMS.ViewModels
                 contentRegion.Deactivate(view);
             }
             contentRegion.Activate(contentRegion.Views.FirstOrDefault(v => v is Dashboard.Views.DashboardView));
-            
+             
         }
         #endregion
         #region Bindable properties

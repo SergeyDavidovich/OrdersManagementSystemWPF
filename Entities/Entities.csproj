@@ -90,6 +90,10 @@
       <Project>{8a7d988c-b192-4d03-8f8b-1f35c9855fb3}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Products\Products.csproj">
+      <Project>{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}</Project>
+      <Name>Products</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />

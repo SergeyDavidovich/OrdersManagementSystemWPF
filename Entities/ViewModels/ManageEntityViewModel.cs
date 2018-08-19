@@ -13,6 +13,8 @@ using Prism.Regions;
 using Customers.List;
 using Employees.Add;
 using Employees.List;
+using Products.Add;
+using Products.List;
 
 namespace Entities.ViewModels
 {
@@ -64,6 +66,18 @@ namespace Entities.ViewModels
                         _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is EmployeeListView));
                         _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is EmployeeAddView));
                     break;
+                case  "Products":
+                    if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is ProductListView)))
+                    {
+                        _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<ProductListView>());
+                        _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<ProductAddView>());
+                    }
+                                    
+                    _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is ProductListView));
+                    _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is ProductAddView));
+
+                    break;
+                    
             }
         }
 

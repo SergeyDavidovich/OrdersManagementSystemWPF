@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using Prism.Unity;
 using OMS.ViewModels;
 using Orders;
+using Products;
 
 namespace OMS
 {
@@ -29,7 +30,7 @@ namespace OMS
             shellViewModel.ConfigureRegionManager();
             Application.Current.MainWindow.Show();
         }
-         
+
         protected override void ConfigureModuleCatalog()
         {
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
@@ -38,7 +39,7 @@ namespace OMS
             moduleCatalog.AddModule(typeof(CustomersModule));
             moduleCatalog.AddModule(typeof(EntitiesModule));
             moduleCatalog.AddModule(typeof(EmployeesModule));
-
+            moduleCatalog.AddModule(typeof(ProductsModule));
         }
     }
 }

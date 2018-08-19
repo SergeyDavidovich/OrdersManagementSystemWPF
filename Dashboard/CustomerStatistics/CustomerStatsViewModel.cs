@@ -16,18 +16,10 @@ namespace Dashboard.CustomerStatistics
 
         public CustomerStatsViewModel(IRegionManager regionManager)
         {
-            _regionManager = regionManager;
+             
         }
 
         #region Commands
-
-        //public DelegateCommand NavigateToManageCustomerViewCommand { get; set; }
-
-        //private void NavigateToManageCustomerView()
-        //{
-        //    _regionManager.RequestNavigate(RegionNames.ContentRegion, "ManageEntityView");
-        //    _regionManager.AddToRegion(RegionNames.EntityListRegion, )
-        //}
         #endregion
     }
 }
