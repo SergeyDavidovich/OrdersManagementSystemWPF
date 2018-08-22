@@ -9,6 +9,7 @@
     prism:ViewModelLocator.AutoWireViewModel="False"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid>
         <Grid.Resources>
             <Style TargetType="Border">
@@ -44,7 +45,9 @@
             </ContentControl>
         </Border>
         <Border Grid.Row="1">
-            <ContentControl Margin="20" prism:RegionManager.RegionName="ContentRegion" />
+            
+            <ContentControl Margin="20" prism:RegionManager.RegionName="ContentRegion"/>
         </Border>
     </Grid>
+    </ScrollViewer>
 </Window>

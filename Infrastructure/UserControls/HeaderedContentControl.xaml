@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     <Border BorderThickness="1" CornerRadius="0">
         <Border.Effect>
-            <DropShadowEffect Opacity="0.5" ShadowDepth="2" />
+            <DropShadowEffect Opacity="0.5" ShadowDepth="2"/>
         </Border.Effect>
         <StackPanel Background="White">
             <DockPanel
