@@ -22,6 +22,7 @@ namespace Products.Views
     {
         public ViewA()
         {
+            var a = new Page();
             InitializeComponent();
         }
     }

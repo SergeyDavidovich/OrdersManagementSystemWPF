@@ -6,10 +6,11 @@
     xmlns:local="clr-namespace:Dashboard.EmployeeStatistics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+    xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Background="#FFEEE94E" >
-        <Button Style="{StaticResource ManageButtonStyle}" CommandParameter="Employees" Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ></Button>
-    </Grid>
+    <userControls:HeaderedContentControl AccentColor="Yellow" ManageButtonCommand="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ManageButtonCommandParamater="Employees"  Header="Employees" >
+
+    </userControls:HeaderedContentControl>
 </UserControl>

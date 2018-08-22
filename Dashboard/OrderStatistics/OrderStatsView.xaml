@@ -6,11 +6,12 @@
     xmlns:local="clr-namespace:Dashboard.OrderStatistics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+    xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Background="#FFF54A4A" >
-        <Button CommandParameter="ViewA" Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}" Style="{StaticResource ManageButtonStyle}">
-        </Button>
-    </Grid>
+    <userControls:HeaderedContentControl AccentColor="Red" ManageButtonCommand="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}" ManageButtonCommandParamater="ViewA"  Header="Orders" >
+
+    </userControls:HeaderedContentControl>
 </UserControl>
+

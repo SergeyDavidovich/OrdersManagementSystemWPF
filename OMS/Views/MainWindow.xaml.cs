@@ -9,6 +9,7 @@ namespace OMS.Views
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

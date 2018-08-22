@@ -8,9 +8,11 @@
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
-    <Grid Background="#FF9F0E0E">
-        <TextBlock Text="{Binding Message}"
+    <Border Background="#FF9F0E0E">
+        <Grid >
+            <TextBlock Text="{Binding Message}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" />
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>
