@@ -12,6 +12,7 @@ namespace Employees.List
     {
         public EmployeeListViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
+            Title = "Employees management";
         }
     }
 }

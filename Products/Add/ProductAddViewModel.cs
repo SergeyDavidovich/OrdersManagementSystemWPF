@@ -10,5 +10,9 @@ namespace Products.Add
 {
     public class ProductAddViewModel : NavigationAwareViewModelBase
     {
+        public ProductAddViewModel()
+        {
+            Title = "Add product";
+        }
     }
 }

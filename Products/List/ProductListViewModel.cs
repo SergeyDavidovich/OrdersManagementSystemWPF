@@ -11,6 +11,10 @@ namespace Products.List
 {
     public class ProductListViewModel : NavigationAwareViewModelBase
     {
+        public ProductListViewModel()
+        {
+            Title = "Products management";
+        }
         //public ProductListViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         //{
         //    Title = "Products";

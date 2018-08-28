@@ -29,7 +29,6 @@ namespace OMS.ViewModels
             GlobalCommands.NavigateToCompositeCommand.RegisterCommand(NavigateToCommand);
         }
 
-
         #region Commands
         public DelegateCommand<string> NavigateToManageEntityViewCommand { get; set; }
         private void NavigateToManageEntityView(string entityName)

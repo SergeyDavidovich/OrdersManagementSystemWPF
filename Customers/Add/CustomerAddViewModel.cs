@@ -11,8 +11,9 @@ namespace Customers.Add
 {
     public class CustomerAddViewModel : NavigationAwareViewModelBase
     {
-        public CustomerAddViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public CustomerAddViewModel()
         {
+            Title = "Add customer";
         }
     }
 }

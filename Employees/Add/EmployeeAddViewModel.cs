@@ -12,6 +12,7 @@ namespace Employees.Add
     {
         public EmployeeAddViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
+            Title = "Add employee";
         }
     }
 }

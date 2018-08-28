@@ -10,6 +10,9 @@ namespace Customers.List
 {
     public class CustomerListViewModel : NavigationAwareViewModelBase
     {
-
+        public CustomerListViewModel()
+        {
+            Title = "Customers management";
+        }
     }
 }

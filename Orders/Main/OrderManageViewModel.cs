@@ -13,13 +13,13 @@ namespace Orders.Main
     {
         public OrderManageViewModel(IEventAggregator eventAggregator):base(eventAggregator)
         {
-            Title = "Orders";
+            Title = "Orders management";
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            UpdateBannerTitle(Title);
+            UpdateBannerTitle("Orders");
         }
     }
 }
