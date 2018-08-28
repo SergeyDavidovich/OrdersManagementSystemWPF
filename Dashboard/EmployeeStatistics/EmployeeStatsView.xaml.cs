@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
 
 namespace Dashboard.EmployeeStatistics
 {
@@ -20,9 +21,11 @@ namespace Dashboard.EmployeeStatistics
     /// </summary>
     public partial class EmployeeStatsView : UserControl
     {
-        public EmployeeStatsView()
+        public EmployeeStatsView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+            this.DataContext = unityContainer.Resolve<EmployeeStatsViewModel>();
+
         }
     }
 }

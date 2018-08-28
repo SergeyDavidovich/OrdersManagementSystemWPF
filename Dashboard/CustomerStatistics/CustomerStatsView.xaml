@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl AccentColor="#FF6DCE0F" ManageButtonCommand="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ManageButtonCommandParamater="Customers"  Header="Customers" >
-
+    <userControls:HeaderedContentControl AccentColor="#FF6DCE0F" ManageButtonCommand="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ManageButtonCommandParamater="Customers"  Title="{Binding Title, Mode=OneWay}" >
+      
     </userControls:HeaderedContentControl>
 </UserControl>

@@ -10,8 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl AccentColor="#FF068DFD" ManageButtonCommand="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ManageButtonCommandParamater="Products"  Header="Products" >
-
+    <userControls:HeaderedContentControl AccentColor="#FF068DFD" ManageButtonCommand="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" ManageButtonCommandParamater="Products"  Title="{Binding Title, Mode=OneWay}" >
     </userControls:HeaderedContentControl>
     <!--<Grid Background="SteelBlue" >
         <Button Style="{StaticResource ManageButtonStyle}" Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" CommandParameter="Products"></Button>

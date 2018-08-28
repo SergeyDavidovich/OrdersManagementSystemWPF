@@ -71,8 +71,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvvm\ViewModelBase.cs" />
+    <Compile Include="Base\NavigationAwareViewModelBase.cs" />
+    <Compile Include="Events\OnNavigatedToEvent.cs" />
+    <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="GlobalCommands.cs" />
+    <Compile Include="Prism\ICreateRegionManagerScope.cs" />
+    <Compile Include="Prism\IRegionManagerAware.cs" />
+    <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
+    <Compile Include="Prism\ScopedRegionNavigationContentLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,7 +106,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="RegionBehaviors\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="UserControls\HeaderedContentControl.xaml">
       <SubType>Designer</SubType>

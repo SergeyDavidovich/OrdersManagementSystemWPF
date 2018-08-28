@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
 
 namespace Customers.Add
 {
@@ -20,9 +21,10 @@ namespace Customers.Add
     /// </summary>
     public partial class CustomerAddView : UserControl
     {
-        public CustomerAddView()
+        public CustomerAddView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+            this.DataContext = unityContainer.Resolve<CustomerAddViewModel>();
         }
     }
 }

@@ -33,13 +33,13 @@ namespace Infrastructure.UserControls
             set { SetValue(ChildContentProperty, value); }
         }
 
-        public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(HeaderedContentControl));
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(HeaderedContentControl));
 
-        public string Header
+        public string Title
         {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
 
         public static readonly DependencyProperty ManageButtonCommandProperty = DependencyProperty.Register(

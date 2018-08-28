@@ -10,8 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl AccentColor="Red" ManageButtonCommand="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}" ManageButtonCommandParamater="ViewA"  Header="Orders" >
-
+    <userControls:HeaderedContentControl AccentColor="Red" ManageButtonCommand="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}" ManageButtonCommandParamater="OrderManageView"  Title="{Binding Title, Mode=OneWay}" >
     </userControls:HeaderedContentControl>
 </UserControl>
 

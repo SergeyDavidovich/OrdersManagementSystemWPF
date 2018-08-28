@@ -13,82 +13,91 @@ using Prism.Regions;
 using Customers.List;
 using Employees.Add;
 using Employees.List;
+using Infrastructure.Base;
+using Infrastructure.Prism;
+using Prism.Events;
 using Products.Add;
 using Products.List;
 
 namespace Entities.ViewModels
 {
-    public class ManageEntityViewModel : BindableBase, INavigationAware
+    public class ManageEntityViewModel : NavigationAwareViewModelBase, IRegionManagerAware
     {
-        private readonly IRegionManager _regionManager;
-        private readonly IUnityContainer _container;
-
-        private string _message;
-        public string Message
+        public ManageEntityViewModel(IRegionManager regionManager, IEventAggregator eventAggregator) : base(eventAggregator)
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
         }
 
-        public ManageEntityViewModel(IRegionManager regionManager, IUnityContainer container)
+        public override void OnNavigatedTo(NavigationContext navigationContext)
         {
-            _regionManager = regionManager;
-
-            _container = container;
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            var entityListRegionViews = _regionManager.Regions[RegionNames.EntityListRegion].Views;
-            var entityAddEditRegionViews = _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Views;
-
             switch (navigationContext.Parameters["Entity"])
             {
                 case "Customers":
-                    if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is CustomerListView)))
-                    {
-                        _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<CustomerListView>());
-                        _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<CustomerAddView>());
-                    }
-               
-                        _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is CustomerListView));
-                        _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is CustomerAddView));
-
-                    
+                    UpdateBannerTitle("Customers");
+                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "CustomerListView");
+                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "CustomerAddView");
+                 
                     break;
                 case "Employees":
-                    if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is EmployeeListView)))
-                    {
-                        _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<EmployeeListView>());
-                        _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<EmployeeAddView>());
-                    }
-                   
-                        _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is EmployeeListView));
-                        _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is EmployeeAddView));
+                    UpdateBannerTitle("Employees");
+                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "EmployeeListView");
+                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "EmployeeAddView");
                     break;
-                case  "Products":
-                    if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is ProductListView)))
-                    {
-                        _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<ProductListView>());
-                        _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<ProductAddView>());
-                    }
-                                    
-                    _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is ProductListView));
-                    _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is ProductAddView));
-
+                case "Products":
+                    UpdateBannerTitle("Products");
+                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "ProductListView");
+                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "ProductAddView");
                     break;
-                    
             }
+            //var entityListRegionViews = _regionManager.Regions[RegionNames.EntityListRegion].Views;
+            //var entityAddEditRegionViews = _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Views;
+
+            //switch (navigationContext.Parameters["Entity"])
+            //{
+            //    case "Customers":
+            //        if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is CustomerListView)))
+            //        {
+            //            _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<CustomerListView>());
+            //            _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<CustomerAddView>());
+            //        }
+
+            //            _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is CustomerListView));
+            //            _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is CustomerAddView));
+            //        break;
+            //    case "Employees":
+            //        if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is EmployeeListView)))
+            //        {
+            //            _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<EmployeeListView>());
+            //            _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<EmployeeAddView>());
+            //        }
+
+            //            _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is EmployeeListView));
+            //            _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is EmployeeAddView));
+            //        break;
+            //    case  "Products":
+            //        if (!entityListRegionViews.Contains(entityListRegionViews.FirstOrDefault(v => v is ProductListView)))
+            //        {
+            //            _regionManager.AddToRegion(RegionNames.EntityListRegion, _container.Resolve<ProductListView>());
+            //            _regionManager.AddToRegion(RegionNames.EntityViewAddEditRegion, _container.Resolve<ProductAddView>());
+            //        }
+
+            //        _regionManager.Regions[RegionNames.EntityListRegion].Activate(entityListRegionViews.FirstOrDefault(v => v is ProductListView));
+            //        _regionManager.Regions[RegionNames.EntityViewAddEditRegion].Activate(entityAddEditRegionViews.FirstOrDefault(v => v is ProductAddView));
+
+            //        break;
+
+            //}
         }
 
-        public bool IsNavigationTarget(NavigationContext navigationContext)
+        public override bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
         }
 
-        public void OnNavigatedFrom(NavigationContext navigationContext)
+        public override void OnNavigatedFrom(NavigationContext navigationContext)
         {
-         
+
         }
+
+        public IRegionManager RegionManager { get; set; }
     }
 }

@@ -52,10 +52,12 @@
     <Compile Include="Add\CustomerAddView.xaml.cs">
       <DependentUpon>CustomerAddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\CustomerAddViewModel.cs" />
     <Compile Include="CustomersModule.cs" />
     <Compile Include="List\CustomerListView.xaml.cs">
       <DependentUpon>CustomerListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="List\CustomerListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

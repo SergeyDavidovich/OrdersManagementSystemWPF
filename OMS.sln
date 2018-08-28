@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "Employees\Empl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products", "Products\Products.csproj", "{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banner", "Banner\Banner.csproj", "{8E8B6C15-64AE-4BD5-B38B-25F9473DC287}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{90EB2EB3-8F64-4613-8F61-BEC2E61B2384} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
 		{E761CBD0-B4D7-4BAC-8474-D5F71367B76F} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
 		{16F59304-B389-4FBC-A3C4-0D50D96DFBC5} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
+		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99D67FC2-8925-4685-B648-BB94E16C0360}

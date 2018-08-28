@@ -4,6 +4,8 @@ using Prism.Regions;
 using System;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Products.Add;
+using Products.List;
 
 namespace Products
 {
@@ -20,6 +22,8 @@ namespace Products
 
         public void Initialize()
         {
+            _container.RegisterTypeForNavigation<ProductAddView>();
+            _container.RegisterTypeForNavigation<ProductListView>();
         }
     }
 }

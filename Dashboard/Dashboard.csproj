@@ -58,6 +58,8 @@
       <DependentUpon>EmployeeStatsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeeStatistics\EmployeeStatsViewModel.cs" />
+    <Compile Include="Main\DashboardViewModel.cs" />
+    <Compile Include="ProductStatistics\ProductsStatViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -72,7 +74,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="OrderStatistics\OrdersStatViewModel.cs" />
-    <Compile Include="Views\DashboardView.xaml.cs">
+    <Compile Include="Main\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderStatistics\OrderStatsView.xaml.cs">
@@ -106,7 +108,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DashboardView.xaml">
+    <Page Include="Main\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

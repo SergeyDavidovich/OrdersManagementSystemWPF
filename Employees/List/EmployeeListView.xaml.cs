@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
 
 namespace Employees.List
 {
@@ -20,9 +21,10 @@ namespace Employees.List
     /// </summary>
     public partial class EmployeeListView : UserControl
     {
-        public EmployeeListView()
+        public EmployeeListView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+            this.DataContext = unityContainer.Resolve<EmployeeListViewModel>();
         }
     }
 }

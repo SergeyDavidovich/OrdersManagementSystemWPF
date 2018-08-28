@@ -1,9 +1,9 @@
-﻿using Prism.Modularity;
+﻿using Dashboard.Main;
+using Prism.Modularity;
 using Prism.Regions;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
 using Dashboard.OrderStatistics;
-using Dashboard.Views;
 using Infrastructure;
 
 namespace Dashboard
@@ -21,8 +21,10 @@ namespace Dashboard
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<DashboardView>();
-            _container.RegisterTypeForNavigation<OrderStatsView>();
+            _container.RegisterTypeForNavigation<DashboardView>("DashboardView");
+            
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "DashboardView");
+            //_regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DashboardView));
             _regionManager.RegisterViewWithRegion(RegionNames.CustomersStatRegion, typeof(CustomerStatistics.CustomerStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ProductsStatRegion, typeof(ProductStatistics.ProductStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.EmployeesStatRegion, typeof(EmployeeStatistics.EmployeeStatsView));

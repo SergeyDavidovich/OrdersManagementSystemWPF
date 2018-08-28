@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
 
 namespace Customers.List
 {
@@ -20,9 +21,10 @@ namespace Customers.List
     /// </summary>
     public partial class CustomerListView : UserControl
     {
-        public CustomerListView()
+        public CustomerListView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+            this.DataContext = unityContainer.Resolve<CustomerListViewModel>();
         }
     }
 }

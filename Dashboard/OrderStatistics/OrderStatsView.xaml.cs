@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
 
 namespace Dashboard.OrderStatistics
 {
@@ -20,9 +21,10 @@ namespace Dashboard.OrderStatistics
     /// </summary>
     public partial class OrderStatsView : UserControl
     {
-        public OrderStatsView()
+        public OrderStatsView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+            this.DataContext = unityContainer.Resolve<OrdersStatViewModel>();
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Banner.Views.BannerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Banner.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Border>
+        <ContentControl Margin="10">
+            <ContentControl.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Command="{Binding NavigateHomeCommand}"
+                        Margin="20,0,50,0"
+                        Content="Home"
+                        FontSize="36" />
+                    <TextBlock>
+                        <Run FontSize="36" Text="{Binding Title, Mode=OneTime}" />
+                        <Run FontSize="36" Text=" - " />
+                        <Run FontSize="30" Text="{Binding State}" />
+                    </TextBlock>
+                </StackPanel>
+            </ContentControl.Content>
+        </ContentControl>
+    </Border>
+
+</UserControl>

@@ -21,7 +21,6 @@ namespace Entities
         public void Initialize()
         {
             _container.RegisterTypeForNavigation<ManageEntityView>();
-            //_regionManager.RegisterViewWithRegion()
         }
     }
 }

@@ -52,9 +52,11 @@
     <Compile Include="Add\ProductAddView.xaml.cs">
       <DependentUpon>ProductAddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\ProductAddViewModel.cs" />
     <Compile Include="List\ProductListView.xaml.cs">
       <DependentUpon>ProductListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="List\ProductListViewModel.cs" />
     <Compile Include="ProductsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -83,7 +85,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Add\ProductAddView.xaml">
       <SubType>Designer</SubType>
