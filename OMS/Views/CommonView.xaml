@@ -27,7 +27,9 @@
         <!--<ContentControl prism:RegionManager.RegionContext="{Binding Title}" prism:RegionManager.RegionName="BannerRegion"></ContentControl>-->
         <ContentControl prism:RegionManager.RegionName="BannerRegion"></ContentControl>
         <Border Grid.Row="1">
-            <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
+            </ScrollViewer>
         </Border>
     </Grid>
 </UserControl>
