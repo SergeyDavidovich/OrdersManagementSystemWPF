@@ -13,7 +13,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityListRegion}"></ContentControl>
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityViewAddEditRegion}"></ContentControl>
+        <ContentControl Margin="10" prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityListRegion}"></ContentControl>
+        <ContentControl Margin="10" Grid.Column="1" prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityViewAddEditRegion}"></ContentControl>
     </Grid>
 </UserControl>

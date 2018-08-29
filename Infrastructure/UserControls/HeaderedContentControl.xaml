@@ -14,7 +14,7 @@
                 <DropShadowEffect Opacity="0.5" ShadowDepth="1" />
             </Border.Effect>
         </Border>
-        <DockPanel LastChildFill="True" Margin="10">
+        <DockPanel LastChildFill="True" Margin="1">
             <DockPanel
                 Dock="Top"
                 Margin="0"
@@ -42,7 +42,7 @@
                     DockPanel.Dock="Right"
                     Visibility="Collapsed" />
             </DockPanel>
-            <ContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
+            <ContentControl HorizontalContentAlignment="Stretch" Margin="0" VerticalContentAlignment="Stretch" Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
         </DockPanel>
     </Grid>
 </UserControl>

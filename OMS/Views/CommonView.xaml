@@ -12,7 +12,7 @@
         <Grid.Resources>
             <Style TargetType="Border">
                 <Setter Property="Background" Value="WhiteSmoke" />
-                <Setter Property="Margin" Value="10" />
+                <Setter Property="Margin" Value="0" />
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="BorderThickness" Value="0" />
             </Style>
@@ -27,7 +27,7 @@
         <!--<ContentControl prism:RegionManager.RegionContext="{Binding Title}" prism:RegionManager.RegionName="BannerRegion"></ContentControl>-->
         <ContentControl prism:RegionManager.RegionName="BannerRegion"></ContentControl>
         <Border Grid.Row="1">
-            <ContentControl Margin="20" prism:RegionManager.RegionName="ContentRegion" />
+            <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
         </Border>
     </Grid>
 </UserControl>

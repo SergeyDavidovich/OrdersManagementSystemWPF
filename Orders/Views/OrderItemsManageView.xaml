@@ -14,7 +14,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid Margin="10">
             <Border Background="White">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.5" ShadowDepth="2" />
@@ -24,10 +24,10 @@
                 <TextBlock Margin="10" FontWeight="Medium" FontSize="16" Text="Items at store"></TextBlock>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="10">
             <Border Background="White">
                 <Border.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="2" />
+                    <DropShadowEffect Opacity="0.5" ShadowDepth="1" />
                 </Border.Effect>
             </Border>
             <Grid Margin="10">

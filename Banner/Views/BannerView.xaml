@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Border>
+    <Border Background="#FF1F4E79">
         <ContentControl Margin="10">
             <ContentControl.Content>
                 <StackPanel Orientation="Horizontal">
@@ -17,7 +17,7 @@
                         Margin="20,0,50,0"
                         Content="Home"
                         FontSize="36" />
-                    <TextBlock>
+                    <TextBlock Foreground="White">
                         <Run FontSize="36" Text="{Binding Title, Mode=OneTime}" />
                         <Run FontSize="36" Text=" - " />
                         <Run FontSize="30" Text="{Binding State}" />
