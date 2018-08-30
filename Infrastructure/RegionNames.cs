@@ -14,6 +14,7 @@ namespace Infrastructure
         public static string EntityViewAddEditRegion = "EntityViewAddEditRegion";
         public static string EntityListRegion = "EntityListRegion";
         public static string OrdersContentRegion = "OrdersContentRegion";
+        public static string OrderDetailsRegion = "OrderDetailsRegion";
         public static string OrdersStatRegion = "OrdersStatRegion";
         public static string ProductsStatRegion = "ProductsStatRegion";
         public static string CustomersStatRegion = "CustomersStatRegion";

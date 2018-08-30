@@ -14,11 +14,15 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <userControls:HeaderedContentControl AccentColor="#FF068DFD" Title="{Binding Title, Mode=OneWay}" >
+        <userControls:HeaderedContentControl AccentColor="#FF068DFD" ManageButtonCommand="{Binding ShowJournalCommand}" Title="{Binding Title, Mode=OneWay}" >
             <userControls:HeaderedContentControl.ChildContent>
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}"/>
             </userControls:HeaderedContentControl.ChildContent>
         </userControls:HeaderedContentControl>
-        
+        <userControls:HeaderedContentControl Margin="10,0,0,0" Grid.Column="1" AccentColor="#FF068DFD" Title="{Binding Title, Mode=OneWay}" >
+            <userControls:HeaderedContentControl.ChildContent>
+                <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}"/>
+            </userControls:HeaderedContentControl.ChildContent>
+        </userControls:HeaderedContentControl>
     </Grid>
 </UserControl>

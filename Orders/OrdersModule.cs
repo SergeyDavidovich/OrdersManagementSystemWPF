@@ -23,7 +23,12 @@ namespace Orders
         {
           
             _container.RegisterTypeForNavigation<OrderManageView>();
-            _regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(OrderItemsManageView));
+            _container.RegisterTypeForNavigation<OrderItemsManageView>();
+
+            _container.RegisterTypeForNavigation<InvoiceView>();
+            _container.RegisterTypeForNavigation<JournalView>();
+
+            //_regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(OrderItemsManageView));
 
         }
     }
