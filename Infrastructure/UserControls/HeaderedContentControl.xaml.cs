@@ -42,31 +42,22 @@ namespace Infrastructure.UserControls
             set { SetValue(TitleProperty, value); }
         }
 
-        public static readonly DependencyProperty ManageButtonCommandProperty = DependencyProperty.Register(
-            "ManageButtonCommand", typeof(ICommand), typeof(HeaderedContentControl), new PropertyMetadata(default(ICommand)));
-
-        public ICommand ManageButtonCommand
-        {
-            get { return (ICommand)GetValue(ManageButtonCommandProperty); }
-            set { SetValue(ManageButtonCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty ManageButtonCommandParamaterProperty = DependencyProperty.Register(
-            "ManageButtonCommandParamater", typeof(object), typeof(HeaderedContentControl), new PropertyMetadata(default(object)));
-
-        public object ManageButtonCommandParamater
-        {
-            get { return (object)GetValue(ManageButtonCommandParamaterProperty); }
-            set { SetValue(ManageButtonCommandParamaterProperty, value); }
-        }
-
         public static readonly DependencyProperty AccentColorProperty = DependencyProperty.Register(
             "AccentColor", typeof(Brush), typeof(HeaderedContentControl), new PropertyMetadata(default(Brush)));
 
         public Brush AccentColor
         {
-            get { return (Brush) GetValue(AccentColorProperty); }
+            get { return (Brush)GetValue(AccentColorProperty); }
             set { SetValue(AccentColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandBarProperty = DependencyProperty.Register(
+            "CommandBar", typeof(UIElement), typeof(HeaderedContentControl), new PropertyMetadata(default(UIElement)));
+
+        public UIElement CommandBar
+        {
+            get { return (UIElement)GetValue(CommandBarProperty); }
+            set { SetValue(CommandBarProperty, value); }
         }
     }
 }

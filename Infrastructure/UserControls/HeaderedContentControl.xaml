@@ -26,8 +26,30 @@
                     Foreground="White"
                     TextOptions.TextFormattingMode="Display"
                     Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
-             
-                <Button
+                <ContentControl DockPanel.Dock="Right" Content="{Binding Path=CommandBar, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}">
+
+                </ContentControl>
+                <!--<Button
+                    Margin="0,0,31,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Command="{Binding Path=ManageButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
+                    CommandParameter="{Binding Path=ManageButtonCommandParamater, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
+                    Content="Manage"
+                    DockPanel.Dock="Right"
+                    Style="{StaticResource ManageButtonStyle}" />-->
+                <!--<ToolBar Background="Transparent" IsOverflowOpen="False" OverflowMode="Never">
+                    <Button
+                        Margin="0,0,31,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Command="{Binding Path=ManageButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
+                        CommandParameter="{Binding Path=ManageButtonCommandParamater, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
+                        Content="Manage"
+                        DockPanel.Dock="Right"
+                        Style="{StaticResource ManageButtonStyle}" />
+                </ToolBar>-->
+                <!--<Button
                     Margin="0,0,31,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -41,7 +63,7 @@
                     VerticalAlignment="Center"
                     Content="DETAIL"
                     DockPanel.Dock="Right"
-                    Visibility="Collapsed" />
+                    Visibility="Collapsed" />-->
             </DockPanel>
             <ContentControl HorizontalContentAlignment="Stretch" Margin="0" VerticalContentAlignment="Stretch" Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
         </DockPanel>
