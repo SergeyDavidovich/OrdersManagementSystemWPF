@@ -16,16 +16,12 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <userControls:HeaderedContentControl
-            Title="{Binding Title, Mode=OneWay}"
-            AccentColor="#FF068DFD"
-            >
+        <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
             <userControls:HeaderedContentControl.ChildContent>
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" />
             </userControls:HeaderedContentControl.ChildContent>
             <userControls:HeaderedContentControl.CommandBar>
                 <Button
-                    Margin="0,0,31,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Command="{Binding SwitchOrdersContentStateCommand}"

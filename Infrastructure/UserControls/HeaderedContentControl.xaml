@@ -9,26 +9,31 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <Border Background="White" BorderThickness="1" CornerRadius="0">
+        <Border
+            Background="White"
+            BorderThickness="1"
+            CornerRadius="0">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.5" ShadowDepth="1" />
             </Border.Effect>
         </Border>
-        <DockPanel LastChildFill="True" Margin="1">
+        <DockPanel Margin="1" LastChildFill="True">
             <DockPanel
-                Dock="Top"
                 Margin="0"
                 Background="{Binding Path=AccentColor, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
+                Dock="Top"
                 LastChildFill="False">
                 <TextBlock
                     Margin="30"
                     FontSize="24"
                     Foreground="White"
-                    TextOptions.TextFormattingMode="Display"
-                    Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
-                <ContentControl x:Name="CommandBarContentControl" DockPanel.Dock="Right" Content="{Binding Path=CommandBar, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}">
-
-                </ContentControl>
+                    Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}"
+                    TextOptions.TextFormattingMode="Display" />
+                <ContentControl
+                    x:Name="CommandBarContentControl"
+                    Margin="0"
+                    Content="{Binding Path=CommandBar, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}"
+                    DockPanel.Dock="Right" />
                 <!--<Button
                     Margin="0,0,31,0"
                     HorizontalAlignment="Center"
@@ -65,7 +70,12 @@
                     DockPanel.Dock="Right"
                     Visibility="Collapsed" />-->
             </DockPanel>
-            <ContentControl x:Name="ChildContentControl" HorizontalContentAlignment="Stretch" Margin="0" VerticalContentAlignment="Stretch" Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
+            <ContentControl
+                x:Name="ChildContentControl"
+                Margin="0"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
         </DockPanel>
     </Grid>
 </UserControl>

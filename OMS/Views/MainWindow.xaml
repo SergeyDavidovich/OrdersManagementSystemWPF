@@ -2,14 +2,13 @@
     x:Class="OMS.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:prism="http://prismlibrary.com/"
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+    xmlns:prism="http://prismlibrary.com/"
     Title="{Binding Title}"
     Width="1200"
     Height="800"
     prism:ViewModelLocator.AutoWireViewModel="False"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
-    >
-    <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.GlobalRegion}"></ContentControl>
+    WindowState="Maximized">
+    <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.GlobalRegion}" />
 </Window>

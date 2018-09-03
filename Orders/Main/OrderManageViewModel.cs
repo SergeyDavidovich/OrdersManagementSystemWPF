@@ -28,6 +28,8 @@ namespace Orders.Main
 
         public DelegateCommand SwitchOrdersContentStateCommand { get; set; }
 
+        public IRegionManager RegionManager { get; set; }
+
         private void SwitchOrdersContentState()
         {
             if (_ordersContentRegionState == OrdersContentRegionState.Creation)
@@ -35,7 +37,6 @@ namespace Orders.Main
             else
                 ProcessOrdersContentRegionState(OrdersContentRegionState.Creation);
         }
-        public IRegionManager RegionManager { get; set; }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {

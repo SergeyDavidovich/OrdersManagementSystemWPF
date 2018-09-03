@@ -1,13 +1,13 @@
-﻿<UserControl x:Class="Employees.List.EmployeeListView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Employees.List"
-             xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <userControls:HeaderedContentControl AccentColor="#FFF7DE00" Title="{Binding Title, Mode=OneWay}" >
-
-        </userControls:HeaderedContentControl>
+﻿<UserControl
+    x:Class="Employees.List.EmployeeListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Employees.List"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FFF7DE00" />
 </UserControl>
