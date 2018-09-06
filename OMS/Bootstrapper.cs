@@ -23,11 +23,14 @@ namespace OMS
         private MainWindowViewModel shellViewModel;
 
         /// <summary>
-        /// 1 step of bootstrapping
+        /// 1 step of bootstrapping - configuring the Module Catalog
         /// </summary>
         protected override void ConfigureModuleCatalog()
         {
+            //get the default ModuleCatalog
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
+
+            //bellow - registering application modules  
             moduleCatalog.AddModule(typeof(DashboardModule));
             moduleCatalog.AddModule(typeof(OrdersModule));
             moduleCatalog.AddModule(typeof(CustomersModule));
@@ -38,11 +41,13 @@ namespace OMS
         }
 
         /// <summary>
-        /// 2 step of bootstrapping
+        /// 2 step of bootstrapping - set container configuration
         /// </summary>
         protected override void ConfigureContainer()
         {
-            base.ConfigureContainer();
+            base.ConfigureContainer(); //set default container configuration
+
+            //code bellow extends the default container configuration
             Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(
                 new ContainerControlledLifetimeManager());
         }
@@ -58,7 +63,7 @@ namespace OMS
         }
 
         /// <summary>
-        /// 4 step of bootstrapping
+        /// 4 step of bootstrapping -  specifing top-level window (shell) for the application
         /// </summary>
         protected override DependencyObject CreateShell()
         {
@@ -69,7 +74,7 @@ namespace OMS
         }
 
         /// <summary>
-        /// 5 step of bootstrapping
+        /// 5 step of bootstrapping - initialization the shell to be displayed, application start
         /// </summary>
         protected override void InitializeShell()
         {
