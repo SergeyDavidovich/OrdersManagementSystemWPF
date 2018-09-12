@@ -18,7 +18,7 @@ using Products;
 
 namespace OMS
 {
-    class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : UnityBootstrapper
     {
         private MainWindowViewModel shellViewModel;
 
@@ -38,7 +38,7 @@ namespace OMS
 
         protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
         {
-            var behaviors= base.ConfigureDefaultRegionBehaviors();
+            var behaviors = base.ConfigureDefaultRegionBehaviors();
             behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
             return behaviors;
         }
@@ -49,10 +49,10 @@ namespace OMS
             Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(
                 new ContainerControlledLifetimeManager());
         }
-        
+
         protected override void ConfigureModuleCatalog()
         {
-            var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;        
+            var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             moduleCatalog.AddModule(typeof(DashboardModule));
             moduleCatalog.AddModule(typeof(OrdersModule));
             moduleCatalog.AddModule(typeof(CustomersModule));
@@ -60,7 +60,7 @@ namespace OMS
             moduleCatalog.AddModule(typeof(EmployeesModule));
             moduleCatalog.AddModule(typeof(ProductsModule));
             moduleCatalog.AddModule(typeof(BannerModule));
-            
+
         }
     }
 }

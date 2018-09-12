@@ -9,6 +9,12 @@
     Height="800"
     prism:ViewModelLocator.AutoWireViewModel="False"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized">
+    WindowState="Maximized"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    Background="{DynamicResource MaterialDesignPaper}"
+    TextElement.FontWeight="Medium"
+    TextElement.FontSize="14"
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
+
     <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.GlobalRegion}" />
 </Window>

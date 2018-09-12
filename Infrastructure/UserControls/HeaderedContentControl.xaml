@@ -42,7 +42,7 @@
                     CommandParameter="{Binding Path=ManageButtonCommandParamater, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
                     Content="Manage"
                     DockPanel.Dock="Right"
-                    Style="{StaticResource ManageButtonStyle}" />-->
+                      />-->
                 <!--<ToolBar Background="Transparent" IsOverflowOpen="False" OverflowMode="Never">
                     <Button
                         Margin="0,0,31,0"
@@ -52,7 +52,7 @@
                         CommandParameter="{Binding Path=ManageButtonCommandParamater, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
                         Content="Manage"
                         DockPanel.Dock="Right"
-                        Style="{StaticResource ManageButtonStyle}" />
+                          />
                 </ToolBar>-->
                 <!--<Button
                     Margin="0,0,31,0"
@@ -62,7 +62,7 @@
                     CommandParameter="{Binding Path=ManageButtonCommandParamater, RelativeSource={RelativeSource AncestorType={x:Type local:HeaderedContentControl}}}"
                     Content="Manage"
                     DockPanel.Dock="Right"
-                    Style="{StaticResource ManageButtonStyle}" />
+                      />
                 <Button
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"

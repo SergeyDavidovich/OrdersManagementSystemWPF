@@ -13,7 +13,7 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="Border">
-                <Setter Property="Background" Value="WhiteSmoke" />
+            
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="BorderThickness" Value="0" />

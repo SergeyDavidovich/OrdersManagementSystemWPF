@@ -4,21 +4,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Banner.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <Border Background="#FF1F4E79">
+    <!--<Border Background="#FF1F4E79">
         <ContentControl Margin="10">
             <ContentControl.Content>
                 <StackPanel Orientation="Horizontal">
                     <Button
                         Margin="20,0,50,0"
+                        Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
                         Command="{Binding NavigateHomeCommand}"
-                        Content="Home"
-                        FontSize="36" />
+                        >
+                        <materialDesign:PackIcon Kind="Home"></materialDesign:PackIcon>
+    -->
+    <!--<materialDesign:PackIcon></materialDesign:PackIcon>-->
+    <!--
+                    </Button>
                     <TextBlock Foreground="White">
                         <Run FontSize="36" Text="{Binding Title, Mode=OneTime}" />
                         <Run FontSize="36" Text=" - " />
@@ -27,6 +33,29 @@
                 </StackPanel>
             </ContentControl.Content>
         </ContentControl>
-    </Border>
-
+    </Border>-->
+    <materialDesign:ColorZone
+        Padding="16"
+        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        CornerRadius="0"
+        Mode="PrimaryMid">
+        <StackPanel Orientation="Horizontal">
+            <Button
+                Margin="0,0,10,0"
+                Command="{Binding NavigateHomeCommand}"
+                Style="{DynamicResource MaterialDesignFloatingActionAccentButton}">
+                <!--<materialDesign:PackIcon Width="30" Kind="Home" />-->
+                <Viewbox Width="24" Height="24">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" Fill="Black" />
+                    </Canvas>
+                </Viewbox>
+            </Button>
+            <TextBlock Foreground="White">
+                <Run FontSize="36" Text="{Binding Title, Mode=OneTime}" />
+                <Run FontSize="36" Text=" - " />
+                <Run FontSize="30" Text="{Binding State}" />
+            </TextBlock>
+        </StackPanel>
+    </materialDesign:ColorZone>
 </UserControl>

@@ -49,7 +49,7 @@ namespace Infrastructure.Prism
                     v =>
                     {
                         var navigationAware = v as INavigationAware;
-                        if (navigationAware != null && !navigationAware.IsNavigationTarget(navigationContext))
+                        if  (navigationAware != null && !navigationAware.IsNavigationTarget(navigationContext))
                         {
                             return false;
                         }
