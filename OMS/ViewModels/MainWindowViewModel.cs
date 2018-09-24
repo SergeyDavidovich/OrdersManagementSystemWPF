@@ -8,6 +8,10 @@ using OMS.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using System.Collections.Generic;
+
+using DAL_LocalDb;
+using BLL;
 
 namespace OMS.ViewModels
 {
@@ -16,10 +20,11 @@ namespace OMS.ViewModels
         private readonly IRegionManager _regionManager;
         private readonly IUnityContainer _unityContainer;
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer unityContainer)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer unityContainer) 
         {
             _regionManager = regionManager;
             _unityContainer = unityContainer;
+
         }
         public void ConfigureRegionManager()
         {
