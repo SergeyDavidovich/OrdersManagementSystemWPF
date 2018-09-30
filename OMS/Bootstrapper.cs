@@ -16,6 +16,8 @@ using Orders;
 using Prism.Regions;
 using Products;
 using DAL_LocalDb;
+using Products.ViewModels;
+
 namespace OMS
 {
     class Bootstrapper : UnityBootstrapper
@@ -52,8 +54,11 @@ namespace OMS
                 new ContainerControlledLifetimeManager());
             Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext());
             Container.RegisterType<BLL.IGenericRepository<Categories>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
+
+            Container.RegisterInstance(typeof(ViewAViewModel), new ViewAViewModel());
             
         }
+
         /// <summary>
         /// 3 step of bootstrapping
         /// </summary>

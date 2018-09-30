@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Products.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,15 @@ namespace Products.Views
     {
         public ViewA()
         {
-            var a = new Page();
+            //var a = new Page();
             InitializeComponent();
+            this.DataContext = ViewModel;
+        }
+
+        ViewAViewModel _viewModel;
+        public ViewAViewModel ViewModel
+        {
+            get { return _viewModel ?? (_viewModel = (ViewAViewModel)DataContext); }
         }
     }
 }
