@@ -53,50 +53,53 @@
         CornerRadius="0"
         Mode="PrimaryDark">
         <DockPanel>
-            
             <Button
                 Margin="0,0,0,0"
                 Command="{Binding NavigateHomeCommand}"
                 HorizontalAlignment="Left"
-              Style="{StaticResource MaterialDesignFloatingActionButton}"
-                >
-            
-            <materialDesign:PackIcon Height="36" Width="36" Kind="Home" />
-            
+              Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Height="36" Width="36" Kind="Home"/>
             </Button>
             <TextBlock
                 Margin="8,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Style="{DynamicResource MaterialDesignHeadlineTextBlock}"
-                 >
-                <Run Text="OMS"></Run>
+                Style="{DynamicResource MaterialDesignHeadlineTextBlock}">
+                <Run Text="Orders Management System"></Run>
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-            
             <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">
                 <Run  Text="{Binding Title, Mode=OneTime}" />
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>-->
             <materialDesign:PopupBox
-                Padding="0,0,0,0"
+                Style="{DynamicResource MaterialDesignMultiFloatingActionAccentPopupBox}"
                 HorizontalAlignment="Right"
                 PlacementMode="BottomAndAlignCentres"
-                ToolTip="Change Theme"
-                Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}">
+                ToolTip="Change Theme">
                 <materialDesign:PopupBox.ToggleContent>
                     <materialDesign:PackIcon
                         Width="24"
                         Height="24"
-                        Kind="Pencil" />
+                        Kind="ArrowBottomLeft"/>
                 </materialDesign:PopupBox.ToggleContent>
-                <StackPanel Orientation="Vertical">
-                    <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Purple" Background="#4A148C" />
-                    <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Pink" Background="#880E4F" />
-                    <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Red" Background="#B71C1C" />
-                </StackPanel>
+                <materialDesign:PopupBox.ToggleCheckedContent>
+                    <materialDesign:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="ArrowBottomLeft"/>
+                </materialDesign:PopupBox.ToggleCheckedContent>
+                <Border BorderBrush="#FF8B8B8B" BorderThickness="1" Margin="0,0,0,0" CornerRadius="8" Background="White">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey" Background="#546e7a"/>
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Lime" Background="#cddc39"/>
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Purple" Background="#4A148C" />
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Pink" Background="#880E4F" />
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Red" Background="#B71C1C" />
+                    </StackPanel>
+                </Border>
             </materialDesign:PopupBox>
         </DockPanel>
     </materialDesign:ColorZone>

@@ -9,7 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid>
+    <!--<Grid>-->
         <!--<Border
             Background="White"
             BorderThickness="1"
@@ -110,5 +110,5 @@
                     Content="{Binding Path=ChildContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:HeaderedContentControl}}}" />
             </GroupBox.Content>
         </GroupBox>
-    </Grid>
+    <!--</Grid>-->
 </UserControl>

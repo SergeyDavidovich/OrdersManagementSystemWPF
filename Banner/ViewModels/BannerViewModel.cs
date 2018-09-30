@@ -22,12 +22,12 @@ namespace Banner.ViewModels
 
         public BannerViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
-            Title = "Orders Management System"; 
+            Title = "Orders Management System";
             _regionManager = regionManager;
             //regionManager.Regions[RegionNames.BannerRegion].PropertyChanged += BannerViewModel_PropertyChanged;
             NavigateHomeCommand = new DelegateCommand(NavigateHome);
             ChangeThemeCommand = new DelegateCommand<string>(ChangeTheme);
-            eventAggregator.GetEvent<OnNavigatedToEvent>().Subscribe(title => 
+            eventAggregator.GetEvent<OnNavigatedToEvent>().Subscribe(title =>
                 State = title);
         }
         public DelegateCommand NavigateHomeCommand { get; set; }
@@ -44,7 +44,7 @@ namespace Banner.ViewModels
             {
                 contentRegion.NavigationService.Journal.GoBack();
             }
-            
+
         }
         public DelegateCommand<string> ChangeThemeCommand { get; set; }
 
@@ -52,7 +52,7 @@ namespace Banner.ViewModels
         {
             var helper = new PaletteHelper();
             var swatches = new SwatchesProvider().Swatches;
-           helper.ReplacePrimaryColor(swatches.FirstOrDefault(s => s.Name == color.ToLower()));
+            helper.ReplacePrimaryColor(swatches.FirstOrDefault(s => s.Name == color.ToLower()));
         }
 
         //private void BannerViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
