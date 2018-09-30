@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf">
-    <Style x:Key="ManageButtonStyle" BasedOn="{StaticResource MaterialDesignRaisedButton}"  TargetType="Button">
+    <Style x:Key="ManageButtonStyle" BasedOn="{StaticResource MaterialDesignRaisedDarkButton}"  TargetType="Button">
         <!--<Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="BorderThickness" Value="1" />

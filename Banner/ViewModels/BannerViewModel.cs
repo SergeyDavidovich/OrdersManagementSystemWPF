@@ -10,7 +10,9 @@ using Infrastructure;
 using Prism.Regions;
 using Infrastructure.Base;
 using Infrastructure.Events;
+using MaterialDesignColors;
 using Prism.Events;
+using MaterialDesignThemes.Wpf;
 
 namespace Banner.ViewModels
 {
@@ -24,6 +26,7 @@ namespace Banner.ViewModels
             _regionManager = regionManager;
             //regionManager.Regions[RegionNames.BannerRegion].PropertyChanged += BannerViewModel_PropertyChanged;
             NavigateHomeCommand = new DelegateCommand(NavigateHome);
+            ChangeThemeCommand = new DelegateCommand<string>(ChangeTheme);
             eventAggregator.GetEvent<OnNavigatedToEvent>().Subscribe(title => 
                 State = title);
         }
@@ -42,6 +45,14 @@ namespace Banner.ViewModels
                 contentRegion.NavigationService.Journal.GoBack();
             }
             
+        }
+        public DelegateCommand<string> ChangeThemeCommand { get; set; }
+
+        private void ChangeTheme(string color)
+        {
+            var helper = new PaletteHelper();
+            var swatches = new SwatchesProvider().Swatches;
+           helper.ReplacePrimaryColor(swatches.FirstOrDefault(s => s.Name == color.ToLower()));
         }
 
         //private void BannerViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

@@ -8,42 +8,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Margin="10">
-            <Border Background="White">
-                <Border.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="2" />
-                </Border.Effect>
-            </Border>
-            <Grid Margin="10">
+        <materialDesign:Card VerticalAlignment="Stretch" Margin="10">
+            <Grid>
                 <TextBlock
                     Margin="10"
-                    FontSize="16"
-                    FontWeight="Medium"
+                    Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                     Text="Items at store" />
             </Grid>
-        </Grid>
-        <Grid Grid.Column="1" Margin="10">
-            <Border Background="White">
-                <Border.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="1" />
-                </Border.Effect>
-            </Border>
-            <Grid Margin="10">
+        </materialDesign:Card>
+        <materialDesign:Card VerticalAlignment="Stretch" Grid.Column="1" Margin="10">
+            <Grid>
                 <TextBlock
                     Margin="10"
-                    FontSize="16"
-                    FontWeight="Medium"
+                    Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                     Text="Items in order" />
             </Grid>
-        </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
