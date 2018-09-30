@@ -12,7 +12,7 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="ContentControl">
-                <Setter Property="Margin" Value="10" />
+                <Setter Property="Margin" Value="0" />
             </Style>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
