@@ -1,4 +1,5 @@
-﻿using Products.ViewModels;
+﻿using Microsoft.Practices.Unity;
+using Products.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,10 @@ namespace Products.Views
     /// </summary>
     public partial class ViewA : UserControl
     {
-        public ViewA()
+        public ViewA(IUnityContainer unityContainer)
         {
-            //var a = new Page();
             InitializeComponent();
-            this.DataContext = ViewModel;
-        }
-
-        ViewAViewModel _viewModel;
-        public ViewAViewModel ViewModel
-        {
-            get { return _viewModel ?? (_viewModel = (ViewAViewModel)DataContext); }
+            this.DataContext = unityContainer.Resolve<ViewAViewModel>();
         }
     }
 }

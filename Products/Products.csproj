@@ -33,8 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="Syncfusion.Data.WPF, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.WPF, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.GridCommon.Wpf, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Linq.Base, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfGrid.WPF, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Wpf, Version=16.1460.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -44,6 +55,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -86,6 +100,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{33271404-1a09-418d-b92d-40794747fd0e}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL_LocalDb\DAL_LocalDb.csproj">
+      <Project>{d495fb75-828d-44ff-b363-79383614bfc2}</Project>
+      <Name>DAL_LocalDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
       <Name>Infrastructure</Name>
@@ -106,6 +128,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes">
+      <Version>2.4.1.1101</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

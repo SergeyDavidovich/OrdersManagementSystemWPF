@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 using DAL_LocalDb;
 namespace BLL
 {
-    public class ProductsRepository : IGenericRepository<Products>
+    public class ProductRepository : IGenericRepository<Products>
     {
         LocalDbContext _context;
-        public ProductsRepository(LocalDbContext context)
+        public ProductRepository(LocalDbContext context)
         {
             _context = context;
         }
@@ -27,7 +28,11 @@ namespace BLL
 
         public List<Products> GetAll()
         {
-            return (new List<Products>(_context.Products));
+            var result = new List<Products>(_context.Products);
+                //this.CustomerGroups = new List<PieObject>(customersList.GroupBy(c => c.Country)
+                //.Select(g => new PieObject { Country = g.Key, Quantity = g.Count() }));
+
+            return result;
         }
 
         public Products GetByID(string id)

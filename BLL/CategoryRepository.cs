@@ -27,7 +27,8 @@ namespace BLL
 
         public List<Categories> GetAll()
         {
-            return new List<Categories>(_context.Categories);
+            var result =new List<Categories>(_context.Categories);
+            return result;
         }
 
         public Categories GetByID(string id)

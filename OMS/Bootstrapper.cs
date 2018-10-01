@@ -50,13 +50,10 @@ namespace OMS
             base.ConfigureContainer(); //set default container configuration
 
             //code bellow extends the default container configuration
-            Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(
-                new ContainerControlledLifetimeManager());
+            Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
             Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext());
-            Container.RegisterType<BLL.IGenericRepository<Categories>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
-
-            Container.RegisterInstance(typeof(ViewAViewModel), new ViewAViewModel());
-            
+            Container.RegisterType<BLL.IGenericRepository<DAL_LocalDb.Categories>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<BLL.IGenericRepository<DAL_LocalDb.Products>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
         }
 
         /// <summary>

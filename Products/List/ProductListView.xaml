@@ -6,10 +6,66 @@
     xmlns:local="clr-namespace:Products.List"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:datapager="clr-namespace:Syncfusion.UI.Xaml.Controls.DataPager;assembly=Syncfusion.SfGrid.WPF"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF31A2FF">
-        
-    </userControls:HeaderedContentControl>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Header="Products on store"
+            Style="{DynamicResource MaterialDesignGroupBox}"
+            Margin="16" Padding="10"
+            BorderThickness="1" Background="{x:Null}">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <StackPanel
+                    Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Kind="ImageArea"
+                    Height="32"
+                    Width="32"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Margin="8,0,0,0"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                    Text="{Binding}" />
+                </StackPanel>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
+                                   ShowBusyIndicator="True" 
+                                   Background="White" BorderBrush="{x:Null}"/>
+            <datapager:SfDataPager x:Name="sfDataPager" Source="{Binding Products}" Grid.Row="1" 
+                                   NumericButtonCount="10"
+						           PageSize="20" HorizontalAlignment="Center" 
+                                   />
+        </Grid>
+    </GroupBox>
+    <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF31A2FF">
+        <userControls:HeaderedContentControl.ChildContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
+                                   ShowBusyIndicator="True" 
+                                   ShowGroupDropArea="True"/>
+                <datapager:SfDataPager x:Name="sfDataPager" Source="{Binding Products}" Grid.Row="1" />
+            </Grid>
+        </userControls:HeaderedContentControl.ChildContent>
+    </userControls:HeaderedContentControl>-->
 </UserControl>

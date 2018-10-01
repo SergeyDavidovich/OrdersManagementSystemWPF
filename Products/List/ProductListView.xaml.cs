@@ -24,7 +24,8 @@ namespace Products.List
         public ProductListView(IUnityContainer unityContainer)
         {
             InitializeComponent();
-            this.DataContext = unityContainer.Resolve<ProductListViewModel>();
+            var vm = unityContainer.Resolve<ProductListViewModel>();
+            this.DataContext = vm;
         }
     }
 }
