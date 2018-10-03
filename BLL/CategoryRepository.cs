@@ -31,6 +31,11 @@ namespace BLL
             return result;
         }
 
+        public Task<List<Categories>> GetALlAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Categories GetByID(string id)
         {
             throw new NotImplementedException();

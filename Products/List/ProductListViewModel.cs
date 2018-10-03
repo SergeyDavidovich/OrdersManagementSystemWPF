@@ -23,16 +23,19 @@ namespace Products.List
             _repository = repository;
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            _products = _repository.GetAll() as List<DAL_LocalDb.Products>;
+            //Products = await _repository.GetALlAsync();
+            if (Products == null) Products = await _repository.GetALlAsync();
         }
-       
+
         List<DAL_LocalDb.Products> _products;
+
         public List<DAL_LocalDb.Products> Products
         {
             get { return _products; }
+            set => SetProperty(ref _products, value);
         }
     }
 

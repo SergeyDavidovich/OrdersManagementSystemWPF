@@ -22,21 +22,21 @@
     <GroupBox Header="Products on store"
             Style="{DynamicResource MaterialDesignGroupBox}"
             Margin="16" Padding="10"
-            BorderThickness="1" Background="{x:Null}">
+            BorderThickness="1">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
-                <StackPanel
+                <StackPanel 
                     Orientation="Horizontal">
-                <materialDesign:PackIcon
-                    Kind="ImageArea"
-                    Height="32"
-                    Width="32"
-                    VerticalAlignment="Center" />
-                <TextBlock
-                    Margin="8,0,0,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="{Binding}" />
+                    <materialDesign:PackIcon
+                        Kind="ImageArea"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                    <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
                 </StackPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
@@ -46,7 +46,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
-                                   ShowBusyIndicator="True" 
+                                   ShowBusyIndicator="True" Margin="10" 
                                    Background="White" BorderBrush="{x:Null}"/>
             <datapager:SfDataPager x:Name="sfDataPager" Source="{Binding Products}" Grid.Row="1" 
                                    NumericButtonCount="10"

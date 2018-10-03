@@ -29,7 +29,7 @@ namespace OMS.ViewModels
         public void ConfigureRegionManager()
         {
             //Inject views in regions
-            _regionManager.Regions[RegionNames.GlobalRegion].Add(_unityContainer.Resolve<CommonView>());
+            _regionManager.Regions[RegionNames.GlobalRegion].Add(_unityContainer.Resolve<ContentView>());
             //Don't change order, because BannerRegion becomes available after CommonView instantiated 
             _regionManager.Regions[RegionNames.BannerRegion].Add(_unityContainer.Resolve<BannerView>());
 

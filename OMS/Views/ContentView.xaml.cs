@@ -18,12 +18,11 @@ namespace OMS.Views
     /// <summary>
     /// Interaction logic for CommonView.xaml
     /// </summary>
-    public partial class CommonView : UserControl
+    public partial class ContentView : UserControl
     {
-        public CommonView()
+        public ContentView()
         {
             InitializeComponent();
-           
         }
     }
 }

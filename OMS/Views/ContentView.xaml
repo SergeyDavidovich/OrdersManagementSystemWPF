@@ -1,5 +1,5 @@
-﻿<UserControl
-    x:Class="OMS.Views.CommonView"
+﻿<UserControl x:Name="userControl"
+    x:Class="OMS.Views.ContentView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,7 +13,7 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="Border">
-            
+
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="BorderThickness" Value="0" />
@@ -24,14 +24,11 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--<ContentControl prism:RegionManager.RegionContext="{Binding Title}" prism:RegionManager.RegionName="BannerRegion"></ContentControl>-->
         <ContentControl prism:RegionManager.RegionName="BannerRegion" />
-        <Border Grid.Row="1">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
-            </ScrollViewer>
+        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignBodyLight}">
+            <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
         </Border>
     </Grid>
 </UserControl>

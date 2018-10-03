@@ -14,12 +14,12 @@ using Prism.Regions;
 
 namespace OMS.ViewModels
 {
-    public class CommonViewModel : BindableBase
+    public class ContentViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
         private readonly IUnityContainer _unityContainer;
 
-        public CommonViewModel(IRegionManager regionManager, IUnityContainer unityContainer)
+        public ContentViewModel(IRegionManager regionManager, IUnityContainer unityContainer)
         {
             _regionManager = regionManager;
             _unityContainer = unityContainer;
