@@ -6,25 +6,22 @@ namespace DAL_LocalDb
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Shippers
+    public partial class CustomerDemographic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shippers()
+        public CustomerDemographic()
         {
-            Orders = new HashSet<Orders>();
+            Customers = new HashSet<Customer>();
         }
 
         [Key]
-        public int ShipperID { get; set; }
+        [StringLength(10)]
+        public string CustomerTypeID { get; set; }
 
-        [Required]
-        [StringLength(40)]
-        public string CompanyName { get; set; }
-
-        [StringLength(24)]
-        public string Phone { get; set; }
+        [Column(TypeName = "ntext")]
+        public string CustomerDesc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

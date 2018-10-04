@@ -26,8 +26,8 @@ namespace DAL_LocalDb
 
         public float Discount { get; set; }
 
-        public virtual Orders Orders { get; set; }
+        public virtual Order Orders { get; set; }
 
-        public virtual Products Products { get; set; }
+        public virtual Product Products { get; set; }
     }
 }

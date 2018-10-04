@@ -15,9 +15,9 @@ namespace Products.List
     public class ProductListViewModel : NavigationAwareViewModelBase
     {
         string _testText = "Initial text";
-        IGenericRepository<DAL_LocalDb.Products> _repository;
+        IGenericRepository<DAL_LocalDb.Product> _repository;
 
-        public ProductListViewModel(IGenericRepository<DAL_LocalDb.Products> repository)
+        public ProductListViewModel(IGenericRepository<DAL_LocalDb.Product> repository)
         {
             Title = "Products management";
             _repository = repository;
@@ -30,9 +30,9 @@ namespace Products.List
             if (Products == null) Products = await _repository.GetALlAsync();
         }
 
-        List<DAL_LocalDb.Products> _products;
+        List<DAL_LocalDb.Product> _products;
 
-        public List<DAL_LocalDb.Products> Products
+        public List<DAL_LocalDb.Product> Products
         {
             get { return _products; }
             set => SetProperty(ref _products, value);

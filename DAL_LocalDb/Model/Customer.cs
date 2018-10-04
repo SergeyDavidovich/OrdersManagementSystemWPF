@@ -6,13 +6,13 @@ namespace DAL_LocalDb
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Customers
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customers()
+        public Customer()
         {
-            Orders = new HashSet<Orders>();
-            CustomerDemographics = new HashSet<CustomerDemographics>();
+            Orders = new HashSet<Order>();
+            CustomerDemographics = new HashSet<CustomerDemographic>();
         }
 
         [Key]
@@ -51,9 +51,9 @@ namespace DAL_LocalDb
         public string Fax { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerDemographics> CustomerDemographics { get; set; }
+        public virtual ICollection<CustomerDemographic> CustomerDemographics { get; set; }
     }
 }

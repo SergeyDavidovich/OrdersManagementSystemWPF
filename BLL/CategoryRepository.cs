@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DAL_LocalDb;
 namespace BLL
 {
-    public class CategoryRepository:IGenericRepository<Categories>
+    public class CategoryRepository:IGenericRepository<Category>
     {
         LocalDbContext _context;
         public CategoryRepository(LocalDbContext context)
@@ -15,28 +15,28 @@ namespace BLL
             _context = context;
         }
 
-        public void Add(Categories entity)
+        public void Add(Category entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Categories entity)
+        public void Delete(Category entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Categories> GetAll()
+        public List<Category> GetAll()
         {
-            var result =new List<Categories>(_context.Categories);
+            var result =new List<Category>(_context.Categories);
             return result;
         }
 
-        public Task<List<Categories>> GetALlAsync()
+        public Task<List<Category>> GetALlAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Categories GetByID(string id)
+        public Category GetByID(string id)
         {
             throw new NotImplementedException();
         }

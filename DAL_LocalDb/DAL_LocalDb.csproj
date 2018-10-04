@@ -65,19 +65,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Categories.cs" />
-    <Compile Include="Model\CustomerDemographics.cs" />
-    <Compile Include="Model\Customers.cs" />
-    <Compile Include="Model\Employees.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\CustomerDemographic.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="LocalDbContext.cs" />
-    <Compile Include="Model\Orders.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Order_Details.cs" />
-    <Compile Include="Model\Products.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Region.cs" />
-    <Compile Include="Model\Shippers.cs" />
-    <Compile Include="Model\Suppliers.cs" />
-    <Compile Include="Model\Territories.cs" />
+    <Compile Include="Model\Shipper.cs" />
+    <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Model\Territory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DAL_LocalDb.cd" />

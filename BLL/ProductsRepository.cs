@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using DAL_LocalDb;
 namespace BLL
 {
-    public class ProductRepository : IGenericRepository<Products>
+    public class ProductRepository : IGenericRepository<Product>
     {
         LocalDbContext db;
         public ProductRepository(LocalDbContext context)
         {
             db = context;
         }
-        public List<Products> GetAll()
+        public List<Product> GetAll()
         {
             using (db)
             {
@@ -26,7 +26,7 @@ namespace BLL
             }
         }
 
-        public async Task<List<Products>> GetALlAsync()
+        public async Task<List<Product>> GetALlAsync()
         {
             using (db)
             {
@@ -37,17 +37,17 @@ namespace BLL
             //return list as List<Products>;
         }
 
-        public void Add(Products entity)
+        public void Add(Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Products entity)
+        public void Delete(Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public Products GetByID(string id)
+        public Product GetByID(string id)
         {
             throw new NotImplementedException();
         }

@@ -12,7 +12,7 @@ namespace DAL_LocalDb
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
         {
-            Territories = new HashSet<Territories>();
+            Territories = new HashSet<Territory>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -23,6 +23,6 @@ namespace DAL_LocalDb
         public string RegionDescription { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Territories> Territories { get; set; }
+        public virtual ICollection<Territory> Territories { get; set; }
     }
 }

@@ -6,10 +6,10 @@ namespace DAL_LocalDb
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Orders
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orders()
+        public Order()
         {
             Order_Details = new HashSet<Order_Details>();
         }
@@ -51,13 +51,13 @@ namespace DAL_LocalDb
         [StringLength(15)]
         public string ShipCountry { get; set; }
 
-        public virtual Customers Customers { get; set; }
+        public virtual Customer Customers { get; set; }
 
-        public virtual Employees Employees { get; set; }
+        public virtual Employee Employees { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Details> Order_Details { get; set; }
 
-        public virtual Shippers Shippers { get; set; }
+        public virtual Shipper Shippers { get; set; }
     }
 }

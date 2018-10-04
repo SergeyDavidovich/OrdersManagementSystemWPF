@@ -6,28 +6,27 @@ namespace DAL_LocalDb
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Categories
+    public partial class Territory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categories()
+        public Territory()
         {
-            Products = new HashSet<Products>();
+            Employees = new HashSet<Employee>();
         }
 
         [Key]
-        public int CategoryID { get; set; }
+        [StringLength(20)]
+        public string TerritoryID { get; set; }
 
         [Required]
-        [StringLength(15)]
-        public string CategoryName { get; set; }
+        [StringLength(50)]
+        public string TerritoryDescription { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string Description { get; set; }
+        public int RegionID { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] Picture { get; set; }
+        public virtual Region Region { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Products> Products { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
