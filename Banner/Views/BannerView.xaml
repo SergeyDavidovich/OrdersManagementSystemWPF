@@ -69,7 +69,8 @@
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-            <materialDesign:PopupBox
+            <!--<materialDesign:PopupBox
+
                 HorizontalAlignment="Right"
                 PlacementMode="BottomAndAlignCentres"
                 ToolTip="Change Theme" PopupMode="MouseOverEager">
@@ -88,13 +89,70 @@
                 <Border BorderBrush="#FF8B8B8B" BorderThickness="1" Margin="0,0,0,0" CornerRadius="8" Background="White">
                     <StackPanel Orientation="Horizontal" Margin="10">
                         <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey" Background="#546e7a"/>
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Lime" Background="#cddc39"/>
+                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Blue" Background="#1e88e5"/>
                         <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Purple" Background="#4A148C" />
                         <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Pink" Background="#880E4F" />
                         <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Red" Background="#B71C1C" />
                     </StackPanel>
                 </Border>
-            </materialDesign:PopupBox>
+            </materialDesign:PopupBox>-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <materialDesign:PopupBox
+                    Margin="16,0,16,0"
+                    StaysOpen="False"
+                    IsEnabled="True">
+                <Grid Width="160" Margin="8,8,8,8">
+                        <Grid.Resources>
+                            <Style TargetType="Rectangle">
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Height" Value="36"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0"
+                                Text="SELECT THEME"
+                                Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                Margin="8,8,8,16"/>
+                        <Button Grid.Column="0" Grid.Row="1" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="BLUE"
+                                Foreground="Blue" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="Blue"/>
+                        <Button Grid.Column="0" Grid.Row="2" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="RED"
+                                Foreground="Red" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="Red"/>
+                        <Button Grid.Column="0" Grid.Row="3" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="BLUE GREY"
+                                Foreground="#607d8b" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey"/>
+                        <Button Grid.Column="0" Grid.Row="4" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="PURPLE"
+                                Foreground="#7b1fa2" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="Purple"/>
+                        <Button Grid.Column="0" Grid.Row="5" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="BROWN"
+                                Foreground="#6d4c41" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="Brown"/>
+                    </Grid>
+                </materialDesign:PopupBox>
+            </StackPanel>
         </DockPanel>
     </materialDesign:ColorZone>
 </UserControl>
