@@ -14,7 +14,25 @@ namespace Dashboard.OrderStatistics
         {
             Title = "Orders";
             IsActiveChanged += OrdersStatViewModel_IsActiveChanged;
+
+            this.OrderGroupsMock = new List<OrderGroupsObject>()
+            {
+                new OrderGroupsObject(){Country="USA", Quantity=10},
+                new OrderGroupsObject(){Country="GB", Quantity=20},
+                new OrderGroupsObject(){Country="Germany", Quantity=30}
+            };
         }
+        public class OrderGroupsObject
+        {
+            public string Country { get; set; }
+            public int Quantity { get; set; }
+        }
+        public List<OrderGroupsObject> OrderGroupsMock { get; set; }
+
+
+
+
+
 
         private void OrdersStatViewModel_IsActiveChanged(object sender, EventArgs e)
         {

@@ -13,7 +13,6 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="Border">
-
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="BorderThickness" Value="0" />
@@ -27,7 +26,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="BannerRegion" />
-        <Border Grid.Row="1" Background="{DynamicResource MaterialDesignBodyLight}">
+        <Border Grid.Row="1">
             <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
         </Border>
     </Grid>

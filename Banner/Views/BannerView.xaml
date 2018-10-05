@@ -69,21 +69,15 @@
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-            <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">
-                <Run  Text="{Binding Title, Mode=OneTime}" />
-                <Run Text=" - " />
-                <Run Text="{Binding State}" />
-            </TextBlock>-->
             <materialDesign:PopupBox
-                Style="{DynamicResource MaterialDesignMultiFloatingActionAccentPopupBox}"
                 HorizontalAlignment="Right"
                 PlacementMode="BottomAndAlignCentres"
-                ToolTip="Change Theme">
+                ToolTip="Change Theme" PopupMode="MouseOverEager">
                 <materialDesign:PopupBox.ToggleContent>
                     <materialDesign:PackIcon
                         Width="24"
                         Height="24"
-                        Kind="ArrowBottomLeft"/>
+                        Kind="FormatPaint"/>
                 </materialDesign:PopupBox.ToggleContent>
                 <materialDesign:PopupBox.ToggleCheckedContent>
                     <materialDesign:PackIcon

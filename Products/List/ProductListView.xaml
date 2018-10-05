@@ -20,7 +20,8 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="Products on store"
-            Style="{DynamicResource MaterialDesignGroupBox}"
+            Style="{DynamicResource MaterialDesignCardGroupBox}"
+            Background="{DynamicResource PrimaryHueLightBrush}"
             Margin="16" Padding="10"
             BorderThickness="1">
         <GroupBox.HeaderTemplate>
@@ -47,10 +48,22 @@
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
                                    ShowBusyIndicator="True" Margin="10" 
-                                   Background="White" BorderBrush="{x:Null}"/>
-            <datapager:SfDataPager x:Name="sfDataPager" Source="{Binding Products}" Grid.Row="1" 
+                                   AutoGenerateColumns="True" 
+                                   ColumnSizer="AutoWithLastColumnFill" Background="White">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="Product ID" MappingName="ProductID" />
+                    <syncfusion:GridTextColumn HeaderText="Product Name" MappingName="ProductName" />
+                    <syncfusion:GridTextColumn HeaderText="Category ID" MappingName="CategoryID" />
+                    <syncfusion:GridTextColumn HeaderText="Unit Price" MappingName="UnitPrice" />
+                    <syncfusion:GridCheckBoxColumn HeaderText="Discontinued" MappingName="Discontinued"  />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+            <datapager:SfDataPager x:Name="sfDataPager" Source="{Binding Products}" Grid.Row="1"
+                                   UseOnDemandPaging="True"
                                    NumericButtonCount="10"
-						           PageSize="20" HorizontalAlignment="Center" 
+						           PageSize="30" HorizontalAlignment="Center"
+                                   AccentBackground="{DynamicResource SecondaryAccentBrush}"
+                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"
                                    />
         </Grid>
     </GroupBox>

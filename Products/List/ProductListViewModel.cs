@@ -15,9 +15,9 @@ namespace Products.List
     public class ProductListViewModel : NavigationAwareViewModelBase
     {
         string _testText = "Initial text";
-        IGenericRepository<DAL_LocalDb.Product> _repository;
+        IGenericRepository<Product> _repository;
 
-        public ProductListViewModel(IGenericRepository<DAL_LocalDb.Product> repository)
+        public ProductListViewModel(IGenericRepository<Product> repository)
         {
             Title = "Products management";
             _repository = repository;
@@ -26,13 +26,18 @@ namespace Products.List
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            //Products = await _repository.GetALlAsync();
+            //Products = null;
             if (Products == null) Products = await _repository.GetALlAsync();
         }
+        public async override void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            base.OnNavigatedFrom(navigationContext);
+            //if (Products == null) Products = await _repository.GetALlAsync();
+        }
 
-        List<DAL_LocalDb.Product> _products;
+        List<Product> _products;
 
-        public List<DAL_LocalDb.Product> Products
+        public List<Product> Products
         {
             get { return _products; }
             set => SetProperty(ref _products, value);

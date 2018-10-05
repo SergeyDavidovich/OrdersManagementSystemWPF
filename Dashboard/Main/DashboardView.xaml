@@ -9,12 +9,9 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+    </UserControl.Resources>
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="ContentControl">
-                <Setter Property="Margin" Value="0" />
-            </Style>
-        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition />
