@@ -69,50 +69,11 @@
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-            <!--<materialDesign:PopupBox
-
-                HorizontalAlignment="Right"
-                PlacementMode="BottomAndAlignCentres"
-                ToolTip="Change Theme" PopupMode="MouseOverEager">
-                <materialDesign:PopupBox.ToggleContent>
-                    <materialDesign:PackIcon
-                        Width="24"
-                        Height="24"
-                        Kind="FormatPaint"/>
-                </materialDesign:PopupBox.ToggleContent>
-                <materialDesign:PopupBox.ToggleCheckedContent>
-                    <materialDesign:PackIcon
-                        Width="24"
-                        Height="24"
-                        Kind="ArrowBottomLeft"/>
-                </materialDesign:PopupBox.ToggleCheckedContent>
-                <Border BorderBrush="#FF8B8B8B" BorderThickness="1" Margin="0,0,0,0" CornerRadius="8" Background="White">
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey" Background="#546e7a"/>
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Blue" Background="#1e88e5"/>
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Purple" Background="#4A148C" />
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Pink" Background="#880E4F" />
-                        <Button BorderBrush="Transparent" Command="{Binding ChangeThemeCommand}" CommandParameter="Red" Background="#B71C1C" />
-                    </StackPanel>
-                </Border>
-            </materialDesign:PopupBox>-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <materialDesign:PopupBox
                     Margin="16,0,16,0"
-                    StaysOpen="False"
-                    IsEnabled="True">
-                <Grid Width="160" Margin="8,8,8,8">
-                        <Grid.Resources>
-                            <Style TargetType="Rectangle">
-                                <Setter Property="Margin" Value="4"/>
-                                <Setter Property="Height" Value="36"/>
-                                <Setter Property="VerticalAlignment" Value="Stretch"/>
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    StaysOpen="False">
+                <Grid Width="160" Margin="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -128,12 +89,12 @@
                         <Button Grid.Column="0" Grid.Row="1" 
                                    Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="BLUE"
-                                Foreground="Blue" HorizontalContentAlignment="Left"
+                                Foreground="#1e88e5" HorizontalContentAlignment="Left"
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="Blue"/>
                         <Button Grid.Column="0" Grid.Row="2" 
                                    Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="RED"
-                                Foreground="Red" HorizontalContentAlignment="Left"
+                                Foreground="#e53935" HorizontalContentAlignment="Left"
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="Red"/>
                         <Button Grid.Column="0" Grid.Row="3" 
                                    Style="{DynamicResource MaterialDesignFlatButton}"
