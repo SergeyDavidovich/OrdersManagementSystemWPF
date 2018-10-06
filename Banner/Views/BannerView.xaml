@@ -24,44 +24,21 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <!--<Border Background="#FF1F4E79">
-        <ContentControl Margin="10">
-            <ContentControl.Content>
-                <StackPanel Orientation="Horizontal">
-                    <Button
-                        Margin="20,0,50,0"
-                        Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
-                        Command="{Binding NavigateHomeCommand}"
-                        >
-                        <materialDesign:PackIcon Kind="Home"></materialDesign:PackIcon>
-    -->
-    <!--<materialDesign:PackIcon></materialDesign:PackIcon>-->
-    <!--
-                    </Button>
-                    <TextBlock Foreground="White">
-                        <Run FontSize="36" Text="{Binding Title, Mode=OneTime}" />
-                        <Run FontSize="36" Text=" - " />
-                        <Run FontSize="30" Text="{Binding State}" />
-                    </TextBlock>
-                </StackPanel>
-            </ContentControl.Content>
-        </ContentControl>
-    </Border>-->
     <materialDesign:ColorZone
-        Padding="16"
+        Padding="6"
         materialDesign:ShadowAssist.ShadowDepth="Depth3"
         CornerRadius="0"
         Mode="PrimaryDark">
         <DockPanel>
-            <Button
-                Margin="0,0,0,0"
+            <Button materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                Margin="20,0,0,0" ToolTip="HOME"
                 Command="{Binding NavigateHomeCommand}"
                 HorizontalAlignment="Left"
-              Style="{StaticResource MaterialDesignFloatingActionButton}">
+                Style="{StaticResource MaterialDesignFloatingActionLightButton}">
                 <materialDesign:PackIcon Height="36" Width="36" Kind="Home"/>
             </Button>
             <TextBlock
-                Margin="8,0,0,0"
+                Margin="08,0,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Style="{DynamicResource MaterialDesignHeadlineTextBlock}">
@@ -69,8 +46,7 @@
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <materialDesign:PopupBox
+                <materialDesign:PopupBox HorizontalAlignment="Right"
                     Margin="16,0,16,0"
                     StaysOpen="False">
                 <Grid Width="160" Margin="8">
@@ -113,7 +89,6 @@
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="Brown"/>
                     </Grid>
                 </materialDesign:PopupBox>
-            </StackPanel>
         </DockPanel>
     </materialDesign:ColorZone>
 </UserControl>

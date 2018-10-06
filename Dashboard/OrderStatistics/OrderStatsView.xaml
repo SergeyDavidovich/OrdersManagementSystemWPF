@@ -13,18 +13,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="Red">
-        <userControls:HeaderedContentControl.CommandBar>
-            <Button
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
-                CommandParameter="OrderManageView"
-                Content="Manage"
-                DockPanel.Dock="Right"
-                Style="{StaticResource ManageButtonStyle}" />
-        </userControls:HeaderedContentControl.CommandBar>
-    </userControls:HeaderedContentControl>-->
     <GroupBox Header="Orders"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="White"
@@ -62,7 +50,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon
-                        Kind="AccountCircle"
+                        Kind="BookMultiple"
                         Height="32"
                         Width="32"
                         VerticalAlignment="Center" />
@@ -92,23 +80,16 @@
             </Grid.RowDefinitions>
             <Border>
                 <syncfusion:SfChart3D>
-                    <!--Header-->
                     <chart:SfChart3D.Header>
                         <TextBlock Text="By countries" FontSize="20" Foreground="Black"
                            FontFamily="Segoe UI" Margin="0,20,0,0" HorizontalAlignment="Left"/>
                     </chart:SfChart3D.Header>
-
-                    <!--PrimaryAxis-->
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
                     </chart:SfChart3D.PrimaryAxis>
-
-                    <!--SecondaryAxis-->
                     <chart:SfChart3D.SecondaryAxis>
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
-
-                    <!--PieSeries-->
                     <chart:PieSeries3D Palette="AutumnBrights"
                              ItemsSource="{Binding OrderGroupsMock}"
                              XBindingPath="Country" YBindingPath="Quantity"/>

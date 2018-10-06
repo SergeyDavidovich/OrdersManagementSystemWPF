@@ -19,7 +19,9 @@ namespace Dashboard.OrderStatistics
             {
                 new OrderGroupsObject(){Country="USA", Quantity=10},
                 new OrderGroupsObject(){Country="GB", Quantity=20},
-                new OrderGroupsObject(){Country="Germany", Quantity=30}
+                new OrderGroupsObject(){Country="Germany", Quantity=30},
+                new OrderGroupsObject(){Country="Poland", Quantity=15},
+                new OrderGroupsObject(){Country="Czech Republic", Quantity=25}
             };
         }
         public class OrderGroupsObject
