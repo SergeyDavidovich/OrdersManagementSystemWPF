@@ -32,7 +32,7 @@ namespace Products.List
         public async override void OnNavigatedFrom(NavigationContext navigationContext)
         {
             base.OnNavigatedFrom(navigationContext);
-            //if (Products == null) Products = await _repository.GetALlAsync();
+            if (Products == null) Products = await _repository.GetALlAsync();
         }
 
         List<Product> _products;

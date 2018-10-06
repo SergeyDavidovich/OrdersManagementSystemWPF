@@ -30,7 +30,7 @@
 
         <materialDesign:Transitioner SelectedIndex="0" Grid.Row="1">
             <materialDesign:TransitioningContent  
-                    OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromBottom}">
+                    OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
                 <Border >
                     <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion"/>
                 </Border>
