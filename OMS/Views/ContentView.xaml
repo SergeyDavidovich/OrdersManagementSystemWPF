@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:OMS.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -26,8 +27,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="BannerRegion" />
-        <Border Grid.Row="1">
-            <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion" />
-        </Border>
+
+        <materialDesign:Transitioner SelectedIndex="0" Grid.Row="1">
+            <materialDesign:TransitioningContent  
+                    OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromBottom}">
+                <Border >
+                    <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion"/>
+                </Border>
+            </materialDesign:TransitioningContent>
+        </materialDesign:Transitioner>
     </Grid>
 </UserControl>

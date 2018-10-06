@@ -8,9 +8,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
+    <materialDesign:Transitioner SelectedIndex="0">
+        <materialDesign:TransitioningContent 
+            OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+            
+    
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -40,4 +47,7 @@
             </userControls:HeaderedContentControl.ChildContent>
         </userControls:HeaderedContentControl>
     </Grid>
+
+        </materialDesign:TransitioningContent>
+    </materialDesign:Transitioner>
 </UserControl>
