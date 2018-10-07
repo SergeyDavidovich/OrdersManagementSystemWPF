@@ -25,7 +25,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon
-                        Kind="AccountCardDetails"
+                        Kind="ViewList"
                         Height="32"
                         Width="32"
                         VerticalAlignment="Center" />
