@@ -57,7 +57,8 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
                         <TextBlock Grid.Column="0" Grid.Row="0"
                                 Text="SELECT THEME"
                                 Style="{StaticResource MaterialDesignTitleTextBlock}"
@@ -87,7 +88,12 @@
                                 Content="BROWN"
                                 Foreground="#6d4c41" HorizontalContentAlignment="Left"
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="Brown"/>
-                    </Grid>
+                    <Button Grid.Column="0" Grid.Row="6" 
+                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Content="GREEN"
+                                Foreground="Green" HorizontalContentAlignment="Left"
+                                Command="{Binding ChangeThemeCommand}" CommandParameter="Green"/>
+                </Grid>
                 </materialDesign:PopupBox>
         </DockPanel>
     </materialDesign:ColorZone>
