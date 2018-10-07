@@ -23,7 +23,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
+        <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
             <userControls:HeaderedContentControl.ChildContent>
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" />
             </userControls:HeaderedContentControl.ChildContent>
@@ -45,14 +45,14 @@
             <userControls:HeaderedContentControl.ChildContent>
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}" />
             </userControls:HeaderedContentControl.ChildContent>
-        </userControls:HeaderedContentControl>-->
+        </userControls:HeaderedContentControl>
         
-                <GroupBox prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
+                <!--<GroupBox prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
                     
                 </GroupBox>
                 <GroupBox Grid.Column="1" prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
                     
-                </GroupBox>     
+                </GroupBox>-->     
     </Grid>
 
         </materialDesign:TransitioningContent>

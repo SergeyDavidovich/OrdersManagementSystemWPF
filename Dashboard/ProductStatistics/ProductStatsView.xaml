@@ -6,23 +6,43 @@
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
     xmlns:local="clr-namespace:Dashboard.ProductStatistics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
-        <userControls:HeaderedContentControl.CommandBar>
-            <Button
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}"
-                CommandParameter="Products"
-                Content="Manage"
-                DockPanel.Dock="Right"
-                Style="{StaticResource ManageButtonStyle}" />
-        </userControls:HeaderedContentControl.CommandBar>
-    </userControls:HeaderedContentControl>
-    <!--<Grid Background="SteelBlue" >
-        <Button Style="{StaticResource ManageButtonStyle}" Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}" CommandParameter="Products"></Button>
-    </Grid>-->
+    <GroupBox Header="PRODUCTS"
+            Style="{DynamicResource MaterialDesignCardGroupBox}"
+            Background="White"
+            Margin="16" Padding="10"
+            BorderThickness="1">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon
+                        Kind="AccountCardDetails"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="1"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                    <Button Grid.Column="2" Style="{DynamicResource MaterialDesignRaisedAccentButton}"
+                            HorizontalAlignment="Right"
+                            Margin="0"
+                            Content="Manage"
+                            Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}"
+                            CommandParameter="Products"/>
+                </Grid>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+    </GroupBox>
+
 </UserControl>

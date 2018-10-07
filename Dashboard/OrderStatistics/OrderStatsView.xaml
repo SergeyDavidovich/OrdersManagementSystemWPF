@@ -13,7 +13,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <GroupBox Header="Orders"
+    <GroupBox Header="ORDERS"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="White"
             Margin="16" Padding="10"
