@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <GroupBox Header="Products on store"
+    <GroupBox Header="{Binding Title}"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="{DynamicResource PrimaryHueLightBrush}"
             Margin="16" Padding="10"
@@ -47,6 +47,7 @@
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding Test}" Width="200"/>
                         <Button Background="Green" Content="ADD"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}">
                             <!--<materialDesign:PackIcon Kind="Plus"/>-->
@@ -68,10 +69,11 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
-                                   ShowBusyIndicator="True" Margin="10" 
+            <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" Margin="6" 
                                    AutoGenerateColumns="True" 
-                                   ColumnSizer="AutoWithLastColumnFill" Background="White">
+                                   ColumnSizer="AutoWithLastColumnFill" Background="White" BorderBrush="{x:Null}" 
+                                   ShowBusyIndicator="True" BorderThickness="0" 
+                                   ShowGroupDropArea="False" AutoExpandGroups="True">
                 <syncfusion:SfDataGrid.Columns>
                     <syncfusion:GridTextColumn HeaderText="Product ID" MappingName="ProductID" />
                     <syncfusion:GridTextColumn HeaderText="Product Name" MappingName="ProductName" />

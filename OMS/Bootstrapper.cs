@@ -17,6 +17,8 @@ using Prism.Regions;
 using Products;
 using DAL_LocalDb;
 using Products.ViewModels;
+using System;
+using System.Diagnostics;
 
 namespace OMS
 {
@@ -51,9 +53,14 @@ namespace OMS
 
             //code bellow extends the default container configuration
             Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
-            Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext());
+
+            //Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext(), new ContainerControlledLifetimeManager());
+            Container.RegisterInstance<LocalDbContext>(new LocalDbContext());
+
             Container.RegisterType<BLL.IGenericRepository<Category>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
             Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<BLL.IGenericRepository<Order>, BLL.OrderRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<BLL.IGenericRepository<Customer>, BLL.CustomerRepository>(new ContainerControlledLifetimeManager());
         }
 
         /// <summary>
@@ -82,8 +89,25 @@ namespace OMS
         /// </summary>
         protected override void InitializeShell()
         {
+            var context = Container.Resolve<LocalDbContext>();
+            this.Context = context;
+            try
+            {
+                context.Database.Connection.Open();
+                Debug.WriteLine(context.Database.Connection.State.ToString());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                throw new Exception("Connection ERROR!!!");
+            }
+
+
             shellViewModel.ConfigureRegionManager();
+
             Application.Current.MainWindow.Show();
         }
+        public LocalDbContext Context { get; set; }
+
     }
 }

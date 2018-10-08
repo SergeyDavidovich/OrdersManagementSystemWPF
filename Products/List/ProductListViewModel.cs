@@ -14,25 +14,21 @@ namespace Products.List
 {
     public class ProductListViewModel : NavigationAwareViewModelBase
     {
-        string _testText = "Initial text";
+
         IGenericRepository<Product> _repository;
 
         public ProductListViewModel(IGenericRepository<Product> repository)
         {
-            Title = "Products management";
+            Title = "PRODUCTS ON STORE";
             _repository = repository;
         }
 
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            //Products = null;
             if (Products == null) Products = await _repository.GetALlAsync();
-        }
-        public async override void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-            base.OnNavigatedFrom(navigationContext);
-            if (Products == null) Products = await _repository.GetALlAsync();
+
+            Title += $" ({_products.Count().ToString()} Items)";
         }
 
         List<Product> _products;
@@ -43,5 +39,4 @@ namespace Products.List
             set => SetProperty(ref _products, value);
         }
     }
-
 }

@@ -20,9 +20,9 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-            <ContentControl Margin="10"
+            <ContentControl Margin="0"
                 prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityListRegion}" />
-            <ContentControl Grid.Column="1" Margin="10"
+            <ContentControl Grid.Column="1" Margin="0"
                 prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityViewAddEditRegion}" />
     </Grid>
         </materialDesign:TransitioningContent>

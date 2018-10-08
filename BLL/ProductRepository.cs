@@ -28,11 +28,20 @@ namespace BLL
 
         public async Task<List<Product>> GetALlAsync()
         {
-            using (db)
+            try
             {
-                return await (from b in db.Products
-                              orderby b.ProductName
-                              select b).ToListAsync();
+
+                using (db)
+                {
+                    var list = await (from b in db.Products
+                                      orderby b.ProductName
+                                      select b).ToListAsync();
+                    return list;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();
             }
         }
 
