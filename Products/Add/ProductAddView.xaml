@@ -38,12 +38,12 @@
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Background="Green" Content="SAVE"
-                                Style="{StaticResource MaterialDesignRaisedLightButton}">
-                        </Button>
-                        <Button Background="Red" Content="CANSEL"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}">
-                        </Button>
+                        <Button Style="{StaticResource ManageButtonStyle}"
+                            Content="SAVE"    
+                            Background="Green"/>
+                        <Button Style="{StaticResource ManageButtonStyle}" 
+                                Background="Red" 
+                                Content="CANCEL"/>
                     </StackPanel>
                 </DockPanel>
             </DataTemplate>

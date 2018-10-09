@@ -13,6 +13,33 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <!--<UserControl.Resources>
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon
+                        Kind="BookMultiple"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                <Button Grid.Column="2" Style="{DynamicResource ManageButtonStyle}"
+                            Content="Manage"
+                            Background="{DynamicResource SecondaryAccentBrush}"
+                            HorizontalAlignment="Right"
+                            Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
+                            CommandParameter="OrderManageView"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>-->
     <GroupBox Header="ORDERS"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="White"
@@ -62,10 +89,10 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <Button Grid.Column="2" Style="{DynamicResource MaterialDesignRaisedAccentButton}"
-                            HorizontalAlignment="Right"
-                            Margin="0"
+                    <Button Grid.Column="2" Style="{DynamicResource ManageButtonStyle}"
                             Content="Manage"
+                            Background="{DynamicResource SecondaryAccentBrush}"
+                            HorizontalAlignment="Right"
                             Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
                             CommandParameter="OrderManageView"/>
                 </Grid>
