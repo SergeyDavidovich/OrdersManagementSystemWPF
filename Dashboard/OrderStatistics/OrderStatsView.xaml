@@ -22,11 +22,11 @@
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>
                 <Setter Property="Margin" Value="6"/>
             </Style>
             <Style TargetType="chart:SfChart3D">
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignBackground}"/>
                 <Setter Property="Tilt" Value="-60"/>
                 <Setter Property="Rotation" Value="0"/>
                 <Setter Property="Depth" Value="20"/>
@@ -39,6 +39,9 @@
             </Style>
             <Style TargetType="chart:PieSeries3D">
                 <Setter Property="EnableAnimation" Value="True"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="ChartHeader">
+                
             </Style>
         </GroupBox.Resources>
         <GroupBox.HeaderTemplate>
@@ -78,11 +81,19 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border>
-                <syncfusion:SfChart3D>
+            
+            <!--By countries-->
+            <Border Grid.Column="1"> 
+                <syncfusion:SfChart3D 
+                    EnableRotation="False" PerspectiveAngle="0" Tilt="0"
+                    >
+                    <syncfusion:SfChart3D.Resources>
+                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                            <WrapPanel ItemWidth="100" Background="White" />
+                        </ItemsPanelTemplate>
+                    </syncfusion:SfChart3D.Resources>
                     <chart:SfChart3D.Header>
-                        <TextBlock Text="By countries" FontSize="20" Foreground="Black"
-                           FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Sales by countries"/>
                     </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
@@ -90,58 +101,122 @@
                     <chart:SfChart3D.SecondaryAxis>
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
-                    <chart:PieSeries3D Palette="AutumnBrights"
+                    <chart:PieSeries3D Palette="Metro"
                              ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity"/>
                     <chart:SfChart3D.Legend>
-                        <chart:ChartLegend Orientation="Vertical" OffsetX="250"/>
+                        <chart:ChartLegend 
+                            ItemsPanel="{StaticResource itemPanelTemplate}"
+                            DockPosition="Bottom"
+                            Orientation="Horizontal"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
+                            BorderThickness="1"
+                            IconVisibility="Visible"
+                            CornerRadius="5"
+                            CheckBoxVisibility="Visible"
+                            ToggleSeriesVisibility="True"
+                            LegendPosition="Outside"/>
                     </chart:SfChart3D.Legend>
+                    
                 </syncfusion:SfChart3D>
             </Border>
-            <Border Grid.Column="1">
-                <syncfusion:SfChart3D>
-                    <!--Header-->
-                    <chart:SfChart3D.Header>
-                        <TextBlock Text="By categories" FontSize="20" Foreground="Black"
-                           FontFamily="Segoe UI" Margin="0,20,0,0"/>
-                    </chart:SfChart3D.Header>
 
-                    <!--PrimaryAxis-->
+            <Border>
+                <syncfusion:SfChart3D 
+                    EnableRotation="False" PerspectiveAngle="0" Tilt="0"
+                    >
+                    <syncfusion:SfChart3D.Resources>
+                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                            <WrapPanel ItemWidth="100" Background="White" />
+                        </ItemsPanelTemplate>
+                    </syncfusion:SfChart3D.Resources>
+                    <chart:SfChart3D.Header>
+                        <TextBlock 
+                           Text="Number of orders by country"/>
+                    </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
                     </chart:SfChart3D.PrimaryAxis>
-
-                    <!--SecondaryAxis-->
                     <chart:SfChart3D.SecondaryAxis>
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
-
-                    <!--PieSeries-->
-                    <chart:PieSeries3D Palette="LightCandy" 
-                             ItemsSource="{Binding OrderGroupsMock}"
+                    <chart:PieSeries3D Palette="Metro"
+                             ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity"/>
+                    <chart:SfChart3D.Legend>
+                        <chart:ChartLegend 
+                            ItemsPanel="{StaticResource itemPanelTemplate}"
+                            DockPosition="Bottom"
+                            Orientation="Horizontal"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
+                            BorderThickness="1"
+                            IconVisibility="Visible"
+                            CornerRadius="5"
+                            CheckBoxVisibility="Visible"
+                            ToggleSeriesVisibility="True"
+                            LegendPosition="Outside"/>
+                    </chart:SfChart3D.Legend>
+
                 </syncfusion:SfChart3D>
             </Border>
+
+            <Border Grid.Column="2">
+                <syncfusion:SfChart3D 
+                    EnableRotation="False" PerspectiveAngle="0" Tilt="0"
+                    >
+                    <syncfusion:SfChart3D.Resources>
+                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                            <WrapPanel ItemWidth="100" Background="White" />
+                        </ItemsPanelTemplate>
+                    </syncfusion:SfChart3D.Resources>
+                    <chart:SfChart3D.Header>
+                        <TextBlock 
+                           Text="Number of orders by country"/>
+                    </chart:SfChart3D.Header>
+                    <chart:SfChart3D.PrimaryAxis>
+                        <chart:CategoryAxis3D/>
+                    </chart:SfChart3D.PrimaryAxis>
+                    <chart:SfChart3D.SecondaryAxis>
+                        <chart:NumericalAxis3D/>
+                    </chart:SfChart3D.SecondaryAxis>
+                    <chart:PieSeries3D Palette="Metro"
+                             ItemsSource="{Binding OrderByCountryGroups}"
+                             XBindingPath="Country" YBindingPath="Quantity"/>
+                    <chart:SfChart3D.Legend>
+                        <chart:ChartLegend 
+                            ItemsPanel="{StaticResource itemPanelTemplate}"
+                            DockPosition="Bottom"
+                            Orientation="Horizontal"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
+                            BorderThickness="1"
+                            IconVisibility="Visible"
+                            CornerRadius="5"
+                            CheckBoxVisibility="Visible"
+                            ToggleSeriesVisibility="True"
+                            LegendPosition="Outside"/>
+                    </chart:SfChart3D.Legend>
+                </syncfusion:SfChart3D>
+            </Border>
+
             <Border Grid.Row="1" Grid.ColumnSpan="3">
                 <syncfusion:SfChart>
                     <!--Header-->
                     <chart:SfChart.Header>
-                        <TextBlock Text="By months" FontSize="20" Foreground="Black"
-                           FontFamily="Segoe UI" Margin="0,20,0,0"/>
+                        <TextBlock Text="Sales by years"/>
                     </chart:SfChart.Header>
 
                     <!--PrimaryAxis-->
                     <chart:SfChart.PrimaryAxis>
-                        <chart:CategoryAxis/>
+                        <chart:CategoryAxis FontSize="12"/>
                     </chart:SfChart.PrimaryAxis>
 
                     <!--SecondaryAxis-->
                     <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis/>
+                        <chart:NumericalAxis FontSize="12"/>
                     </chart:SfChart.SecondaryAxis>
 
                     <!--PieSeries-->
-                    <chart:BarSeries Palette="LightCandy" 
+                    <chart:ColumnSeries Palette="LightCandy" 
                              ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity"/>
                 </syncfusion:SfChart>
