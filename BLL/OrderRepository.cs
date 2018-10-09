@@ -13,16 +13,17 @@ namespace BLL
         public OrderRepository(LocalDbContext context)
         {
             db = context;
+            //var state = context.Database.Connection.State;
         }
 
         public List<Order> GetAll()
         {
-            using (db)
-            {
+            //using (db)
+            //{
                 var list = (from b in db.Orders
                             select b).ToList();
                 return list;
-            }
+            //}
         }
 
         public void Add(Order entity)
@@ -36,7 +37,7 @@ namespace BLL
         }
 
 
-        public Task<List<Order>> GetALlAsync()
+        public Task<List<Order>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

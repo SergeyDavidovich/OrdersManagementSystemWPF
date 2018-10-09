@@ -14,7 +14,7 @@
 
     <materialDesign:Transitioner SelectedIndex="0">
         <materialDesign:TransitioningContent 
-            OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+            OpeningEffect="{materialDesign:TransitionEffect Kind=None}">
             <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />

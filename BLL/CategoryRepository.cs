@@ -31,7 +31,7 @@ namespace BLL
             return result;
         }
 
-        public Task<List<Category>> GetALlAsync()
+        public Task<List<Category>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

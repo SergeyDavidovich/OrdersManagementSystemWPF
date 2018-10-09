@@ -26,7 +26,7 @@ namespace Products.List
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            if (Products == null) Products = await _repository.GetALlAsync();
+            if (Products == null) Products = await _repository.GetAllAsync();
 
             Title += $" ({_products.Count().ToString()} Items)";
         }

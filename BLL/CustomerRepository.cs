@@ -16,12 +16,12 @@ namespace BLL
         }
         public List<Customer> GetAll()
         {
-            using (db)
-            {
+            //using (db)
+            //{
                 var list = (from b in db.Customers
                             select b).ToList();
                 return list;
-            }
+            //}
         }
         public void Add(Customer entity)
         {
@@ -34,7 +34,7 @@ namespace BLL
         }
 
 
-        public Task<List<Customer>> GetALlAsync()
+        public Task<List<Customer>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

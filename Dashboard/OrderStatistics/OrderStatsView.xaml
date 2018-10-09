@@ -82,7 +82,7 @@
                 <syncfusion:SfChart3D>
                     <chart:SfChart3D.Header>
                         <TextBlock Text="By countries" FontSize="20" Foreground="Black"
-                           FontFamily="Segoe UI" Margin="0,20,0,0" HorizontalAlignment="Left"/>
+                           FontFamily="Segoe UI" Margin="0,0,0,0" HorizontalAlignment="Left"/>
                     </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
@@ -91,8 +91,11 @@
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
                     <chart:PieSeries3D Palette="AutumnBrights"
-                             ItemsSource="{Binding OrderGroupsMock}"
+                             ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity"/>
+                    <chart:SfChart3D.Legend>
+                        <chart:ChartLegend Orientation="Vertical" OffsetX="250"/>
+                    </chart:SfChart3D.Legend>
                 </syncfusion:SfChart3D>
             </Border>
             <Border Grid.Column="1">
@@ -139,7 +142,7 @@
 
                     <!--PieSeries-->
                     <chart:BarSeries Palette="LightCandy" 
-                             ItemsSource="{Binding OrderGroupsMock}"
+                             ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity"/>
                 </syncfusion:SfChart>
             </Border>

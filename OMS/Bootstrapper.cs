@@ -55,10 +55,11 @@ namespace OMS
             Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
 
             //Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext(), new ContainerControlledLifetimeManager());
-            Container.RegisterInstance<LocalDbContext>(new LocalDbContext());
+            Container.RegisterInstance<LocalDbContext>(new LocalDbContext(), new ContainerControlledLifetimeManager());
 
             Container.RegisterType<BLL.IGenericRepository<Category>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
             Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
+
             Container.RegisterType<BLL.IGenericRepository<Order>, BLL.OrderRepository>(new ContainerControlledLifetimeManager());
             Container.RegisterType<BLL.IGenericRepository<Customer>, BLL.CustomerRepository>(new ContainerControlledLifetimeManager());
         }

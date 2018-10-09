@@ -9,7 +9,7 @@ namespace BLL
     public interface IGenericRepository<T> where T : class
     {
         List<T> GetAll();
-        Task<List<T>> GetALlAsync();
+        Task<List<T>> GetAllAsync();
 
         T GetByID(string id);
 

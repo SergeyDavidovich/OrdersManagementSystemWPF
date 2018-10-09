@@ -17,27 +17,27 @@ namespace BLL
         }
         public List<Product> GetAll()
         {
-            using (db)
-            {
+            //using (db)
+            //{
                 var list = (from b in db.Products
                             orderby b.ProductName
                             select b).ToList();
                 return list;
-            }
+            //}
         }
 
-        public async Task<List<Product>> GetALlAsync()
+        public async Task<List<Product>> GetAllAsync()
         {
             try
             {
 
-                using (db)
-                {
+                //using (db)
+                //{
                     var list = await (from b in db.Products
                                       orderby b.ProductName
                                       select b).ToListAsync();
                     return list;
-                }
+                //}
             }
             catch (Exception)
             {
