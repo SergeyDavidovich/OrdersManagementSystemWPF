@@ -9,5 +9,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FFF7DE00" />
+    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" 
+                                         AccentColor="#FFF7DE00" />
 </UserControl>

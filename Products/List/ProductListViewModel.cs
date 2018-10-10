@@ -28,7 +28,7 @@ namespace Products.List
             base.OnNavigatedTo(navigationContext);
             if (Products == null) Products = await _repository.GetAllAsync();
 
-            Title += $" ({_products.Count().ToString()} Items)";
+            Title = $" ({_products.Count().ToString()} Items)";
         }
 
         List<Product> _products;
