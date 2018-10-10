@@ -90,22 +90,7 @@ namespace OMS
         /// </summary>
         protected override void InitializeShell()
         {
-            var context = Container.Resolve<LocalDbContext>();
-            this.Context = context;
-            try
-            {
-                context.Database.Connection.Open();
-                Debug.WriteLine(context.Database.Connection.State.ToString());
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                throw new Exception("Connection ERROR!!!");
-            }
-
-
             shellViewModel.ConfigureRegionManager();
-
             Application.Current.MainWindow.Show();
         }
         public LocalDbContext Context { get; set; }

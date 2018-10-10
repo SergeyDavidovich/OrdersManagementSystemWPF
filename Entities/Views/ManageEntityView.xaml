@@ -16,15 +16,15 @@
         <materialDesign:TransitioningContent 
             OpeningEffect="{materialDesign:TransitionEffect Kind=None}">
             <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-            <ContentControl Margin="0"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ContentControl Margin="0"
                 prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityListRegion}" />
-            <ContentControl Grid.Column="1" Margin="0"
+                <ContentControl Grid.Column="1" Margin="0"
                 prism:RegionManager.RegionName="{x:Static inf:RegionNames.EntityViewAddEditRegion}" />
-    </Grid>
+            </Grid>
         </materialDesign:TransitioningContent>
     </materialDesign:Transitioner>
 </UserControl>
