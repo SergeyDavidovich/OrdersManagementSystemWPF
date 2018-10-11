@@ -5,25 +5,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
     xmlns:local="clr-namespace:Orders.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="orderManageView">
 
     <materialDesign:Transitioner SelectedIndex="0">
-        <materialDesign:TransitioningContent 
-            OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        
-        <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
             <userControls:HeaderedContentControl.ChildContent>
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" />
             </userControls:HeaderedContentControl.ChildContent>
@@ -46,14 +46,41 @@
                 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}" />
             </userControls:HeaderedContentControl.ChildContent>
         </userControls:HeaderedContentControl>-->
-        
-                <GroupBox prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
-                    
+
+                <GroupBox Margin="16" Header="ORDER MANAGEMENT" Style="{DynamicResource MaterialDesignCardGroupBox}" prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" >
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="BookMultiple" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                    Text="{Binding}" />
+                                <Button
+                                    Grid.Column="2"
+                                    Margin="0"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
+      
+                                    Content="{Binding  Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
+                                    Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
+                            </Grid>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
                 </GroupBox>
-                <GroupBox Grid.Column="1" prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
-                    
-                </GroupBox>     
-    </Grid>
+                <GroupBox Margin="0,16,16,16" Grid.Column="1" Style="{DynamicResource MaterialDesignCardGroupBox}"  prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}" />
+            </Grid>
 
         </materialDesign:TransitioningContent>
     </materialDesign:Transitioner>
