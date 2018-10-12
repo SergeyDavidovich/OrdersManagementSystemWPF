@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL_LocalDb;
 using Prism.Events;
-using Prism.Regions;
 
-namespace Infrastructure.Events
+namespace Products.Events
 {
-    public class OnNavigatedToEvent : PubSubEvent<string>
+    class OnProductEditEvent :PubSubEvent<Product>
     {
-        
     }
-   
 }

@@ -24,7 +24,6 @@ namespace Banner.ViewModels
         {
             Title = "Orders Management System";
             _regionManager = regionManager;
-            //regionManager.Regions[RegionNames.BannerRegion].PropertyChanged += BannerViewModel_PropertyChanged;
             NavigateHomeCommand = new DelegateCommand(NavigateHome);
             ChangeThemeCommand = new DelegateCommand<string>(ChangeTheme);
             eventAggregator.GetEvent<OnNavigatedToEvent>().Subscribe(title =>
@@ -33,35 +32,20 @@ namespace Banner.ViewModels
         public DelegateCommand NavigateHomeCommand { get; set; }
         private void NavigateHome()
         {
-
             var contentRegion = _regionManager.Regions[RegionNames.ContentRegion];
-            //foreach (var view in contentRegion.ActiveViews)
-            //{
-            //    contentRegion.Deactivate(view);
-            //}
-            //contentRegion.Activate(contentRegion.Views.FirstOrDefault(v => v is DashboardView));
             while (contentRegion.NavigationService.Journal.CanGoBack)
             {
                 contentRegion.NavigationService.Journal.GoBack();
             }
-
         }
-        public DelegateCommand<string> ChangeThemeCommand { get; set; }
 
+        public DelegateCommand<string> ChangeThemeCommand { get; set; }
         private void ChangeTheme(string color)
         {
             var helper = new PaletteHelper();
             var swatches = new SwatchesProvider().Swatches;
             helper.ReplacePrimaryColor(swatches.FirstOrDefault(s => s.Name == color.ToLower()));
         }
-
-        //private void BannerViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        //{
-        //    if (e.PropertyName == "Context")
-        //    {
-        //        State = _regionManager.Regions[RegionNames.BannerRegion].Context.ToString();
-        //    }
-        //}
 
         private string _state;
         public string State

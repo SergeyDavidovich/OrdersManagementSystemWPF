@@ -68,6 +68,9 @@
       <DependentUpon>ProductAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Add\ProductAddViewModel.cs" />
+    <Compile Include="Events\OnProductAddEvent.cs" />
+    <Compile Include="Events\OnProductEditEvent.cs" />
+    <Compile Include="Events\OnProductSelectedEvent.cs" />
     <Compile Include="List\ProductListView.xaml.cs">
       <DependentUpon>ProductListView.xaml</DependentUpon>
     </Compile>
@@ -127,8 +130,6 @@
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

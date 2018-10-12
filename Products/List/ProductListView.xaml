@@ -38,17 +38,23 @@
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="{Binding Test}" Width="200"/>
+                        <TextBlock Text="{Binding Test}" Width="200"/>
+
                         <Button Background="Green" Content="ADD"
-                                Style="{StaticResource ManageButtonStyle}">
+                                Style="{StaticResource ManageButtonStyle}" 
+                                Command="{Binding AddCommand}">
                         </Button>
+
                         <Button Background="DarkOrange" Content="EDIT"
-                        Style="{StaticResource ManageButtonStyle}">
-                            <!--<materialDesign:PackIcon Kind="Pen"/>-->
+                                Style="{StaticResource ManageButtonStyle}"
+                                Command="{Binding EditCommand}"
+                                CommandParameter="{Binding SelectedProduct}">
+
                         </Button>
                         <Button Background="Red" Content="DELETE"
-                            Style="{StaticResource ManageButtonStyle}">
-                            <!--<materialDesign:PackIcon Kind="Delete"/>-->
+                                Style="{StaticResource ManageButtonStyle}"
+                                Command="{Binding DeleteCommand}"
+                                CommandParameter="{Binding SelectedProduct}">
                         </Button>
                     </StackPanel>
                 </DockPanel>
@@ -60,7 +66,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid ItemsSource="{Binding ElementName=sfDataPager,Path=PagedSource}" 
-                                   SelectedIndex="0"
+                                   SelectedIndex="4"
                                    SelectedItem="{Binding SelectedProduct}" Margin="6" 
                                    AutoGenerateColumns="True" 
                                    ColumnSizer="AutoWithLastColumnFill" Background="White" BorderBrush="{x:Null}" 
