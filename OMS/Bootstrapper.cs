@@ -16,7 +16,6 @@ using Orders;
 using Prism.Regions;
 using Products;
 using DAL_LocalDb;
-using Products.ViewModels;
 using System;
 using System.Diagnostics;
 
@@ -54,11 +53,10 @@ namespace OMS
             //code bellow extends the default container configuration
             Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
 
-            //Container.RegisterInstance(typeof(LocalDbContext), new LocalDbContext(), new ContainerControlledLifetimeManager());
             Container.RegisterInstance<LocalDbContext>(new LocalDbContext(), new ContainerControlledLifetimeManager());
 
             Container.RegisterType<BLL.IGenericRepository<Category>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
 
             Container.RegisterType<BLL.IGenericRepository<Order>, BLL.OrderRepository>(new ContainerControlledLifetimeManager());
             Container.RegisterType<BLL.IGenericRepository<Customer>, BLL.CustomerRepository>(new ContainerControlledLifetimeManager());

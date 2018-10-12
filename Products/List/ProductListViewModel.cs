@@ -7,36 +7,50 @@ using Infrastructure.Base;
 using Prism.Events;
 using Prism.Regions;
 
+using System.Data.Entity;
+
 using BLL;
 using DAL_LocalDb;
+using System.Collections.ObjectModel;
 
 namespace Products.List
 {
     public class ProductListViewModel : NavigationAwareViewModelBase
     {
 
-        IGenericRepository<Product> _repository;
+        LocalDbContext _context;
+        Product _selectedProduct;
+        ObservableCollection<Product> _products;
 
-        public ProductListViewModel(IGenericRepository<Product> repository)
+        public ProductListViewModel(LocalDbContext context)
         {
-            Title = "PRODUCTS ON STORE";
-            _repository = repository;
+            this.Title = "PRODUCTS ON STORE";
+            _context = context;
         }
 
         public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            if (Products == null) Products = await _repository.GetAllAsync();
 
-            Title = $" ({_products.Count().ToString()} Items)";
+            await _context.Products.LoadAsync();
+
+            this.Products = _context.Products.Local;
         }
 
-        List<Product> _products;
 
-        public List<Product> Products
+        public ObservableCollection<Product> Products
         {
             get { return _products; }
             set => SetProperty(ref _products, value);
         }
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set
+            {
+                SetProperty(ref _selectedProduct, value);
+            }
+        }
+
     }
 }

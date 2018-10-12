@@ -1,5 +1,4 @@
-﻿using Products.Views;
-using Prism.Modularity;
+﻿using Prism.Modularity;
 using Prism.Regions;
 using System;
 using Microsoft.Practices.Unity;

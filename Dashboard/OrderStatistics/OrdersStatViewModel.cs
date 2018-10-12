@@ -22,22 +22,22 @@ namespace Dashboard.OrderStatistics
             orders = orderRepo.GetAll();
             customers = customerRepo.GetAll();
 
-            //var OrdersAndCountriess =
-            //    orders.Join(customers,
-            //    order => order.CustomerID,
-            //    cust => cust.CustomerID,
-            //   (order, cust) => new { Id = order.OrderID, Country = cust.Country });
+            var OrdersAndCountriess =
+                orders.Join(customers,
+                order => order.CustomerID,
+                cust => cust.CustomerID,
+               (order, cust) => new { Id = order.OrderID, Country = cust.Country });
 
-            //this.OrderByCountryGroups = new List<OrderGroupsObject>(OrdersAndCountriess.GroupBy(c => c.Country).
-            //    Select(g => new OrderGroupsObject { Country = g.Key, Quantity = g.Count() }));
+            this.OrderByCountryGroups = new List<OrderGroupsObject>(OrdersAndCountriess.GroupBy(c => c.Country).
+                Select(g => new OrderGroupsObject { Country = g.Key, Quantity = g.Count() }));
 
 
-            this.OrderByCountryGroups = new List<OrderGroupsObject>(
-               orders.Join(customers,
-               order => order.CustomerID,
-               cust => cust.CustomerID,
-              (order, cust) => new { Id = order.OrderID, Country = cust.Country }).GroupBy(c => c.Country).
-              Select(g => new OrderGroupsObject { Country = g.Key, Quantity = g.Count() }).OrderByDescending(g=>g.Quantity).Take(10));
+            //this.OrderByCountryGroups = new List<OrderGroupsObject>(
+            //   orders.Join(customers,
+            //   order => order.CustomerID,
+            //   cust => cust.CustomerID,
+            //  (order, cust) => new { Id = order.OrderID, Country = cust.Country }).GroupBy(c => c.Country).
+            //  Select(g => new OrderGroupsObject { Country = g.Key, Quantity = g.Count() }).OrderByDescending(g=>g.Quantity).Take(10));
 
 
             //this.OrderGroupsMock = new List<OrderGroupsObject>()
