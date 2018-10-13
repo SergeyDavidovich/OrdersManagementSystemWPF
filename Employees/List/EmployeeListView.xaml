@@ -6,9 +6,48 @@
     xmlns:local="clr-namespace:Employees.List"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" 
-                                         AccentColor="#FFF7DE00" />
+    <GroupBox Header="{Binding Title}"
+            Style="{DynamicResource MaterialDesignCardGroupBox}"
+            Background="{DynamicResource PrimaryHueLightBrush}"
+            Margin="16" Padding="10"
+            BorderThickness="1">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <materialDesign:PackIcon
+                        Kind="ViewList"
+                        Height="36"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                    <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="{Binding Test}" Width="200"/>
+
+                        <Button Background="Green" Content="ADD"
+                                Style="{StaticResource ManageButtonStyle}" 
+                                Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
+                        </Button>
+
+                        <Button Background="DarkOrange" Content="EDIT"
+                                Style="{StaticResource ManageButtonStyle}"
+                                Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
+
+                        </Button>
+                        <Button Background="Red" Content="DELETE"
+                                Style="{StaticResource ManageButtonStyle}"
+                                Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+    </GroupBox>
 </UserControl>

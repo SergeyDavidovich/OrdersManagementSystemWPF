@@ -13,33 +13,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <!--<UserControl.Resources>
-        <DataTemplate x:Key="HeaderTemplate">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon
-                        Kind="BookMultiple"
-                        Height="32"
-                        Width="32"
-                        VerticalAlignment="Center" />
-                <TextBlock Grid.Column="1"
-                        Margin="8,0,0,0"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                        Text="{Binding}" />
-                <Button Grid.Column="2" Style="{DynamicResource ManageButtonStyle}"
-                            Content="Manage"
-                            Background="{DynamicResource SecondaryAccentBrush}"
-                            HorizontalAlignment="Right"
-                            Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
-                            CommandParameter="OrderManageView"/>
-            </Grid>
-        </DataTemplate>
-    </UserControl.Resources>-->
     <GroupBox Header="ORDERS"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="White"
@@ -188,41 +161,73 @@
             </Border>
 
             <Border Grid.Column="2">
-                <syncfusion:SfChart3D 
-                    EnableRotation="False" PerspectiveAngle="0" Tilt="0"
-                    >
-                    <syncfusion:SfChart3D.Resources>
-                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
-                            <WrapPanel ItemWidth="100" Background="White" />
-                        </ItemsPanelTemplate>
-                    </syncfusion:SfChart3D.Resources>
-                    <chart:SfChart3D.Header>
-                        <TextBlock 
-                           Text="Number of orders by country"/>
-                    </chart:SfChart3D.Header>
-                    <chart:SfChart3D.PrimaryAxis>
-                        <chart:CategoryAxis3D/>
-                    </chart:SfChart3D.PrimaryAxis>
-                    <chart:SfChart3D.SecondaryAxis>
-                        <chart:NumericalAxis3D/>
-                    </chart:SfChart3D.SecondaryAxis>
-                    <chart:PieSeries3D Palette="Metro"
-                             ItemsSource="{Binding OrderByCountryGroups}"
-                             XBindingPath="Country" YBindingPath="Quantity"/>
-                    <chart:SfChart3D.Legend>
-                        <chart:ChartLegend 
-                            ItemsPanel="{StaticResource itemPanelTemplate}"
-                            DockPosition="Bottom"
-                            Orientation="Horizontal"
-                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
-                            BorderThickness="1"
-                            IconVisibility="Visible"
-                            CornerRadius="5"
-                            CheckBoxVisibility="Visible"
-                            ToggleSeriesVisibility="True"
-                            LegendPosition="Outside"/>
-                    </chart:SfChart3D.Legend>
-                </syncfusion:SfChart3D>
+                <Grid Margin="20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="header">
+                            <Setter Property="Margin" Value="0,0,0,0"/>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="value">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="Margin" Value="0,0,0,0"/>
+                            <Setter Property="Foreground" Value="{DynamicResource SecondaryAccentBrush}"/>
+                        </Style>
+                        <Style TargetType="Border" x:Key="inner">
+                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="0,0,10,14"/>
+                        </Style>
+                    </Grid.Resources>
+                    <TextBlock Text="Summary" HorizontalAlignment="Center" Margin="10,10,0,30"/>
+
+                    <TextBlock Text="Overall sales sum" Grid.Row="1" 
+                               Style="{StaticResource header}"/>
+                    <Border Grid.Row="2" Style="{StaticResource inner}" >
+                    <TextBlock Text="132312300"
+                               Style="{StaticResource value}"/>
+                    </Border>
+                    
+                    <TextBlock Text="Overall sales quantity" Grid.Row="3"
+                               Style="{StaticResource header}"/>
+                    <Border Grid.Row="4" Style="{StaticResource inner}">
+                    <TextBlock Text="129800"
+                               Style="{StaticResource value}"/>
+                    </Border>
+
+                    <TextBlock Text="Average check" Grid.Row="5"
+                               Style="{StaticResource header}"/>
+                    <Border Grid.Row="6" Style="{StaticResource inner}">
+                        <TextBlock Text="1323123" Grid.Row="6"
+                               Style="{StaticResource value}"/>
+                    </Border>
+
+                    <TextBlock Text="Max check" Grid.Row="7"
+                               Style="{StaticResource header}"/>
+                    <Border Grid.Row="8" Style="{StaticResource inner}">
+                        <TextBlock Text="1323123" Grid.Row="8"
+                               Style="{StaticResource value}"/>
+                    </Border>
+                    <TextBlock Text="Min check" Grid.Row="9"
+                               Style="{StaticResource header}"/>
+                    <Border Grid.Row="10" Style="{StaticResource inner}">
+                        <TextBlock Text="1323123" Grid.Row="10"
+                               Style="{StaticResource value}"/>
+                    </Border>
+                </Grid>
             </Border>
 
             <Border Grid.Row="1" Grid.ColumnSpan="3">

@@ -14,9 +14,6 @@
     mc:Ignorable="d"
     x:Name="orderManageView">
 
-    <materialDesign:Transitioner SelectedIndex="0">
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
@@ -79,9 +76,39 @@
                         </DataTemplate>
                     </GroupBox.HeaderTemplate>
                 </GroupBox>
-                <GroupBox Margin="0,16,16,16" Grid.Column="1" Style="{DynamicResource MaterialDesignCardGroupBox}"  prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}" />
-            </Grid>
+        <GroupBox Margin="0,16,16,16" Grid.Column="1" Style="{DynamicResource MaterialDesignCardGroupBox}" 
+                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon
+                                    Width="32"
+                                    Height="32"
+                                    VerticalAlignment="Center"
+                                    Kind="BookMultiple" />
+                        <TextBlock
+                                    Grid.Column="1"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                    Text="{Binding}" />
+                        <Button
+                                    Grid.Column="2"
+                                    Margin="0"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
+      
+                                    Content="{Binding  Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
+                                    Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
+                    </Grid>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
 
-        </materialDesign:TransitioningContent>
-    </materialDesign:Transitioner>
+        </GroupBox>
+    </Grid>
 </UserControl>

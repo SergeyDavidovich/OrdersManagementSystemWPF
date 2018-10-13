@@ -1,5 +1,4 @@
-﻿using Employees.Views;
-using Prism.Modularity;
+﻿using Prism.Modularity;
 using Prism.Regions;
 using System;
 using Employees.Add;

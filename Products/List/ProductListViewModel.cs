@@ -30,36 +30,49 @@ namespace Products.List
             _eventAggregator = eventAggregator;
             this.Title = "PRODUCTS ON STORE";
             AddCommand = new DelegateCommand(Add);
-            EditCommand = new DelegateCommand<Product>(Edit);
-            DeleteCommand = new DelegateCommand<Product>(Delete);
-
+            EditCommand = new DelegateCommand(Edit, CanEdit);
+            DeleteCommand = new DelegateCommand(Delete, CanDelete);
         }
 
+        #region Commands
         public DelegateCommand AddCommand { get; set; }
-        private void Add()
+        private void Add() => _eventAggregator.GetEvent<OnProductAddEvent>().Publish();
+
+        public DelegateCommand EditCommand { get; set; }
+        private void Edit() => _eventAggregator.GetEvent<OnProductEditEvent>().Publish(SelectedProduct);
+        private bool CanEdit()
         {
-            _eventAggregator.GetEvent<OnProductAddEvent>().Publish();
+            bool result = (SelectedProduct == null) ? false : true;
+            return result;
         }
 
-        public DelegateCommand<Product> EditCommand { get; set; }
-        private void Edit(Product product)
+        public DelegateCommand DeleteCommand { get; set; }
+        private void Delete()
         {
-            _eventAggregator.GetEvent<OnProductEditEvent>().Publish(product);
-        }
-        public DelegateCommand<Product> DeleteCommand { get; set; }
-        private void Delete(Product product)
-        {
-            _products.Remove(product);
+            _products.Remove(SelectedProduct);
+            DeleteCommand.RaiseCanExecuteChanged();
+            EditCommand.RaiseCanExecuteChanged();
             //_context.SaveChanges();
         }
+        private bool CanDelete()
+        {
+            bool result = (SelectedProduct == null) ? false : true;
+            return result;
+        }
+        #endregion
 
-        public async override void OnNavigatedTo(NavigationContext navigationContext)
+        public override async void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
 
             await _context.Products.LoadAsync();
 
             this.Products = _context.Products.Local;
+        }
+
+        public override bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
         }
 
         public ObservableCollection<Product> Products
@@ -76,7 +89,11 @@ namespace Products.List
                 SetProperty(ref _selectedProduct, value);
                 this.Title = _selectedProduct.ProductID.ToString();
                 _eventAggregator.GetEvent<OnProductSelectedEvent>().Publish(_selectedProduct.ProductID.ToString());
+
+                DeleteCommand.RaiseCanExecuteChanged();
+                EditCommand.RaiseCanExecuteChanged();
             }
+            
         }
 
     }
