@@ -42,10 +42,10 @@
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
 
                         </Button>
-                        <Button Background="Red" Content="DELETE"
+                        <!--<Button Background="Red" Content="DELETE"
                                 Style="{StaticResource ManageButtonStyle}"
                                 Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
-                        </Button>
+                        </Button>-->
                     </StackPanel>
                 </DockPanel>
             </DataTemplate>

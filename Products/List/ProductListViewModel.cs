@@ -52,7 +52,7 @@ namespace Products.List
             _products.Remove(SelectedProduct);
             DeleteCommand.RaiseCanExecuteChanged();
             EditCommand.RaiseCanExecuteChanged();
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
         private bool CanDelete()
         {

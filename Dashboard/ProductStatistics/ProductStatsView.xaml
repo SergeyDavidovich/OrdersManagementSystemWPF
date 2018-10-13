@@ -34,7 +34,9 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <Button Grid.Column="2" Style="{DynamicResource MaterialDesignRaisedAccentButton}"
+                    <Button Grid.Column="2" 
+                            Style="{DynamicResource ManageButtonStyle}"
+                            Background="{DynamicResource SecondaryAccentBrush}"
                             HorizontalAlignment="Right"
                             Margin="0"
                             Content="Manage"
