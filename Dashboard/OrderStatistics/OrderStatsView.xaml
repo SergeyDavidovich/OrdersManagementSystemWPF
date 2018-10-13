@@ -22,16 +22,14 @@
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
-                <Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                <!--<Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>-->
                 <Setter Property="Margin" Value="6"/>
             </Style>
             <Style TargetType="chart:SfChart3D">
-                <Setter Property="Tilt" Value="-60"/>
+                <Setter Property="Tilt" Value="-30"/>
                 <Setter Property="Rotation" Value="0"/>
-                <Setter Property="Depth" Value="20"/>
-                <Setter Property="PerspectiveAngle" Value="130"/>
-                <Setter Property="EnableRotation" Value="False"/>
+                <Setter Property="Depth" Value="30"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Top"/>
                 <Setter Property="Margin" Value="4"/>
@@ -82,11 +80,53 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <!--By countries-->
+            <Border>
+                <syncfusion:SfChart3D>
+                    <syncfusion:SfChart3D.Resources>
+                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                            <WrapPanel ItemWidth="100" Background="White" />
+                        </ItemsPanelTemplate>
+                    </syncfusion:SfChart3D.Resources>
+                    <chart:SfChart3D.Header>
+                        <TextBlock 
+                           Text="Number of orders by country"/>
+                    </chart:SfChart3D.Header>
+                    <chart:SfChart3D.PrimaryAxis>
+                        <chart:CategoryAxis3D/>
+                    </chart:SfChart3D.PrimaryAxis>
+                    <chart:SfChart3D.SecondaryAxis>
+                        <chart:NumericalAxis3D/>
+                    </chart:SfChart3D.SecondaryAxis>
+                    <chart:PieSeries3D Palette="Metro" EnableSmartLabels="True"
+                             ItemsSource="{Binding OrderByCountryGroups}"
+                             XBindingPath="Country" YBindingPath="Quantity">
+
+                        <syncfusion:PieSeries3D.AdornmentsInfo>
+                            <syncfusion:ChartAdornmentInfo3D 
+                                ShowLabel="True" SegmentLabelFormat="#" 
+                                ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
+                        </syncfusion:PieSeries3D.AdornmentsInfo>
+
+                    </chart:PieSeries3D>
+                    <chart:SfChart3D.Legend>
+                        <chart:ChartLegend 
+                            ItemsPanel="{StaticResource itemPanelTemplate}"
+                            DockPosition="Bottom"
+                            Orientation="Horizontal"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
+                            BorderThickness="1"
+                            IconVisibility="Visible"
+                            CornerRadius="5"
+                            CheckBoxVisibility="Visible"
+                            ToggleSeriesVisibility="True"
+                            LegendPosition="Outside"/>
+                    </chart:SfChart3D.Legend>
+
+                </syncfusion:SfChart3D>
+            </Border>
+            
             <Border Grid.Column="1"> 
-                <syncfusion:SfChart3D 
-                    EnableRotation="False" PerspectiveAngle="0" Tilt="0"
-                    >
+                <syncfusion:SfChart3D>
                     <syncfusion:SfChart3D.Resources>
                         <ItemsPanelTemplate x:Key="itemPanelTemplate">
                             <WrapPanel ItemWidth="100" Background="White" />
@@ -118,52 +158,6 @@
                             LegendPosition="Outside"/>
                     </chart:SfChart3D.Legend>
                     
-                </syncfusion:SfChart3D>
-            </Border>
-
-            <Border>
-                <syncfusion:SfChart3D 
-                    EnableRotation="True" PerspectiveAngle="0" Tilt="-30" Depth="40">
-                    <syncfusion:SfChart3D.Resources>
-                        <ItemsPanelTemplate x:Key="itemPanelTemplate">
-                            <WrapPanel ItemWidth="100" Background="White" />
-                        </ItemsPanelTemplate>
-                    </syncfusion:SfChart3D.Resources>
-                    <chart:SfChart3D.Header>
-                        <TextBlock 
-                           Text="Number of orders by country"/>
-                    </chart:SfChart3D.Header>
-                    <chart:SfChart3D.PrimaryAxis>
-                        <chart:CategoryAxis3D/>
-                    </chart:SfChart3D.PrimaryAxis>
-                    <chart:SfChart3D.SecondaryAxis>
-                        <chart:NumericalAxis3D/>
-                    </chart:SfChart3D.SecondaryAxis>
-                    <chart:PieSeries3D Palette="Metro"
-                             ItemsSource="{Binding OrderByCountryGroups}"
-                             XBindingPath="Country" YBindingPath="Quantity">
-
-                        <syncfusion:PieSeries3D.AdornmentsInfo>
-                            <syncfusion:ChartAdornmentInfo3D 
-                                ShowLabel="True" SegmentLabelFormat="#" 
-                                ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
-                        </syncfusion:PieSeries3D.AdornmentsInfo>
-
-                    </chart:PieSeries3D>
-                    <chart:SfChart3D.Legend>
-                        <chart:ChartLegend 
-                            ItemsPanel="{StaticResource itemPanelTemplate}"
-                            DockPosition="Bottom"
-                            Orientation="Horizontal"
-                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
-                            BorderThickness="1"
-                            IconVisibility="Visible"
-                            CornerRadius="5"
-                            CheckBoxVisibility="Visible"
-                            ToggleSeriesVisibility="True"
-                            LegendPosition="Outside"/>
-                    </chart:SfChart3D.Legend>
-
                 </syncfusion:SfChart3D>
             </Border>
 
@@ -238,7 +232,7 @@
             </Border>
 
             <Border Grid.Row="1" Grid.ColumnSpan="3">
-                <syncfusion:SfChart>
+                <syncfusion:SfChart Margin="6">
                     <!--Header-->
                     <chart:SfChart.Header>
                         <TextBlock Text="Sales by years"/>
