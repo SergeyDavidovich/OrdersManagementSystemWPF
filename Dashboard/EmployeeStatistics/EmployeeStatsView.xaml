@@ -39,7 +39,7 @@
                             Background="{DynamicResource SecondaryAccentBrush}"
                             HorizontalAlignment="Right"
                             Margin="0"
-                            Content="Manage"
+                            Content="MANAGE"
                             Command="{x:Static infrastructure:GlobalCommands.NavigateToManageEntityViewCompositeCommand}"
                             CommandParameter="Employees"/>
                 </Grid>

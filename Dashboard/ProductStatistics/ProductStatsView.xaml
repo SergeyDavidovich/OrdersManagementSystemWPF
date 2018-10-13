@@ -39,7 +39,7 @@
                             Background="{DynamicResource SecondaryAccentBrush}"
                             HorizontalAlignment="Right"
                             Margin="0"
-                            Content="Manage"
+                            Content="MANAGE"
                             Command="{x:Static inf:GlobalCommands.NavigateToManageEntityViewCompositeCommand}"
                             CommandParameter="Products"/>
                 </Grid>

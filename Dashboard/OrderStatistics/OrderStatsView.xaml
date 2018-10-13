@@ -61,7 +61,7 @@
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
                     <Button Grid.Column="2" Style="{DynamicResource ManageButtonStyle}"
-                            Content="Manage"
+                            Content="MANAGE"
                             Background="{DynamicResource SecondaryAccentBrush}"
                             HorizontalAlignment="Right"
                             Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
