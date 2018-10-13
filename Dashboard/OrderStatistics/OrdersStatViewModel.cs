@@ -21,13 +21,14 @@ namespace Dashboard.OrderStatistics
             //get data
             orders = orderRepo.GetAll();
             customers = customerRepo.GetAll();
-            //query
+
+            //query for OrderByCountryGroups
             var OrdersAndCountriess =
                 orders.Join(customers,
                 order => order.CustomerID,
                 cust => cust.CustomerID,
                (order, cust) => new { order.OrderID, cust.Country });
-            //projection
+            //projection on OrderByCountryGroups
             this.OrderByCountryGroups = new List<OrderGroupsObject>(OrdersAndCountriess.GroupBy(c => c.Country).
                 Select(g => new OrderGroupsObject { Country = g.Key, Quantity = g.Count() }).OrderByDescending(g=>g.Quantity).Take(10));
             //this.OrderGroupsMock = new List<OrderGroupsObject>()
