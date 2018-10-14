@@ -82,6 +82,32 @@ namespace Dashboard.OrderStatistics
             this.OrderByCategoryGroups =
             new List<OrderByCategoryObject>(OrdersAndCategories.GroupBy(c => c.name).
             Select(g => new OrderByCategoryObject { CategoryName = g.Key, SumOfSale = g.Sum(c => c.price) }));
+
+            //SELECT Customers.Country, SUM([Order Details].UnitPrice) 
+            //FROM
+            //dbo.Customers INNER JOIN dbo.Orders
+            //ON Customers.CustomerID = Orders.CustomerID
+            //INNER JOIN dbo.[Order Details]
+            //ON Orders.OrderID = [Order Details].OrderID
+            //GROUP BY Customers.Country
+
+            //query for OrderByCategoryGroups
+            var OrdersAndCustomers =
+            customers.Join(orders,
+            cus => cus.CustomerID,
+            ord => ord.CustomerID,
+            (cus, ord) => new { cus.Country, ord.OrderID }).
+            Join(orderDetails,
+            cus => cus.OrderID,
+            det => det.OrderID,
+            (cus, det) => new { country = cus.Country, price = det.UnitPrice });
+
+            //projection on SalesByCountryGroups
+            this.SalesByCountryGroups =
+            new List<SalesByCountryObject>(OrdersAndCustomers.GroupBy(c => c.country).
+            Select(g => new SalesByCountryObject { Country = g.Key, SumOfSale = g.Sum(c => c.price) }).
+            OrderByDescending(g => g.SumOfSale));
+
         }
 
         public class OrderByCountryObject
@@ -94,6 +120,14 @@ namespace Dashboard.OrderStatistics
             public string CategoryName { get; set; }
             public decimal SumOfSale { get; set; }
         }
+
+        public class SalesByCountryObject
+        {
+            public string Country { get; set; }
+            public decimal SumOfSale { get; set; }
+        }
+
+        public List<SalesByCountryObject> SalesByCountryGroups { get; set; }
 
         public List<OrderByCountryObject> OrderByCountryGroups { get; set; }
 

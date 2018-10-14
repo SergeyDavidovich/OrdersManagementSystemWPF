@@ -258,8 +258,8 @@
 
                     <!--PieSeries-->
                     <chart:ColumnSeries Palette="LightCandy" 
-                             ItemsSource="{Binding OrderByCategoryGroups}"
-                             XBindingPath="CategoryName" YBindingPath="SumOfSale"/>
+                             ItemsSource="{Binding SalesByCountryGroups}"
+                             XBindingPath="Country" YBindingPath="SumOfSale"/>
                 </syncfusion:SfChart>
             </Border>
 
