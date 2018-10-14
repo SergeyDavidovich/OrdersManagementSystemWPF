@@ -190,7 +190,7 @@
                         </Style>
                         <Style TargetType="TextBlock" x:Key="value">
                             <Setter Property="HorizontalAlignment" Value="Right"/>
-                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="FontSize" Value="24"/>
                             <Setter Property="Margin" Value="0,0,0,0"/>
                             <Setter Property="Foreground" Value="{DynamicResource SecondaryAccentBrush}"/>
                         </Style>
@@ -243,7 +243,7 @@
                 <syncfusion:SfChart Margin="6">
                     <!--Header-->
                     <chart:SfChart.Header>
-                        <TextBlock Text="Sales by years"/>
+                        <TextBlock Text="Sales by countries"/>
                     </chart:SfChart.Header>
 
                     <!--PrimaryAxis-->
