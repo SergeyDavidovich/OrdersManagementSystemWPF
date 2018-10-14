@@ -97,7 +97,8 @@
                     <chart:SfChart3D.SecondaryAxis>
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
-                    <chart:PieSeries3D Palette="Metro" EnableSmartLabels="True"
+                    <chart:PieSeries3D Palette="LightCandy" 
+                             EnableSmartLabels="True"
                              ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity">
 
@@ -141,12 +142,13 @@
                     <chart:SfChart3D.SecondaryAxis>
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
-                    <chart:PieSeries3D Palette="Metro"
+                    <chart:PieSeries3D Palette="Elite"
+                             EnableSmartLabels="True"
                              ItemsSource="{Binding OrderByCategoryGroups}"
                              XBindingPath="CategoryName" YBindingPath="SumOfSale">
                         <syncfusion:PieSeries3D.AdornmentsInfo>
                             <syncfusion:ChartAdornmentInfo3D 
-                                ShowLabel="True" SegmentLabelFormat="#" 
+                                ShowLabel="True" SegmentLabelFormat="$#" 
                                 ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
                         </syncfusion:PieSeries3D.AdornmentsInfo>
                     </chart:PieSeries3D>
@@ -256,8 +258,8 @@
 
                     <!--PieSeries-->
                     <chart:ColumnSeries Palette="LightCandy" 
-                             ItemsSource="{Binding OrderByCountryGroups}"
-                             XBindingPath="Country" YBindingPath="Quantity"/>
+                             ItemsSource="{Binding OrderByCategoryGroups}"
+                             XBindingPath="CategoryName" YBindingPath="SumOfSale"/>
                 </syncfusion:SfChart>
             </Border>
 

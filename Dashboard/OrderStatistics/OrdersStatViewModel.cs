@@ -83,9 +83,8 @@ namespace Dashboard.OrderStatistics
             new List<OrderByCategoryObject>(OrdersAndCategories.GroupBy(c => c.name).
             Select(g => new OrderByCategoryObject { CategoryName = g.Key, SumOfSale = g.Sum(c => c.price) }));
         }
-            
-            
-            public class OrderByCountryObject
+
+        public class OrderByCountryObject
         {
             public string Country { get; set; }
             public int Quantity { get; set; }
@@ -97,6 +96,7 @@ namespace Dashboard.OrderStatistics
         }
 
         public List<OrderByCountryObject> OrderByCountryGroups { get; set; }
+
         public List<OrderByCategoryObject> OrderByCategoryGroups { get; set; }
 
     }

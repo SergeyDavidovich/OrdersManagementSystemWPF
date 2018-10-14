@@ -8,10 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <GroupBox Header="PRODUCTS"
+    <GroupBox Header="{Binding Title}"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
             Background="White"
             Margin="16" Padding="10"
@@ -45,6 +47,75 @@
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
+        <GroupBox.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                <Setter Property="Margin" Value="6"/>
+            </Style>
+            <Style TargetType="chart:SfChart3D">
+                <Setter Property="Tilt" Value="-30"/>
+                <Setter Property="Rotation" Value="0"/>
+                <Setter Property="Depth" Value="30"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="EnableRotation" Value="True"/>
+            </Style>
+            <Style TargetType="chart:PieSeries3D">
+                <Setter Property="EnableAnimation" Value="True"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="ChartHeader">
+
+            </Style>
+        </GroupBox.Resources>
+
+        <Border>
+            <syncfusion:SfChart3D>
+                <syncfusion:SfChart3D.Resources>
+                    <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                        <WrapPanel ItemWidth="100" Background="White" />
+                    </ItemsPanelTemplate>
+                </syncfusion:SfChart3D.Resources>
+                <chart:SfChart3D.Header>
+                    <TextBlock Text="Products by categories"/>
+                </chart:SfChart3D.Header>
+                <chart:SfChart3D.PrimaryAxis>
+                    <chart:CategoryAxis3D/>
+                </chart:SfChart3D.PrimaryAxis>
+                <chart:SfChart3D.SecondaryAxis>
+                    <chart:NumericalAxis3D/>
+                </chart:SfChart3D.SecondaryAxis>
+                <chart:PieSeries3D Palette="LightCandy" 
+                             EnableSmartLabels="True"
+                             ItemsSource="{Binding ProductByCategoryGroups}"
+                             XBindingPath="CategoryName" YBindingPath="ProductCount">
+
+                    <syncfusion:PieSeries3D.AdornmentsInfo>
+                        <syncfusion:ChartAdornmentInfo3D 
+                                ShowLabel="True" SegmentLabelFormat="#" 
+                                ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
+                    </syncfusion:PieSeries3D.AdornmentsInfo>
+
+                </chart:PieSeries3D>
+                <chart:SfChart3D.Legend>
+                    <chart:ChartLegend 
+                            ItemsPanel="{StaticResource itemPanelTemplate}"
+                            DockPosition="Bottom"
+                            Orientation="Horizontal"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
+                            BorderThickness="1"
+                            IconVisibility="Visible"
+                            CornerRadius="5"
+                            CheckBoxVisibility="Visible"
+                            ToggleSeriesVisibility="True"
+                            LegendPosition="Outside"/>
+                </chart:SfChart3D.Legend>
+
+            </syncfusion:SfChart3D>
+        </Border>
+
     </GroupBox>
 
 </UserControl>
