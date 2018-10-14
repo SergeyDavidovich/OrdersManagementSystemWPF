@@ -133,7 +133,7 @@
                         </ItemsPanelTemplate>
                     </syncfusion:SfChart3D.Resources>
                     <chart:SfChart3D.Header>
-                        <TextBlock Text="Sales by countries"/>
+                        <TextBlock Text="Total sales by categories"/>
                     </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
@@ -142,8 +142,14 @@
                         <chart:NumericalAxis3D/>
                     </chart:SfChart3D.SecondaryAxis>
                     <chart:PieSeries3D Palette="Metro"
-                             ItemsSource="{Binding OrderByCountryGroups}"
-                             XBindingPath="Country" YBindingPath="Quantity"/>
+                             ItemsSource="{Binding OrderByCategoryGroups}"
+                             XBindingPath="CategoryName" YBindingPath="SumOfSale">
+                        <syncfusion:PieSeries3D.AdornmentsInfo>
+                            <syncfusion:ChartAdornmentInfo3D 
+                                ShowLabel="True" SegmentLabelFormat="#" 
+                                ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
+                        </syncfusion:PieSeries3D.AdornmentsInfo>
+                    </chart:PieSeries3D>
                     <chart:SfChart3D.Legend>
                         <chart:ChartLegend 
                             ItemsPanel="{StaticResource itemPanelTemplate}"
@@ -160,7 +166,7 @@
                     
                 </syncfusion:SfChart3D>
             </Border>
-
+            
             <Border Grid.Column="2">
                 <Grid Margin="20,0">
                     <Grid.RowDefinitions>
@@ -230,7 +236,7 @@
                     </Border>
                 </Grid>
             </Border>
-
+            
             <Border Grid.Row="1" Grid.ColumnSpan="3">
                 <syncfusion:SfChart Margin="6">
                     <!--Header-->
@@ -254,6 +260,7 @@
                              XBindingPath="Country" YBindingPath="Quantity"/>
                 </syncfusion:SfChart>
             </Border>
+
         </Grid>
     </GroupBox>
 </UserControl>
