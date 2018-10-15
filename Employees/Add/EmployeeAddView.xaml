@@ -15,6 +15,32 @@
             Background="{DynamicResource PrimaryHueLightBrush}"
             Margin="16" Padding="10"
             BorderThickness="1">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <materialDesign:PackIcon
+                        Kind="Pen"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                    <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource ManageButtonStyle}"
+                            Content="SAVE"    
+                            Background="Green"/>
+                        <Button Style="{StaticResource ManageButtonStyle}"
+                                Background="Red" 
+                                Content="CANCEL"
+                                Command="{Binding Path=DataContext.CancelCommand, ElementName=productAddView}"/>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+
         <GroupBox.Resources>
             <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
                    BasedOn="{StaticResource MaterialDesignRaisedLightButton}">

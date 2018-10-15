@@ -14,10 +14,8 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <GroupBox Header="{Binding Title}"
-            Style="{DynamicResource MaterialDesignCardGroupBox}"
-            Background="White"
-            Margin="16" Padding="10"
-            BorderThickness="1">
+            Style="{DynamicResource DashBoardGroupBoxStyle}"
+            Background="White">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <Grid>
