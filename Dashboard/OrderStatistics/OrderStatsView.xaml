@@ -84,7 +84,7 @@
                     </syncfusion:SfChart3D.Resources>
                     <chart:SfChart3D.Header>
                         <TextBlock 
-                           Text="Orders by country"/>
+                           Text="Orders by countries (top 10)"/>
                     </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
@@ -205,7 +205,7 @@
                                Style="{StaticResource value}"/>
                         </Border>
 
-                        <TextBlock Text="Overall sales quantity" Grid.Row="3"
+                        <TextBlock Text="Overall orders quantity" Grid.Row="3"
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="4" Style="{StaticResource inner}">
                         <TextBlock Text="{Binding OverAllSalesCount}"

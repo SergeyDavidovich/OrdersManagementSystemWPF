@@ -57,16 +57,6 @@ namespace Dashboard.OrderStatistics
                 OrderByDescending(g => g.Quantity).
                 Take(10));
 
-            //SELECT
-            //dbo.Categories.CategoryName,
-            //SUM(dbo.[Order Details].UnitPrice) AS[Sum of Orders]
-            //FROM
-            //dbo.Categories INNER JOIN dbo.Products
-            //ON dbo.Categories.CategoryID = dbo.Products.CategoryID
-            //INNER JOIN dbo.[Order Details]
-            //ON dbo.Products.ProductID = dbo.[Order Details].ProductID
-            //GROUP BY dbo.Categories.CategoryName
-
             //query for OrderByCategoryGroups
             var OrdersAndCategories =
                 categories.Join(products,
@@ -76,22 +66,14 @@ namespace Dashboard.OrderStatistics
                 Join(orderDetails,
                 pro => pro.ProductID,
                 det => det.ProductID,
-                (pro, det) => new { name = pro.CategoryName, price = det.UnitPrice });
+                (pro, det) => new { name = pro.CategoryName, price = det.UnitPrice *det.Quantity });
 
             //projection on OrderByCategoryObject
             this.OrderByCategoryGroups =
             new List<OrderByCategoryObject>(OrdersAndCategories.GroupBy(c => c.name).
             Select(g => new OrderByCategoryObject { CategoryName = g.Key, SumOfSale = g.Sum(c => c.price) }));
 
-            //SELECT Customers.Country, SUM([Order Details].UnitPrice) 
-            //FROM
-            //dbo.Customers INNER JOIN dbo.Orders
-            //ON Customers.CustomerID = Orders.CustomerID
-            //INNER JOIN dbo.[Order Details]
-            //ON Orders.OrderID = [Order Details].OrderID
-            //GROUP BY Customers.Country
-
-            //query for OrderByCategoryGroups
+            //query for OrderByCountriesGroups
             var OrdersAndCustomers =
             customers.Join(orders,
             cus => cus.CustomerID,
@@ -100,7 +82,7 @@ namespace Dashboard.OrderStatistics
             Join(orderDetails,
             cus => cus.OrderID,
             det => det.OrderID,
-            (cus, det) => new { country = cus.Country, price = det.UnitPrice });
+            (cus, det) => new { country = cus.Country, price = det.UnitPrice *det.Quantity});
 
             //projection on SalesByCountryGroups
             this.SalesByCountryGroups =

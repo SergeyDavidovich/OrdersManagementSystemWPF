@@ -32,15 +32,6 @@ namespace Dashboard.EmployeeStatistics
             _context.Employees.Load();
             employees = _context.Employees.Local.ToList<Employee>();
 
-            //SELECT
-            //SUM(dbo.[Order Details].UnitPrice) AS TotalSales,
-            //Employees.LastName + ' ' + Employees.FirstName AS FullName
-            //FROM dbo.Employees
-            //INNER JOIN dbo.Orders ON dbo.Employees.EmployeeID = dbo.Orders.EmployeeID
-            //INNER JOIN dbo.[Order Details] ON[Order Details].OrderID = Orders.OrderID
-            //GROUP BY Employees.LastName + ' ' + Employees.FirstName
-
-
             //query for SalesByEmployeeGroups
             var EmployeesAndOrders =
                 employees.Join(orders,
@@ -50,12 +41,12 @@ namespace Dashboard.EmployeeStatistics
                Join(orderDetails,
                emp => emp.OrderId,
                det => det.OrderID,
-               (emp, det) => new { name = emp.LastName, sale = det.UnitPrice });
+               (emp, det) => new { name = emp.LastName, sale = det.UnitPrice * det.Quantity });
 
             //projection on SalesByEmployeeObject
             this.SalesByEmployeeGroups =
             new List<SalesByEmployeeObject>(EmployeesAndOrders.GroupBy(c => c.name).
-            Select(g => new SalesByEmployeeObject { LastName = g.Key, SumOfSale = g.Sum(c => c.sale) }));
+            Select(g => new SalesByEmployeeObject { LastName = g.Key, SumOfSale = g.Sum(c => c.sale) }).OrderBy(g => g.SumOfSale));
         }
 
         public class SalesByEmployeeObject
@@ -67,7 +58,7 @@ namespace Dashboard.EmployeeStatistics
         public List<SalesByEmployeeObject> SalesByEmployeeGroups
         {
             get => _salesByEmployeeGroups;
-            set => SetProperty(ref _salesByEmployeeGroups, value); 
+            set => SetProperty(ref _salesByEmployeeGroups, value);
         }
     }
 }
