@@ -12,7 +12,7 @@
     WindowState="Maximized"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     Background="White"
-    TextElement.FontWeight="Medium"
+    TextElement.FontWeight="Medium" SnapsToDevicePixels="True"
     TextElement.FontSize="14"
     FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
 

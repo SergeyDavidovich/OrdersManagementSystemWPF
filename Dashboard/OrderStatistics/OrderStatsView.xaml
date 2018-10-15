@@ -10,8 +10,6 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <GroupBox Header="ORDERS"
             Style="{DynamicResource DashBoardGroupBoxStyle}">
@@ -86,7 +84,7 @@
                     </syncfusion:SfChart3D.Resources>
                     <chart:SfChart3D.Header>
                         <TextBlock 
-                           Text="Number of orders by country"/>
+                           Text="Orders by country"/>
                     </chart:SfChart3D.Header>
                     <chart:SfChart3D.PrimaryAxis>
                         <chart:CategoryAxis3D/>
@@ -167,7 +165,6 @@
             </Border>
 
             <Border Grid.Column="2">
-                <!--<Viewbox HorizontalAlignment="Stretch">-->
                     <Grid Margin="10,0" HorizontalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -199,39 +196,39 @@
                                 <Setter Property="Margin" Value="0,0,10,0"/>
                             </Style>
                         </Grid.Resources>
-                        <TextBlock Text="Summary" HorizontalAlignment="Center" Margin="10,10,0,30"/>
+                        <TextBlock Text="Summary" HorizontalAlignment="Center" Margin="10,10,0,60"/>
 
                         <TextBlock Text="Overall sales sum" Grid.Row="1" 
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="2" Style="{StaticResource inner}" >
-                            <TextBlock Text="132312300"
+                        <TextBlock Text="{Binding OverAllSalesSum}"
                                Style="{StaticResource value}"/>
                         </Border>
 
                         <TextBlock Text="Overall sales quantity" Grid.Row="3"
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="4" Style="{StaticResource inner}">
-                            <TextBlock Text="129800"
+                        <TextBlock Text="{Binding OverAllSalesCount}"
                                Style="{StaticResource value}"/>
                         </Border>
 
                         <TextBlock Text="Average check" Grid.Row="5"
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="6" Style="{StaticResource inner}">
-                            <TextBlock Text="1323123" Grid.Row="6"
+                        <TextBlock Text="{Binding AverageCheck}" Grid.Row="6"
                                Style="{StaticResource value}"/>
                         </Border>
 
                         <TextBlock Text="Max check" Grid.Row="7"
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="8" Style="{StaticResource inner}">
-                            <TextBlock Text="1323123" Grid.Row="8"
+                        <TextBlock Text="{Binding MaxCheck}" Grid.Row="8"
                                Style="{StaticResource value}"/>
                         </Border>
                         <TextBlock Text="Min check" Grid.Row="9"
                                Style="{StaticResource header}"/>
                         <Border Grid.Row="10" Style="{StaticResource inner}">
-                            <TextBlock Text="1323123" Grid.Row="10"
+                        <TextBlock Text="{Binding MinCheck}" Grid.Row="10"
                                Style="{StaticResource value}"/>
                         </Border>
                     </Grid>

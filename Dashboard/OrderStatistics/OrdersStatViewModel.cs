@@ -107,8 +107,33 @@ namespace Dashboard.OrderStatistics
             new List<SalesByCountryObject>(OrdersAndCustomers.GroupBy(c => c.country).
             Select(g => new SalesByCountryObject { Country = g.Key, SumOfSale = g.Sum(c => c.price) }).
             OrderByDescending(g => g.SumOfSale));
-
         }
+
+        #region Summaries
+        string format = "$ ###,###.##";
+
+        public string OverAllSalesSum { get => orderDetails.Sum(o => o.UnitPrice).ToString(format); }
+        public string OverAllSalesCount { get => orderDetails.GroupBy(o => o.OrderID).Count().ToString(); }
+
+
+
+        public string AverageCheck
+        {
+            get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
+            .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Average(a => a.sum).ToString(format);
+        }
+
+        public string MaxCheck
+        {
+            get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
+                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Max(a => a.sum).ToString(format);
+        }
+        public string MinCheck
+        {
+            get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
+                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Min(a => a.sum).ToString(format);
+        }
+        #endregion
 
         public class OrderByCountryObject
         {
