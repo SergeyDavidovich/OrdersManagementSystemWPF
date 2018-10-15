@@ -124,7 +124,7 @@
             <Border Grid.Row="1">
                 <syncfusion:SfChart Margin="6">
                     <chart:SfChart.Header>
-                        <TextBlock Text="Purchases by customers"/>
+                        <TextBlock Text="Purchases by customers (top 10)"/>
                     </chart:SfChart.Header>
 
                     <chart:SfChart.PrimaryAxis>
@@ -136,8 +136,8 @@
                     </chart:SfChart.SecondaryAxis>
 
                     <chart:ColumnSeries Palette="LightCandy" 
-                             ItemsSource="{Binding CustomerByCountryGroups}"
-                             XBindingPath="Country" YBindingPath="Quantity"/>
+                             ItemsSource="{Binding PurchasingByCustomerGroups}"
+                             XBindingPath="Name" YBindingPath="SumPurchasing"/>
                 </syncfusion:SfChart>
             </Border>
 
