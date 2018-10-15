@@ -112,7 +112,7 @@ namespace Dashboard.OrderStatistics
         #region Summaries
         string format = "$ ###,###.##";
 
-        public string OverAllSalesSum { get => orderDetails.Sum(o => o.UnitPrice).ToString(format); }
+        public string OverAllSalesSum { get => orderDetails.Sum(o => o.UnitPrice * o.Quantity).ToString(format); }
         public string OverAllSalesCount { get => orderDetails.GroupBy(o => o.OrderID).Count().ToString(); }
 
 
@@ -120,18 +120,18 @@ namespace Dashboard.OrderStatistics
         public string AverageCheck
         {
             get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
-            .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Average(a => a.sum).ToString(format);
+            .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice *o.Quantity) }).Average(a => a.sum).ToString(format);
         }
 
         public string MaxCheck
         {
             get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
-                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Max(a => a.sum).ToString(format);
+                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice * o.Quantity) }).Max(a => a.sum).ToString(format);
         }
         public string MinCheck
         {
             get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
-                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice) }).Min(a => a.sum).ToString(format);
+                .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice * o.Quantity) }).Min(a => a.sum).ToString(format);
         }
         #endregion
 

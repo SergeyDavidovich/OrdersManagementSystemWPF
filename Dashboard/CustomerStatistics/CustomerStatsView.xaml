@@ -124,7 +124,7 @@
             <Border Grid.Row="1">
                 <syncfusion:SfChart Margin="6">
                     <chart:SfChart.Header>
-                        <TextBlock Text="Sales by customers"/>
+                        <TextBlock Text="Purchases by customers"/>
                     </chart:SfChart.Header>
 
                     <chart:SfChart.PrimaryAxis>
