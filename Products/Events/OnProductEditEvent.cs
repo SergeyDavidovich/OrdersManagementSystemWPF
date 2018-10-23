@@ -8,7 +8,7 @@ using Prism.Events;
 
 namespace Products.Events
 {
-    class OnProductEditEvent :PubSubEvent<Product>
+   public class OnProductEditEvent :PubSubEvent<int>
     {
     }
 }

@@ -92,6 +92,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation">
+      <Version>8.0.100</Version>
+    </PackageReference>
     <PackageReference Include="MaterialDesignThemes">
       <Version>2.4.1.1101</Version>
     </PackageReference>

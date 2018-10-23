@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Base;
 using Prism.Events;
@@ -9,7 +8,6 @@ using Prism.Regions;
 
 using System.Data.Entity;
 
-using BLL;
 using DAL_LocalDb;
 using System.Collections.ObjectModel;
 using Products.Events;
@@ -21,8 +19,6 @@ namespace Products.List
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
-        Product _selectedProduct;
-        ObservableCollection<Product> _products;
 
         public ProductListViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -32,14 +28,26 @@ namespace Products.List
             AddCommand = new DelegateCommand(Add);
             EditCommand = new DelegateCommand(Edit, CanEdit);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
+
+            _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => IsGroupBoxEnabled = true);
+
         }
 
         #region Commands
         public DelegateCommand AddCommand { get; set; }
-        private void Add() => _eventAggregator.GetEvent<OnProductAddEvent>().Publish();
+        private void Add()
+        {
+            _eventAggregator.GetEvent<OnProductAddEvent>().Publish();
+            IsGroupBoxEnabled = false;
+        }
 
         public DelegateCommand EditCommand { get; set; }
-        private void Edit() => _eventAggregator.GetEvent<OnProductEditEvent>().Publish(SelectedProduct);
+        private void Edit()
+        {
+            _eventAggregator.GetEvent<OnProductEditEvent>().Publish(SelectedProduct.ProductId);
+
+            IsGroupBoxEnabled = false;
+        }
         private bool CanEdit()
         {
             bool result = (SelectedProduct == null) ? false : true;
@@ -49,9 +57,13 @@ namespace Products.List
         public DelegateCommand DeleteCommand { get; set; }
         private void Delete()
         {
-            _products.Remove(SelectedProduct);
+            //_products.Remove(SelectedProduct);
             DeleteCommand.RaiseCanExecuteChanged();
             EditCommand.RaiseCanExecuteChanged();
+
+            _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => this.IsGroupBoxEnabled = true);
+
+
             _context.SaveChanges();
         }
         private bool CanDelete()
@@ -64,37 +76,70 @@ namespace Products.List
         public override async void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
+            //this.Products = _context.Products.Local;
+
 
             await _context.Products.LoadAsync();
 
-            this.Products = _context.Products.Local;
+            var products = _context.Products.Local;
+
+            var productList = new ObservableCollection<ProductViewObject>(products.
+                Select(p => new ProductViewObject
+                {
+                    ProductId = p.ProductID,
+                    ProductName = p.ProductName,
+                    SupplierName = p.Suppliers.CompanyName,
+                    CategoryName = p.Categories.CategoryName,
+                    UnitPrice = p.UnitPrice,
+                    QuantityPerUnit = p.QuantityPerUnit,
+                    Discontinued = p.Discontinued
+                }));
+
+            this.Products = productList;
         }
 
-        public override bool IsNavigationTarget(NavigationContext navigationContext)
+        /// <summary>
+        /// экранный объект Product
+        /// </summary>
+        public class ProductViewObject
         {
-            return true;
+            public int ProductId { get; set; }
+            public string ProductName { get; set; }
+            public string CategoryName { get; set; }
+            public string SupplierName { get; set; }
+            public string QuantityPerUnit { get; set; }
+            public decimal? UnitPrice { get; set; }
+            public bool Discontinued { get; set; }
         }
+        ObservableCollection<ProductViewObject> _products;
 
-        public ObservableCollection<Product> Products
+        public ObservableCollection<ProductViewObject> Products
         {
             get { return _products; }
             set => SetProperty(ref _products, value);
         }
+        ProductViewObject _selectedProduct;
 
-        public Product SelectedProduct
+        public ProductViewObject SelectedProduct
         {
             get => _selectedProduct;
             set
             {
                 SetProperty(ref _selectedProduct, value);
-                this.Title = _selectedProduct.ProductID.ToString();
-                _eventAggregator.GetEvent<OnProductSelectedEvent>().Publish(_selectedProduct.ProductID.ToString());
+                _eventAggregator.GetEvent<OnProductSelectedEvent>().Publish(_selectedProduct.ProductId);
 
                 DeleteCommand.RaiseCanExecuteChanged();
                 EditCommand.RaiseCanExecuteChanged();
             }
-            
+
         }
 
+        bool _isGroupBoxEnabled = true;
+        public bool IsGroupBoxEnabled
+        {
+            get => _isGroupBoxEnabled;
+            set => SetProperty(ref _isGroupBoxEnabled, value);
+
+        }
     }
 }

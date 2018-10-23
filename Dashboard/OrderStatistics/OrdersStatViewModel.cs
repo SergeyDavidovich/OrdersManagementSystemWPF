@@ -66,7 +66,7 @@ namespace Dashboard.OrderStatistics
                 Join(orderDetails,
                 pro => pro.ProductID,
                 det => det.ProductID,
-                (pro, det) => new { name = pro.CategoryName, price = det.UnitPrice *det.Quantity });
+                (pro, det) => new { name = pro.CategoryName, price = det.UnitPrice * det.Quantity });
 
             //projection on OrderByCategoryObject
             this.OrderByCategoryGroups =
@@ -82,7 +82,7 @@ namespace Dashboard.OrderStatistics
             Join(orderDetails,
             cus => cus.OrderID,
             det => det.OrderID,
-            (cus, det) => new { country = cus.Country, price = det.UnitPrice *det.Quantity});
+            (cus, det) => new { country = cus.Country, price = det.UnitPrice * det.Quantity });
 
             //projection on SalesByCountryGroups
             this.SalesByCountryGroups =
@@ -102,7 +102,7 @@ namespace Dashboard.OrderStatistics
         public string AverageCheck
         {
             get => orderDetails.GroupBy(od => od.OrderID).AsQueryable()
-            .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice *o.Quantity) }).Average(a => a.sum).ToString(format);
+            .Select(g => new { order = g.Key, sum = g.Sum(o => (decimal)o.UnitPrice * o.Quantity) }).Average(a => a.sum).ToString(format);
         }
 
         public string MaxCheck

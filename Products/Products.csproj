@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Add\ProductAddViewModel.cs" />
     <Compile Include="Events\OnProductAddEvent.cs" />
+    <Compile Include="Events\OnProductCompleted.cs" />
     <Compile Include="Events\OnProductEditEvent.cs" />
     <Compile Include="Events\OnProductSelectedEvent.cs" />
     <Compile Include="List\ProductListView.xaml.cs">
@@ -89,6 +90,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Validators\ProductValidator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -124,6 +126,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation">
+      <Version>8.0.100</Version>
+    </PackageReference>
     <PackageReference Include="MaterialDesignThemes">
       <Version>2.4.1.1101</Version>
     </PackageReference>

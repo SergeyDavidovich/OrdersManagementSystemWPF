@@ -20,9 +20,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <GroupBox Header="{Binding Title}"
+    <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
             Style="{DynamicResource MaterialDesignCardGroupBox}"
-            Background="{DynamicResource PrimaryHueLightBrush}"
             Margin="16" Padding="10"
             BorderThickness="1">
         <GroupBox.HeaderTemplate>
@@ -59,26 +58,33 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Grid>
+        <Grid Margin="0,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid
-                                    ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
-                                   SelectedIndex="-1"
-                                   SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Margin="6" 
-                                   AutoGenerateColumns="True" 
-                                   ColumnSizer="AutoWithLastColumnFill" Background="White" BorderBrush="{x:Null}" 
-                                   ShowBusyIndicator="True" BorderThickness="0" 
-                                   ShowGroupDropArea="False" AutoExpandGroups="True">
+                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
+                SelectedIndex="4"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Margin="6" 
+                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
+                AutoGenerateColumns="True" 
+                ColumnSizer="Auto"  
+                ShowBusyIndicator="True"  
+                ShowGroupDropArea="False"
+                AutoExpandGroups="True"
+                AllowFrozenGroupHeaders="True"
+                ShowColumnWhenGrouped ="False" RowSelectionBrush="{DynamicResource SecondaryAccentBrush}" CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+                <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                    <syncfusion:GroupColumnDescription ColumnName="CategoryName"/>
+                </syncfusion:SfDataGrid.GroupColumnDescriptions>
             </syncfusion:SfDataGrid>
             <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
                                    Source="{Binding Products}" 
                                    UseOnDemandPaging="False"
                                    NumericButtonCount="10"
 						           PageSize="30" HorizontalAlignment="Center"
-                                   AccentBackground="{DynamicResource SecondaryAccentBrush}"
+                                   AccentBackground="#FFDD2C00"
                                    AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
         </Grid>
     </GroupBox>
