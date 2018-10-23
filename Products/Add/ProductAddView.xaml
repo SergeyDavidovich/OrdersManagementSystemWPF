@@ -40,7 +40,8 @@
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Style="{StaticResource ManageButtonStyle}"
-                            Content="SAVE"    
+                            Content="SAVE"
+                                Command="{Binding Path=DataContext.SaveCommand, ElementName=productAddView}"
                             Background="Green"/>
                         <Button Style="{StaticResource ManageButtonStyle}"
                                 Background="Red" 

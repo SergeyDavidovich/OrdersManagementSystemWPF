@@ -52,7 +52,7 @@ namespace Products.Add
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
 
-            Title = "Cancel";
+            Title = "";
         }
 
         public DelegateCommand SaveCommand { get; set; }
@@ -60,7 +60,7 @@ namespace Products.Add
         {
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
-            Title = "Cancel";
+            Title = "";
 
 
         }
