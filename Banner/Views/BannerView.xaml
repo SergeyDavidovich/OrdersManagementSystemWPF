@@ -75,7 +75,7 @@
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="Red"/>
                         <Button Grid.Column="0" Grid.Row="3" 
                                    Style="{DynamicResource MaterialDesignFlatButton}"
-                                Content="BLUE GREY"
+                                Content="GREY"
                                 Foreground="#607d8b" HorizontalContentAlignment="Left"
                                 Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey"/>
                         <Button Grid.Column="0" Grid.Row="4" 
