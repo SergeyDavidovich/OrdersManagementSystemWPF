@@ -21,7 +21,7 @@ namespace Products.Add
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
-        bool _isGroupBoxEnabled = true;
+        bool _isGroupBoxEnabled = false;
         Product currentProduct;
         ProductValidator validator;
 
@@ -139,6 +139,7 @@ namespace Products.Add
         public DelegateCommand CancelCommand { get; set; }
         private void Cancel()
         {
+            currentProduct = null;
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
 
@@ -184,8 +185,20 @@ namespace Products.Add
         {
             get => _isGroupBoxEnabled;
             set => SetProperty(ref _isGroupBoxEnabled, value);
-
         }
+        #endregion
+
+        #region Utilites
+
+        private void PopulateCurrentProduct()
+        {
+            currentProduct.ProductName = this.Name;
+            currentProduct.Categories.CategoryID = this.selectedCategory.CategoryID;
+            currentProduct.Suppliers.SupplierID = this.SelectedSupplier.SupplierID;
+            currentProduct.UnitPrice = this.UnitPrice;
+            currentProduct.QuantityPerUnit = this.Quantity;
+        }
+
         #endregion
 
     }

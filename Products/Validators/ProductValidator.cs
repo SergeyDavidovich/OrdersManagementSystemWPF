@@ -20,6 +20,10 @@ namespace Products.Validators
             RuleFor(p => p.Quantity)
                 .MaximumLength(20).WithMessage("Too long");
             RuleFor(p => p.UnitPrice);
+            RuleFor(p => p.SelectedCategory)
+                .NotNull().WithMessage("Select category");
+            RuleFor(p => p.SelectedSupplier)
+                .NotNull().WithMessage("Select supplier");
                 
         }
     }
