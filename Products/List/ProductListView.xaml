@@ -58,14 +58,14 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Grid Margin="0,0,0,0">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid
                 ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
-                SelectedIndex="4"
+                SelectedIndex="-1"
                 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Margin="6" 
                 GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
                 AutoGenerateColumns="True" 

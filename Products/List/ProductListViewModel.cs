@@ -27,7 +27,7 @@ namespace Products.List
             this.Title = "PRODUCTS ON STORE";
             AddCommand = new DelegateCommand(Add);
             EditCommand = new DelegateCommand(Edit, CanEdit);
-            DeleteCommand = new DelegateCommand(Delete, CanDelete);
+            //DeleteCommand = new DelegateCommand(Delete, CanDelete);
 
             _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => IsGroupBoxEnabled = true);
 
@@ -54,30 +54,24 @@ namespace Products.List
             return result;
         }
 
-        public DelegateCommand DeleteCommand { get; set; }
-        private void Delete()
-        {
-            //_products.Remove(SelectedProduct);
-            DeleteCommand.RaiseCanExecuteChanged();
-            EditCommand.RaiseCanExecuteChanged();
-
-            _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => this.IsGroupBoxEnabled = true);
-
-
-            _context.SaveChanges();
-        }
-        private bool CanDelete()
-        {
-            bool result = (SelectedProduct == null) ? false : true;
-            return result;
-        }
+        //public DelegateCommand DeleteCommand { get; set; }
+        //private void Delete()
+        //{
+        //    //_products.Remove(SelectedProduct);
+        //    DeleteCommand.RaiseCanExecuteChanged();
+        //    EditCommand.RaiseCanExecuteChanged();
+        //    _context.SaveChanges();
+        //}
+        //private bool CanDelete()
+        //{
+        //    bool result = (SelectedProduct == null) ? false : true;
+        //    return result;
+        //}
         #endregion
 
         public override async void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            //this.Products = _context.Products.Local;
-
 
             await _context.Products.LoadAsync();
 
@@ -98,6 +92,8 @@ namespace Products.List
             this.Products = productList;
         }
 
+        #region Bindable properties
+
         /// <summary>
         /// экранный объект Product
         /// </summary>
@@ -111,15 +107,15 @@ namespace Products.List
             public decimal? UnitPrice { get; set; }
             public bool Discontinued { get; set; }
         }
-        ObservableCollection<ProductViewObject> _products;
 
+        ObservableCollection<ProductViewObject> _products;
         public ObservableCollection<ProductViewObject> Products
         {
             get { return _products; }
             set => SetProperty(ref _products, value);
         }
-        ProductViewObject _selectedProduct;
 
+        ProductViewObject _selectedProduct;
         public ProductViewObject SelectedProduct
         {
             get => _selectedProduct;
@@ -128,10 +124,9 @@ namespace Products.List
                 SetProperty(ref _selectedProduct, value);
                 _eventAggregator.GetEvent<OnProductSelectedEvent>().Publish(_selectedProduct.ProductId);
 
-                DeleteCommand.RaiseCanExecuteChanged();
+                //DeleteCommand.RaiseCanExecuteChanged();
                 EditCommand.RaiseCanExecuteChanged();
             }
-
         }
 
         bool _isGroupBoxEnabled = true;
@@ -141,5 +136,6 @@ namespace Products.List
             set => SetProperty(ref _isGroupBoxEnabled, value);
 
         }
+        #endregion
     }
 }
