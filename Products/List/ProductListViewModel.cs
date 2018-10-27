@@ -19,6 +19,7 @@ namespace Products.List
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
+        IEnumerable<Product> products;
 
         public ProductListViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -31,6 +32,7 @@ namespace Products.List
 
             _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => IsGroupBoxEnabled = true);
 
+            products = _context.Products;
         }
 
         #region Commands
@@ -69,25 +71,21 @@ namespace Products.List
         //}
         #endregion
 
-        public override async void OnNavigatedTo(NavigationContext navigationContext)
+        public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
 
-            await _context.Products.LoadAsync();
-
-            var products = _context.Products.Local;
-
             var productList = new ObservableCollection<ProductViewObject>(products.
-                Select(p => new ProductViewObject
-                {
-                    ProductId = p.ProductID,
-                    ProductName = p.ProductName,
-                    SupplierName = p.Suppliers.CompanyName,
-                    CategoryName = p.Categories.CategoryName,
-                    UnitPrice = p.UnitPrice,
-                    QuantityPerUnit = p.QuantityPerUnit,
-                    Discontinued = p.Discontinued
-                }));
+                  Select(p => new ProductViewObject
+                  {
+                      ProductId = p.ProductID,
+                      ProductName = p.ProductName,
+                      SupplierName = p.Suppliers.CompanyName,
+                      CategoryName = p.Categories.CategoryName,
+                      UnitPrice = p.UnitPrice,
+                      QuantityPerUnit = p.QuantityPerUnit,
+                      Discontinued = p.Discontinued
+                  }));
 
             this.Products = productList;
         }

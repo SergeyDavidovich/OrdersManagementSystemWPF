@@ -30,7 +30,7 @@ namespace Products.Add
         public ProductAddViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
             //IsGroupBoxEnabled = false;
-
+            
             _eventAggregator = eventAggregator;
             _context = context;
 
@@ -47,7 +47,7 @@ namespace Products.Add
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-
+            
             _context.Categories.Load();
             Categories = _context.Categories.Local.ToList<Category>();
 
@@ -122,7 +122,7 @@ namespace Products.Add
             set
             {
                 SetProperty(ref unitPrice, value);
-                //currentProduct.UnitPrice = Decimal.Parse(unitPrice);
+                SaveCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -171,7 +171,7 @@ namespace Products.Add
             if (state == States.Add)
                 _context.Products.Add(currentProduct);
 
-            _context.SaveChanges();
+           int result = _context.SaveChanges();
 
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
