@@ -30,9 +30,9 @@ namespace Products.List
             EditCommand = new DelegateCommand(Edit, CanEdit);
             //DeleteCommand = new DelegateCommand(Delete, CanDelete);
 
-            _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(() => IsGroupBoxEnabled = true);
+            _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(OnProductCompletedHandler);
 
-            products = _context.Products;
+            PopulateBindings();
         }
 
         #region Commands
@@ -71,9 +71,9 @@ namespace Products.List
         //}
         #endregion
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        private void PopulateBindings()
         {
-            base.OnNavigatedTo(navigationContext);
+            products = _context.Products;
 
             var productList = new ObservableCollection<ProductViewObject>(products.
                   Select(p => new ProductViewObject
@@ -133,6 +133,14 @@ namespace Products.List
             get => _isGroupBoxEnabled;
             set => SetProperty(ref _isGroupBoxEnabled, value);
 
+        }
+        #endregion
+
+        #region PubSub Events Handlers
+        private void OnProductCompletedHandler()
+        {
+            this.IsGroupBoxEnabled = true;
+            PopulateBindings();
         }
         #endregion
     }

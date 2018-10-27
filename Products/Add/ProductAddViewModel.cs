@@ -42,20 +42,10 @@ namespace Products.Add
 
             CancelCommand = new DelegateCommand(Cancel);
             SaveCommand = new DelegateCommand(Save, CanSave);
+
+            Suppliers = _context.Suppliers.ToList<Supplier>();
+            Categories = _context.Categories.ToList<Category>();
         }
-
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            base.OnNavigatedTo(navigationContext);
-            
-            _context.Categories.Load();
-            Categories = _context.Categories.Local.ToList<Category>();
-
-            _context.Suppliers.Load();
-            Suppliers = _context.Suppliers.Local.ToList<Supplier>();
-
-        }
-
 
         #region IDataErrorInfo implemntation
 
@@ -89,7 +79,6 @@ namespace Products.Add
 
 
         #endregion
-
 
         #region Bindable properties
 
@@ -185,7 +174,7 @@ namespace Products.Add
         private void AddProductEventHandler()
         {
             state = States.Add;
-            Title = "Add new product";
+            Title = "ADD NEW";
             currentProduct = new Product();
             PopulateBindings(false);
             IsGroupBoxEnabled = true;
@@ -195,7 +184,7 @@ namespace Products.Add
         {
             state = States.Edit;
             currentProduct = _context.Products.Find(id);
-            Title = "Edit product: ";
+            Title = "EDIT: ";
             Title += $"{currentProduct.ProductName}";
             IsGroupBoxEnabled = true;
         }
@@ -204,7 +193,7 @@ namespace Products.Add
         {
             currentProduct = _context.Products.Find(id);
             PopulateBindings(true);
-            Title = "View product: ";
+            Title = "VIEW: ";
             Title += $"{currentProduct.ProductName}"; IsGroupBoxEnabled = false;
         }
 
