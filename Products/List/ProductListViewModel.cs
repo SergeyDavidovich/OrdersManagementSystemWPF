@@ -137,6 +137,7 @@ namespace Products.List
         #endregion
 
         #region PubSub Events Handlers
+
         private void OnProductCompletedHandler()
         {
             this.IsGroupBoxEnabled = true;
