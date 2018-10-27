@@ -70,7 +70,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -118,8 +118,7 @@
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                     materialDesign:HintAssist.HintOpacity=".5"/>
 
-                <CheckBox Grid.Row="5" Content="Discontinued" Opacity=".5"/>
-                <TextBlock Text="{Binding Error}" Grid.Row="6"/>
+                <CheckBox Grid.Row="5" IsChecked="{Binding Discontinued, Mode=TwoWay}" Content="Discontinued" Opacity=".5"/>
             </Grid>
         </Border>
     </GroupBox>

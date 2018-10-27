@@ -24,15 +24,19 @@ namespace Products.Add
         bool _isGroupBoxEnabled = false;
         Product currentProduct;
         ProductValidator validator;
+        enum States { Edit, Add };
+        States state;
 
         public ProductAddViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
             //IsGroupBoxEnabled = false;
+
             _eventAggregator = eventAggregator;
             _context = context;
-            _eventAggregator.GetEvent<OnProductSelectedEvent>().Subscribe(SetSelectedID);
-            _eventAggregator.GetEvent<OnProductAddEvent>().Subscribe(AddProduct);
-            _eventAggregator.GetEvent<OnProductEditEvent>().Subscribe(EditProduct);
+
+            _eventAggregator.GetEvent<OnProductSelectedEvent>().Subscribe(SelectProductEventHandler);
+            _eventAggregator.GetEvent<OnProductAddEvent>().Subscribe(AddProductEventHandler);
+            _eventAggregator.GetEvent<OnProductEditEvent>().Subscribe(EditProductEventHandler);
 
             validator = new ProductValidator();
 
@@ -54,6 +58,7 @@ namespace Products.Add
 
 
         #region IDataErrorInfo implemntation
+
         public string this[string columnName]
         {
             get
@@ -81,6 +86,8 @@ namespace Products.Add
                 return string.Empty;
             }
         }
+
+
         #endregion
 
 
@@ -108,11 +115,15 @@ namespace Products.Add
             }
         }
 
-        decimal unitPrice;
-        public decimal UnitPrice
+        string unitPrice;
+        public string UnitPrice
         {
             get => unitPrice;
-            set => SetProperty(ref unitPrice, value);
+            set
+            {
+                SetProperty(ref unitPrice, value);
+                //currentProduct.UnitPrice = Decimal.Parse(unitPrice);
+            }
         }
 
         public List<Category> Categories { get; set; }
@@ -131,6 +142,12 @@ namespace Products.Add
             get => selectedSupplier;
             set => SetProperty(ref selectedSupplier, value);
         }
+        bool discontinued;
+        public bool Discontinued
+        {
+            get => discontinued;
+            set => SetProperty(ref discontinued, value);
+        }
 
         #endregion
 
@@ -140,6 +157,7 @@ namespace Products.Add
         private void Cancel()
         {
             currentProduct = null;
+            PopulateBindings(false);
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
 
@@ -149,6 +167,12 @@ namespace Products.Add
         public DelegateCommand SaveCommand { get; set; }
         private void Save()
         {
+            EditCurrentProduct();
+            if (state == States.Add)
+                _context.Products.Add(currentProduct);
+
+            _context.SaveChanges();
+
             IsGroupBoxEnabled = false;
             _eventAggregator.GetEvent<OnProductCompleted>().Publish();
             Title = "";
@@ -158,25 +182,28 @@ namespace Products.Add
         #endregion
 
         #region PubSubEvents
-        private void AddProduct()
+        private void AddProductEventHandler()
         {
+            state = States.Add;
             Title = "Add new product";
             currentProduct = new Product();
+            PopulateBindings(false);
             IsGroupBoxEnabled = true;
         }
 
-        private void EditProduct(int id)
+        private void EditProductEventHandler(int id)
         {
+            state = States.Edit;
             currentProduct = _context.Products.Find(id);
             Title = "Edit product: ";
             Title += $"{currentProduct.ProductName}";
             IsGroupBoxEnabled = true;
         }
 
-        private void SetSelectedID(int id)
+        private void SelectProductEventHandler(int id)
         {
             currentProduct = _context.Products.Find(id);
-
+            PopulateBindings(true);
             Title = "View product: ";
             Title += $"{currentProduct.ProductName}"; IsGroupBoxEnabled = false;
         }
@@ -190,16 +217,36 @@ namespace Products.Add
 
         #region Utilites
 
-        private void PopulateCurrentProduct()
+        private void PopulateBindings(bool exist)
+        {
+            if (exist)
+            {
+                this.Name = currentProduct.ProductName;
+                this.SelectedCategory = _context.Categories.Find(currentProduct.Categories.CategoryID);
+                this.SelectedSupplier = _context.Suppliers.Find(currentProduct.Suppliers.SupplierID);
+                this.UnitPrice = currentProduct.UnitPrice.ToString();
+                this.Quantity = currentProduct.QuantityPerUnit;
+                this.Discontinued = currentProduct.Discontinued;
+            }
+            else
+            {
+                this.Name = null;
+                this.SelectedCategory = null;
+                this.SelectedSupplier = null;
+                this.UnitPrice = null;
+                this.Quantity = null;
+                this.Discontinued = false;
+            }
+        }
+        private void EditCurrentProduct()
         {
             currentProduct.ProductName = this.Name;
-            currentProduct.Categories.CategoryID = this.selectedCategory.CategoryID;
-            currentProduct.Suppliers.SupplierID = this.SelectedSupplier.SupplierID;
-            currentProduct.UnitPrice = this.UnitPrice;
+            currentProduct.Categories = this.SelectedCategory;
+            currentProduct.Suppliers = this.SelectedSupplier;
+            currentProduct.UnitPrice = Decimal.Parse(this.UnitPrice);
             currentProduct.QuantityPerUnit = this.Quantity;
+            currentProduct.Discontinued = this.Discontinued;
         }
-
         #endregion
-
     }
 }
