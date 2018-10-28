@@ -1,2 +1,2 @@
 # OrdersManagementSystem
-<image src="Screenshots/dashboard.png"/>
+<image src="OrdersManagementSystem/Screenshots/Dashboard.PNG"/>
