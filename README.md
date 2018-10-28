@@ -1,4 +1,4 @@
 # OrdersManagementSystem
 #### Main screenshot
 
-<image src="Screenshots\dashboard.png"/>
+<image src=".\Screenshots\dashboard.png"/>
