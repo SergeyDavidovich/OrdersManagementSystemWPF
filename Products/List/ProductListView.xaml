@@ -21,9 +21,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
-            Style="{DynamicResource MaterialDesignCardGroupBox}"
-            Margin="16" Padding="10"
-            BorderThickness="1">
+            Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>

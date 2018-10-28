@@ -12,10 +12,7 @@
     mc:Ignorable="d" FontSize="18"
     x:Name="productAddView">
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
-            Style="{DynamicResource MaterialDesignCardGroupBox}"
-            Background="{DynamicResource MaterialDesignBackground}"
-            Margin="16" Padding="10"
-            BorderThickness="1">
+            Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.Resources>
             <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
                    BasedOn="{StaticResource MaterialDesignRaisedLightButton}">

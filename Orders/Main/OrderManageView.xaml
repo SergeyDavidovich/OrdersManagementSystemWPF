@@ -14,57 +14,34 @@
     mc:Ignorable="d"
     x:Name="orderManageView">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!--<userControls:HeaderedContentControl Title="{Binding Title, Mode=OneWay}" AccentColor="#FF068DFD">
-            <userControls:HeaderedContentControl.ChildContent>
-                <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" />
-            </userControls:HeaderedContentControl.ChildContent>
-            <userControls:HeaderedContentControl.CommandBar>
-                <Button
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Command="{Binding SwitchOrdersContentStateCommand}"
-                    Content="{Binding OrdersContentRegionSwitchViewButtonText}"
-                    DockPanel.Dock="Right"
-                    Style="{StaticResource ManageButtonStyle}" />
-            </userControls:HeaderedContentControl.CommandBar>
-        </userControls:HeaderedContentControl>
-        <userControls:HeaderedContentControl
-            Title="{Binding Title, Mode=OneWay}"
-            Grid.Column="1"
-            Margin="0,0,0,0"
-            AccentColor="#FF068DFD">
-            <userControls:HeaderedContentControl.ChildContent>
-                <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}" />
-            </userControls:HeaderedContentControl.ChildContent>
-        </userControls:HeaderedContentControl>-->
-
-                <GroupBox Margin="16" Header="ORDER MANAGEMENT" Style="{DynamicResource MaterialDesignCardGroupBox}" prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" >
-                    <GroupBox.HeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <materialDesign:PackIcon
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="ORDER MANAGEMENT" 
+                          Style="{DynamicResource DashBoardGroupBoxStyle}" 
+                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" >
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon
                                     Width="32"
                                     Height="32"
                                     VerticalAlignment="Center"
                                     Kind="BookMultiple" />
-                                <TextBlock
+                        <TextBlock
                                     Grid.Column="1"
                                     Margin="8,0,0,0"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                     Text="{Binding}" />
-                                <Button
+                        <Button
                                     Grid.Column="2"
                                     Margin="0"
                                     HorizontalAlignment="Right"
@@ -72,11 +49,11 @@
       
                                     Content="{Binding  Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
                                     Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
-                            </Grid>
-                        </DataTemplate>
-                    </GroupBox.HeaderTemplate>
-                </GroupBox>
-        <GroupBox Margin="0,16,16,16" Grid.Column="1" Style="{DynamicResource MaterialDesignCardGroupBox}" 
+                    </Grid>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Style="{DynamicResource DashBoardGroupBoxStyle}" 
                           prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>

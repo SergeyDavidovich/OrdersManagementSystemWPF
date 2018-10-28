@@ -12,7 +12,7 @@ namespace Customers.List
     {
         public CustomerListViewModel()
         {
-            Title = "Customers management";
+            Title = "CUSTOMERS VIEW";
         }
     }
 }
