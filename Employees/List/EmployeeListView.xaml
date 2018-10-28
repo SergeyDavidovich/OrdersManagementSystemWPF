@@ -6,11 +6,20 @@
     xmlns:local="clr-namespace:Employees.List"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControls="clr-namespace:Infrastructure.UserControls;assembly=Infrastructure"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:datapager="clr-namespace:Syncfusion.UI.Xaml.Controls.DataPager;assembly=Syncfusion.SfGrid.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <GroupBox Header="{Binding Title}"
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
             Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
@@ -38,13 +47,41 @@
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
 
                         </Button>
-                        <!--<Button Background="Red" Content="DELETE"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
-                        </Button>-->
                     </StackPanel>
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <syncfusion:SfDataGrid Margin="6"
+                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
+                SelectedIndex="-1"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                AllowGrouping="True"
+                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
+                AutoGenerateColumns="True" 
+                ColumnSizer="Auto"  
+                ShowBusyIndicator="True"  
+                ShowGroupDropArea="True"
+                AutoExpandGroups="True"
+                AllowFrozenGroupHeaders="True"
+                ShowColumnWhenGrouped ="False" 
+                RowSelectionBrush="{DynamicResource SecondaryAccentBrush}" 
+                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+                <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                    <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                </syncfusion:SfDataGrid.GroupColumnDescriptions>
+            </syncfusion:SfDataGrid>
+            <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
+                                   Source="{Binding Products}" 
+                                   UseOnDemandPaging="False"
+                                   NumericButtonCount="10"
+						           PageSize="30" HorizontalAlignment="Center"
+                                   AccentBackground="#FFDD2C00"
+                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
+        </Grid>
     </GroupBox>
 </UserControl>

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Syncfusion.Data.WPF, Version=16.3460.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfGrid.WPF, Version=16.3460.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Shared.Wpf, Version=16.3460.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,6 +57,10 @@
     </Compile>
     <Compile Include="Add\EmployeeAddViewModel.cs" />
     <Compile Include="EmployeesModule.cs" />
+    <Compile Include="Events\OnEmployeeAddEvent.cs" />
+    <Compile Include="Events\OnEmployeeCompleted.cs" />
+    <Compile Include="Events\OnEmployeeEditEvent.cs" />
+    <Compile Include="Events\OnEmployeeSelectedEvent.cs" />
     <Compile Include="List\EmployeeListView.xaml.cs">
       <DependentUpon>EmployeeListView.xaml</DependentUpon>
     </Compile>
@@ -82,6 +89,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL_LocalDb\DAL_LocalDb.csproj">
+      <Project>{d495fb75-828d-44ff-b363-79383614bfc2}</Project>
+      <Name>DAL_LocalDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
       <Name>Infrastructure</Name>

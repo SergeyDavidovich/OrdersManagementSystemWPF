@@ -12,6 +12,23 @@
     mc:Ignorable="d">
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
             Style="{DynamicResource DashBoardGroupBoxStyle}">
+        <GroupBox.Resources>
+            <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
+                   BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+                <Setter Property="Width" Value="80"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Foreground" Value="Yellow"/>
+                <Setter Property="Margin" Value="6,0"/>
+            </Style>
+            <ControlTemplate x:Key="ErrorTemplate">
+                <StackPanel Orientation="Vertical">
+                    <!-- Placeholder for the TextBox itself -->
+                    <AdornedElementPlaceholder x:Name="textBox" VerticalAlignment="Center"/>
+                    <TextBlock Margin="0,10,0,0" Text="{Binding [0].ErrorContent}" 
+                               Foreground="Red" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </ControlTemplate>
+        </GroupBox.Resources>
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>
@@ -27,7 +44,8 @@
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Style="{StaticResource ManageButtonStyle}"
-                            Content="SAVE"    
+                            Content="SAVE"
+                                Command="{Binding Path=DataContext.SaveCommand, ElementName=productAddView}"
                             Background="Green"/>
                         <Button Style="{StaticResource ManageButtonStyle}"
                                 Background="Red" 
@@ -37,15 +55,67 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
+        <Border CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1">
+            <Grid 
+                Background="{DynamicResource MaterialDesignBackground}"
+                Margin="60,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-        <GroupBox.Resources>
-            <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
-                   BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
-                <Setter Property="Width" Value="80"/>
-                <Setter Property="BorderBrush" Value="{x:Null}"/>
-                <Setter Property="Foreground" Value="Yellow"/>
-                <Setter Property="Margin" Value="6,0"/>
-            </Style>
-        </GroupBox.Resources>
+                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         materialDesign:HintAssist.Hint="Product name"
+                         materialDesign:HintAssist.HintOpacity=".5"
+                         VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Row="1" 
+                    ItemsSource="{Binding Categories}" 
+                          DisplayMemberPath="CategoryName" 
+                          SelectedItem="{Binding SelectedCategory, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                          Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"          
+                          materialDesign:HintAssist.Hint="Category"
+                          IsEditable="True"
+                          materialDesign:HintAssist.HintOpacity=".5"/>
+
+                <ComboBox Grid.Row="2" 
+                          ItemsSource="{Binding Suppliers}"
+                          DisplayMemberPath="CompanyName"
+                          SelectedItem="{Binding SelectedSupplier, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                          Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    materialDesign:HintAssist.Hint="Supplier"
+                    IsEditable="True"
+                    materialDesign:HintAssist.HintOpacity=".5"/>
+
+                <TextBox Grid.Row="3" 
+                         Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                         materialDesign:HintAssist.Hint="Quantity per unit"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         materialDesign:HintAssist.HintOpacity=".5"/>
+
+                <TextBox Grid.Row="4"
+                          Text="{Binding UnitPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                         Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                    materialDesign:HintAssist.Hint="Unit price"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                    materialDesign:HintAssist.HintOpacity=".5"/>
+
+                <CheckBox Grid.Row="5" IsChecked="{Binding Discontinued, Mode=TwoWay}" Content="Discontinued" Opacity=".5"/>
+            </Grid>
+        </Border>
     </GroupBox>
 </UserControl>
