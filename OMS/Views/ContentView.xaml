@@ -24,14 +24,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="BannerRegion" />
-
-        <materialDesign:Transitioner SelectedIndex="0" Grid.Row="1">
-            <materialDesign:TransitioningContent  
-                    OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn}">
-                <Border >
-                    <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion"/>
-                </Border>
-            </materialDesign:TransitioningContent>
-        </materialDesign:Transitioner>
+        <Border Grid.Row="1" >
+            <ContentControl Margin="0" prism:RegionManager.RegionName="ContentRegion"/>
+        </Border>
     </Grid>
 </UserControl>

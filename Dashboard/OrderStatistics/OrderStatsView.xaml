@@ -237,23 +237,20 @@
 
             <Border Grid.Row="1" Grid.ColumnSpan="3">
                 <syncfusion:SfChart Margin="6">
-                    <!--Header-->
                     <chart:SfChart.Header>
                         <TextBlock Text="Sales by countries"/>
                     </chart:SfChart.Header>
 
-                    <!--PrimaryAxis-->
                     <chart:SfChart.PrimaryAxis>
-                        <chart:CategoryAxis FontSize="12"/>
+                        <chart:CategoryAxis FontSize="12" OpposedPosition="False"/>
                     </chart:SfChart.PrimaryAxis>
 
-                    <!--SecondaryAxis-->
                     <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis FontSize="12"/>
+                        <chart:NumericalAxis FontSize="12" OpposedPosition="True"/>
                     </chart:SfChart.SecondaryAxis>
 
-                    <!--PieSeries-->
-                    <chart:ColumnSeries Palette="LightCandy" 
+                    <chart:BarSeries Palette="LightCandy" 
+                                        EnableAnimation="True" AnimationDuration="00:00:02"
                              ItemsSource="{Binding SalesByCountryGroups}"
                              XBindingPath="Country" YBindingPath="SumOfSale"/>
                 </syncfusion:SfChart>

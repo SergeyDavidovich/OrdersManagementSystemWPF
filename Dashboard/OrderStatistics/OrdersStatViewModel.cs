@@ -88,7 +88,7 @@ namespace Dashboard.OrderStatistics
             this.SalesByCountryGroups =
             new List<SalesByCountryObject>(OrdersAndCustomers.GroupBy(c => c.country).
             Select(g => new SalesByCountryObject { Country = g.Key, SumOfSale = g.Sum(c => c.price) }).
-            OrderByDescending(g => g.SumOfSale));
+            OrderBy(g => g.SumOfSale));
         }
 
         #region Summaries
