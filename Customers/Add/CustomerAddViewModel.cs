@@ -13,7 +13,6 @@ namespace Customers.Add
     {
         public CustomerAddViewModel()
         {
-            Title = "Add customer";
         }
     }
 }
