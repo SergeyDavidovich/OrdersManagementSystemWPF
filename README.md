@@ -13,5 +13,3 @@
 - Data validation - FluentValidation 8
 
 ![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/Dashboard.PNG?raw=true)
-
-<image src="https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/Dashboard.PNG">
