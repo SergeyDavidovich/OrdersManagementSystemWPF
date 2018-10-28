@@ -2,7 +2,7 @@
 
 Technologies used:
 
-Programming language - C#
+- Programming language - C#
 UI Markup - WPF (NET Framework 4.6.1)
 Data storage - SQL Server 2017 DE
 Data access - Entity Framework 6.2
