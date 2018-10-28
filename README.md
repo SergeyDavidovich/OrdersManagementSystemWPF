@@ -1,7 +1,7 @@
 # OrdersManagementSystem
 
 
-## Technologies used:
+## Frameworks and library used:
 
 - Programming language - C#
 - UI Markup - WPF (NET Framework 4.6.1)
