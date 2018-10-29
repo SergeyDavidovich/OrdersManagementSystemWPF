@@ -2,7 +2,7 @@
 [View on Github](https://github.com/StupeniNET/OrdersManagementSystem)
 
 
-### Frameworks and library used:
+### Frameworks and libraries used:
 
 - Programming language - C#
 - UI Markup - WPF (NET Framework 4.6.1)
