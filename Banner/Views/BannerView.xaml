@@ -46,9 +46,10 @@
                 <Run Text=" - " />
                 <Run Text="{Binding State}" />
             </TextBlock>
-                <materialDesign:PopupBox HorizontalAlignment="Right"
+            <materialDesign:PopupBox HorizontalAlignment="Right" DockPanel.Dock="Right"
                     Margin="16,0,16,0"
-                    StaysOpen="False">
+                    StaysOpen="False" 
+                    ToolTip="Select color palette">
                 <Grid Width="160" Margin="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -64,37 +65,46 @@
                                 Style="{StaticResource MaterialDesignTitleTextBlock}"
                                 Margin="8,8,8,16"/>
                         <Button Grid.Column="0" Grid.Row="1" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="BLUE"
-                                Foreground="#1e88e5" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="Blue"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="Blue"/>
                         <Button Grid.Column="0" Grid.Row="2" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="RED"
-                                Foreground="#e53935" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="Red"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="Red"/>
                         <Button Grid.Column="0" Grid.Row="3" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="GREY"
-                                Foreground="#607d8b" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="BlueGrey"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="BlueGrey"/>
                         <Button Grid.Column="0" Grid.Row="4" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="PURPLE"
-                                Foreground="#7b1fa2" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="Purple"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="Purple"/>
                         <Button Grid.Column="0" Grid.Row="5" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="BROWN"
-                                Foreground="#6d4c41" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="Brown"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="Brown"/>
                     <Button Grid.Column="0" Grid.Row="6" 
-                                   Style="{DynamicResource MaterialDesignFlatButton}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
                                 Content="GREEN"
-                                Foreground="Green" HorizontalContentAlignment="Left"
-                                Command="{Binding ChangeThemeCommand}" CommandParameter="Green"/>
+                                HorizontalContentAlignment="Left"
+                                Command="{Binding ChangePaletteCommand}" CommandParameter="Green"/>
                 </Grid>
                 </materialDesign:PopupBox>
+            <ToggleButton 
+                HorizontalAlignment="Right"
+                IsChecked="{Binding IsDarkTheme}" 
+                Command="{Binding ChangeThemeCommand, Mode=TwoWay}" 
+                CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+
+                Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                ToolTip="Select Dark or Light theme"
+                DockPanel.Dock="Right" />
         </DockPanel>
     </materialDesign:ColorZone>
 </UserControl>

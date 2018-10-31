@@ -79,7 +79,7 @@
                 <syncfusion:SfChart3D>
                     <syncfusion:SfChart3D.Resources>
                         <ItemsPanelTemplate x:Key="itemPanelTemplate">
-                            <WrapPanel ItemWidth="100" Background="White" />
+                            <WrapPanel ItemWidth="100"/>
                         </ItemsPanelTemplate>
                     </syncfusion:SfChart3D.Resources>
                     <chart:SfChart3D.Header>
