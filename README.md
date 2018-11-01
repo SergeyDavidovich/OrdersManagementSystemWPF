@@ -14,4 +14,6 @@
 - Controls - Syncfusion WPF Controls vol. 2018
 - Data validation - FluentValidation 8
 
-![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/Dashboard.PNG?raw=true)
+![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/DashboardLight.PNG?raw=true)
+
+![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/DashboardDark.PNG?raw=true)

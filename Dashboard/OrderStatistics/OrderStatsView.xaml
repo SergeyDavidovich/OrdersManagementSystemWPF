@@ -114,7 +114,7 @@
                             CornerRadius="5"
                             CheckBoxVisibility="Visible"
                             ToggleSeriesVisibility="True"
-                            LegendPosition="Outside"/>
+                            LegendPosition="Outside" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </chart:SfChart3D.Legend>
 
                 </syncfusion:SfChart3D>
@@ -157,7 +157,7 @@
                             CornerRadius="5"
                             CheckBoxVisibility="Visible"
                             ToggleSeriesVisibility="True"
-                            LegendPosition="Outside"/>
+                            LegendPosition="Outside" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </chart:SfChart3D.Legend>
 
                 </syncfusion:SfChart3D>
