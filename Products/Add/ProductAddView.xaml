@@ -5,13 +5,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:converters="clr-namespace:Infrastructure.Converters;assembly=Infrastructure"
     d:DesignHeight="800"
     d:DesignWidth="450"
     mc:Ignorable="d" FontSize="18"
     x:Name="productAddView">
-    <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
+    <GroupBox Header="{Binding Title}" 
             Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.Resources>
+            <converters:BoolToDropdownConverter x:Key="BoolConverter"/>
+
             <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
                    BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
                 <Setter Property="Width" Value="80"/>
@@ -56,7 +59,6 @@
         </GroupBox.HeaderTemplate>
         <Border CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1">
             <Grid 
-                Background="{DynamicResource MaterialDesignBackground}"
                 Margin="60,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -74,6 +76,7 @@
 
                 <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                          Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
+                         IsReadOnly="{Binding IsGroupBoxEnabled}"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                          materialDesign:HintAssist.Hint="Product name"
                          materialDesign:HintAssist.HintOpacity=".5"
@@ -86,8 +89,9 @@
                           Validation.ErrorTemplate="{StaticResource ErrorTemplate}"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"          
                           materialDesign:HintAssist.Hint="Category"
-                          IsEditable="True"
-                          materialDesign:HintAssist.HintOpacity=".5"/>
+                          IsEditable="False" 
+                          materialDesign:HintAssist.HintOpacity=".5" 
+                          MaxDropDownHeight ="{Binding IsGroupBoxEnabled, Converter = {StaticResource BoolConverter}}"/>
 
                 <ComboBox Grid.Row="2" 
                           ItemsSource="{Binding Suppliers}"

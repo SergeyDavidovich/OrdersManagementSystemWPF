@@ -194,7 +194,8 @@ namespace Products.Add
             currentProduct = _context.Products.Find(id);
             PopulateBindings(true);
             Title = "VIEW: ";
-            Title += $"{currentProduct.ProductName}"; IsGroupBoxEnabled = false;
+            Title += $"{currentProduct.ProductName}";
+            IsGroupBoxEnabled = false;
         }
 
         public bool IsGroupBoxEnabled

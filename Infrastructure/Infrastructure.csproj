@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\NavigationAwareViewModelBase.cs" />
+    <Compile Include="Converters\BoolToDropdownConverter.cs" />
     <Compile Include="Events\OnNavigatedToEvent.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="GlobalCommands.cs" />

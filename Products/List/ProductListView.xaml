@@ -18,6 +18,11 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="syncfusion:GroupDropArea">
+                <Setter Property="Height" Value="80" />
+                <!--<Setter Property="Foreground" Value="White" />-->
+                <!--<Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />-->
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
@@ -74,10 +79,10 @@
                 AutoExpandGroups="True"
                 AllowFrozenGroupHeaders="True"
                 ShowColumnWhenGrouped ="False" 
-                RowSelectionBrush="{DynamicResource SecondaryAccentBrush}" 
+                RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
                 CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
                 <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                    <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
                 </syncfusion:SfDataGrid.GroupColumnDescriptions>
             </syncfusion:SfDataGrid>
             <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
