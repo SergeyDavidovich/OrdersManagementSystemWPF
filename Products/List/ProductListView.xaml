@@ -20,8 +20,6 @@
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="syncfusion:GroupDropArea">
                 <Setter Property="Height" Value="80" />
-                <!--<Setter Property="Foreground" Value="White" />-->
-                <!--<Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />-->
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -42,21 +40,14 @@
                         Text="{Binding}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TextBlock Text="{Binding Test}" Width="200"/>
-
                         <Button Background="Green" Content="ADD"
                                 Style="{StaticResource ManageButtonStyle}" 
                                 Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
                         </Button>
-
                         <Button Background="DarkOrange" Content="EDIT"
                                 Style="{StaticResource ManageButtonStyle}"
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
-
                         </Button>
-                        <!--<Button Background="Red" Content="DELETE"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
-                        </Button>-->
                     </StackPanel>
                 </DockPanel>
             </DataTemplate>

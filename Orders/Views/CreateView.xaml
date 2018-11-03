@@ -1,0 +1,146 @@
+﻿<UserControl
+    x:Class="Orders.Views.CreateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+    xmlns:local="clr-namespace:Orders.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="PRODUCTS ON STORE" IsEnabled="{Binding IsGroupBoxEnabled}"
+            Style="{DynamicResource DashBoardGroupBoxStyle}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <materialDesign:PackIcon
+                        Kind="ViewList"
+                        Height="36"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                        <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="{Binding Test}" Width="200"/>
+
+                            <Button Background="Green" Content="ADD"
+                                Style="{StaticResource ManageButtonStyle}" 
+                                Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <syncfusion:SfDataGrid Margin="6"
+                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
+                SelectedIndex="-1"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                AllowGrouping="True"
+                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
+                AutoGenerateColumns="True" 
+                ColumnSizer="Auto"  
+                ShowBusyIndicator="True"  
+                ShowGroupDropArea="True"
+                AutoExpandGroups="True"
+                AllowFrozenGroupHeaders="True"
+                ShowColumnWhenGrouped ="False" 
+                RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
+                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+                    <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                        <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                    </syncfusion:SfDataGrid.GroupColumnDescriptions>
+                </syncfusion:SfDataGrid>
+                <syncfusion:SfDataPager x:Name="sfDataPager" Grid.Row="1"
+                                   Source="{Binding Products}" 
+                                   UseOnDemandPaging="False"
+                                   NumericButtonCount="10"
+						           PageSize="30" HorizontalAlignment="Center"
+                                   AccentBackground="#FFDD2C00"
+                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="PRODUCTS IN ORDER" Grid.Column="1"
+            Style="{DynamicResource DashBoardGroupBoxStyle}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <materialDesign:PackIcon
+                        Kind="ViewList"
+                        Height="36"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                        <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Background="Green" Content="REMOVE"
+                                Style="{StaticResource ManageButtonStyle}" 
+                                Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
+                            </Button>
+                            <Button Background="DarkOrange" Content="CREATE"
+                                Style="{StaticResource ManageButtonStyle}"
+                                Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <syncfusion:SfDataGrid Margin="6"
+                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
+                SelectedIndex="-1"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                AllowGrouping="True"
+                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
+                AutoGenerateColumns="True" 
+                ColumnSizer="Auto"  
+                ShowBusyIndicator="True"  
+                ShowGroupDropArea="True"
+                AutoExpandGroups="True"
+                AllowFrozenGroupHeaders="True"
+                ShowColumnWhenGrouped ="False" 
+                RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
+                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+                    <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                        <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                    </syncfusion:SfDataGrid.GroupColumnDescriptions>
+                </syncfusion:SfDataGrid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+
+
+</UserControl>

@@ -7,11 +7,11 @@ using Infrastructure.Base;
 
 namespace Orders.ViewModels
 {
-    public class OrderItemsManageViewModel : ViewModelBase
+    public class CreateViewModel : ViewModelBase
     {
-        public OrderItemsManageViewModel()
+        public CreateViewModel()
         {
-            Title = "Orders management";
+            //Title = "Orders management";
         }
     }
 }

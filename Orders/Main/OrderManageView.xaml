@@ -13,15 +13,14 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Name="orderManageView">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="ORDER MANAGEMENT" 
+        <GroupBox Header="ORDER MANAGEMENT" Background="{DynamicResource PrimaryHueLightBrush}"
                           Style="{DynamicResource DashBoardGroupBoxStyle}" 
-                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}" >
+                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -41,20 +40,21 @@
                                     VerticalAlignment="Center"
                                     Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                     Text="{Binding}" />
-                        <Button
+                        <Button Background="DarkOrange"
                                     Grid.Column="2"
                                     Margin="0"
                                     HorizontalAlignment="Right"
                                     Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
       
-                                    Content="{Binding  Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
-                                    Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
+                                    Content="{Binding Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
+                                    Style="{DynamicResource ManageButtonStyle}" />
                     </Grid>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
         </GroupBox>
-        <GroupBox Grid.Column="1" Style="{DynamicResource DashBoardGroupBoxStyle}" 
-                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
+        <GroupBox Grid.Column="1" Header="INVOICE"
+                  Style="{DynamicResource DashBoardGroupBoxStyle}" 
+                  prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -74,14 +74,6 @@
                                     VerticalAlignment="Center"
                                     Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                     Text="{Binding}" />
-                        <Button
-                                    Grid.Column="2"
-                                    Margin="0"
-                                    HorizontalAlignment="Right"
-                                    Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
-      
-                                    Content="{Binding  Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
-                                    Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
                     </Grid>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>

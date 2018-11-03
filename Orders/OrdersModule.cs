@@ -21,14 +21,13 @@ namespace Orders
 
         public void Initialize()
         {
-          
             _container.RegisterTypeForNavigation<OrderManageView>();
-            _container.RegisterTypeForNavigation<OrderItemsManageView>();
 
+            _container.RegisterTypeForNavigation<CreateView>();
             _container.RegisterTypeForNavigation<InvoiceView>();
             _container.RegisterTypeForNavigation<JournalView>();
 
-            //_regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(OrderItemsManageView));
+            //_regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(CreateView));
 
         }
     }

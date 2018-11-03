@@ -30,6 +30,7 @@ namespace Orders.Views
             this.DataContext = unityContainer.Resolve<OrderManageViewModel>();
             this.Loaded += OnLoaded;
         }
+
         /// <summary>
         /// Загружаем Views во вложенные регионы, так как регионы в RegionManager 
         /// добавляются после загрузки View, в котором они находятся
@@ -43,7 +44,7 @@ namespace Orders.Views
             //так как это изменит состояние формы(Journal, Creation state) 
             //Следующие две проверки нужны только если View в регионах являются Singeltone
             if (!regionManager.Regions[RegionNames.OrdersContentRegion].ActiveViews.Any())
-                regionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "OrderItemsManageView");
+                regionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
             if (!regionManager.Regions[RegionNames.OrderDetailsRegion].ActiveViews.Any())
                 regionManager?.RequestNavigate(RegionNames.OrderDetailsRegion, "InvoiceView");
         }
