@@ -40,41 +40,44 @@
                                     VerticalAlignment="Center"
                                     Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                                     Text="{Binding}" />
-                        <Button Background="DarkOrange"
-                                    Grid.Column="2"
-                                    Margin="0"
-                                    HorizontalAlignment="Right"
-                                    Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
-      
-                                    Content="{Binding Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
-                                    Style="{DynamicResource ManageButtonStyle}" />
+                        <Button Grid.Column="2"
+                                Margin="0,0,6,0"
+                                HorizontalAlignment="Right"
+                                Command="{Binding Path=DataContext.SwitchOrdersContentStateCommand, ElementName=orderManageView}"
+                                Content="{Binding Path=DataContext.OrdersContentRegionSwitchViewButtonText, ElementName=orderManageView}"
+                                Style="{DynamicResource ManageButtonStyle}" Width="120"
+                                Background="{DynamicResource SecondaryAccentBrush}"/>
                     </Grid>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="INVOICE"
+        <GroupBox Grid.Column="1" Header="INVOICE" Background="{DynamicResource PrimaryHueLightBrush}"
                   Style="{DynamicResource DashBoardGroupBoxStyle}" 
                   prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <DockPanel>
                         <materialDesign:PackIcon
-                                    Width="32"
-                                    Height="32"
-                                    VerticalAlignment="Center"
-                                    Kind="BookMultiple" />
+                        Kind="Pen"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
                         <TextBlock
-                                    Grid.Column="1"
-                                    Margin="8,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                                    Text="{Binding}" />
-                    </Grid>
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource ManageButtonStyle}"
+                            Content="SAVE"
+                                Command="{Binding Path=DataContext.SaveCommand, ElementName=productAddView}"
+                            Background="Green"/>
+                            <Button Style="{StaticResource ManageButtonStyle}"
+                                Background="Red" 
+                                Content="CANCEL"
+                                Command="{Binding Path=DataContext.CancelCommand, ElementName=productAddView}"/>
+                        </StackPanel>
+                    </DockPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
 

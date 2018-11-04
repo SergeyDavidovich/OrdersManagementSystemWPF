@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Practices.Unity;
+using Orders.ViewModels;
 
 namespace Orders.Views
 {
@@ -20,9 +22,10 @@ namespace Orders.Views
     /// </summary>
     public partial class JournalView : UserControl
     {
-        public JournalView()
+        public JournalView(IUnityContainer container)
         {
             InitializeComponent();
+            this.DataContext = container.Resolve<JournalViewModel>();
         }
     }
 }

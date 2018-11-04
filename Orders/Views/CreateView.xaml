@@ -61,20 +61,16 @@
                 ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
                 SelectedIndex="-1"
                 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                AllowGrouping="True"
-                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
+                AllowGrouping="False"
                 AutoGenerateColumns="True" 
                 ColumnSizer="Auto"  
                 ShowBusyIndicator="True"  
-                ShowGroupDropArea="True"
-                AutoExpandGroups="True"
+                ShowGroupDropArea="False"
+                AutoExpandGroups="False"
                 AllowFrozenGroupHeaders="True"
                 ShowColumnWhenGrouped ="False" 
                 RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
                 CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
-                    <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                        <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
-                    </syncfusion:SfDataGrid.GroupColumnDescriptions>
                 </syncfusion:SfDataGrid>
                 <syncfusion:SfDataPager x:Name="sfDataPager" Grid.Row="1"
                                    Source="{Binding Products}" 
@@ -106,7 +102,9 @@
                                 Style="{StaticResource ManageButtonStyle}" 
                                 Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
                             </Button>
-                            <Button Background="DarkOrange" Content="CREATE"
+                            <Button 
+                                Background="{DynamicResource SecondaryAccentBrush}"      
+                                Content="CREATE"
                                 Style="{StaticResource ManageButtonStyle}"
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
                             </Button>
@@ -120,23 +118,14 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <syncfusion:SfDataGrid Margin="6"
-                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
                 SelectedIndex="-1"
                 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                AllowGrouping="True"
-                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
                 AutoGenerateColumns="True" 
                 ColumnSizer="Auto"  
                 ShowBusyIndicator="True"  
-                ShowGroupDropArea="True"
-                AutoExpandGroups="True"
-                AllowFrozenGroupHeaders="True"
                 ShowColumnWhenGrouped ="False" 
                 RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
                 CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
-                    <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                        <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
-                    </syncfusion:SfDataGrid.GroupColumnDescriptions>
                 </syncfusion:SfDataGrid>
             </Grid>
         </GroupBox>

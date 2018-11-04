@@ -50,11 +50,11 @@ namespace Orders.Main
             switch (state)
             {
                 case OrdersContentRegionState.Creation:
-                    OrdersContentRegionSwitchViewButtonText = "JOURNAL";
+                    OrdersContentRegionSwitchViewButtonText = "TO JOURNAL";
                     RegionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
                     break;
                 case OrdersContentRegionState.Journal:
-                    OrdersContentRegionSwitchViewButtonText = "CREATION";
+                    OrdersContentRegionSwitchViewButtonText = "TO CREATION";
                     RegionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "JournalView");
                     break;
             }

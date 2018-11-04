@@ -19,8 +19,6 @@
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="syncfusion:GroupDropArea">
                 <Setter Property="Height" Value="80" />
-                <!--<Setter Property="Foreground" Value="White" />-->
-                <!--<Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />-->
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -68,24 +66,21 @@
             <syncfusion:SfDataGrid Margin="6"
                 ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
                 SelectedIndex="-1"
-                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                AllowGrouping="True"
+                SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
+                AllowGrouping="False"
                 GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
                 AutoGenerateColumns="True" 
                 ColumnSizer="Auto"  
                 ShowBusyIndicator="True"  
-                ShowGroupDropArea="True"
-                AutoExpandGroups="True"
+                ShowGroupDropArea="False"
+                AutoExpandGroups="False"
                 AllowFrozenGroupHeaders="True"
                 ShowColumnWhenGrouped ="False" 
-                RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
+                RowSelectionBrush="{DynamicResource PrimaryHueLightBrush}" 
                 CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
-                <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                    <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
-                </syncfusion:SfDataGrid.GroupColumnDescriptions>
             </syncfusion:SfDataGrid>
             <syncfusion:SfDataPager x:Name="sfDataPager" Grid.Row="1"
-                                   Source="{Binding Products}" 
+                                   Source="{Binding Orders}" 
                                    UseOnDemandPaging="False"
                                    NumericButtonCount="10"
 						           PageSize="30" HorizontalAlignment="Center"

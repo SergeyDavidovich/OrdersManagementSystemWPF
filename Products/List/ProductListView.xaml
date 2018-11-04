@@ -70,10 +70,11 @@
                 AutoExpandGroups="True"
                 AllowFrozenGroupHeaders="True"
                 ShowColumnWhenGrouped ="False" 
-                RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
-                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+                RowSelectionBrush="{DynamicResource PrimaryHueLightBrush}" 
+                CurrentCellBorderBrush="{x:Null}" 
+                SelectionForegroundBrush="White">
                 <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                    <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
                 </syncfusion:SfDataGrid.GroupColumnDescriptions>
             </syncfusion:SfDataGrid>
             <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
