@@ -52,7 +52,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\Class1.cs" />
+    <Compile Include="CommonTypes\ProductInOrder.cs" />
+    <Compile Include="Events\OnOrderCreate.cs" />
     <Compile Include="Main\OrderManageViewModel.cs" />
     <Compile Include="OrdersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:local="clr-namespace:Orders.Views"
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" FontSize="14"
@@ -68,7 +69,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                <TextBlock Text="Additional info" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    <TextBlock Text="Additional info" HorizontalAlignment="Right" VerticalAlignment="Top" 
                            Margin="20,4" TextDecorations="Underline" FontSize="12"/>
                     <Grid Grid.Row="1" Margin="20,10">
                         <Grid.RowDefinitions>
@@ -141,14 +142,58 @@
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                             materialDesign:HintAssist.Hint="Product name"
                             materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/> 
-                    </Grid>           
+                            VerticalAlignment="Center" Margin="20,0"/>
+                    </Grid>
                 </Grid>
             </Border>
+            <syncfusion:SfDataGrid ItemsSource="{Binding ProductList}" Grid.Row="2" 
+                                   BorderBrush="{x:Null}" 
+                                   Margin="20,10" ColumnSizer="AutoLastColumnFill" SelectionMode="None">
 
-            <ListView Grid.Row="2">
-                
-            </ListView>
+                <syncfusion:SfDataGrid.TableSummaryRows>
+                    <syncfusion:GridTableSummaryRow ShowSummaryInRow="False">
+                        <syncfusion:GridSummaryRow.SummaryColumns>
+                            <syncfusion:GridSummaryColumn Name="PriceAmount"
+                                              Format="'Total UnitPrice : {Sum:c}'"
+                                              MappingName="UnitPrice"
+                                              SummaryType="DoubleAggregate" />
+                            <syncfusion:GridSummaryColumn Name="ProductCount"
+                                              Format="'Total Product Count : {Count:d}'"
+                                              MappingName="ProductName"
+                                              SummaryType="CountAggregate" />
+                        </syncfusion:GridSummaryRow.SummaryColumns>
+                    </syncfusion:GridTableSummaryRow>
+                </syncfusion:SfDataGrid.TableSummaryRows>
+
+
+            </syncfusion:SfDataGrid>
+
+
+
+
+            <!--<ScrollViewer Margin="20" Grid.Row="2" PanningMode="VerticalOnly">
+                <ListBox ItemsSource="{Binding ProductList}" SelectionMode="Single" 
+                          FontSize="14" Focusable="False" IsTextSearchEnabled="False" IsManipulationEnabled="True">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="400"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding ID}" Margin="10,2"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="10,2"/>
+                                <TextBlock Grid.Column="2" Text="{Binding UnitPrice}" Margin="10,2"/>
+                                <TextBlock Grid.Column="3" Text="{Binding Quantity}" Margin="10,2"/>
+                                <TextBlock Grid.Column="4" Text="{Binding Discount}" Margin="10,2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>-->
         </Grid>
     </Border>
 </UserControl>

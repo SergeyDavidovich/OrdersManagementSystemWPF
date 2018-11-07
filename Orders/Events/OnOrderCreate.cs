@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Prism.Events;
+using Orders.ViewModels;
+using Orders.CommonTypes;
 
 namespace Orders.Events
 {
-   public class Class1:PubSubEvent
+    internal class OnOrderCreate : PubSubEvent<List<ProductInOrder>>
     {
     }
 }
