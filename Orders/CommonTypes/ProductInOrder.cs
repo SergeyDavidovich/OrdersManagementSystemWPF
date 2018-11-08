@@ -11,7 +11,7 @@ namespace Orders.CommonTypes
         public int ID { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
-        public int Quantity { get; set; }
+        public short Quantity { get; set; }
         public float Discount { get; set; }
     }
 }

@@ -9,7 +9,8 @@
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" FontSize="14"
              d:DesignHeight="450" d:DesignWidth="800"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:Name="invoiceView">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,6 +18,35 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+
+    <GroupBox Grid.Column="1" Header="INVOICE" Background="{DynamicResource PrimaryHueLightBrush}"
+                  Style="{DynamicResource DashBoardGroupBoxStyle}">
+        <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <materialDesign:PackIcon
+                        Kind="Pen"
+                        Height="32"
+                        Width="32"
+                        VerticalAlignment="Center" />
+                        <TextBlock
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="{Binding}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource ManageButtonStyle}"
+                            Content="SAVE"
+                                Command="{Binding Path=DataContext.SaveCommand, ElementName=invoiceView}"
+                            Background="Green"/>
+                            <Button Style="{StaticResource ManageButtonStyle}"
+                                Background="Red" 
+                                Content="CANCEL"
+                                Command="{Binding Path=DataContext.CancelCommand, ElementName=invoiceView}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
     <Border Margin="6" CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" Background="White">
         <Grid>
             <Grid.RowDefinitions>
@@ -36,7 +66,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBox Grid.Row="0" Grid.Column="0" IsReadOnly="True"
-                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Text="{Binding OrderID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                         materialDesign:HintAssist.Hint="Order ID" 
                         materialDesign:HintAssist.HintOpacity=".5"
@@ -196,4 +226,7 @@
             </ScrollViewer>-->
         </Grid>
     </Border>
+
+        </GroupBox>
+
 </UserControl>

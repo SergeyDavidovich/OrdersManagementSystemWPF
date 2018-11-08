@@ -51,7 +51,10 @@
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="INVOICE" Background="{DynamicResource PrimaryHueLightBrush}"
+        <ContentControl Grid.Column="1"
+            prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}"/>
+
+        <!--<GroupBox Grid.Column="1" Header="INVOICE" Background="{DynamicResource PrimaryHueLightBrush}"
                   Style="{DynamicResource DashBoardGroupBoxStyle}" 
                   prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrderDetailsRegion}">
             <GroupBox.HeaderTemplate>
@@ -81,6 +84,6 @@
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
 
-        </GroupBox>
+        </GroupBox>-->
     </Grid>
 </UserControl>

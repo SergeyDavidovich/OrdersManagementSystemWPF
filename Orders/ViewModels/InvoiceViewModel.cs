@@ -8,24 +8,68 @@ using Infrastructure.Base;
 using Orders.Events;
 using Prism.Events;
 using Orders.CommonTypes;
+using Prism.Commands;
 
 namespace Orders.ViewModels
 {
     public class InvoiceViewModel : ViewModelBase
     {
+        #region Declarations
+
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
+        Order order;
+
+        #endregion
 
         public InvoiceViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
-            Title = "Invoice view";
             _context = context;
             _eventAggregator = eventAggregator;
 
-            _eventAggregator.GetEvent<OnOrderCreate>().Subscribe(SetProductsList);
+            _eventAggregator.GetEvent<OnOrderCreate>().Subscribe(list => ProductList = list);
 
-
+            SaveCommand = new DelegateCommand(Save, CanSave);
+            order = new Order();
         }
+
+        #region Commands
+        public DelegateCommand SaveCommand { get; set; }
+        private void Save()
+        {
+            using (var contextTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.Orders.Add(order);
+                    _context.SaveChanges();
+
+                    _context.Order_Details.AddRange(
+                        new List<Order_Details>(
+                            ProductList.Select(p => new Order_Details
+                            {
+                                OrderID = order.OrderID,
+                                ProductID = p.ID,
+                                UnitPrice = p.UnitPrice,
+                                Quantity=p.Quantity,
+                                Discount=p.Discount
+                            })));
+                    _context.SaveChanges();
+
+                    contextTransaction.Commit();
+
+                    OrderID = order.OrderID;
+                }
+                catch (Exception)
+                {
+                    contextTransaction.Rollback();
+                }
+            }
+        }
+        private bool CanSave() { return true; }
+        #endregion
+
+        #region Bindable properties
 
         private List<ProductInOrder> _ProductList;
         public List<ProductInOrder> ProductList
@@ -34,9 +78,30 @@ namespace Orders.ViewModels
             set => SetProperty(ref _ProductList, value);
         }
 
-        private void SetProductsList(List<ProductInOrder> list)
+        int orderID;
+        public int OrderID
         {
-            ProductList = list;
+            get => orderID;
+            set
+            {
+                SetProperty(ref orderID, value);
+            }
         }
+
+        string customerID;
+        public string CustomerID
+        {
+            get => customerID;
+            set
+            {
+                SetProperty(ref customerID, value);
+                order.CustomerID = customerID;
+            }
+        }
+        #endregion
+
+        #region Utilites
+
+        #endregion
     }
 }
