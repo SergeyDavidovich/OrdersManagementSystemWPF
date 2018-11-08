@@ -27,7 +27,7 @@ namespace Orders.ViewModels
             _context = context;
             _eventAggregator = eventAggregator;
 
-            _eventAggregator.GetEvent<OnOrderCreate>().Subscribe(list => ProductList = list);
+            _eventAggregator.GetEvent<OnOrderCreate>().Subscribe(OnOrderCreateHandle);
 
             SaveCommand = new DelegateCommand(Save, CanSave);
             order = new Order();
@@ -88,6 +88,17 @@ namespace Orders.ViewModels
             }
         }
 
+        private DateTime orderDate;
+        public DateTime OrderDate
+        {
+            get => orderDate;
+            set
+            {
+                SetProperty(ref orderDate, value);
+                order.OrderDate = orderDate;
+            }
+        }
+
         string customerID;
         public string CustomerID
         {
@@ -98,6 +109,16 @@ namespace Orders.ViewModels
                 order.CustomerID = customerID;
             }
         }
+        #endregion
+
+        #region Events handlers
+
+        private void OnOrderCreateHandle(List<ProductInOrder> list)
+        {
+            ProductList = list;
+            OrderDate = DateTime.Now;
+        }
+
         #endregion
 
         #region Utilites

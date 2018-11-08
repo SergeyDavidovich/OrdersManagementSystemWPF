@@ -66,20 +66,19 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBox Grid.Row="0" Grid.Column="0" IsReadOnly="True"
-                        Text="{Binding OrderID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Text="{Binding OrderID}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                         materialDesign:HintAssist.Hint="Order ID" 
                         materialDesign:HintAssist.HintOpacity=".5"
                         VerticalAlignment="Center" Margin="20,0"/>
                     <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True"
-                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Text="{Binding OrderDate}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                         materialDesign:HintAssist.Hint="Order date" 
                         materialDesign:HintAssist.HintOpacity=".5"
                         VerticalAlignment="Center" Margin="20,0"/>
-                    <TextBox Grid.Row="1" Grid.Column="0" IsReadOnly="True"
+                    <ComboBox Grid.Row="1" Grid.Column="0" IsReadOnly="True"
                         Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                         materialDesign:HintAssist.Hint="Customer" 
                         materialDesign:HintAssist.HintOpacity=".5"
                         VerticalAlignment="Center" Margin="20,0"/>
