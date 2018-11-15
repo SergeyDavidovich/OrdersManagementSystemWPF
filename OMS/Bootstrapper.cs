@@ -55,11 +55,11 @@ namespace OMS
 
             Container.RegisterInstance<LocalDbContext>(new LocalDbContext(), new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<BLL.IGenericRepository<Category>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
-            //Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<BLL.IGenericRepository<Category>, BLL.CategoryRepository>(new ContainerControlledLifetimeManager());
+            ////Container.RegisterType<BLL.IGenericRepository<Product>, BLL.ProductRepository>(new ContainerControlledLifetimeManager());
 
-            Container.RegisterType<BLL.IGenericRepository<Order>, BLL.OrderRepository>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<BLL.IGenericRepository<Customer>, BLL.CustomerRepository>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<BLL.IGenericRepository<Order>, BLL.OrderRepository>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<BLL.IGenericRepository<Customer>, BLL.CustomerRepository>(new ContainerControlledLifetimeManager());
         }
 
         /// <summary>
@@ -89,6 +89,8 @@ namespace OMS
         protected override void InitializeShell()
         {
             shellViewModel.ConfigureRegionManager();
+           
+
             Application.Current.MainWindow.Show();
         }
         public LocalDbContext Context { get; set; }

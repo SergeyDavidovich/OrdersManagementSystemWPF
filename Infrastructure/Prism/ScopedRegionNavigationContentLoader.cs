@@ -9,7 +9,7 @@ using Prism.Regions;
 
 namespace Infrastructure.Prism
 {
-    public class ScopedRegionNavigationContentLoader: IRegionNavigationContentLoader
+    public class ScopedRegionNavigationContentLoader : IRegionNavigationContentLoader
     {
         private readonly IServiceLocator serviceLocator;
 
@@ -37,7 +37,7 @@ namespace Infrastructure.Prism
         /// <exception cref="ArgumentException">when a new view cannot be created for the navigation request.</exception>
         public object LoadContent(IRegion region, NavigationContext navigationContext)
         {
-            if (region == null) throw new ArgumentNullException("region");  
+            if (region == null) throw new ArgumentNullException("region");
             if (navigationContext == null) throw new ArgumentNullException("navigationContext");
 
             string candidateTargetContract = this.GetContractFromNavigationContext(navigationContext);
@@ -49,7 +49,7 @@ namespace Infrastructure.Prism
                     v =>
                     {
                         var navigationAware = v as INavigationAware;
-                        if  (navigationAware != null && !navigationAware.IsNavigationTarget(navigationContext))
+                        if (navigationAware != null && !navigationAware.IsNavigationTarget(navigationContext))
                         {
                             return false;
                         }
@@ -99,7 +99,7 @@ namespace Infrastructure.Prism
         {
             object newRegionItem;
             try
-            {           
+            {
                 newRegionItem = this.serviceLocator.GetInstance<object>(candidateTargetContract);
             }
             catch (ActivationException e)

@@ -9,9 +9,13 @@ namespace Orders.Main
 {
     public class OrderManageViewModel : NavigationAwareViewModelBase, IRegionManagerAware
     {
+        #region Declarations
+
         private OrdersContentRegionState _ordersContentRegionState;
 
         private string _ordersContentRegionSwitchViewButtonText;
+
+        #endregion
 
         public OrderManageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
@@ -20,15 +24,25 @@ namespace Orders.Main
             ProcessOrdersContentRegionState(_ordersContentRegionState);
         }
 
+        #region Bindable properties
+
         public string OrdersContentRegionSwitchViewButtonText
         {
             get => _ordersContentRegionSwitchViewButtonText;
             set => SetProperty(ref _ordersContentRegionSwitchViewButtonText, value);
         }
 
-        public DelegateCommand SwitchOrdersContentStateCommand { get; set; }
+        #endregion
+
+        #region IRegionManagerAware implementation
 
         public IRegionManager RegionManager { get; set; }
+
+        #endregion
+
+        #region Commands
+
+        public DelegateCommand SwitchOrdersContentStateCommand { get; set; }
 
         private void SwitchOrdersContentState()
         {
@@ -37,12 +51,19 @@ namespace Orders.Main
             else
                 ProcessOrdersContentRegionState(OrdersContentRegionState.Creation);
         }
+        #endregion
 
+        #region Navigatet Events handlers
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
             UpdateBannerTitle("Orders");
         }
+
+
+        #endregion
+
+        #region State Processing
 
         private void ProcessOrdersContentRegionState(OrdersContentRegionState state)
         {
@@ -65,5 +86,7 @@ namespace Orders.Main
             Creation,
             Journal
         }
+        
+        #endregion
     }
 }

@@ -40,6 +40,7 @@ namespace Orders.Views
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             var regionManager = (this.DataContext as IRegionManagerAware).RegionManager;
+
             //Если навигация во вложенных регионах уже была, то второй раз этого делать нельзя,
             //так как это изменит состояние формы(Journal, Creation state) 
             //Следующие две проверки нужны только если View в регионах являются Singeltone

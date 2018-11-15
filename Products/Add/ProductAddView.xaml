@@ -14,7 +14,6 @@
             Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.Resources>
             <converters:BoolToDropdownConverter x:Key="BoolConverter"/>
-
             <Style x:Key="MaterialDesignRaisedLightButton" TargetType="Button" 
                    BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
                 <Setter Property="Width" Value="80"/>

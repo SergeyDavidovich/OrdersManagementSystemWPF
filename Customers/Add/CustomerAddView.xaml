@@ -55,7 +55,6 @@
         </GroupBox.HeaderTemplate>
         <Border CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1">
             <Grid 
-                Background="{DynamicResource MaterialDesignBackground}"
                 Margin="60,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

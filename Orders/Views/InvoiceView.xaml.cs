@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using Orders.ViewModels;
+using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +21,19 @@ namespace Orders.Views
     /// <summary>
     /// Interaction logic for InvoiceView.xaml
     /// </summary>
+    /// 
     public partial class InvoiceView : UserControl
     {
-        public InvoiceView()
+        public InvoiceView(IUnityContainer unityContainer)
         {
             InitializeComponent();
+
+
+            //var vm = unityContainer.Resolve<InvoiceViewModel>();
+            ////var vm = unityContainer.Resolve(typeof(InvoiceViewModel));
+
+            //this.DataContext = vm;
+
         }
     }
 }

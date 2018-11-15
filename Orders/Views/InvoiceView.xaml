@@ -22,89 +22,41 @@
     <GroupBox Grid.Column="1" Header="INVOICE" Background="{DynamicResource PrimaryHueLightBrush}"
                   Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.HeaderTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <materialDesign:PackIcon
+            <DataTemplate>
+                <DockPanel>
+                    <materialDesign:PackIcon
                         Kind="Pen"
                         Height="32"
                         Width="32"
                         VerticalAlignment="Center" />
-                        <TextBlock
+                    <TextBlock
                         Margin="8,0,0,0"
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Style="{StaticResource ManageButtonStyle}"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource ManageButtonStyle}"
                             Content="SAVE"
                                 Command="{Binding Path=DataContext.SaveCommand, ElementName=invoiceView}"
                             Background="Green"/>
-                            <Button Style="{StaticResource ManageButtonStyle}"
+                        <Button Style="{StaticResource ManageButtonStyle}"
                                 Background="Red" 
                                 Content="CANCEL"
                                 Command="{Binding Path=DataContext.CancelCommand, ElementName=invoiceView}"/>
-                        </StackPanel>
-                    </DockPanel>
-                </DataTemplate>
-            </GroupBox.HeaderTemplate>
-    <Border Margin="6" CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" Background="White">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Row="0" Margin="10,10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Grid.Row="0" Grid.Column="0" IsReadOnly="True"
-                        Text="{Binding OrderID}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        materialDesign:HintAssist.Hint="Order ID" 
-                        materialDesign:HintAssist.HintOpacity=".5"
-                        VerticalAlignment="Center" Margin="20,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True"
-                        Text="{Binding OrderDate}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        materialDesign:HintAssist.Hint="Order date" 
-                        materialDesign:HintAssist.HintOpacity=".5"
-                        VerticalAlignment="Center" Margin="20,0"/>
-                    <ComboBox Grid.Row="1" Grid.Column="0" IsReadOnly="True"
-                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        materialDesign:HintAssist.Hint="Customer" 
-                        materialDesign:HintAssist.HintOpacity=".5"
-                        VerticalAlignment="Center" Margin="20,0"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True"
-                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        materialDesign:HintAssist.Hint="Employeer" 
-                        materialDesign:HintAssist.HintOpacity=".5"
-                        VerticalAlignment="Center" Margin="20,0"/>
-                </Grid>
-            </Border>
-
-            <Border Grid.Row="1" Margin="10"
-                CornerRadius="2"  BorderBrush="#FF999999" BorderThickness="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Additional info" HorizontalAlignment="Right" VerticalAlignment="Top" 
-                           Margin="20,4" TextDecorations="Underline" FontSize="12"/>
-                    <Grid Grid.Row="1" Margin="20,10">
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+        <Border Margin="6" CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <!--<RowDefinition Height="4*"/>-->
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Margin="10,10">
+                    <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
@@ -112,120 +64,125 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="0" Grid.Column="0"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="0" Grid.Column="1"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="1" Grid.Column="0"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="1" Grid.Column="1"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="2" Grid.Column="0"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="2" Grid.Column="1"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="3" Grid.Column="0"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="3" Grid.Column="1"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="4" Grid.Column="0"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="4" Grid.Column="1"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Product name"
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
+
+                        <TextBox Grid.Row="0" Grid.Column="0" IsReadOnly="True"
+                        Text="{Binding OrderID}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        materialDesign:HintAssist.Hint="Order ID" 
+                        materialDesign:HintAssist.HintOpacity=".5"
+                        VerticalAlignment="Center" Margin="20,0"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True"
+                        Text="{Binding OrderDate}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        materialDesign:HintAssist.Hint="Order date" 
+                        materialDesign:HintAssist.HintOpacity=".5"
+                        VerticalAlignment="Center" Margin="20,0"/>
+                        <ComboBox Grid.Row="1" Grid.Column="0" IsReadOnly="True"
+                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        materialDesign:HintAssist.Hint="Customer" 
+                        materialDesign:HintAssist.HintOpacity=".5"
+                        VerticalAlignment="Center" Margin="20,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True"
+                        Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        materialDesign:HintAssist.Hint="Employeer" 
+                        materialDesign:HintAssist.HintOpacity=".5"
+                        VerticalAlignment="Center" Margin="20,0"/>
                     </Grid>
-                </Grid>
-            </Border>
-            <syncfusion:SfDataGrid ItemsSource="{Binding ProductList}" Grid.Row="2" 
+                </Border>
+
+                <!--<Border Grid.Row="1" Margin="10"
+                CornerRadius="2"  BorderBrush="#FF999999" BorderThickness="1">
+                        <Grid Grid.Row="1" Margin="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="0" Grid.Column="0"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="0" Grid.Column="1"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="1" Grid.Column="0"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="1" Grid.Column="1"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="2" Grid.Column="0"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="2" Grid.Column="1"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="3" Grid.Column="0"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="3" Grid.Column="1"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="4" Grid.Column="0"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                            <TextBox Grid.Row="4" Grid.Column="1"
+                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Product name"
+                            materialDesign:HintAssist.HintOpacity=".5"
+                            VerticalAlignment="Center" Margin="20,0"/>
+                        </Grid>
+                </Border>-->
+                <syncfusion:SfDataGrid ItemsSource="{Binding ProductList}" Grid.Row="1" 
                                    BorderBrush="{x:Null}" 
                                    Margin="20,10" ColumnSizer="AutoLastColumnFill" SelectionMode="None">
 
-                <syncfusion:SfDataGrid.TableSummaryRows>
-                    <syncfusion:GridTableSummaryRow ShowSummaryInRow="False">
-                        <syncfusion:GridSummaryRow.SummaryColumns>
-                            <syncfusion:GridSummaryColumn Name="PriceAmount"
-                                              Format="'Total UnitPrice : {Sum:c}'"
-                                              MappingName="UnitPrice"
-                                              SummaryType="DoubleAggregate" />
-                            <syncfusion:GridSummaryColumn Name="ProductCount"
-                                              Format="'Total Product Count : {Count:d}'"
-                                              MappingName="ProductName"
-                                              SummaryType="CountAggregate" />
-                        </syncfusion:GridSummaryRow.SummaryColumns>
-                    </syncfusion:GridTableSummaryRow>
-                </syncfusion:SfDataGrid.TableSummaryRows>
-
-
-            </syncfusion:SfDataGrid>
-
-
-
-
-            <!--<ScrollViewer Margin="20" Grid.Row="2" PanningMode="VerticalOnly">
-                <ListBox ItemsSource="{Binding ProductList}" SelectionMode="Single" 
-                          FontSize="14" Focusable="False" IsTextSearchEnabled="False" IsManipulationEnabled="True">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="400"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding ID}" Margin="10,2"/>
-                                <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="10,2"/>
-                                <TextBlock Grid.Column="2" Text="{Binding UnitPrice}" Margin="10,2"/>
-                                <TextBlock Grid.Column="3" Text="{Binding Quantity}" Margin="10,2"/>
-                                <TextBlock Grid.Column="4" Text="{Binding Discount}" Margin="10,2"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </ScrollViewer>-->
-        </Grid>
-    </Border>
-
-        </GroupBox>
-
+                    <syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:GridTableSummaryRow Title=" Total Price : {PriceAmount}" ShowSummaryInRow="True">
+                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                <syncfusion:GridSummaryColumn Name="PriceAmount"
+                                                Format="'{Sum:c}'"
+                                                MappingName="UnitPrice"
+                                                SummaryType="DoubleAggregate" FrameworkElement.FlowDirection="RightToLeft" />
+                            </syncfusion:GridSummaryRow.SummaryColumns>
+                        </syncfusion:GridTableSummaryRow>
+                    </syncfusion:SfDataGrid.TableSummaryRows>
+                </syncfusion:SfDataGrid>
+            </Grid>
+        </Border>
+    </GroupBox>
 </UserControl>

@@ -45,46 +45,39 @@ namespace Orders.ViewModels
                     UnitPrice = ((Product)o).UnitPrice.Value
                 }));
 
-
             ProductInOrderCollection = productInOrderCollection;
-
-
             SelectedProducts.Clear();
         }
         private bool CanSelect()
         {
             if (SelectedProducts != null)
-            {
-                if (SelectedProducts.Count == 0)
-                    return false;
-                else
+                if (SelectedProducts.Count != 0)
                     return true;
-            }
             return false;
         }
 
         public DelegateCommand UnselectCommand { get; set; }
-        private void Unselect() { _ProductInOrderCollection.Clear(); }
-        private bool CanUnselect()
+        private void Unselect()
         {
-            if (_ProductInOrderCollection != null)
-            {
-                if (_ProductInOrderCollection.Count == 0)
-                    return false;
-                else
-                    return true;
-            }
-            return false;
+            _ProductInOrderCollection.Clear();
+            CreateOrderCommand.RaiseCanExecuteChanged();
+            UnselectCommand.RaiseCanExecuteChanged();
+
         }
+        private bool CanUnselect() { return ProductsInOrderIsNullOrEmpty(); }
+
 
         public DelegateCommand CreateOrderCommand { get; set; }
         private void CreateOrder()
         {
             _eventAggregator.GetEvent<OnOrderCreate>().Publish(new List<ProductInOrder>(ProductInOrderCollection));
+            ProductInOrderCollection.Clear();
+            CreateOrderCommand.RaiseCanExecuteChanged();
+            UnselectCommand.RaiseCanExecuteChanged();
 
         }
-        private bool CanCreateOrder()
-        { return true; }
+        private bool CanCreateOrder() { return ProductsInOrderIsNullOrEmpty(); }
+
         #endregion
 
         #region Bindable properties
@@ -99,8 +92,6 @@ namespace Orders.ViewModels
             {
                 SetProperty(ref _SelectedProducts, value);
                 SelectCommand.RaiseCanExecuteChanged();
-                UnselectCommand.RaiseCanExecuteChanged();
-
             }
         }
 
@@ -113,6 +104,7 @@ namespace Orders.ViewModels
             {
                 SetProperty(ref _ProductInOrderCollection, value);
                 UnselectCommand.RaiseCanExecuteChanged();
+                CreateOrderCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -130,6 +122,17 @@ namespace Orders.ViewModels
         //    public int Quantity { get; set; }
         //    public float Discount { get; set; }
         //}
+
+        #endregion
+
+        #region Utilites
+        private bool ProductsInOrderIsNullOrEmpty()
+        {
+            if (ProductInOrderCollection != null)
+                if (ProductInOrderCollection.Count != 0)
+                    return true;
+            return false;
+        }
 
         #endregion
     }

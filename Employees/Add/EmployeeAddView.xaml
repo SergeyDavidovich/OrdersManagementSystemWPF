@@ -9,7 +9,15 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d">
+    mc:Ignorable="d" FontSize="18">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
             Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.Resources>
@@ -57,7 +65,6 @@
         </GroupBox.HeaderTemplate>
         <Border CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1">
             <Grid 
-                Background="{DynamicResource MaterialDesignBackground}"
                 Margin="60,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

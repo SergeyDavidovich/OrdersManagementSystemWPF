@@ -9,6 +9,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:datapager="clr-namespace:Syncfusion.UI.Xaml.Controls.DataPager;assembly=Syncfusion.SfGrid.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:model="clr-namespace:DAL_LocalDb;assembly=DAL_LocalDb"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -17,6 +18,67 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <!--TileViewControl DataTemplates-->
+            <DataTemplate x:Key="NormalHeaderTemplate">
+                    <TextBlock Text="{Binding FirstName}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="MinHeaderTemplate">
+                    <TextBlock Text="{Binding FirstName}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="MaxHeaderTemplate">
+                <TextBlock Text="{Binding FirstName}"/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="NormalItemTemplate" DataType="model:Employee">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding LastName}"/>
+                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
+                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="MinItemTemplate" DataType="model:Employee">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding LastName}"/>
+                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
+                    <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                           Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="MaxItemTemplate" DataType="model:Employee">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding LastName}"/>
+                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
+                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Grid>
+            </DataTemplate>
+
+            <Style TargetType="syncfusion:TileViewItem" x:Key="tileViewItemStyle">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="CloseButtonVisibility" Value="Visible"/>
+                <Setter Property="CloseMode" Value="Hide"/>
+                <Setter Property="HeaderVisibility" Value="Visible"/>
+                <Setter Property="MinMaxButtonVisibility" Value="Visible"/>
+            </Style>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
@@ -26,7 +88,7 @@
                 <DockPanel>
                     <materialDesign:PackIcon
                         Kind="ViewList"
-                        Height="36"
+                        Height="32"
                         Width="32"
                         VerticalAlignment="Center" />
                     <TextBlock
@@ -51,7 +113,26 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Grid>
+
+        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2">
+
+            <syncfusion:TileViewControl ItemsSource="{Binding Employees}"
+                  materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                  Foreground = "Black" 
+                  Margin="6" 
+                  ClickHeaderToMaximize="True"
+                  MinimizedItemsOrientation="Left"                      
+                  HeaderTemplate="{StaticResource NormalHeaderTemplate}"
+                  MinimizedHeaderTemplate="{StaticResource MinHeaderTemplate}" 
+                  MaximizedHeaderTemplate="{StaticResource MaxHeaderTemplate}"                      
+                  ItemTemplate="{StaticResource NormalItemTemplate }" 
+                  MinimizedItemTemplate="{StaticResource MinItemTemplate}"
+                  ItemContainerStyle="{StaticResource tileViewItemStyle}"                     
+                                        >
+            </syncfusion:TileViewControl>
+        </Border>
+
+        <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -71,6 +152,7 @@
                 RowSelectionBrush="{DynamicResource SecondaryAccentBrush}" 
                 CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
             </syncfusion:SfDataGrid>
+            
             <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
                                    Source="{Binding Employees}" 
                                    UseOnDemandPaging="False"
@@ -78,6 +160,6 @@
 						           PageSize="30" HorizontalAlignment="Center"
                                    AccentBackground="#FFDD2C00"
                                    AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
-        </Grid>
+        </Grid>-->
     </GroupBox>
 </UserControl>

@@ -9,10 +9,11 @@ using Orders.Events;
 using Prism.Events;
 using Orders.CommonTypes;
 using Prism.Commands;
+using Prism.Regions;
 
 namespace Orders.ViewModels
 {
-    public class InvoiceViewModel : ViewModelBase
+    public class InvoiceViewModel : ViewModelBase, INavigationAware, IRegionMemberLifetime
     {
         #region Declarations
 
@@ -109,6 +110,9 @@ namespace Orders.ViewModels
                 order.CustomerID = customerID;
             }
         }
+
+        bool IRegionMemberLifetime.KeepAlive => true;
+
         #endregion
 
         #region Events handlers
@@ -117,6 +121,26 @@ namespace Orders.ViewModels
         {
             ProductList = list;
             OrderDate = DateTime.Now;
+        }
+
+
+        #endregion
+
+        #region Navigatable Events
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

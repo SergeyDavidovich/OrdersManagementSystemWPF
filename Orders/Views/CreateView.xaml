@@ -42,7 +42,6 @@
                         Text="{Binding}" />
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <TextBlock Text="{Binding Test}" Width="200"/>
-
                             <Button Background="Green" Content="SELECT"
                                 Style="{StaticResource ManageButtonStyle}" 
                                 Command="{Binding Path=DataContext.SelectCommand, ElementName=createView}">
@@ -53,10 +52,6 @@
             </GroupBox.HeaderTemplate>
 
             <Grid>
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>-->
                 <syncfusion:SfDataGrid Margin="6"
                 ToolTip="You can select by Mouse click and holding Ctrl or Shift keys"
                 ItemsSource="{Binding Products}"
@@ -79,16 +74,7 @@
                         <syncfusion:GridCurrencyColumn HeaderText="Unit price" MappingName="UnitPrice"/>
                         <syncfusion:GridNumericColumn HeaderText="Units in stock" MappingName="UnitsInStock" NumberDecimalDigits="0" />
                     </syncfusion:SfDataGrid.Columns>
-
                 </syncfusion:SfDataGrid>
-                <!--<syncfusion:SfDataPager x:Name="sfDataPager" Grid.Row="1"
-                                   Source="{Binding Products}" 
-                                   UseOnDemandPaging="False"
-                                   NumericButtonCount="10"
-						           PageSize="30" HorizontalAlignment="Center"
-                                   AccentBackground="#FFDD2C00"
-                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>-->
-
             </Grid>
         </GroupBox>
 
@@ -127,7 +113,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <syncfusion:SfDataGrid Margin="6"
+                <syncfusion:SfDataGrid Margin="6" SelectionMode="None"
                     ItemsSource="{Binding ProductInOrderCollection}"
                     SelectedIndex="-1"
                     AutoGenerateColumns="True" 
@@ -136,6 +122,42 @@
                     ShowColumnWhenGrouped ="False" 
                     RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
                     CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
+
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="ID" MappingName="ID" />
+                        <syncfusion:GridTextColumn HeaderText="Product name" MappingName="Name" Width="250"/>
+                        <syncfusion:GridCurrencyColumn HeaderText="Unit price" MappingName="UnitPrice"/>
+                        <!--<syncfusion:GridNumericColumn HeaderText="Quantity" MappingName="Quantity"
+                                                      AllowEditing="True" NumberDecimalDigits="0" />-->
+                        <syncfusion:GridTemplateColumn HeaderText="Quantity" MappingName="Quantity" AllowEditing="True">
+                            <syncfusion:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <syncfusion:UpDown syncfusion:FocusManagerHelper.FocusedElement="True"
+                                        syncfusion:VisualContainer.WantsMouseInput="True"
+                                        MinValue="1"
+                                        Value="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </syncfusion:GridTemplateColumn.CellTemplate>
+                        </syncfusion:GridTemplateColumn>
+                        <syncfusion:GridNumericColumn HeaderText="Discount" MappingName="Discount"
+                                                      AllowEditing="True" NumberDecimalDigits="2" />
+
+                        <!--<syncfusion:GridTemplateColumn HeaderText="Discount" MappingName="Discount" AllowEditing="True">
+                            <syncfusion:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <syncfusion:PercentTextBox  
+                                        syncfusion:FocusManagerHelper.FocusedElement="True"
+                                        syncfusion:VisualContainer.WantsMouseInput="True"
+                                        
+                                        PercentValue="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                         />
+                                </DataTemplate>
+                            </syncfusion:GridTemplateColumn.CellTemplate>
+                        </syncfusion:GridTemplateColumn>-->
+                    </syncfusion:SfDataGrid.Columns>
+
+
                 </syncfusion:SfDataGrid>
             </Grid>
         </GroupBox>
