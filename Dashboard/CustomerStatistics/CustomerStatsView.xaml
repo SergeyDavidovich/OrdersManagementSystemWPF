@@ -59,7 +59,7 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Top"/>
                 <Setter Property="Margin" Value="4"/>
-                <Setter Property="EnableRotation" Value="True"/>
+                <Setter Property="EnableRotation" Value="False"/>
             </Style>
             <Style TargetType="chart:PieSeries3D">
                 <Setter Property="EnableAnimation" Value="True"/>
