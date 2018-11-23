@@ -10,6 +10,7 @@
     xmlns:datapager="clr-namespace:Syncfusion.UI.Xaml.Controls.DataPager;assembly=Syncfusion.SfGrid.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:model="clr-namespace:DAL_LocalDb;assembly=DAL_LocalDb"
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -18,13 +19,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
             <!--TileViewControl DataTemplates-->
             <DataTemplate x:Key="NormalHeaderTemplate">
-                    <TextBlock Text="{Binding FirstName}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding FirstName}" Margin="0,0,6,0"/>
+                    <TextBlock Text="{Binding LastName}"/>
+                </StackPanel>
             </DataTemplate>
             <DataTemplate x:Key="MinHeaderTemplate">
-                    <TextBlock Text="{Binding FirstName}"/>
+                <TextBlock Text="{Binding FirstName}"/>
             </DataTemplate>
             <DataTemplate x:Key="MaxHeaderTemplate">
                 <TextBlock Text="{Binding FirstName}"/>
@@ -39,7 +43,8 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="{Binding LastName}"/>
                     <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
-                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MinItemTemplate" DataType="model:Employee">
@@ -71,12 +76,18 @@
                 </Grid>
             </DataTemplate>
 
-            <Style TargetType="syncfusion:TileViewItem" x:Key="tileViewItemStyle">
+            <Style TargetType="syncfusion:TileViewItem" x:Key="TileViewItemStyle">
                 <Setter Property="Margin" Value="5"/>
-                <Setter Property="CloseButtonVisibility" Value="Visible"/>
+                <Setter Property="CloseButtonVisibility" Value="Collapsed"/>
                 <Setter Property="CloseMode" Value="Hide"/>
                 <Setter Property="HeaderVisibility" Value="Visible"/>
                 <Setter Property="MinMaxButtonVisibility" Value="Visible"/>
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>
+                <Setter Property="HeaderBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                <Setter Property="HeaderBorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                <Setter Property="HeaderForeground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+                <Setter Property="CornerRadius" Value="2"/>
             </Style>
 
         </ResourceDictionary>
@@ -114,20 +125,20 @@
             </DataTemplate>
         </GroupBox.HeaderTemplate>
 
-        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2">
-
+        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2"
+                >
             <syncfusion:TileViewControl ItemsSource="{Binding Employees}"
                   materialDesign:ShadowAssist.ShadowDepth="Depth3"
                   Foreground = "Black" 
                   Margin="6" 
                   ClickHeaderToMaximize="True"
-                  MinimizedItemsOrientation="Left"                      
+                  MinimizedItemsOrientation="Right"                      
                   HeaderTemplate="{StaticResource NormalHeaderTemplate}"
                   MinimizedHeaderTemplate="{StaticResource MinHeaderTemplate}" 
                   MaximizedHeaderTemplate="{StaticResource MaxHeaderTemplate}"                      
                   ItemTemplate="{StaticResource NormalItemTemplate }" 
                   MinimizedItemTemplate="{StaticResource MinItemTemplate}"
-                  ItemContainerStyle="{StaticResource tileViewItemStyle}"                     
+                  ItemContainerStyle="{StaticResource TileViewItemStyle}"                     
                                         >
             </syncfusion:TileViewControl>
         </Border>
