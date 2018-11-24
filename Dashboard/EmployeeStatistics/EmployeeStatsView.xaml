@@ -39,8 +39,8 @@
                             HorizontalAlignment="Right"
                             Margin="0"
                             Content="MANAGE"
-                            Command="{x:Static infrastructure:GlobalCommands.NavigateToManageEntityViewCompositeCommand}"
-                            CommandParameter="Employees"/>
+                            Command="{x:Static infrastructure:GlobalCommands.NavigateToCompositeCommand}"
+                            CommandParameter="EmployeeListView"/>
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>

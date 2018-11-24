@@ -20,6 +20,7 @@ namespace OMS
             base.OnStartup(e);
             bootstrapper = new Bootstrapper();
             bootstrapper.Run();
+            
         }
         //protected override void OnExit(ExitEventArgs e)
         //{

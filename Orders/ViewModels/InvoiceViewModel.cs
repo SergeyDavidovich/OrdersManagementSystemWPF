@@ -130,7 +130,7 @@ namespace Orders.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
+    
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -140,7 +140,6 @@ namespace Orders.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
         }
 
         #endregion

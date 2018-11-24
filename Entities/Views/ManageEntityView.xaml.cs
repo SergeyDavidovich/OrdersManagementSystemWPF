@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Entities.ViewModels;
-using Infrastructure.Prism;
 using Microsoft.Practices.Unity;
 
 namespace Entities.Views
@@ -21,7 +20,7 @@ namespace Entities.Views
     /// <summary>
     /// Interaction logic for ManageEntityView.xaml
     /// </summary>
-    public partial class ManageEntityView : UserControl, ICreateRegionManagerScope
+    public partial class ManageEntityView : UserControl
     {
         public ManageEntityView(IUnityContainer container)
         {
@@ -29,6 +28,5 @@ namespace Entities.Views
             this.DataContext = container.Resolve<ManageEntityViewModel>();
         }
 
-        public bool CreateRegionManagerScope => true;
     }
 }

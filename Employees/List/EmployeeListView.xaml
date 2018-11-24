@@ -107,7 +107,7 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TextBlock Text="{Binding Test}" Width="200"/>
 
                         <Button Background="Green" Content="ADD"
@@ -120,7 +120,7 @@
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
 
                         </Button>
-                    </StackPanel>
+                    </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
