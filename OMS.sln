@@ -27,12 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1F136DAA-3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_LocalDb", "DAL_LocalDb\DAL_LocalDb.csproj", "{D495FB75-828D-44FF-B363-79383614BFC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{33271404-1A09-418D-B92D-40794747FD0E}"
-EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -78,10 +73,6 @@ Global
 		{D495FB75-828D-44FF-B363-79383614BFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D495FB75-828D-44FF-B363-79383614BFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D495FB75-828D-44FF-B363-79383614BFC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33271404-1A09-418D-B92D-40794747FD0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33271404-1A09-418D-B92D-40794747FD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33271404-1A09-418D-B92D-40794747FD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33271404-1A09-418D-B92D-40794747FD0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,9 +86,11 @@ Global
 		{16F59304-B389-4FBC-A3C4-0D50D96DFBC5} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
 		{8E8B6C15-64AE-4BD5-B38B-25F9473DC287} = {557446B4-BEBA-4F54-9C16-A58E0B564F53}
 		{D495FB75-828D-44FF-B363-79383614BFC2} = {1F136DAA-39BD-47F0-8D7C-FA2496D4AA8C}
-		{33271404-1A09-418D-B92D-40794747FD0E} = {1F136DAA-39BD-47F0-8D7C-FA2496D4AA8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99D67FC2-8925-4685-B648-BB94E16C0360}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

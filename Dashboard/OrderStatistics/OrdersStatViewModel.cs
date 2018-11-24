@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Infrastructure.Base;
 using Prism;
 using DAL_LocalDb;
-using BLL;
 using Prism.Regions;
 using System.Data.Entity;
 

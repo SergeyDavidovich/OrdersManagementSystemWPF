@@ -31,7 +31,7 @@
     <PublisherName>SD</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -164,10 +164,6 @@
     <ProjectReference Include="..\Banner\Banner.csproj">
       <Project>{8e8b6c15-64ae-4bd5-b38b-25f9473dc287}</Project>
       <Name>Banner</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{33271404-1a09-418d-b92d-40794747fd0e}</Project>
-      <Name>BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Customers\Customers.csproj">
       <Project>{90eb2eb3-8f64-4613-8f61-bec2e61b2384}</Project>

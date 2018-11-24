@@ -11,7 +11,6 @@ using Prism.Regions;
 using System.Collections.Generic;
 
 using DAL_LocalDb;
-using BLL;
 
 namespace OMS.ViewModels
 {

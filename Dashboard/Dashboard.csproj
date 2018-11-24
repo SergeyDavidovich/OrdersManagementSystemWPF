@@ -96,10 +96,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{33271404-1a09-418d-b92d-40794747fd0e}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL_LocalDb\DAL_LocalDb.csproj">
       <Project>{d495fb75-828d-44ff-b363-79383614bfc2}</Project>
       <Name>DAL_LocalDb</Name>
