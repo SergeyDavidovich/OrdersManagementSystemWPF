@@ -11,13 +11,13 @@ namespace Orders
 {
     public class OrdersModule : IModule
     {
-        //private IRegionManager _regionManager;
+        private IRegionManager _regionManager;
         private IUnityContainer _container;
 
-        public OrdersModule(IUnityContainer container)//, IRegionManager regionManager)
+        public OrdersModule(IUnityContainer container, RegionManager regionManager)
         {
             _container = container;
-            //_regionManager = regionManager;
+            _regionManager = regionManager;
         }
 
         public void Initialize()
@@ -30,7 +30,8 @@ namespace Orders
 
             //_container.RegisterInstance(typeof(InvoiceViewModel), new TransientLifetimeManager());
 
-            //_regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(CreateView));
+       
+
 
         }
     }

@@ -6,8 +6,6 @@ using Customers;
 using Dashboard;
 using Employees;
 using Entities;
-using Infrastructure;
-using Infrastructure.Prism;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
@@ -50,8 +48,6 @@ namespace OMS
         {
             base.ConfigureContainer(); //set default container configuration
 
-            //code bellow extends the default container configuration
-            Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
 
             Container.RegisterInstance<LocalDbContext>(new LocalDbContext(), new ContainerControlledLifetimeManager());
 
@@ -63,17 +59,7 @@ namespace OMS
         }
 
         /// <summary>
-        /// 3 step of bootstrapping
-        /// </summary>
-        protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
-        {
-            var behaviors = base.ConfigureDefaultRegionBehaviors();
-            behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
-            return behaviors;
-        }
-
-        /// <summary>
-        /// 4 step of bootstrapping -  specifing top-level window (shell) for the application
+        /// 3 step of bootstrapping -  specifing top-level window (shell) for the application
         /// </summary>
         protected override DependencyObject CreateShell()
         {
@@ -84,7 +70,7 @@ namespace OMS
         }
 
         /// <summary>
-        /// 5 step of bootstrapping - initialization the shell to be displayed, application start
+        /// 4 step of bootstrapping - initialization the shell to be displayed, application start
         /// </summary>
         protected override void InitializeShell()
         {

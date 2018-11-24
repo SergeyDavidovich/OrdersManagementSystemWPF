@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 
 namespace Products.Add
 {
-    public class ProductAddViewModel : NavigationAwareViewModelBase, IDataErrorInfo
+    public class ProductAddViewModel : NavigationAwareViewModelBase, IDataErrorInfo, IRegionMemberLifetime
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
@@ -203,6 +203,7 @@ namespace Products.Add
             get => _isGroupBoxEnabled;
             set => SetProperty(ref _isGroupBoxEnabled, value);
         }
+
         #endregion
 
         #region Utilites
@@ -238,5 +239,7 @@ namespace Products.Add
             currentProduct.Discontinued = this.Discontinued;
         }
         #endregion
+
+        bool IRegionMemberLifetime.KeepAlive => false;
     }
 }

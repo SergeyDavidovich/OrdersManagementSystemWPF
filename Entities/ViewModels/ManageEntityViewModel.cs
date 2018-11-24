@@ -14,17 +14,18 @@ using Customers.List;
 using Employees.Add;
 using Employees.List;
 using Infrastructure.Base;
-using Infrastructure.Prism;
 using Prism.Events;
 using Products.Add;
 using Products.List;
 
 namespace Entities.ViewModels
 {
-    public class ManageEntityViewModel : NavigationAwareViewModelBase, IRegionManagerAware
+    public class ManageEntityViewModel : NavigationAwareViewModelBase
     {
+        private IRegionManager _regionManager;
         public ManageEntityViewModel(IRegionManager regionManager, IEventAggregator eventAggregator) : base(eventAggregator)
         {
+            _regionManager = regionManager;
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
@@ -33,19 +34,14 @@ namespace Entities.ViewModels
             {
                 case "Customers":
                     UpdateBannerTitle("Customers");
-                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "CustomerListView");
-                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "CustomerAddView");
+                    _regionManager.RequestNavigate(RegionNames.EntityListRegion, "CustomerListView");
+                    _regionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "CustomerAddView");
                  
-                    break;
-                case "Employees":
-                    UpdateBannerTitle("Employees");
-                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "EmployeeListView");
-                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "EmployeeAddView");
                     break;
                 case "Products":
                     UpdateBannerTitle("Products");
-                    RegionManager.RequestNavigate(RegionNames.EntityListRegion, "ProductListView");
-                    RegionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "ProductAddView");
+                    _regionManager.RequestNavigate(RegionNames.EntityListRegion, "ProductListView");
+                    _regionManager.RequestNavigate(RegionNames.EntityViewAddEditRegion, "ProductAddView");
                     break;
             }
             //var entityListRegionViews = _regionManager.Regions[RegionNames.EntityListRegion].Views;
@@ -98,6 +94,5 @@ namespace Entities.ViewModels
 
         }
 
-        public IRegionManager RegionManager { get; set; }
     }
 }

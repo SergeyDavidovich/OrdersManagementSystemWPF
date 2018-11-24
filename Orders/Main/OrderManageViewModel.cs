@@ -1,27 +1,27 @@
 ﻿using Infrastructure;
 using Infrastructure.Base;
-using Infrastructure.Prism;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Regions;
 
 namespace Orders.Main
 {
-    public class OrderManageViewModel : NavigationAwareViewModelBase, IRegionManagerAware
+    public class OrderManageViewModel : NavigationAwareViewModelBase
     {
         #region Declarations
 
         private OrdersContentRegionState _ordersContentRegionState;
-
+        private IRegionManager _regionManager;
         private string _ordersContentRegionSwitchViewButtonText;
 
         #endregion
 
-        public OrderManageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public OrderManageViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) : base(eventAggregator)
         {
             SwitchOrdersContentStateCommand = new DelegateCommand(SwitchOrdersContentState);
             _ordersContentRegionState = OrdersContentRegionState.Creation;
             ProcessOrdersContentRegionState(_ordersContentRegionState);
+            _regionManager = regionManager;
         }
 
         #region Bindable properties
@@ -31,12 +31,6 @@ namespace Orders.Main
             get => _ordersContentRegionSwitchViewButtonText;
             set => SetProperty(ref _ordersContentRegionSwitchViewButtonText, value);
         }
-
-        #endregion
-
-        #region IRegionManagerAware implementation
-
-        public IRegionManager RegionManager { get; set; }
 
         #endregion
 
@@ -57,6 +51,8 @@ namespace Orders.Main
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
+            _regionManager.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
+            _regionManager.RequestNavigate(RegionNames.OrderDetailsRegion, "InvoiceView");
             UpdateBannerTitle("Orders");
         }
 
@@ -72,11 +68,11 @@ namespace Orders.Main
             {
                 case OrdersContentRegionState.Creation:
                     OrdersContentRegionSwitchViewButtonText = "TO JOURNAL";
-                    RegionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
+                    _regionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
                     break;
                 case OrdersContentRegionState.Journal:
                     OrdersContentRegionSwitchViewButtonText = "TO CREATION";
-                    RegionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "JournalView");
+                    _regionManager?.RequestNavigate(RegionNames.OrdersContentRegion, "JournalView");
                     break;
             }
         }
@@ -86,7 +82,7 @@ namespace Orders.Main
             Creation,
             Journal
         }
-        
+
         #endregion
     }
 }
