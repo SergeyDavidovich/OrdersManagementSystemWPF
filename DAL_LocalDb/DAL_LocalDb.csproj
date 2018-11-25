@@ -80,7 +80,6 @@
     <Compile Include="Model\Territory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DAL_LocalDb.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

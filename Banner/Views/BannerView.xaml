@@ -66,8 +66,8 @@
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="Button" x:Key="MaterialDesignToolForegroundButton" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
-                            <Setter Property="Margin" Value="0,0,0,0"/>
-                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Margin" Value="10,0,0,0"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
                         </Style>
                         <Style TargetType="Rectangle">

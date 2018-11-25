@@ -20,13 +20,6 @@ namespace OMS
             base.OnStartup(e);
             bootstrapper = new Bootstrapper();
             bootstrapper.Run();
-            
         }
-        //protected override void OnExit(ExitEventArgs e)
-        //{
-        //    base.OnExit(e);
-        //    bootstrapper.Context.Database.Connection.Close();
-        //    Debug.WriteLine(bootstrapper.Context.Database.Connection.State);
-        //}
     }
 }
