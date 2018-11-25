@@ -50,52 +50,75 @@
                     Margin="16,0,16,0"
                     StaysOpen="False" 
                     ToolTip="Select color palette">
-                <Grid Width="160" Margin="8">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
+                <Grid Width="160">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Button" x:Key="MaterialDesignToolForegroundButton" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
+                            <Setter Property="Margin" Value="0,0,0,0"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        </Style>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Margin" Value="8,0,0,0"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="Width" Value="20"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </Grid.Resources>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                                 Text="SELECT THEME"
-                                Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                Style="{DynamicResource MaterialDesignTitleTextBlock}"
                                 Margin="8,8,8,16"/>
-                        <Button Grid.Column="0" Grid.Row="1" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                        <Button Grid.Column="1" Grid.Row="1" 
+                                Style="{StaticResource MaterialDesignToolForegroundButton}"
                                 Content="BLUE"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="Blue"/>
-                        <Button Grid.Column="0" Grid.Row="2" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                        <Rectangle Grid.Column="0" Grid.Row="1"
+                                Fill="#2196f3"/>
+                        <Button Grid.Column="1" Grid.Row="2" 
+                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                 Content="RED"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="Red"/>
-                        <Button Grid.Column="0" Grid.Row="3" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                        <Rectangle Grid.Column="0" Grid.Row="2"
+                                Fill="#ff1744"/>
+                        <Button Grid.Column="1" Grid.Row="3" 
+                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                 Content="GREY"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="BlueGrey"/>
-                        <Button Grid.Column="0" Grid.Row="4" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                        <Rectangle Grid.Column="0" Grid.Row="3"
+                                Fill="#607d8b"/>
+                    <Button Grid.Column="1" Grid.Row="4" 
+                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                 Content="PURPLE"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="Purple"/>
-                        <Button Grid.Column="0" Grid.Row="5" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                    <Rectangle Grid.Column="0" Grid.Row="4"
+                                Fill="#aa00ff"/>
+                        <Button Grid.Column="1" Grid.Row="5" 
+                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                 Content="BROWN"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="Brown"/>
-                    <Button Grid.Column="0" Grid.Row="6" 
-                                Style="{DynamicResource MaterialDesignFlatButton}"
+                    <Rectangle Grid.Column="0" Grid.Row="5"
+                                Fill="#795548"/>
+                    <Button Grid.Column="1" Grid.Row="6" 
+                                Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                 Content="GREEN"
-                                HorizontalContentAlignment="Left"
                                 Command="{Binding ChangePaletteCommand}" CommandParameter="Green"/>
+                    <Rectangle Grid.Column="0" Grid.Row="6"
+                                Fill="#43a047"/>
                 </Grid>
-                </materialDesign:PopupBox>
+            </materialDesign:PopupBox>
             <ToggleButton 
                 HorizontalAlignment="Right"
                 IsChecked="{Binding IsDarkTheme}" 
