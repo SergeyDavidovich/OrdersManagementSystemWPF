@@ -15,6 +15,7 @@ Microsoft SQL Server 2012 Express Edition or higher
 - *Styling* - `MaterialDesigneThemes 4.2 for XAML`
 - *Controls* - `Syncfusion WPF Controls vol. 2018`
 - *Data validation* - `FluentValidation 8`
+- *Reporting* - `Mirosoft RDLC + Syncfusion Report Viewer`
 
 ![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/DashboardLight.PNG?raw=true)
 
