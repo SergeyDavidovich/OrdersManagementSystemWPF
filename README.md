@@ -1,6 +1,8 @@
 ## Orders Management System
 [View on Github](https://github.com/StupeniNET/OrdersManagementSystem)
 
+### Prerequisites:
+Microsoft SQL Server 2012 Express Edition or higher  
 
 ### Frameworks and libraries used:
 
