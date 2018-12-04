@@ -19,8 +19,7 @@ namespace Orders.ViewModels
     {
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
-        Order order;
-
+        Order order = new Order();
 
         public CreateViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -35,10 +34,12 @@ namespace Orders.ViewModels
 
             Customers = context.Customers.ToList<Customer>();
             Employees = context.Employees.ToList<Employee>();
-            order = new Order();
+            //order = new Order();
         }
 
-        #region Select
+        #region Select products
+
+        #region Events handlers
 
         private void OnProductInOrderCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -57,6 +58,8 @@ namespace Orders.ViewModels
             TotalSum = GetTotalSum();
         }
 
+        #endregion
+
         #region Commands
 
         public DelegateCommand SelectCommand { get; set; }
@@ -70,7 +73,7 @@ namespace Orders.ViewModels
                     Discount = 1,
                     Quantity = 1,
                     UnitPrice = ((Product)o).UnitPrice.Value
-                    
+
                 }));
             foreach (var productInOrder in ProductInOrderCollection)
             {
@@ -83,68 +86,8 @@ namespace Orders.ViewModels
             SelectedProducts.Clear();
             OrderDate = DateTime.Now.ToLongDateString();
         }
-        private bool CanSelect()
-        {
-            if (SelectedProducts != null)
-                if (SelectedProducts.Count != 0)
-                    return true;
-            return false;
-        }
+        private bool CanSelect() => SelectedProductsIsNullOrEmpty();
 
-        public DelegateCommand UnselectCommand { get; set; }
-        private void Unselect()
-        {
-            _ProductInOrderCollection.Clear();
-            CreateOrderCommand.RaiseCanExecuteChanged();
-            UnselectCommand.RaiseCanExecuteChanged();
-
-            OrderDate = String.Empty;
-            SelectedCustomer = null;
-            SelectedEmployee = null;
-        }
-        private bool CanUnselect() { return ProductsInOrderIsNullOrEmpty(); }
-
-
-        public DelegateCommand CreateOrderCommand { get; set; }
-        private void CreateOrder()
-        {
-
-            //using (var contextTransaction = _context.Database.BeginTransaction())
-            //{
-            //    try
-            //    {
-            //        _context.Orders.Add(order);
-            //        _context.SaveChanges();
-
-            //_context.Order_Details.AddRange(
-            //    new List<Order_Details>(
-            //        ProductList.Select(p => new Order_Details
-            //        {
-            //            OrderID = order.OrderID,
-            //            ProductID = p.ID,
-            //            UnitPrice = p.UnitPrice,
-            //            Quantity = p.Quantity,
-            //            Discount = p.Discount
-            //        })));
-            //_context.SaveChanges();
-
-            //        contextTransaction.Commit();
-
-            //        OrderID = order.OrderID;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        contextTransaction.Rollback();
-            //    }
-            //}
-
-            _eventAggregator.GetEvent<OnOrderCreate>().Publish(new List<ProductInOrder>(ProductInOrderCollection));
-            ProductInOrderCollection.Clear();
-            CreateOrderCommand.RaiseCanExecuteChanged();
-            UnselectCommand.RaiseCanExecuteChanged();
-
-        }
-        private bool CanCreateOrder() { return ProductsInOrderIsNullOrEmpty(); }
 
         #endregion
 
@@ -163,18 +106,88 @@ namespace Orders.ViewModels
             }
         }
 
-        private ObservableCollection<ProductInOrder> _ProductInOrderCollection;
+        #endregion
 
+
+        #endregion
+
+        #region Create order
+
+        #region Commands
+
+        public DelegateCommand CreateOrderCommand { get; set; }
+        private void CreateOrder()
+        {
+            order.CustomerID = SelectedCustomer.CustomerID;
+            order.EmployeeID = SelectedEmployee.EmployeeID;
+            order.OrderDate = DateTime.Parse(OrderDate);
+
+            using (var contextTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.Orders.Add(order);
+                    _context.SaveChanges();
+
+                    _context.Order_Details.AddRange(
+                        new List<Order_Details>(
+                            ProductInOrderCollection.Select(p => new Order_Details
+                            {
+                                OrderID = order.OrderID,
+                                ProductID = p.ID,
+                                UnitPrice = p.UnitPrice,
+                                Quantity = p.Quantity,
+                                Discount = p.Discount
+                            })));
+                    _context.SaveChanges();
+
+                    contextTransaction.Commit();
+
+                    OrderID = order.OrderID;
+                }
+                catch (Exception)
+                {
+                    contextTransaction.Rollback();
+                }
+            }
+
+            //_eventAggregator.GetEvent<OnOrderCreate>().Publish(new List<ProductInOrder>(ProductInOrderCollection));
+            //ProductInOrderCollection.Clear();
+            CreateOrderCommand.RaiseCanExecuteChanged();
+            UnselectCommand.RaiseCanExecuteChanged();
+
+        }
+        private bool CanCreateOrder()
+        {
+            return (SelectedEmployee == null || SelectedCustomer == null) ? false : true;
+        }
+
+        public DelegateCommand UnselectCommand { get; set; }
+        private void Unselect()
+        {
+            _ProductInOrderCollection.Clear();
+            CreateOrderCommand.RaiseCanExecuteChanged();
+            UnselectCommand.RaiseCanExecuteChanged();
+
+            OrderDate = String.Empty;
+            SelectedCustomer = null;
+            SelectedEmployee = null;
+        }
+        private bool CanUnselect() => ProductsInOrderIsNullOrEmpty();
+
+        #endregion
+
+        #region Bindable properties
+
+        private ObservableCollection<ProductInOrder> _ProductInOrderCollection;
         public ObservableCollection<ProductInOrder> ProductInOrderCollection
         {
             get => _ProductInOrderCollection;
             set
             {
                 SetProperty(ref _ProductInOrderCollection, value);
-
                 UnselectCommand.RaiseCanExecuteChanged();
                 CreateOrderCommand.RaiseCanExecuteChanged();
-
             }
         }
 
@@ -184,7 +197,11 @@ namespace Orders.ViewModels
         public Employee SelectedEmployee
         {
             get => selectedEmployee;
-            set => SetProperty(ref selectedEmployee, value);
+            set
+            {
+                SetProperty(ref selectedEmployee, value);
+                CreateOrderCommand.RaiseCanExecuteChanged();
+            }
         }
 
         public List<Customer> Customers { get; set; }
@@ -193,7 +210,11 @@ namespace Orders.ViewModels
         public Customer SelectedCustomer
         {
             get => selectedCustomer;
-            set => SetProperty(ref selectedCustomer, value);
+            set
+            {
+                SetProperty(ref selectedCustomer, value);
+                CreateOrderCommand.RaiseCanExecuteChanged();
+            }
         }
 
         int orderID;
@@ -230,6 +251,7 @@ namespace Orders.ViewModels
             set { SetProperty(ref totalSum, value); }
             get { return totalSum; }
         }
+
         #endregion
 
         #region Screen objects
@@ -250,14 +272,18 @@ namespace Orders.ViewModels
 
         #endregion
 
-        #region Create
-        #endregion
-
         #region Utilites
         private bool ProductsInOrderIsNullOrEmpty()
         {
             if (ProductInOrderCollection != null)
                 if (ProductInOrderCollection.Count != 0)
+                    return true;
+            return false;
+        }
+        private bool SelectedProductsIsNullOrEmpty()
+        {
+            if (SelectedProducts != null)
+                if (SelectedProducts.Count != 0)
                     return true;
             return false;
         }
