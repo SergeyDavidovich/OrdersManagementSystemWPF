@@ -65,7 +65,7 @@
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid Margin="6"
                 ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
-                SelectedIndex="-1"
+                SelectedIndex="1"
                 SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
                 AllowGrouping="False"
                 GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 

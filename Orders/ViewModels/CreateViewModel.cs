@@ -10,6 +10,8 @@ using Prism.Commands;
 using Prism.Events;
 using Orders.Events;
 using Orders.CommonTypes;
+using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace Orders.ViewModels
 {
@@ -17,6 +19,8 @@ namespace Orders.ViewModels
     {
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
+        Order order;
+
 
         public CreateViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -28,6 +32,17 @@ namespace Orders.ViewModels
             SelectCommand = new DelegateCommand(Select, CanSelect);
             UnselectCommand = new DelegateCommand(Unselect, CanUnselect);
             CreateOrderCommand = new DelegateCommand(CreateOrder, CanCreateOrder);
+
+            Customers = context.Customers.ToList<Customer>();
+            Employees = context.Employees.ToList<Employee>();
+            order = new Order();
+        }
+
+        #region Select
+
+        private void OnProductInOrderCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            TotalSum = GetTotalSum();
         }
 
         #region Commands
@@ -35,7 +50,7 @@ namespace Orders.ViewModels
         public DelegateCommand SelectCommand { get; set; }
         private void Select()
         {
-            var productInOrderCollection = new ObservableCollection<ProductInOrder>(_SelectedProducts.
+            ProductInOrderCollection = new ObservableCollection<ProductInOrder>(_SelectedProducts.
                 Select(o => new ProductInOrder
                 {
                     ID = ((Product)o).ProductID,
@@ -45,8 +60,12 @@ namespace Orders.ViewModels
                     UnitPrice = ((Product)o).UnitPrice.Value
                 }));
 
-            ProductInOrderCollection = productInOrderCollection;
+            ProductInOrderCollection.CollectionChanged += OnProductInOrderCollectionChanged;
+
+            TotalSum = GetTotalSum();
+
             SelectedProducts.Clear();
+            OrderDate = DateTime.Now.ToLongDateString();
         }
         private bool CanSelect()
         {
@@ -63,6 +82,9 @@ namespace Orders.ViewModels
             CreateOrderCommand.RaiseCanExecuteChanged();
             UnselectCommand.RaiseCanExecuteChanged();
 
+            OrderDate = String.Empty;
+            SelectedCustomer = null;
+            SelectedEmployee = null;
         }
         private bool CanUnselect() { return ProductsInOrderIsNullOrEmpty(); }
 
@@ -70,6 +92,36 @@ namespace Orders.ViewModels
         public DelegateCommand CreateOrderCommand { get; set; }
         private void CreateOrder()
         {
+
+            //using (var contextTransaction = _context.Database.BeginTransaction())
+            //{
+            //    try
+            //    {
+            //        _context.Orders.Add(order);
+            //        _context.SaveChanges();
+
+            //_context.Order_Details.AddRange(
+            //    new List<Order_Details>(
+            //        ProductList.Select(p => new Order_Details
+            //        {
+            //            OrderID = order.OrderID,
+            //            ProductID = p.ID,
+            //            UnitPrice = p.UnitPrice,
+            //            Quantity = p.Quantity,
+            //            Discount = p.Discount
+            //        })));
+            //_context.SaveChanges();
+
+            //        contextTransaction.Commit();
+
+            //        OrderID = order.OrderID;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        contextTransaction.Rollback();
+            //    }
+            //}
+
             _eventAggregator.GetEvent<OnOrderCreate>().Publish(new List<ProductInOrder>(ProductInOrderCollection));
             ProductInOrderCollection.Clear();
             CreateOrderCommand.RaiseCanExecuteChanged();
@@ -103,26 +155,86 @@ namespace Orders.ViewModels
             set
             {
                 SetProperty(ref _ProductInOrderCollection, value);
+
                 UnselectCommand.RaiseCanExecuteChanged();
                 CreateOrderCommand.RaiseCanExecuteChanged();
+
             }
         }
 
+        public List<Employee> Employees { get; set; }
 
+        Employee selectedEmployee;
+        public Employee SelectedEmployee
+        {
+            get => selectedEmployee;
+            set => SetProperty(ref selectedEmployee, value);
+        }
+
+        public List<Customer> Customers { get; set; }
+
+        Customer selectedCustomer;
+        public Customer SelectedCustomer
+        {
+            get => selectedCustomer;
+            set => SetProperty(ref selectedCustomer, value);
+        }
+
+        int orderID;
+        public int OrderID
+        {
+            get => orderID;
+            set
+            {
+                SetProperty(ref orderID, value);
+            }
+        }
+
+        private string orderDate;
+        public string OrderDate
+        {
+            get { return orderDate; }
+            set { SetProperty(ref orderDate, value); }
+        }
+
+        string customerID;
+        public string CustomerID
+        {
+            get => customerID;
+            set
+            {
+                SetProperty(ref customerID, value);
+                order.CustomerID = customerID;
+            }
+        }
+
+        private string totalSum;
+        public string TotalSum
+        {
+            set { SetProperty(ref totalSum, value); }
+            get { return totalSum; }
+        }
         #endregion
 
         #region Screen objects
 
 
-        //public class ProductInOrder
+        //public class ProductInOrder:INotifyPropertyChanged
         //{
         //    public int ID { get; set; }
         //    public string Name { get; set; }
         //    public decimal UnitPrice { get; set; }
         //    public int Quantity { get; set; }
         //    public float Discount { get; set; }
+
+        //    public event PropertyChangedEventHandler PropertyChanged;
         //}
 
+        #endregion
+
+        #endregion
+
+        #region Create
         #endregion
 
         #region Utilites
@@ -133,7 +245,10 @@ namespace Orders.ViewModels
                     return true;
             return false;
         }
-
+        private string GetTotalSum()
+        {
+            return ProductInOrderCollection.Select(p => ((Double)p.UnitPrice) * p.Quantity * p.Discount).Sum().ToString("C2");
+        }
         #endregion
     }
 }

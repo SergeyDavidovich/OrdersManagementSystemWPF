@@ -12,7 +12,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    mc:Ignorable="d" x:Name="createView">
+    mc:Ignorable="d" x:Name="createView" FontSize="18">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -110,58 +110,120 @@
             </GroupBox.HeaderTemplate>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <syncfusion:SfDataGrid Margin="6" SelectionMode="None"
-                    ItemsSource="{Binding ProductInOrderCollection}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Text="" Grid.Row="0" Grid.Column="0" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         IsReadOnly="True"
+                         materialDesign:HintAssist.Hint="Order ID"
+                         materialDesign:HintAssist.HintOpacity=".5"
+                         Margin="10"
+                         VerticalAlignment="Center" FontSize="18"
+                         />
+                <TextBox Text="{Binding OrderDate}" Grid.Row="0" Grid.Column="1" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         IsReadOnly="True"
+                         materialDesign:HintAssist.Hint="Order date"
+                         materialDesign:HintAssist.HintOpacity=".5"
+                         Margin="10"
+                         VerticalAlignment="Center" FontSize="18"
+                         />
+                <ComboBox Grid.Row="1" Grid.Column="0"  
+                    ItemsSource="{Binding Employees}" 
+                          DisplayMemberPath="LastName" 
+                          SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"          
+                          materialDesign:HintAssist.Hint="Employee"
+                          IsEditable="False" 
+                          materialDesign:HintAssist.HintOpacity=".5"
+                          Margin="10"
+                          />
+                <ComboBox Grid.Row="1" Grid.Column="1"  
+                    ItemsSource="{Binding Customers}" 
+                          DisplayMemberPath="CompanyName" 
+                          SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"          
+                          materialDesign:HintAssist.Hint="Customer"
+                          IsEditable="False" 
+                          materialDesign:HintAssist.HintOpacity=".5"
+                          Margin="10"
+                          />
+
+                <syncfusion:SfDataGrid Grid.Row="2" Grid.ColumnSpan="2"
+                    Margin="6" SelectionMode="None"
+                    ItemsSource="{Binding ProductInOrderCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     SelectedIndex="-1"
                     AutoGenerateColumns="True" 
-                    ColumnSizer="AutoLastColumnFill"  
+                    ColumnSizer="AutoWithLastColumnFill"  
                     ShowBusyIndicator="True"  
                     ShowColumnWhenGrouped ="False" 
                     RowSelectionBrush="{DynamicResource PrimaryHueMidBrush}" 
                     CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
 
-
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="ID" MappingName="ID" />
                         <syncfusion:GridTextColumn HeaderText="Product name" MappingName="Name" Width="250"/>
                         <syncfusion:GridCurrencyColumn HeaderText="Unit price" MappingName="UnitPrice"/>
-                        <!--<syncfusion:GridNumericColumn HeaderText="Quantity" MappingName="Quantity"
-                                                      AllowEditing="True" NumberDecimalDigits="0" />-->
+                        
                         <syncfusion:GridTemplateColumn HeaderText="Quantity" MappingName="Quantity" AllowEditing="True">
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <syncfusion:UpDown syncfusion:FocusManagerHelper.FocusedElement="True"
-                                        syncfusion:VisualContainer.WantsMouseInput="True"
+                                        MaxValue="10"               
                                         MinValue="1"
-                                        Value="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        Step="1"               
+                                        Value="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" />
                                 </DataTemplate>
                             </syncfusion:GridTemplateColumn.CellTemplate>
                         </syncfusion:GridTemplateColumn>
-                        <syncfusion:GridNumericColumn HeaderText="Discount" MappingName="Discount"
-                                                      AllowEditing="True" NumberDecimalDigits="2" />
-
-                        <!--<syncfusion:GridTemplateColumn HeaderText="Discount" MappingName="Discount" AllowEditing="True">
+                        
+                        <syncfusion:GridTemplateColumn HeaderText="Discount" MappingName="Discount" AllowEditing="True">
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <syncfusion:PercentTextBox  
+                                    <syncfusion:UpDown  
                                         syncfusion:FocusManagerHelper.FocusedElement="True"
-                                        syncfusion:VisualContainer.WantsMouseInput="True"
-                                        
-                                        PercentValue="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                         />
+                                        MaxValue="1"
+                                        MinValue="0.1"
+                                        Step="0.1"
+                                        Value="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}"/> 
                                 </DataTemplate>
                             </syncfusion:GridTemplateColumn.CellTemplate>
-                        </syncfusion:GridTemplateColumn>-->
+                        </syncfusion:GridTemplateColumn>
                     </syncfusion:SfDataGrid.Columns>
-
-
+                    
+                    <syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:GridTableSummaryRow ShowSummaryInRow="False">
+                            <syncfusion:GridSummaryRow.SummaryColumns>
+                                <syncfusion:GridSummaryColumn Name="PriceAmount"
+                                              Format="'Total UnitPrice : {Sum:c}'"
+                                              MappingName="UnitPrice"
+                                              SummaryType="DoubleAggregate" />
+                                <syncfusion:GridSummaryColumn Name="ProductCount"
+                                              Format="'Total Product Count : {Count:d}'"
+                                              MappingName="ProductName"
+                                              SummaryType="CountAggregate" />
+                            </syncfusion:GridSummaryRow.SummaryColumns>
+                        </syncfusion:GridTableSummaryRow>
+                    </syncfusion:SfDataGrid.TableSummaryRows>
+                    
                 </syncfusion:SfDataGrid>
+                <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+                    <TextBlock DockPanel.Dock="Right" 
+                        Text="{Binding TotalSum}" Margin="10" 
+                        HorizontalAlignment="Right" FontWeight="Bold"/>
+                    <TextBlock DockPanel.Dock="Right" 
+                        Text="Total sum:" Margin="10" 
+                        HorizontalAlignment="Right"/>
+                </DockPanel>
             </Grid>
         </GroupBox>
     </Grid>
-
-
 </UserControl>

@@ -34,6 +34,8 @@ namespace Orders.ViewModels
             order = new Order();
         }
 
+        bool IRegionMemberLifetime.KeepAlive => true;
+
         #region Commands
         public DelegateCommand SaveCommand { get; set; }
         private void Save()
@@ -111,7 +113,6 @@ namespace Orders.ViewModels
             }
         }
 
-        bool IRegionMemberLifetime.KeepAlive => true;
 
         #endregion
 
