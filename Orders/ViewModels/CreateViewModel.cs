@@ -42,6 +42,18 @@ namespace Orders.ViewModels
 
         private void OnProductInOrderCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                foreach (var producInOrder in e.NewItems)
+                {
+                    (producInOrder as ProductInOrder).PropertyChanged -= ProductInOrder_PropertyChanged;
+                }
+            }
+            TotalSum = GetTotalSum();
+        }
+
+        private void ProductInOrder_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
             TotalSum = GetTotalSum();
         }
 
@@ -58,8 +70,12 @@ namespace Orders.ViewModels
                     Discount = 1,
                     Quantity = 1,
                     UnitPrice = ((Product)o).UnitPrice.Value
+                    
                 }));
-
+            foreach (var productInOrder in ProductInOrderCollection)
+            {
+                (productInOrder as ProductInOrder).PropertyChanged += ProductInOrder_PropertyChanged;
+            }
             ProductInOrderCollection.CollectionChanged += OnProductInOrderCollectionChanged;
 
             TotalSum = GetTotalSum();
