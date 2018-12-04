@@ -5,7 +5,7 @@
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
     xmlns:prism="http://prismlibrary.com/"
     Title="{Binding Title}"
-    MinHeight="900"
+    MinHeight="800"
     MinWidth="1440"
     prism:ViewModelLocator.AutoWireViewModel="False"
     WindowStartupLocation="CenterScreen"
