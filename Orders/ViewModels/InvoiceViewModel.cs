@@ -5,148 +5,71 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_LocalDb;
 using Infrastructure.Base;
-using Orders.Events;
+//using Orders.Events;
 using Prism.Events;
 using Orders.CommonTypes;
 using Prism.Commands;
 using Prism.Regions;
+using System.Data.Entity;
 
 namespace Orders.ViewModels
 {
-    public class InvoiceViewModel : ViewModelBase, INavigationAware, IRegionMemberLifetime
+    public class InvoiceViewModel : INavigationAware//, IRegionMemberLifetime
     {
-        #region Declarations
-
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
-        Order order;
-
-        #endregion
 
         public InvoiceViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
             _context = context;
             _eventAggregator = eventAggregator;
-
-            _eventAggregator.GetEvent<OnOrderCreate>().Subscribe(OnOrderCreateHandle);
-
-            SaveCommand = new DelegateCommand(Save, CanSave);
-            order = new Order();
         }
 
-        bool IRegionMemberLifetime.KeepAlive => true;
-
-        #region Commands
-        public DelegateCommand SaveCommand { get; set; }
-        private void Save()
-        {
-            using (var contextTransaction = _context.Database.BeginTransaction())
-            {
-                try
-                {
-                    _context.Orders.Add(order);
-                    _context.SaveChanges();
-
-                    _context.Order_Details.AddRange(
-                        new List<Order_Details>(
-                            ProductList.Select(p => new Order_Details
-                            {
-                                OrderID = order.OrderID,
-                                ProductID = p.ID,
-                                UnitPrice = p.UnitPrice,
-                                Quantity=p.Quantity,
-                                Discount=p.Discount
-                            })));
-                    _context.SaveChanges();
-
-                    contextTransaction.Commit();
-
-                    OrderID = order.OrderID;
-                }
-                catch (Exception)
-                {
-                    contextTransaction.Rollback();
-                }
-            }
-        }
-        private bool CanSave() { return true; }
-        #endregion
-
-        #region Bindable properties
-
-        private List<ProductInOrder> _ProductList;
-        public List<ProductInOrder> ProductList
-        {
-            get => _ProductList;
-            set => SetProperty(ref _ProductList, value);
-        }
-
-        int orderID;
-        public int OrderID
-        {
-            get => orderID;
-            set
-            {
-                SetProperty(ref orderID, value);
-            }
-        }
-
-        private DateTime orderDate;
-        public DateTime OrderDate
-        {
-            get => orderDate;
-            set
-            {
-                SetProperty(ref orderDate, value);
-                order.OrderDate = orderDate;
-            }
-        }
-
-        string customerID;
-        public string CustomerID
-        {
-            get => customerID;
-            set
-            {
-                SetProperty(ref customerID, value);
-                order.CustomerID = customerID;
-            }
-        }
+        public DbSet<Order_Details> ProductList { get; set;}
+        public DbSet<Order> OrderList { get; set; }
 
 
-        #endregion
-
-        #region Events handlers
-
-        private void OnOrderCreateHandle(List<ProductInOrder> list)
-        {
-            ProductList = list;
-            OrderDate = DateTime.Now;
-        }
-
-
-        #endregion
-
-        #region Navigatable Events
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-    
-        }
-
+        #region INavigationAware implementation
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            throw new NotImplementedException();
         }
 
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            var Orders = _context.Orders;
+            var OrderDetails = _context.Order_Details;
+
+            var Customers = _context.Customers;
+            var Employees = _context.Employees;
+
+            OrderList = Orders;
+            ProductList = OrderDetails;
+        }
         #endregion
 
-        #region Utilites
+        //#region Screen objects
 
-        #endregion
+        //public class OrderObject
+        //{
+        //    public int OrderId { get; set; }
+        //    public DateTime OrderDate { get; set; }
+        //    public string CustomerName { get; set; }
+        //    public string EmployeeName { get; set; }
+        //}
+        //public class OrdersDetailsObject
+        //{
+        //    public int OrderId { get; set; }
+        //    public string ProductName { get; set; }
+        //    public short Quantity { get; set; }
+        //    public float Discount { get; set; }
+        //    public decimal UnitPrice { get; set; }
+        //}
+        //#endregion
     }
 }

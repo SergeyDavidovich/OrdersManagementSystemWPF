@@ -151,7 +151,8 @@ namespace Orders.ViewModels
                 }
             }
 
-            //_eventAggregator.GetEvent<OnOrderCreate>().Publish(new List<ProductInOrder>(ProductInOrderCollection));
+            _eventAggregator.GetEvent<OnOrderRequest>().Publish(order.OrderID);
+
             //ProductInOrderCollection.Clear();
             CreateOrderCommand.RaiseCanExecuteChanged();
             UnselectCommand.RaiseCanExecuteChanged();

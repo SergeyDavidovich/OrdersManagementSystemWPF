@@ -27,10 +27,11 @@ namespace Orders.Views
     /// 
     public partial class InvoiceView : UserControl
     {
-        public InvoiceView(IUnityContainer unityContainer)
+        public InvoiceView(IUnityContainer unityContainer, EventAggregator eventAggregator)
         {
             InitializeComponent();
 
+            eventAggregator.GetEvent<Orders.Events.OnOrderRequest>().Subscribe(OnOrderRequestHandle);
 
             //var vm = unityContainer.Resolve<InvoiceViewModel>();
             ////var vm = unityContainer.Resolve(typeof(InvoiceViewModel));
@@ -43,30 +44,43 @@ namespace Orders.Views
         {
             //this.Viewer.ReportPath = @"..\..\..\Orders\Reports\OrderReport.rdlc";
 
+            //this.Viewer.DataSources.Clear();
+
+            //this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
+            //{
+            //    Name = "Orders",
+            //    Value = (this.DataContext as InvoiceViewModel).OrderList
+            //});
+
+
+            //this.Viewer.RefreshReport();
+
+        }
+
+        private void SetDataSources(int orderId)
+        {
             this.Viewer.DataSources.Clear();
 
             var db = new LocalDbContext();
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
-                Name = "Order",
-                Value = db.Orders
+                Name = "OrderDetails",
+                Value = db.Order_Details.Where(o => o.OrderID == orderId)
             });
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
-                Name = "OrderDetails",
-                Value = db.Order_Details
+                Name = "Orders",
+                Value = db.Orders.Where(o => o.OrderID == orderId)
             });
-
-            //this.Viewer.RefreshReport();
 
         }
 
-        private void Viewer_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void OnOrderRequestHandle(int orderId)
         {
-            //this.Viewer.RefreshReport();
-
+            SetDataSources(orderId);
+            this.Viewer.RefreshReport();
         }
     }
 }

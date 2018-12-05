@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonTypes\ProductInOrder.cs" />
-    <Compile Include="Events\OnOrderCreate.cs" />
+    <Compile Include="Events\OnOrderRequest.cs" />
     <Compile Include="Main\OrderManageViewModel.cs" />
     <Compile Include="OrdersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -90,8 +90,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\OrderReport.rdlc" />
+    <EmbeddedResource Include="Reports\OrderReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\DAL_LocalDb.Order.datasource" />
     <None Include="Properties\DataSources\DAL_LocalDb.Order_Details.datasource" />
+    <None Include="Properties\DataSources\Orders.ViewModels.InvoiceViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

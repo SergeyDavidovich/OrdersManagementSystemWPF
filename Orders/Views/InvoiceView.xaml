@@ -34,7 +34,7 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Style="{StaticResource ManageButtonStyle}"
                             Content="SAVE"
                                 Command="{Binding Path=DataContext.SaveCommand, ElementName=invoiceView}"
@@ -43,7 +43,7 @@
                                 Background="Red" 
                                 Content="CANCEL"
                                 Command="{Binding Path=DataContext.CancelCommand, ElementName=invoiceView}"/>
-                    </StackPanel>
+                    </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
@@ -53,7 +53,7 @@
             <syncfusion:ReportViewer x:Name="Viewer" 
                     ProcessingMode="Local" 
                     ReportPath="..\..\..\Orders\Reports\OrderReport.rdlc"
-                    Margin="6" SourceUpdated="Viewer_SourceUpdated"                 >
+                    Margin="6">
 
             </syncfusion:ReportViewer>
         </Border>

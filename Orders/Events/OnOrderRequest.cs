@@ -9,7 +9,5 @@ using Orders.CommonTypes;
 
 namespace Orders.Events
 {
-    internal class OnOrderCreate : PubSubEvent<List<ProductInOrder>>
-    {
-    }
+    public class OnOrderRequest : PubSubEvent<int>{}
 }
