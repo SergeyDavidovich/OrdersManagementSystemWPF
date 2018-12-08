@@ -16,8 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Orders.Events;
 using Prism.Events;
+using Orders.ViewModels;
 
 namespace Orders.Views
 {
@@ -30,56 +31,33 @@ namespace Orders.Views
         public InvoiceView(IUnityContainer unityContainer, EventAggregator eventAggregator)
         {
             InitializeComponent();
+            var vm = unityContainer.Resolve<InvoiceViewModel>();
+            this.DataContext = vm;
 
-            eventAggregator.GetEvent<Orders.Events.OnOrderRequest>().Subscribe(OnOrderRequestHandle);
-
-            //var vm = unityContainer.Resolve<InvoiceViewModel>();
-            ////var vm = unityContainer.Resolve(typeof(InvoiceViewModel));
-
-            //this.DataContext = vm;
-
+            eventAggregator.GetEvent<OrderDataCreated>().Subscribe(SetDataSources);
         }
 
-        private void InvoiceView_Loaded(object sender, RoutedEventArgs e)
-        {
-            //this.Viewer.ReportPath = @"..\..\..\Orders\Reports\OrderReport.rdlc";
+        //this.Viewer.ReportPath = @"..\..\..\Orders\Reports\OrderReport.rdlc";
 
-            //this.Viewer.DataSources.Clear();
-
-            //this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
-            //{
-            //    Name = "Orders",
-            //    Value = (this.DataContext as InvoiceViewModel).OrderList
-            //});
-
-
-            //this.Viewer.RefreshReport();
-
-        }
-
-        private void SetDataSources(int orderId)
+        private void SetDataSources()
         {
             this.Viewer.DataSources.Clear();
 
-            var db = new LocalDbContext();
-
-            this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
-            {
-                Name = "OrderDetails",
-                Value = db.Order_Details.Where(o => o.OrderID == orderId)
-            });
+            var orders = (this.DataContext as InvoiceViewModel).Orders;
+            var orderDetails = (this.DataContext as InvoiceViewModel).OrderDetails;
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
                 Name = "Orders",
-                Value = db.Orders.Where(o => o.OrderID == orderId)
+                Value = orders
             });
 
-        }
+            this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
+            {
+                Name = "OrderDetails",
+                Value = orderDetails
+            });
 
-        private void OnOrderRequestHandle(int orderId)
-        {
-            SetDataSources(orderId);
             this.Viewer.RefreshReport();
         }
     }

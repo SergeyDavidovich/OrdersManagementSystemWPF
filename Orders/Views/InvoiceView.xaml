@@ -9,8 +9,8 @@
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" FontSize="14"
              d:DesignHeight="450" d:DesignWidth="800"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             x:Name="invoiceView" Loaded="InvoiceView_Loaded">
+             prism:ViewModelLocator.AutoWireViewModel="False"
+             x:Name="invoiceView">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -53,7 +53,7 @@
             <syncfusion:ReportViewer x:Name="Viewer" 
                     ProcessingMode="Local" 
                     ReportPath="..\..\..\Orders\Reports\OrderReport.rdlc"
-                    Margin="6">
+                    Margin="6" ShowPageNavigationControls="False">
 
             </syncfusion:ReportViewer>
         </Border>
