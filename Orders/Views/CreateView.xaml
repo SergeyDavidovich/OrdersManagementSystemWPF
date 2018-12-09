@@ -9,6 +9,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:behaviours="clr-namespace:Infrastructure.Behaviours;assembly=Infrastructure"
+    xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -121,15 +122,15 @@
                     <ColumnDefinition Width="57*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Text="{Binding OrderID}" Grid.Row="0" Grid.Column="0" 
+                <!--<TextBox Text="{Binding OrderID}" Grid.Row="0" Grid.Column="0" 
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          IsReadOnly="True"
                          materialDesign:HintAssist.Hint="Order ID"
                          materialDesign:HintAssist.HintOpacity=".5"
                          Margin="10"
                          VerticalAlignment="Center" FontSize="18"
-                         />
-                <TextBox Text="{Binding OrderDate}" Grid.Row="0" Grid.Column="1" 
+                         />-->
+                <TextBox Text="{Binding OrderDate}" Grid.Row="0" Grid.Column="0" 
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          IsReadOnly="True"
                          materialDesign:HintAssist.Hint="Order date"
@@ -192,9 +193,16 @@
                                     <syncfusion:UpDown  
                                         syncfusion:FocusManagerHelper.FocusedElement="True"
                                         MaxValue="1"
-                                        MinValue="0.1"
-                                        Step="0.1"
-                                        Value="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}"/>
+                                        MinValue="0"
+                                        Step="0.01"
+                                        Value="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Background="{x:Null}">
+                                        <syncfusion:UpDown.NumberFormatInfo>
+                                            <globalization:NumberFormatInfo
+                                                PercentDecimalDigits="4" PercentSymbol="%"
+                                                />
+                                        </syncfusion:UpDown.NumberFormatInfo>
+                                    </syncfusion:UpDown>
                                 </DataTemplate>
                             </syncfusion:GridTemplateColumn.CellTemplate>
                         </syncfusion:GridTemplateColumn>

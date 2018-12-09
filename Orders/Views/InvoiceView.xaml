@@ -53,9 +53,7 @@
             <syncfusion:ReportViewer x:Name="Viewer" 
                     ProcessingMode="Local" 
                     ReportPath="..\..\..\Orders\Reports\OrderReport.rdlc"
-                    Margin="6" ShowPageNavigationControls="False">
-
-            </syncfusion:ReportViewer>
+                    Margin="6" ShowPageLayoutControl="False" WordFormatType="Word2013" ExcelVersion="Excel2013"/>
         </Border>
 
         <!--<Border Margin="6" CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" Background="White">

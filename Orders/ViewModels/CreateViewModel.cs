@@ -34,10 +34,59 @@ namespace Orders.ViewModels
 
             Customers = context.Customers.ToList<Customer>();
             Employees = context.Employees.ToList<Employee>();
-            //order = new Order();
+        }
+        #region Select products
+
+        #region Commands
+
+        public DelegateCommand SelectCommand { get; set; }
+        private void Select()
+        {
+            ProductInOrderCollection = new ObservableCollection<ProductInOrder>(_SelectedProducts.
+                Select(o => new ProductInOrder
+                {
+                    ID = (o as Product).ProductID,
+                    Name = (o as Product).ProductName,
+                    Discount = 0,
+                    Quantity = 1,
+                    UnitPrice = (o as Product).UnitPrice.Value
+
+                }));
+            foreach (var productInOrder in ProductInOrderCollection)
+            {
+                (productInOrder as ProductInOrder).PropertyChanged += ProductInOrder_PropertyChanged;
+            }
+            ProductInOrderCollection.CollectionChanged += OnProductInOrderCollectionChanged;
+
+            TotalSum = GetTotalSum();
+
+            SelectedProducts.Clear();
+            OrderDate = DateTime.Now.ToLongDateString();
+        }
+        private bool CanSelect() => SelectedProductsIsNullOrEmpty();
+
+        #endregion
+
+        #region Bindable properties
+
+        public ObservableCollection<Product> Products { get; set; }
+
+        private ObservableCollection<Object> _SelectedProducts;
+        public ObservableCollection<Object> SelectedProducts
+        {
+            get { return _SelectedProducts; }
+            set
+            {
+                SetProperty(ref _SelectedProducts, value);
+                SelectCommand.RaiseCanExecuteChanged();
+            }
         }
 
-        #region Select products
+        #endregion
+
+        #endregion
+
+        #region Create order
 
         #region Events handlers
 
@@ -59,59 +108,6 @@ namespace Orders.ViewModels
         }
 
         #endregion
-
-        #region Commands
-
-        public DelegateCommand SelectCommand { get; set; }
-        private void Select()
-        {
-            ProductInOrderCollection = new ObservableCollection<ProductInOrder>(_SelectedProducts.
-                Select(o => new ProductInOrder
-                {
-                    ID = ((Product)o).ProductID,
-                    Name = ((Product)o).ProductName,
-                    Discount = 1,
-                    Quantity = 1,
-                    UnitPrice = ((Product)o).UnitPrice.Value
-
-                }));
-            foreach (var productInOrder in ProductInOrderCollection)
-            {
-                (productInOrder as ProductInOrder).PropertyChanged += ProductInOrder_PropertyChanged;
-            }
-            ProductInOrderCollection.CollectionChanged += OnProductInOrderCollectionChanged;
-
-            TotalSum = GetTotalSum();
-
-            SelectedProducts.Clear();
-            OrderDate = DateTime.Now.ToLongDateString();
-        }
-        private bool CanSelect() => SelectedProductsIsNullOrEmpty();
-
-
-        #endregion
-
-        #region Bindable properties
-
-        public ObservableCollection<Product> Products { get; set; }
-
-        private ObservableCollection<Object> _SelectedProducts;
-        public ObservableCollection<Object> SelectedProducts
-        {
-            get { return _SelectedProducts; }
-            set
-            {
-                SetProperty(ref _SelectedProducts, value);
-                SelectCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        #endregion
-
-
-        #endregion
-
-        #region Create order
 
         #region Commands
 
@@ -153,7 +149,13 @@ namespace Orders.ViewModels
 
             _eventAggregator.GetEvent<OnOrderRequest>().Publish(order.OrderID);
 
-            //ProductInOrderCollection.Clear();
+            ProductInOrderCollection = null;
+            OrderID = null;
+            OrderDate = String.Empty;
+            SelectedCustomer = null;
+            SelectedEmployee = null;
+            TotalSum = string.Empty;
+
             CreateOrderCommand.RaiseCanExecuteChanged();
             UnselectCommand.RaiseCanExecuteChanged();
 
@@ -166,13 +168,14 @@ namespace Orders.ViewModels
         public DelegateCommand UnselectCommand { get; set; }
         private void Unselect()
         {
-            _ProductInOrderCollection.Clear();
-            CreateOrderCommand.RaiseCanExecuteChanged();
-            UnselectCommand.RaiseCanExecuteChanged();
-
+            ProductInOrderCollection = null;
             OrderDate = String.Empty;
             SelectedCustomer = null;
             SelectedEmployee = null;
+            TotalSum = String.Empty;
+
+            CreateOrderCommand.RaiseCanExecuteChanged();
+            UnselectCommand.RaiseCanExecuteChanged();
         }
         private bool CanUnselect() => ProductsInOrderIsNullOrEmpty();
 
@@ -218,8 +221,8 @@ namespace Orders.ViewModels
             }
         }
 
-        int orderID;
-        public int OrderID
+        int? orderID;
+        public int? OrderID
         {
             get => orderID;
             set
@@ -290,7 +293,7 @@ namespace Orders.ViewModels
         }
         private string GetTotalSum()
         {
-            return ProductInOrderCollection.Select(p => ((Double)p.UnitPrice) * p.Quantity * p.Discount).Sum().ToString("C2");
+            return ProductInOrderCollection.Select(p => ((Double)p.UnitPrice) * p.Quantity * (1 - p.Discount)).Sum().ToString("C2");
         }
         #endregion
     }
