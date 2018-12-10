@@ -434,7 +434,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -780,7 +779,7 @@
           </Textbox>
           <Line Name="Line1">
             <Top>3.66571cm</Top>
-            <Left>2.43224cm</Left>
+            <Left>1.79724cm</Left>
             <Height>0cm</Height>
             <Width>11.17583cm</Width>
             <ZIndex>10</ZIndex>
@@ -960,45 +959,16 @@ Tel: 21616017</Value>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>25cm</Height>
+        <Height>25.7cm</Height>
         <Style />
       </Body>
-      <Width>18cm</Width>
+      <Width>15.61875cm</Width>
       <Page>
         <PageFooter>
-          <Height>2.54cm</Height>
+          <Height>1.54933cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="OverallPageNumber">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Globals!OverallPageNumber</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>OverallPageNumber</rd:DefaultName>
-              <Top>0.94933cm</Top>
-              <Left>13.30537cm</Left>
-              <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="PageNumber">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1006,19 +976,23 @@ Tel: 21616017</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!PageNumber</Value>
-                      <Style />
+                      <Value>="Page " &amp; Globals!PageNumber &amp; " from " &amp; Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <TextDecoration>None</TextDecoration>
+                      </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.94933cm</Top>
-              <Left>8.9662cm</Left>
+              <Top>0.60854cm</Top>
+              <Left>7.59037cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
-              <ZIndex>1</ZIndex>
+              <Width>5.91312cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1029,6 +1003,19 @@ Tel: 21616017</Value>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Line Name="Line3">
+              <Top>0.63495cm</Top>
+              <Left>7.85023cm</Left>
+              <Height>0cm</Height>
+              <Width>5.75784cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Color>Gray</Color>
+                  <Style>Dotted</Style>
+                </Border>
+              </Style>
+            </Line>
           </ReportItems>
           <Style>
             <Border>
