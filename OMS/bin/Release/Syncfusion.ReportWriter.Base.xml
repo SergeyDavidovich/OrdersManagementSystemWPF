@@ -1,0 +1,1800 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.ReportWriter.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.ReportWriter.ProcessingMode">
+            <summary>
+            Defines the support for RDL and RDLC in Reportviewer
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ProcessingMode.Remote">
+            <summary>
+            ProcessingMode If the Report is RDLC
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ProcessingMode.Local">
+            <summary>
+            ProcessingMode If the Report is RDL
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ExcelVersion">
+            <summary>
+            Defines supported excel version types.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelVersion.Excel97to2003">
+            <summary>
+            Represents excel version 97-2003
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelVersion.Excel2007">
+            <summary>
+            Represents excel version Excel2007
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelVersion.Excel2010">
+            <summary>
+            Represents excel version Excel2010
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelVersion.Excel2013">
+            <summary>
+            Represents excel version Excel2013
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelVersion.CSV">
+            <summary>
+            Represents CSV version
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PPTSaveType">
+            <summary>
+            Defines supported power point version types.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTSaveType.PowerPoint97to2003">
+            <summary>
+            Represents ppt version 97-2003
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTSaveType.PowerPoint2007">
+            <summary>
+            Represents ppt version 2007
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTSaveType.PowerPoint2010">
+            <summary>
+            Represents ppt version 2010
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTSaveType.PowerPoint2013">
+            <summary>
+            Represents ppt version 2013
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PPTVersion">
+            <summary>
+            Defines supported power point version types.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTVersion.PowerPoint97to2003">
+            <summary>
+            Represents ppt version 97-2003
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTVersion.PowerPoint2007">
+            <summary>
+            Represents ppt version 2007
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTVersion.PowerPoint2010">
+            <summary>
+            Represents ppt version 2010
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.PPTVersion.PowerPoint2013">
+            <summary>
+            Represents ppt version 2013
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WordFormatType">
+            <summary>
+            Defines supported WordFormatType
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Doc">
+            <summary>
+            Microsoft Word file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Dot">
+            <summary>
+            Microsoft Word document template.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Docx">
+            <summary>
+            Microsoft Word 2007 file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2007">
+            <summary>
+            Microsoft Word 2007 file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2010">
+            <summary>
+            Microsoft Word 2010 file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2013">
+            <summary>
+            Microsoft Word 2013 file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2007Dotx">
+            <summary>
+            Microsoft Word 2007 Template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2010Dotx">
+            <summary>
+            Microsoft Word 2010 Template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2013Dotx">
+            <summary>
+            Microsoft Word 2013 Template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2007Docm">
+            <summary>
+            Microsoft Word 2007 macro enabled file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2010Docm">
+            <summary>
+            Microsoft Word 2010 macro enabled file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2013Docm">
+            <summary>
+            Microsoft Word 2013 macro enabled file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2007Dotm">
+            <summary>
+            Microsoft Word 2007 macro enabled template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2010Dotm">
+            <summary>
+            Microsoft Word 2010 macro enabled template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Word2013Dotm">
+            <summary>
+            Microsoft Word 2013 macro enabled template format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Rtf">
+            <summary>
+            Rtf format
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Txt">
+            <summary>
+            Text file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.EPub">
+            <summary>
+            E-book format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Html">
+            <summary>
+            Html format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Xml">
+            <summary>
+            Xml file format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordFormatType.Automatic">
+            <summary>
+            Support all Format Types.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ExportLayout">
+            <summary>
+            Defines Export Layout
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExportLayout.Default">
+            <summary>
+            Default. It will export the reports in deafult Layout of the export type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExportLayout.Print">
+            <summary>
+            Default. It will export the reports in PrintLayout.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordLayoutOptions.Default">
+            <summary>
+            Uses the default behaviour of SSRS layering format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WordLayoutOptions.TopLevel">
+            <summary>
+            All child elements are renderd at root level without any layers.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelLayoutOptions.Default">
+            <summary>
+            Uses the default behaviour of SSRS layering format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.ExcelLayoutOptions.IgnoreCellMerge">
+            <summary>
+            Removes the tiny column/row cell merges and does not maintains the actual design layout.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ExcelWriter">
+            <summary>
+            Exports the Report in Excel mode
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WriterBase">
+            <summary>
+            Exports the Reports in different format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.LoadReport(System.IO.Stream)">
+            <summary>
+            Loads the report
+            </summary>
+            <param name="fileStream">The stream which contains the rdl contents</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.LoadSubreport(System.String,System.IO.Stream)">
+            <summary>
+            Loads the sub report
+            </summary>
+            <param name="report">The stream which contains the rdl contents</param>
+            <param name="reportName">Name of the report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.LoadSubreport(System.String,System.String)">
+            <summary>
+            Loads the sub report
+            </summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportPath">Path to the report file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.LoadSubreport(System.String,System.IO.TextReader)">
+            <summary>
+            Loads the sub report
+            </summary>
+            <param name="report">The  text reader which contains the rdl contents</param>
+            <param name="reportName">Name of the report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.GetDataSetNames">
+            <summary>
+            Returns the data set names
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.GetDataSources">
+             <summary>
+            Gets the Datasource information of the report
+             </summary>
+             <returns>Report Datasources</returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.SetDataSourceCredentials(Syncfusion.Windows.Reports.DataSourceCredentials[])">
+            <summary>
+            Sets Datasource credentials
+            </summary>
+            <param name="dataSourceCredentials">Array of Credential Informations</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.SetDataSourceCredentials(System.Collections.Generic.IEnumerable{Syncfusion.Windows.Reports.DataSourceCredentials})">
+            <summary>
+            Sets Datasource credentials
+            </summary>
+            <param name="dataSourceCredentials">collection of Credential Informations</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.GetParameters">
+            <summary>
+            Get the parameters
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WriterBase.SetParameters(System.Collections.Generic.IEnumerable{Syncfusion.Windows.Reports.ReportParameter})">
+            <summary>
+            Set the parameter for the report
+            </summary>
+            <param name="reportParameters"></param>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportPath">
+            <summary>
+            Gets or sets the report path (file name of the report with its full path).
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportProcessingMode">
+            <summary>
+            Gets or sets a value for Whether RDLC support or not.
+            </summary>
+            <value><c>Local</c> if this instance is RDLC; otherwise, <c>Remote</c>.</value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ExportLayout">
+            <summary>
+            Gets or sets a value for Whether print or default mode.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.DataSources">
+            <summary>
+            Gets or sets the data sources.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportServerUrl">
+            <summary>
+            Gets or sets the report server URL.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportServerCredential">
+            <summary>
+            Gets or sets the report server credential.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportServerFormsCredential">
+            <summary>
+            Gets or sets credentials for ReportServer.
+            </summary>
+            <value>UserName and Password</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportDefinition">
+            <summary>
+            Gets or sets the report definition.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.EnableVirtualEvaluation">
+            <summary>
+            Gets or sets a value for EnableVirtualEvaluation.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportModel">
+            <summary>
+            Gets or sets the report model.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.PageSettings">
+            <summary>
+            Gets or sets PageSettings of Reportviewer.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportingServer">
+            <summary>
+            Gets or sets ReportingServer of Reportviewer.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ReportServer">
+            <summary>
+            Gets or sets ReportingServer of Reportviewer.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.WordOptions">
+            <summary>
+            Gets or Sets the word writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.ExcelOptions">
+            <summary>
+            Gets or Sets the excel writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.CsvOptions">
+            <summary>
+            Gets or Sets the csv writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.PDFOptions">
+            <summary>
+            Gets or Sets the PDF writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.HTMLOptions">
+            <summary>
+            Gets or Sets the HTML writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WriterBase.PPTOptions">
+            <summary>
+            Gets or Sets the PPT writer options.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <param name="reportDataSources">DataSource of the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the report.
+            </summary>
+            <param name="fileName">Name of the file to save</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.Save(System.String)">
+            <summary>
+            Exports the report as a Excel document
+            </summary>
+            <param name="ExcelFilename">The name of the Excel file to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.Save(System.IO.Stream)">
+            <summary>
+            Exports the report as a Excel document
+            </summary>
+            <param name="ExcelStream">The stream to save the Excel file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ConvertToExcel(Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Converts the PageModelFactory into its Excel document
+            </summary>
+            <param name="reportModel">The ReportModel of the report</param>
+            <returns>Returns its equivalent PDF document</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.PixelToPoint(System.Double)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in double</param>
+            <returns>Returns the equivalent point value as float</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.PixelToPoint(System.Single)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in float</param>
+            <returns>Returns the equivalent point value</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessRectangleModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the rectangle report model
+            </summary>
+            <param name="cellValue">value of the rectangle model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessLineModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the line model
+            </summary>
+            <param name="cellValue">Value of the Line Model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessImageModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the image model
+            </summary>
+            <param name="cellValue">Value of the Image Model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessCustomReportItemModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the CustomReportItem model
+            </summary>
+            <param name="cellValue">Value of the CustomReportItem Model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessGaugeModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="cellValue">Value of the Gauge Model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriter.ProcessChartModel(Syncfusion.ReportWriter.ExcelReportItemCellValue)">
+            <summary>
+            Process the Chart model
+            </summary>
+            <param name="cellValue">Value of the Chart Model</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ExcelWriterAdv">
+            <summary>
+            Exports the Report in Excel mode
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <param name="reportDataSources">DataSource of the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the report.
+            </summary>
+            <param name="fileName">Name of the file to save</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.Save(System.String)">
+            <summary>
+            Exports the report as a Excel document
+            </summary>
+            <param name="ExcelFilename">The name of the Excel file to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.Save(System.IO.Stream)">
+            <summary>
+            Exports the report as a Excel document
+            </summary>
+            <param name="ExcelStream">The stream to save the Excel file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ConvertToExcel(Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Converts the PageModelFactory into its Excel document
+            </summary>
+            <param name="reportModel">The ReportModel of the report</param>
+            <returns>Returns its equivalent PDF document</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.PixelToPoint(System.Double)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in double</param>
+            <returns>Returns the equivalent point value as float</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.PixelToPoint(System.Single)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in float</param>
+            <returns>Returns the equivalent point value</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessRectangleModel(Syncfusion.ReportWriter.ExcelLayoutCellModel)">
+            <summary>
+            Process the rectangle report model
+            </summary>
+            <param name="cellValue">value of the rectangle model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessLineModel(Syncfusion.ReportWriter.ExcelLayoutCellModel,System.Boolean)">
+            <summary>
+            Process the line model
+            </summary>
+            <param name="cellValue">Value of the Line Model</param>
+            <param name="isTablixCell">Value of the isTablixCell</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessImageModel(Syncfusion.ReportWriter.ExcelLayoutCellModel,System.Boolean)">
+            <summary>
+            Process the image model
+            </summary>
+            <param name="cellValue">Value of the Image Model</param>
+            <param name="isTablixCell">Value of the isTablixCell</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessCustomReportItemModel(Syncfusion.ReportWriter.ExcelLayoutCellModel,System.Boolean)">
+            <summary>
+            Process the CustomReportItem model
+            </summary>
+            <param name="cellValue">Value of the CustomReportItem Model</param>
+            <param name="isTablixCell">Value of the isTablixCell</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessGaugeModel(Syncfusion.ReportWriter.ExcelLayoutCellModel,System.Boolean)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="cellValue">Value of the Gauge Model</param>
+            <param name="isTablixCell">Value of the isTablixCell</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ExcelWriterAdv.ProcessChartModel(Syncfusion.ReportWriter.ExcelLayoutCellModel,System.Boolean)">
+            <summary>
+            Process the Chart model
+            </summary>
+            <param name="cellValue">Value of the Chart Model</param>
+            <param name="isTablixCell">Value of child model</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.HtmlWriter.Save(System.String)">
+            <summary>
+            Exports the report as a Html document
+            </summary>
+            <param name="HtmlFilename">The name of the html file to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.HtmlWriter.Save(System.IO.Stream)">
+            <summary>
+            Exports the report as a html document
+            </summary>
+            <param name="htmlStream">The stream where the html document to be saved</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.HtmlWriter.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PdfWriter">
+            <summary>
+            Exports the Report in Pdf mode .
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <param name="reportDataSources">DataSource of the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the Report.
+            </summary>
+            <param name="fileName">File name to save the Report.</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.Save(System.String)">
+            <summary>
+            Exports the report as a PDF document
+            </summary>
+            <param name="PdfFilename">The name of the Pdf file to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.Save(System.IO.Stream)">
+            <summary>
+            Exports the report as a PDF document
+            </summary>
+            <param name="PdfStream">The stream where the Pdf document to be saved</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ConvertToPDF(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Converts the PageModelFactory into its PDF document
+            </summary>
+            <param name="pageModelFactory">The pageModelFactory of the report</param>
+            <param name="report">ReportModel of the Report</param>
+            <returns>Returns its equivalent PDF document</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.AddFooter(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Process the footer element
+            </summary>
+            <param name="pageModelFactory">The PageModelFactory</param>
+            <param name="report">The ReportModel</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.AddHeader(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Process the header element
+            </summary>
+            <param name="pageModelFactory">The PageModelFactory</param>
+            <param name="report">The ReportModel</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ResizeImage(System.Drawing.Image,System.Single,System.Single)">
+            <summary>
+            Resize the image to the specified width and height.
+            </summary>
+            <param name="image">The image</param>
+            <param name="newWidth">The new width</param>
+            <param name="newHeight">The new height</param>
+            <returns>Returns the resized image</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.PixelToPoint(System.Double)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in double</param>
+            <returns>Returns the equivalent point value as float</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.PixelToPoint(System.Single)">
+            <summary>
+            Converts the pixel value to point value
+            </summary>
+            <param name="paramValue">Pixel value in float</param>
+            <returns>Returns the equivalent point value</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessReportModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the report models
+            </summary>
+            <param name="reportModel">The ReportModeler</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ApplyPdfGridCellStyle(Syncfusion.Pdf.Grid.PdfGridCell,Syncfusion.RDL.Internal.TablixCellInfo)">
+             <summary>
+            
+             </summary>
+             <param name="cell"></param>
+             <param name="cellInfo"></param>
+             <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.GetVerticalAlignment(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="verticalAlignment"></param>
+             <returns></returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessRectangleModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the rectangle report model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessLineModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the line model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessImageModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the image model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessCustomReportItemModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the CustomReportItem model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessGaugeModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessChartModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ProcessTextBox(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the textbox ReportItem
+            </summary>
+            <param name="reportModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.GetPdfFont(Syncfusion.RDL.ItemModel.TextRunExpval)">
+            <summary>
+            Get the PdfFont
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.GetFontStyle(Syncfusion.RDL.ItemModel.TextRunExpval)">
+            <summary>
+            Gets the Font style for PdfFont
+            </summary>
+            <param name="run"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.GetAlignment(System.String)">
+            <summary>
+            Gets the PDF alignment
+            </summary>
+            <param name="textAlignment"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.UpdateParentOffset">
+            <summary>
+            Update the parent bounds
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.ClearParentOffset">
+            <summary>
+            Clears the parent offset
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.UpdatePageLayoutForPDF(Syncfusion.RDL.DOM.ReportDefinition,Syncfusion.RDL.Data.ReportModel)">
+             <summary>
+            
+             </summary>
+             <param name="Report"></param>
+             <param name="ReportModel"></param>
+             <returns></returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PdfWriter.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PresentationWriter">
+            <summary>
+            Exports the Report in ppt mode
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter">PresentationWriter</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter">PresentationWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter">PresentationWriter</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter">PresentationWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <param name="reportDataSources">DataSource of the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter">PresentationWriter</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the Report.
+            </summary>
+            <param name="fileName">File name to save the Report.</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.Save(System.String)">
+            <summary>
+            Exports the report as a PPT document
+            </summary>
+            <param name="filename">The name of the Ppt file to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.Save(System.IO.Stream)">
+            <summary>
+            Exports the report as a PPT document
+            </summary>
+            <param name="stream">The stream where the Ppt document to be saved</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ConvertToPPT(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Converts the PageModelFactory into its PPT document
+            </summary>
+            <param name="pageModelFactory">The pageModelFactory of the report</param>
+            <param name="reportModel">ReportModel of the Report</param>
+            <returns>Returns its equivalent PPT document</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.AddFooter(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Process the footer element
+            </summary>
+            <param name="pageModelFactory">The PageModelFactory</param>
+            <param name="report">The ReportModel</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.AddHeader(Syncfusion.RDL.Layout.PageModelFactory,Syncfusion.RDL.Data.ReportModel)">
+            <summary>
+            Process the header element
+            </summary>
+            <param name="pageModelFactory">The PageModelFactory</param>
+            <param name="report">The ReportModel</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ResizeImage(System.Drawing.Image,System.Single,System.Single)">
+            <summary>
+            Resize the image to the specified width and height.
+            </summary>
+            <param name="image">The image</param>
+            <param name="newWidth">The new width</param>
+            <param name="newHeight">The new height</param>
+            <returns>Returns the resized image</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessReportItemModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the report models
+            </summary>
+            <param name="reportItemModel">The ReportModeler</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessRectangleModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the rectangle report model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessLineModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the line model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessImageModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the image model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessCustomReportItemModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the CustomReportItemModel model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessGaugeModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessChartModel(Syncfusion.RDL.Data.IReportItemModeler)">
+            <summary>
+            Process the Gauge model
+            </summary>
+            <param name="reportItemModel"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ProcessTextBox(Syncfusion.RDL.Data.IReportItemModeler,Syncfusion.Presentation.ICell)">
+            <summary>
+            Process the textbox ReportItem
+            </summary>
+            <param name="reportItemModel"></param>
+            <param name="cell"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.UpdateParentOffset">
+            <summary>
+            Update the parent bounds
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ClearParentOffset">
+            <summary>
+            Clears the parent offset
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.UpdatePageModelLayout(Syncfusion.RDL.DOM.ReportDefinition,Syncfusion.RDL.Data.ReportModel)">
+             <summary>
+            
+             </summary>
+             <param name="Report"></param>
+             <param name="ReportModel"></param>
+             <returns></returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ApplyTextFont(Syncfusion.Presentation.IFont,Syncfusion.RDL.ItemModel.TextRunExpval)">
+            <summary>
+            apply the Text Font
+            </summary>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.PresentationWriter.ApplyCellStyle(Syncfusion.Presentation.ICell,Syncfusion.RDL.Internal.TablixCellInfo)">
+             <summary>
+            
+             </summary>
+             <param name="cell"></param>
+             <param name="cellInfo"></param>
+             <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WordWriter">
+            <summary>
+            Exports the report in Word mode.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The full path of the file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlStream">Stream of the file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The full path of the file</param>
+            <param name="reportDataSources">ReportDatasource</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlStream">stream of the RDL file</param>
+            <param name="reportDataSources">Report Datasources </param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the Report
+            </summary>
+            <param name="fileName">File name to save the Report</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.Save(System.String)">
+            <summary>
+            Exports the Report as word file
+            </summary>
+            <param name="docFilename">File name to save the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.Save(System.IO.Stream)">
+            <summary>
+            Exports the Report as Word file
+            </summary>
+            <param name="docStream">Stream to save the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriter.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WordWriterAdv">
+            <summary>
+            Exports the report in Word mode.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The full path of the file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlStream">Stream of the file</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlFilename">The full path of the file</param>
+            <param name="reportDataSources">ReportDatasource</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.ReportWriter.WordWriter">WordWriter</see> class.
+            </summary>
+            <param name="rdlStream">stream of the RDL file</param>
+            <param name="reportDataSources">Report Datasources </param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.Save(System.String,System.Web.HttpResponse)">
+            <summary>
+            Exports the Report
+            </summary>
+            <param name="fileName">File name to save the Report</param>
+            <param name="response">Http Response</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.Save(System.String)">
+            <summary>
+            Exports the Report as word file
+            </summary>
+            <param name="docFilename">File name to save the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.Save(System.IO.Stream)">
+            <summary>
+            Exports the Report as Word file
+            </summary>
+            <param name="docStream">Stream to save the Report</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.WordWriterAdv.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources. 
+            </summary>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PageSettings">
+            <summary>
+            To set the PageSettings of Reportviewer
+            </summary>
+            <remarks>PageSettings contains the properties to define the Page Height, Page Width and Page Margins</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.TopMargin">
+            <summary>
+            Gets or sets TopMargin value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.LeftMargin">
+            <summary>
+            Gets or sets LeftMargin value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.RightMargin">
+            <summary>
+            Gets or sets RightMargin value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.BottomMargin">
+            <summary>
+            Gets or sets BottomMargin value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.PageHeight">
+            <summary>
+            Gets or sets PageHeight value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PageSettings.PageWidth">
+            <summary>
+            Gets or sets PageWidth value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WriterFormat">
+            <summary>
+            Types of writer format in Reportviewer
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.PDF">
+            <summary>
+            Export option for PDF format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.Excel">
+            <summary>
+            Export option for Excel format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.Word">
+            <summary>
+            Export option for Word format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.HTML">
+            <summary>
+            Export option for HTML format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.CSV">
+            <summary>
+            Export option for CSV format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.ReportWriter.WriterFormat.PPT">
+            <summary>
+            Export option for PPT format.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ParagraphSpacing">
+             <summary>
+             To set the Empty paragraph padding for WORD Writer
+             </summary>
+             <remarks></remarks>
+             <summary>
+            
+             </summary>
+             <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ParagraphSpacing.Top">
+            <summary>
+            Gets or sets Top value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ParagraphSpacing.Bottom">
+            <summary>
+            Gets or sets Bottom value.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.WordOptions">
+            <summary>
+            To set the WordOptions of Word Writter
+            </summary>
+            <remarks>WordOptions contains the properties to define the Page Height, Page Width and Page Margins</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.FormatType">
+            <summary>
+            Gets or sets FormatType.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.LayoutOption">
+            <summary>
+            Gets or sets the rendering type need to be used for exporting report.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.ParagraphSpacing">
+            <summary>
+            Gets or sets the ParagraphSpacing (Increase or decrease empty paragraph height in word report).
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.ProtectionType">
+            <summary>
+            Get or Set type of protection type of the word document.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.ProtectionPassword">
+            <summary>
+            Get or Set the protection password to modify the word document.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.WordOptions.EncryptionPassword">
+            <summary>
+            Get or Set the encryption password to open the word document.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ExcelOptions">
+            <summary>
+            To set the ExcelOptions of Excel Writter
+            </summary>
+            <remarks>ExcelOptions contains the properties to define the ExcelVersion and LayoutOption</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.ExcelSaveType">
+            <summary>
+            Gets or sets ExcelVersion.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.LayoutOption">
+            <summary>
+            Gets or sets the rendering type need to be used for exporting report.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.PasswordToOpen">
+            <summary>
+            Get or Set the password to open the excel document.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.PasswordToModify">
+            <summary>
+            Get or Set the password to modify the excel document.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.ExcelSheetProtection">
+            <summary>
+            Get or set the excel sheet edit protection 
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ExcelOptions.ReadOnlyRecommended">
+            <summary>
+            Get or Set the excel workbook as read-only.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.CsvOptions">
+            <summary>
+            Contains device information setting properties to define the csv file output.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.Encoding">
+            <summary>
+            Gets or sets the encoding of the output file. The default value is UTF-8
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.FieldDelimiter">
+            <summary>
+            Gets or sets the field delimiter string to separate field in the output. The default value is a comma (,).
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.FileExtension">
+            <summary>
+            Gets or sets the CSV file extension. The default value is .CSV. If both Extension and FileExtension are specified then FileExtension will take precedence.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.Qualifier">
+            <summary>
+            Gets or sets the qualifier string which is put around the output result if contain the field delimiter or record delimiter.The default value is a quotation mark (").
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.RecordDelimiter">
+            <summary>
+            Gets or sets the record delimiter which is put at the end of each record. The default value is  "\r\n".
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.SuppressLineBreaks">
+            <summary>
+            Gets or sets the boolean value which define the line breaks are included to output. The default value is false.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.CsvOptions.UseFormattedValues">
+            <summary>
+            Gets or sets the boolean value which define the report formatted text are included to the output. The default value is true.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.HTMLOptions">
+            <summary>
+            To set the HTMLOptions of HTML Writter
+            </summary>
+            <remarks>HTMLOptions contains the property to define the HideHTMLPageSeparator</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.HTMLOptions.HidePageSeparator">
+            <summary>
+            Gets or sets a value for HideHTMLPageSeparator.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PDFOptions">
+            <summary>
+            To set the PDFOptions of PDF Writter
+            </summary>
+            <remarks>PDFOptions contains the properties to define the Fonts, TempPath, SplitPageCount and EnableSplitMerge</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PDFOptions.Fonts">
+            <summary>
+            Load Font stream from external file
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PDFOptions.PdfConformanceLevel">
+            <summary>
+            Enable PDFA export.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PDFOptions.Security">
+            <summary>
+            Specify the PDF document security .
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.PPTOptions">
+            <summary>
+            To set the PPTOptions of PPT Writter
+            </summary>
+            <remarks>PPTOptions contains the properties to define the ppt FormatType,TempPath, SplitPageCount and EnableSplitMerge</remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PPTOptions.FormatType">
+            <summary>
+            Gets or sets Ppt Version.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.PPTOptions.EncryptionPassword">
+            <summary>
+            Get or Set the PPT document security encryption Password .
+            </summary>
+            <value></value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ReportWriter">
+            <summary>
+            ReportWriter class to Export the Report.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.#ctor(System.String,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlFilename">The filename of the report with its full path</param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.#ctor(System.IO.Stream,Syncfusion.Windows.Reports.ReportDataSourceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.RdlIO.RdlIOExportEngine">RdlIOExportEngine</see> class.
+            </summary>
+            <param name="rdlStream"></param>
+            <param name="reportDataSources"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.Save(System.String,Syncfusion.ReportWriter.WriterFormat,System.Web.HttpResponse)">
+            <summary>
+            Saves the document into a HTTP response stream.
+            </summary>
+            <param name="fileName">File name to save the Report</param>
+            <param name="format">Format to save the Report</param>
+            <param name="response">The HTTP response stream object.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.Save(System.String,Syncfusion.ReportWriter.WriterFormat)">
+            <summary>
+            Exports the report as a PDF document
+            </summary>
+            <param name="filename">The name of the Pdf file to be saved</param>
+            <param name="format">The writer format to be saved</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.LoadReport(Syncfusion.RDL.DOM.ReportDefinition)">
+            <summary>
+            Loads a report definition from the locally modified report  using a Syncfusion.RDL.DOM.ReportDefinition 
+            </summary>
+            <param name="reportDefinition">A Syncfusion.RDL.DOM.ReportDefinition class that contains the report definition for a report</param>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.Save(System.IO.Stream,Syncfusion.ReportWriter.WriterFormat)">
+            <summary>
+            Exports the report as a PDF document
+            </summary>
+            <param name="stream">The stream where the Pdf document to be saved</param>
+            <param name="format">The writer format to be saved</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.Dispose">
+            <summary>
+            Disposes all the unmanaged objects, releases common resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.ReportWriter.ReportWriter.RaiseSubReportProcessingEvent(Syncfusion.Windows.Reports.SubreportProcessingEventArgs)">
+            <summary>
+            RaiseSubReportProcessingEvent
+            </summary>
+            <param name="e">An <see cref="T:Syncfusion.Windows.Reports.SubreportProcessingEventArgs">SubreportProcessingEventArgs</see> that contains the event data.</param>
+            <remarks></remarks>
+        </member>
+        <member name="E:Syncfusion.ReportWriter.ReportWriter.ReportError">
+            <summary>
+            Occurs when error in report.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="E:Syncfusion.ReportWriter.ReportWriter.ExportCompleted">
+            <summary>
+            Occurs when export report completed.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="E:Syncfusion.ReportWriter.ReportWriter.SubreportProcessing">
+            <summary>
+            Occurs when SubreportProcessing.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ReportWriter.ReportErrorEventArgs">
+            <summary>
+            ReportErrorEvents argument
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.ReportWriter.ReportWriter.ReportErrorEventArgs.Error">
+            <summary>
+            Gets or sets errors.
+            </summary>
+            <value>List of errors</value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ReportWriter.ReportErrorHandler">
+            <summary>
+            delegate of ReportErrorHandler
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An <see cref="T:Syncfusion.ReportWriter.ReportWriter.ReportErrorEventArgs">ReportErrorEventArgs</see> that contains the event data.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.ReportWriter.ReportWriter.ExportByteCompletedEventHandler">
+            <summary>
+            delegate of ExportByteCompletedEventHandler
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An <see cref="T:Syncfusion.ReportWriter.ReportWriter.ReportErrorEventArgs">ReportExportEventArgs</see> that contains the event data.</param>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>
