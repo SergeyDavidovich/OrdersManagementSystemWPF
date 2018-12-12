@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonTypes\ProductInOrder.cs" />
-    <Compile Include="Events\OnOrderRequest.cs" />
+    <Compile Include="Events\NewOrderCreated.cs" />
     <Compile Include="Events\OrderDataCreated.cs" />
     <Compile Include="Main\OrderManageViewModel.cs" />
     <Compile Include="OrdersModule.cs" />

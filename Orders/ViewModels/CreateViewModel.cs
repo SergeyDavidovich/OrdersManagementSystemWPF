@@ -19,7 +19,7 @@ namespace Orders.ViewModels
     {
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
-        Order order = new Order();
+        Order order; 
 
         public CreateViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -35,7 +35,7 @@ namespace Orders.ViewModels
             Customers = context.Customers.ToList<Customer>();
             Employees = context.Employees.ToList<Employee>();
         }
-        #region Select products
+        #region Select products for order
 
         #region Commands
 
@@ -114,6 +114,8 @@ namespace Orders.ViewModels
         public DelegateCommand CreateOrderCommand { get; set; }
         private void CreateOrder()
         {
+            order = new Order();
+
             order.CustomerID = SelectedCustomer.CustomerID;
             order.EmployeeID = SelectedEmployee.EmployeeID;
             order.OrderDate = DateTime.Parse(OrderDate);
@@ -123,7 +125,9 @@ namespace Orders.ViewModels
                 try
                 {
                     _context.Orders.Add(order);
-                    _context.SaveChanges();
+                    int result = _context.SaveChanges();
+
+                    //if (result > 0) OrderID = order.OrderID;
 
                     _context.Order_Details.AddRange(
                         new List<Order_Details>(
@@ -135,11 +139,10 @@ namespace Orders.ViewModels
                                 Quantity = p.Quantity,
                                 Discount = p.Discount
                             })));
+
                     _context.SaveChanges();
 
                     contextTransaction.Commit();
-
-                    OrderID = order.OrderID;
                 }
                 catch (Exception)
                 {
@@ -147,10 +150,10 @@ namespace Orders.ViewModels
                 }
             }
 
-            _eventAggregator.GetEvent<OnOrderRequest>().Publish(order.OrderID);
+            _eventAggregator.GetEvent<NewOrderCreated>().Publish(order.OrderID);
 
             ProductInOrderCollection = null;
-            OrderID = null;
+            //OrderID = null;
             OrderDate = String.Empty;
             SelectedCustomer = null;
             SelectedEmployee = null;
@@ -221,15 +224,15 @@ namespace Orders.ViewModels
             }
         }
 
-        int? orderID;
-        public int? OrderID
-        {
-            get => orderID;
-            set
-            {
-                SetProperty(ref orderID, value);
-            }
-        }
+        //int? orderID;
+        //public int? OrderID
+        //{
+        //    get => orderID;
+        //    set
+        //    {
+        //        SetProperty(ref orderID, value);
+        //    }
+        //}
 
         private string orderDate;
         public string OrderDate

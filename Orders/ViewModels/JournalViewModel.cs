@@ -42,7 +42,7 @@ namespace Orders.ViewModels
                 SetProperty(ref selectedOrder, value);
                 if (selectedOrder !=null)
                 {
-                _eventAggregator.GetEvent<OnOrderRequest>().Publish(selectedOrder.OrderID);
+                _eventAggregator.GetEvent<NewOrderCreated>().Publish(selectedOrder.OrderID);
 
                 }
             }

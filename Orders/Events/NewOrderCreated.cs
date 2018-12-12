@@ -9,5 +9,8 @@ using Orders.CommonTypes;
 
 namespace Orders.Events
 {
-    public class OnOrderRequest : PubSubEvent<int>{}
+    /// <summary>
+    /// Message about fact that new Order saved in DataBase
+    /// </summary>
+    public class NewOrderCreated : PubSubEvent<int> { }
 }

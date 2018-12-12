@@ -25,7 +25,7 @@ namespace Orders.ViewModels
         {
             _context = context;
             _eventAggregator = eventAggregator;
-            eventAggregator.GetEvent<Events.OnOrderRequest>().Subscribe(OnOrderRequestHandle);
+            eventAggregator.GetEvent<NewOrderCreated>().Subscribe(OnNewOrderCreated);
 
         }
 
@@ -48,7 +48,7 @@ namespace Orders.ViewModels
         #endregion
 
 
-        private void OnOrderRequestHandle(int id)
+        private void OnNewOrderCreated(int id)
         {
             var orders = _context.Orders.Where(o=>o.OrderID == id).ToList();
             var orderDetails = _context.Order_Details.Where(o => o.OrderID == id).ToList();
