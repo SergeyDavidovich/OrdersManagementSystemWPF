@@ -55,7 +55,7 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Grid>
+        <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
@@ -86,6 +86,10 @@
 						           PageSize="30" HorizontalAlignment="Center"
                                    AccentBackground="#FFDD2C00"
                                    AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
-        </Grid>
+        </Grid>-->
+
+        <syncfusion:CardView>
+            
+        </syncfusion:CardView>
     </GroupBox>
 </UserControl>
