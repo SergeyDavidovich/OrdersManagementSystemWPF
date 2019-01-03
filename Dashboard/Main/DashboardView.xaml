@@ -23,8 +23,8 @@
         <ContentControl Grid.Column="1" prism:RegionManager.RegionName="CustomersStatRegion" />
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="1.2*"/>
             </Grid.RowDefinitions>
             <ContentControl prism:RegionManager.RegionName="EmployeesStatRegion" />
             <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ProductsStatRegion" />

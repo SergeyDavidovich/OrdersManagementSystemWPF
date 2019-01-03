@@ -19,7 +19,7 @@ namespace Customers.List
 
         public CustomerListViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
-            Title = "CUSTOMERS VIEW";
+            Title = "CUSTOMERS VIEW (- Under construction -)";
             _context = context;
             _eventAggregator = eventAggregator;
 

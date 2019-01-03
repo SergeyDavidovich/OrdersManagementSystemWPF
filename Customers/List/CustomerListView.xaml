@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Customers.List"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:syncthemes="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
     xmlns:datapager="clr-namespace:Syncfusion.UI.Xaml.Controls.DataPager;assembly=Syncfusion.SfGrid.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="450"
@@ -17,6 +18,58 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="ItemTmplate">
+                <Grid Width="1500" Background="{DynamicResource MaterialDesignBody}">
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="Labels">
+                            <Setter Property="FontWeight" Value="Normal"/>
+                            <Setter Property="Margin" Value="6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="Values">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Margin" Value="6"/>
+                        </Style>
+                    </Grid.Resources>     
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Customer ID:" Grid.Row="0" Grid.Column="0" Style="{StaticResource Labels}" />
+                    <TextBlock Text="{Binding CustomerID}" Grid.Row="0" Grid.Column="1" Style="{StaticResource Values}"/>
+                    
+                    <TextBlock Text="Company name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource Labels}" />
+                    <TextBlock Text="{Binding CompanyName}" Grid.Row="1" Grid.Column="1"/>
+
+                    <TextBlock Text="{Binding ContactName}" Grid.Row="2"/>
+                    <TextBlock Text="{Binding ContactTitle}" Grid.Row="3"/>
+                    <TextBlock Text="{Binding Address}" Grid.Row="4"/>
+                    <TextBlock Text="{Binding City}" Grid.Row="5"/>
+                    <TextBlock Text="{Binding Region}" Grid.Row="6"/>
+                    <TextBlock Text="{Binding PostalCode}" Grid.Row="7"/>
+                    <TextBlock Text="{Binding Country}" Grid.Row="8"/>
+                    <TextBlock Text="{Binding Phone}" Grid.Row="9"/>
+                    <TextBlock Text="{Binding Fax}" Grid.Row="10"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="HeaderTemplate">
+                <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" CornerRadius="4">
+                    <TextBlock Text="{Binding CustomerID}"/>
+                </Border>
+            </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
@@ -55,6 +108,15 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
+        
+        <syncfusion:CardView syncfusion:SkinStorage.VisualStyle="Transparent"
+            ItemsSource="{Binding Customers}" 
+            CanEdit="False"
+            ShowHeader="False" 
+            ItemTemplate="{DynamicResource ItemTmplate}" 
+            HeaderTemplate="{DynamicResource HeaderTemplate}" IsGrouped="True" Orientation="Vertical"
+            />
+        
         <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -87,9 +149,5 @@
                                    AccentBackground="#FFDD2C00"
                                    AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
         </Grid>-->
-
-        <syncfusion:CardView>
-            
-        </syncfusion:CardView>
     </GroupBox>
 </UserControl>

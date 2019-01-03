@@ -49,23 +49,7 @@
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
-                <!--<Setter Property="Background" Value="{DynamicResource MaterialDesignChipBackground}"/>-->
                 <Setter Property="Margin" Value="6"/>
-            </Style>
-            <Style TargetType="chart:SfChart3D">
-                <Setter Property="Tilt" Value="-30"/>
-                <Setter Property="Rotation" Value="0"/>
-                <Setter Property="Depth" Value="30"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="VerticalAlignment" Value="Top"/>
-                <Setter Property="Margin" Value="4"/>
-                <Setter Property="EnableRotation" Value="True"/>
-            </Style>
-            <Style TargetType="chart:PieSeries3D">
-                <Setter Property="EnableAnimation" Value="True"/>
-            </Style>
-            <Style TargetType="TextBlock" x:Key="ChartHeader">
-
             </Style>
         </GroupBox.Resources>
 

@@ -23,7 +23,7 @@ namespace Dashboard.OrderStatistics
 
         public OrdersStatViewModel(LocalDbContext context)
         {
-            base.Title = "Orders";
+            base.Title = "ORDERS";
             _context = context;
 
             //get data for all queries
