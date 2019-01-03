@@ -25,12 +25,6 @@
                 <Setter Property="VerticalAlignment" Value="Top"/>
                 <Setter Property="Margin" Value="4"/>
             </Style>
-            <Style TargetType="chart:PieSeries3D">
-                <Setter Property="EnableAnimation" Value="True"/>
-            </Style>
-            <Style TargetType="TextBlock" x:Key="ChartHeader">
-
-            </Style>
         </GroupBox.Resources>
         <GroupBox.HeaderTemplate>
             <DataTemplate>
@@ -63,7 +57,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.8*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -87,7 +81,7 @@
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
-                    <chart:PieSeries Palette="LightCandy" 
+                    <chart:PieSeries Palette="LightCandy" Margin="0"
                              EnableSmartLabels="True"
                              ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity">
@@ -95,7 +89,9 @@
                         <syncfusion:PieSeries.AdornmentsInfo>
                             <syncfusion:ChartAdornmentInfo 
                                 ShowLabel="True" SegmentLabelFormat="#" 
-                                ShowConnectorLine="True" ShowMarker="False" UseSeriesPalette="True"/>
+                                ShowConnectorLine="True" 
+                                UseSeriesPalette="True"
+                                FontSize="10"/>
                         </syncfusion:PieSeries.AdornmentsInfo>
 
                     </chart:PieSeries>
@@ -132,7 +128,7 @@
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
-                    <chart:PieSeries Palette="Elite"
+                    <chart:PieSeries Palette="Elite" Margin="0"
                              EnableSmartLabels="True"
                              ItemsSource="{Binding OrderByCategoryGroups}"
                              XBindingPath="CategoryName" YBindingPath="SumOfSale">
@@ -141,7 +137,7 @@
                                 ShowLabel="True" SegmentLabelFormat="$#" 
                                 ShowConnectorLine="True"
                                 UseSeriesPalette="True"
-                                LabelPosition="Center" AdornmentsPosition="TopAndBottom"
+                                FontSize="10" Margin="2"
                                 />
                         </syncfusion:PieSeries.AdornmentsInfo>
                     </chart:PieSeries>
