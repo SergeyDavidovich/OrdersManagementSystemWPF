@@ -31,7 +31,7 @@
                 <TextBlock Text="{Binding FirstName}"/>
             </DataTemplate>
             <DataTemplate x:Key="MaxHeaderTemplate">
-                <TextBlock Text="{Binding FirstName}"/>
+                <!--<TextBlock Text="{Binding FirstName}"/>-->
             </DataTemplate>
 
             <DataTemplate x:Key="NormalItemTemplate" DataType="model:Employee">
@@ -64,15 +64,81 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MaxItemTemplate" DataType="model:Employee">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="4*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding LastName}"/>
-                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
-                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Grid Margin="20,20,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="8">
+                        <StackPanel>
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBox" x:Key="MaterialDesignFloatingHintTextBox" 
+                                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                <Setter Property="Margin" Value="8"/>
+                                <Setter Property="FontSize" Value="24"/>
+                                <Setter Property="IsReadOnly" Value="True"/>
+                                <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
+                                <Setter Property="materialDesign:HintAssist.HintOpacity" Value="0.6"/>
+                                <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.5"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBox Text="{Binding Title}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                            materialDesign:HintAssist.Hint="Title" 
+                            />
+                        <TextBox Text="{Binding FirstName}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="First name" 
+                            />
+                        <TextBox Text="{Binding LastName}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Last name" 
+                            />
+                        <TextBox Text="{Binding TitleOfCourtesy}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Title of Courtesy" 
+                            />
+                        <TextBox Text="{Binding BirthDate}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Birth Date" 
+                            />
+                        <TextBox Text="{Binding HireDate}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Hire Date" 
+                            />
+                        <TextBox Text="{Binding Address}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Address" 
+                            />
+                        <TextBox Text="{Binding City}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="City" 
+                            />
+                        <TextBox Text="{Binding Region}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Region" 
+                            />
+                        <TextBox Text="{Binding PostalCode}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Postal code" 
+                            />
+                        <TextBox Text="{Binding Country}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Country" 
+                            />
+                        <TextBox Text="{Binding HomePhone}" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Home phone" 
+                            />
+                    </StackPanel>
+                    </ScrollViewer>
+                    <StackPanel Grid.Column="1">
+                        <Image Source="{Binding Photo}"   
+                               Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+                        <TextBox Text="{Binding Notes}" TextWrapping="Wrap" AutoWordSelection="True" FontSize="16" Margin="0,20,0,0" 
+                               
+                            />
+                    </StackPanel>
                 </Grid>
             </DataTemplate>
 
@@ -89,6 +155,10 @@
                 <Setter Property="HeaderForeground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
                 <Setter Property="CornerRadius" Value="2"/>
             </Style>
+
+            <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+                <Canvas IsItemsHost="True"/>
+            </ItemsPanelTemplate>
 
         </ResourceDictionary>
     </UserControl.Resources>
@@ -138,8 +208,11 @@
                   MaximizedHeaderTemplate="{StaticResource MaxHeaderTemplate}"                      
                   ItemTemplate="{StaticResource NormalItemTemplate }" 
                   MinimizedItemTemplate="{StaticResource MinItemTemplate}"
-                  ItemContainerStyle="{StaticResource TileViewItemStyle}"                     
-                                        >
+                  MaximizedItemTemplate="{StaticResource MaxItemTemplate}"
+                  ItemsPanel="{DynamicResource ItemsPanelTemplate1}"                     
+                  
+                  ItemContainerStyle="{StaticResource TileViewItemStyle}" EnableTouch="True" 
+                  >
             </syncfusion:TileViewControl>
         </Border>
 
