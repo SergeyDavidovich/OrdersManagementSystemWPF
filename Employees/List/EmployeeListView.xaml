@@ -19,69 +19,52 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <!--TileViewControl DataTemplates-->
-            <DataTemplate x:Key="NormalHeaderTemplate">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding FirstName}" Margin="0,0,6,0"/>
-                    <TextBlock Text="{Binding LastName}"/>
-                </StackPanel>
-            </DataTemplate>
+                <Style TargetType="TextBox" x:Key="MaterialDesignFloatingHintTextBox" 
+                                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <Setter Property="Margin" Value="20"/>
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="IsReadOnly" Value="True"/>
+                    <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
+                    <Setter Property="materialDesign:HintAssist.HintOpacity" Value="0.6"/>
+                    <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.5"/>
+                </Style>
             <DataTemplate x:Key="MinHeaderTemplate">
-                <TextBlock Text="{Binding FirstName}"/>
+                <TextBlock>
+                        <Run Text="{Binding Title}"/>
+                        <Run Text="{Binding TitleOfCourtesy}"/>
+                        <Run Text="{Binding FirstName}"/>
+                        <Run Text="{Binding LastName}"/>
+                </TextBlock>
             </DataTemplate>
             <DataTemplate x:Key="MaxHeaderTemplate">
-                <!--<TextBlock Text="{Binding FirstName}"/>-->
             </DataTemplate>
 
-            <DataTemplate x:Key="NormalItemTemplate" DataType="model:Employee">
-                <Grid Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="4*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding LastName}"/>
-                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
-                    <Image Grid.Row="2" Source="{Binding Photo}" Stretch="Uniform"
-                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                </Grid>
-            </DataTemplate>
             <DataTemplate x:Key="MinItemTemplate" DataType="model:Employee">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding LastName}"/>
-                    <TextBlock Grid.Row="1" Text="{Binding FirstName}"/>
-                    <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
-                           Source="{Binding Photo}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding Country}" IsReadOnly="True"/>
+                    <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding City}" IsReadOnly="True"/>
+                    <Image Source="{Binding Photo}" Grid.Column="1" Grid.RowSpan="3"
+                         Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MaxItemTemplate" DataType="model:Employee">
                 <Grid Margin="20,20,20,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="8">
                         <StackPanel>
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBox" x:Key="MaterialDesignFloatingHintTextBox" 
-                                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
-                                <Setter Property="Margin" Value="8"/>
-                                <Setter Property="FontSize" Value="24"/>
-                                <Setter Property="IsReadOnly" Value="True"/>
-                                <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
-                                <Setter Property="materialDesign:HintAssist.HintOpacity" Value="0.6"/>
-                                <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.5"/>
-                            </Style>
-                        </StackPanel.Resources>
+                       
                         <TextBox Text="{Binding Title}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                             materialDesign:HintAssist.Hint="Title" 
@@ -132,13 +115,14 @@
                             />
                     </StackPanel>
                     </ScrollViewer>
-                    <StackPanel Grid.Column="1">
-                        <Image Source="{Binding Photo}"   
-                               Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
-                        <TextBox Text="{Binding Notes}" TextWrapping="Wrap" AutoWordSelection="True" FontSize="16" Margin="0,20,0,0" 
-                               
-                            />
-                    </StackPanel>
+                    <Image Source="{Binding Photo}" Grid.Column="1"
+                         Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding Notes}" Grid.Column="2"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         materialDesign:HintAssist.Hint="Notes"     
+                         />
                 </Grid>
             </DataTemplate>
 
@@ -155,11 +139,6 @@
                 <Setter Property="HeaderForeground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
                 <Setter Property="CornerRadius" Value="2"/>
             </Style>
-
-            <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
-                <Canvas IsItemsHost="True"/>
-            </ItemsPanelTemplate>
-
         </ResourceDictionary>
     </UserControl.Resources>
     <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
@@ -177,73 +156,27 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock Text="{Binding Test}" Width="200"/>
-
-                        <Button Background="Green" Content="ADD"
-                                Style="{StaticResource ManageButtonStyle}" 
-                                Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
-                        </Button>
-
-                        <Button Background="DarkOrange" Content="EDIT"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
-
-                        </Button>
-                    </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
 
-        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2"
-                >
+        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2" >
             <syncfusion:TileViewControl ItemsSource="{Binding Employees}"
                   materialDesign:ShadowAssist.ShadowDepth="Depth3"
                   Foreground = "Black" 
                   Margin="6" 
                   ClickHeaderToMaximize="True"
-                  MinimizedItemsOrientation="Right"                      
-                  HeaderTemplate="{StaticResource NormalHeaderTemplate}"
+                  MinimizedItemsOrientation="Left"                      
                   MinimizedHeaderTemplate="{StaticResource MinHeaderTemplate}" 
                   MaximizedHeaderTemplate="{StaticResource MaxHeaderTemplate}"                      
-                  ItemTemplate="{StaticResource NormalItemTemplate }" 
+                  ItemTemplate="{StaticResource MinItemTemplate }" 
                   MinimizedItemTemplate="{StaticResource MinItemTemplate}"
                   MaximizedItemTemplate="{StaticResource MaxItemTemplate}"
-                  ItemsPanel="{DynamicResource ItemsPanelTemplate1}"                     
-                  
-                  ItemContainerStyle="{StaticResource TileViewItemStyle}" EnableTouch="True" 
+                  ItemContainerStyle="{StaticResource TileViewItemStyle}" 
+                  EnableTouch="True" 
+                  UseNormalState="False" 
                   >
             </syncfusion:TileViewControl>
         </Border>
-
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <syncfusion:SfDataGrid Margin="6"
-                ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
-                SelectedIndex="-1"
-                SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
-                AllowGrouping="False"
-                AutoGenerateColumns="True" 
-                ColumnSizer="Auto"  
-                ShowBusyIndicator="True"  
-                ShowGroupDropArea="False"
-                AutoExpandGroups="False"
-                AllowFrozenGroupHeaders="False"
-                ShowColumnWhenGrouped ="False" 
-                RowSelectionBrush="{DynamicResource SecondaryAccentBrush}" 
-                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
-            </syncfusion:SfDataGrid>
-            
-            <datapager:SfDataPager x:Name="sfDataPager" Grid.Row="1"
-                                   Source="{Binding Employees}" 
-                                   UseOnDemandPaging="False"
-                                   NumericButtonCount="10"
-						           PageSize="30" HorizontalAlignment="Center"
-                                   AccentBackground="#FFDD2C00"
-                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
-        </Grid>-->
     </GroupBox>
 </UserControl>
