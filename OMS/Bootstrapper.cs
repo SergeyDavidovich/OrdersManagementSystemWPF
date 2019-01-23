@@ -16,6 +16,7 @@ using Products;
 using DAL_LocalDb;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace OMS
 {
@@ -28,6 +29,9 @@ namespace OMS
         /// </summary>
         protected override void ConfigureModuleCatalog()
         {
+
+
+
             //get the default ModuleCatalog
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
 
@@ -59,6 +63,7 @@ namespace OMS
             shellViewModel = Container.Resolve<MainWindowViewModel>();
             mainWindow.DataContext = shellViewModel;
             return mainWindow;
+
         }
 
         /// <summary>
@@ -68,6 +73,7 @@ namespace OMS
         {
             shellViewModel.ConfigureRegionManager();
             Application.Current.MainWindow.Show();
+
         }
 
         public LocalDbContext Context { get; set; }

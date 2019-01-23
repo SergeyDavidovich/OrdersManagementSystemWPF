@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 using Orders.Events;
 using Prism.Events;
 using Orders.ViewModels;
+using System.IO;
+using System.Diagnostics;
 
 namespace Orders.Views
 {
@@ -35,9 +37,17 @@ namespace Orders.Views
             this.DataContext = vm;
 
             eventAggregator.GetEvent<OrderDataCreated>().Subscribe(SetDataSources);
+
+            //this.Viewer.ReportPath = @"..\..\..\Orders\Reports\OrderReport.rdlc";
+            string currentDir = Directory.GetCurrentDirectory() + "\\Reports\\OrderReport.rdlc";
+
+#if DEBUG
+            Debug.WriteLine($"Текущая директория: {Directory.GetCurrentDirectory()}");
+            Debug.WriteLine($"Путь к отчету: { currentDir}");
+#endif
+            this.Viewer.ReportPath = currentDir;
         }
 
-        //this.Viewer.ReportPath = @"..\..\..\Orders\Reports\OrderReport.rdlc";
 
         private void SetDataSources()
         {

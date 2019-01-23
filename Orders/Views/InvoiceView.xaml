@@ -34,16 +34,6 @@
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource ManageButtonStyle}"
-                            Content="SAVE"
-                                Command="{Binding Path=DataContext.SaveCommand, ElementName=invoiceView}"
-                            Background="Green"/>
-                        <Button Style="{StaticResource ManageButtonStyle}"
-                                Background="Red" 
-                                Content="CANCEL"
-                                Command="{Binding Path=DataContext.CancelCommand, ElementName=invoiceView}"/>
-                    </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
@@ -52,70 +42,12 @@
                 BorderThickness="1" Background="White">
             <syncfusion:ReportViewer x:Name="Viewer" 
                     ProcessingMode="Local" 
-                    ReportPath="..\..\..\Orders\Reports\OrderReport.rdlc"
-                    Margin="6" ShowPageLayoutControl="False" WordFormatType="Word2013" ExcelVersion="Excel2013"/>
+                    Margin="6" 
+                    ShowPageLayoutControl="False" 
+                    WordFormatType="Word2013" 
+                    ExcelVersion="Excel2013"/>
         </Border>
+                    <!--ReportPath="..\..\..\Orders\Reports\OrderReport.rdlc"-->
 
-        <!--<Border Margin="6" CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" Background="White">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="4*"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="0" Margin="10,10">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBox Grid.Row="0" Grid.Column="0" IsReadOnly="True"
-                            Text="{Binding OrderID}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Order ID" 
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True"
-                            Text="{Binding OrderDate}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Order date" 
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <ComboBox Grid.Row="1" Grid.Column="0" IsReadOnly="True"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            materialDesign:HintAssist.Hint="Customer" 
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True"
-                            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            materialDesign:HintAssist.Hint="Employeer" 
-                            materialDesign:HintAssist.HintOpacity=".5"
-                            VerticalAlignment="Center" Margin="20,0"/>
-                    </Grid>
-                </Border>
-
-                <syncfusion:SfDataGrid ItemsSource="{Binding ProductList}" Grid.Row="1" 
-                                   BorderBrush="{x:Null}" 
-                                   Margin="20,10" ColumnSizer="AutoLastColumnFill" SelectionMode="None">
-
-                    <syncfusion:SfDataGrid.TableSummaryRows>
-                        <syncfusion:GridTableSummaryRow Title=" Total Price : {PriceAmount}" ShowSummaryInRow="True">
-                            <syncfusion:GridSummaryRow.SummaryColumns>
-                                <syncfusion:GridSummaryColumn Name="PriceAmount"
-                                                Format="'{Sum:c}'"
-                                                MappingName="UnitPrice"
-                                                SummaryType="DoubleAggregate" FrameworkElement.FlowDirection="RightToLeft" />
-                            </syncfusion:GridSummaryRow.SummaryColumns>
-                        </syncfusion:GridTableSummaryRow>
-                    </syncfusion:SfDataGrid.TableSummaryRows>
-                </syncfusion:SfDataGrid>
-            </Grid>
-        </Border>-->
     </GroupBox>
 </UserControl>
