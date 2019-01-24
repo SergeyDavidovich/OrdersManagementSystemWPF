@@ -1,12 +1,12 @@
-Orders Mamagement System
-### Prerequisites:
+# Orders Management System
+#### Prerequisites:
 Microsoft SQL Server 2012 Express Edition or higher
 
 [View on Github](https://github.com/StupeniNET/OrdersManagementSystem)
 
 [Setup from Azure](https://omsstoreaccount.blob.core.windows.net/oms-blob-container/publish.htm)
 
-### Frameworks and libraries used:
+#### Frameworks and libraries used:
 
 - *Programming language* - `C#`
 - *UI Markup* - `WPF (NET Framework 4.6.1)`
