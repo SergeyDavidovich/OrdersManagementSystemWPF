@@ -14,7 +14,7 @@
     Background="White"
     TextElement.FontWeight="Medium" SnapsToDevicePixels="True"
     TextElement.FontSize="14"
-    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Loaded="Window_Loaded">
 
     <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.GlobalRegion}" />
 </Window>
