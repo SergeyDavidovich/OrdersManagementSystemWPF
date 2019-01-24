@@ -1,6 +1,7 @@
 ## Orders Management System
 [View on Github](https://github.com/StupeniNET/OrdersManagementSystem)
 
+[Setup from Azure](https://omsstoreaccount.blob.core.windows.net/oms-blob-container/publish.htm)
 ### Prerequisites:
 Microsoft SQL Server 2012 Express Edition or higher  
 
