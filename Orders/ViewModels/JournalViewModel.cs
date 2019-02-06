@@ -11,16 +11,21 @@ using Prism.Events;
 using Orders.Events;
 using System.Reactive.Linq;
 using System.ComponentModel;
+using Prism.Commands;
+using Infrastructure.Extensions;
 
 namespace Orders.ViewModels
 {
     public class JournalViewModel : ViewModelBase//, INavigationAware, IRegionMemberLifetime
     {
+        #region Fields
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
 
         readonly IEnumerable<Order> cachedOrders;
 
+        #endregion
+        #region Constructor
         public JournalViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
             Title = "ORDERS JOURNAL";
@@ -39,12 +44,14 @@ namespace Orders.ViewModels
                                           if (string.IsNullOrEmpty(s))
                                               this.Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
                                           else
-                                              this.Orders = new ReadOnlyCollection<Order>(cachedOrders.Where(o => o.CustomerID.Contains(s)).ToList());
+                                              this.Orders = new ReadOnlyCollection<Order>(cachedOrders.Where(o => o.CustomerID.SafeSubstring(0, s.Length).ToLower() == s.ToLower()).OrderBy(o => o.CustomerID).ToList());
                                       }
 
                                       );
-
+            ClearSearchCommand = new DelegateCommand(() => SearchTerm = "");
         }
+        #endregion
+        #region Properties
         private ReadOnlyCollection<Order> _orders;
         public ReadOnlyCollection<Order> Orders
         {
@@ -74,6 +81,15 @@ namespace Orders.ViewModels
             set { SetProperty(ref _searchTerm, value); }
         }
 
+        #endregion
+        #region Commands
+        private DelegateCommand _clearSearchCommand;
+        public DelegateCommand ClearSearchCommand
+        {
+            get { return _clearSearchCommand; }
+            set { SetProperty(ref _clearSearchCommand, value); }
+        }
+        #endregion
 
         #region INavigationAware, IRegionMemberLifetime implementation
 

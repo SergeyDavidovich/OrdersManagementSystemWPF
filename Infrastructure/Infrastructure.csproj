@@ -85,6 +85,7 @@
     <Compile Include="Converters\BoolToDropdownConverter.cs" />
     <Compile Include="Events\OnNavigatedToEvent.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="GlobalCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

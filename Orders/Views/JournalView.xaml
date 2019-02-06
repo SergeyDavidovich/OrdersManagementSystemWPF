@@ -4,15 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Orders.Views"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    x:Name="journalView"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    mc:Ignorable="d"
-    x:Name="journalView">
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,35 +23,65 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <GroupBox Header="{Binding Title}" IsEnabled="{Binding IsGroupBoxEnabled}"
-            Style="{DynamicResource DashBoardGroupBoxStyle}">
+    <GroupBox
+        Header="{Binding Title}"
+        IsEnabled="{Binding IsGroupBoxEnabled}"
+        Style="{DynamicResource DashBoardGroupBoxStyle}">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>
                     <materialDesign:PackIcon
-                        Kind="ViewList"
-                        Height="36"
                         Width="32"
-                        VerticalAlignment="Center" />
+                        Height="36"
+                        VerticalAlignment="Center"
+                        Kind="ViewList" />
                     <TextBlock
                         Margin="8,0,0,0"
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
-                    <TextBox
-                        Width="200"                                          
-                        HorizontalAlignment="Right"
-                        materialDesign:HintAssist.Hint="Search"
-                        materialDesign:HintAssist.IsFloating="False"
-                        materialDesign:TransitionAssist.DisableTransitions="True"
-                        DockPanel.Dock="Right"
-                        Text="{Binding DataContext.SearchTerm, ElementName=journalView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        />
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        --><!--<TextBlock Text="{Binding Test}" Width="200"/>-->
+                    <StackPanel DataContext="{Binding ElementName=journalView, Path=DataContext}" materialDesign:RippleAssist.IsCentered="False" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <materialDesign:ColorZone
+                            Margin="16,0,0,0"
+                            Padding="8,4,8,4"
+                            Panel.ZIndex="1"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            CornerRadius="2"
+                            Mode="Standard">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                </Button>
+                                <TextBox
+                                    Grid.Column="1"
+                                    MinWidth="200"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Search"
+                                    Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0" />
+                                <Button Grid.Column="2" Command="{Binding ClearSearchCommand}" Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon
+                                        Margin="8,0,0,0"
+                                        Kind="Close"
+                                        Opacity=".56" />
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
 
-                        <!--<Button Background="Green" Content="ADD"
-                                Style="{StaticResource ManageButtonStyle}" 
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    -->
+                    <!--<TextBlock Text="{Binding Test}" Width="200"/>-->
+
+                    <!--<Button Background="Green" Content="ADD"
+                                Style="{StaticResource ManageButtonStyle}"
                                 Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
                         </Button>
 
@@ -60,42 +90,47 @@
                                 Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
 
                         </Button>-->
-                        <!--<Button Background="Red" Content="DELETE"
+                    <!--<Button Background="Red" Content="DELETE"
                                 Style="{StaticResource ManageButtonStyle}"
                                 Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
-                        </Button>--><!--
+                        </Button>-->
+                    <!--
                     </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <syncfusion:SfDataGrid Margin="6"
+            <syncfusion:SfDataGrid
+                Margin="6"
+                AllowFrozenGroupHeaders="True"
+                AllowGrouping="False"
+                AutoExpandGroups="False"
+                AutoGenerateColumns="True"
+                ColumnSizer="Auto"
+                CurrentCellBorderBrush="{x:Null}"
+                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products "
                 ItemsSource="{Binding ElementName=sfDataPager, Path=PagedSource}"
+                RowSelectionBrush="{DynamicResource PrimaryHueLightBrush}"
                 SelectedIndex="1"
                 SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
-                AllowGrouping="False"
-                GroupCaptionTextFormat=" Category: {Key} - {ItemsCount} products " 
-                AutoGenerateColumns="True" 
-                ColumnSizer="Auto"  
-                ShowBusyIndicator="True"  
-                ShowGroupDropArea="False"
-                AutoExpandGroups="False"
-                AllowFrozenGroupHeaders="True"
-                ShowColumnWhenGrouped ="False" 
-                RowSelectionBrush="{DynamicResource PrimaryHueLightBrush}" 
-                CurrentCellBorderBrush="{x:Null}" SelectionForegroundBrush="White">
-            </syncfusion:SfDataGrid>
-            <syncfusion:SfDataPager x:Name="sfDataPager" Grid.Row="1"
-                                   Source="{Binding Orders}" 
-                                   UseOnDemandPaging="False"
-                                   NumericButtonCount="10"
-						           PageSize="30" HorizontalAlignment="Center"
-                                   AccentBackground="#FFDD2C00"
-                                   AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"/>
+                SelectionForegroundBrush="White"
+                ShowBusyIndicator="True"
+                ShowColumnWhenGrouped="False"
+                ShowGroupDropArea="False" />
+            <syncfusion:SfDataPager
+                x:Name="sfDataPager"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                AccentBackground="#FFDD2C00"
+                AccentForeground="{DynamicResource SecondaryAccentForegroundBrush}"
+                NumericButtonCount="10"
+                PageSize="30"
+                Source="{Binding Orders}"
+                UseOnDemandPaging="False" />
         </Grid>
     </GroupBox>
 </UserControl>
