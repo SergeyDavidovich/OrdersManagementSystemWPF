@@ -19,6 +19,7 @@ Microsoft SQL Server 2012 Express Edition or higher
 - *Data validation* - `FluentValidation 8`
 - *Reporting* - `Mirosoft RDLC + Syncfusion Report Viewer`
 - *Deployment* - Click Once on Microsoft Azure
+- *Orders search* - Reactive Extensions for .NET 
 
 ![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/DashboardLight.PNG?raw=true)
 
