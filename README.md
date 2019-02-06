@@ -18,8 +18,8 @@ Microsoft SQL Server 2012 Express Edition or higher
 - *Controls* - `Syncfusion WPF Controls vol. 2018`
 - *Data validation* - `FluentValidation 8`
 - *Reporting* - `Mirosoft RDLC + Syncfusion Report Viewer`
-- *Deployment* - `Click Once on Microsoft Azure`
 - *Orders search* - `Reactive Extensions for .NET` 
+- *Deployment* - `Click Once on Microsoft Azure`
 
 ![Screen](https://github.com/StupeniNET/OrdersManagementSystem/blob/master/Screenshots/DashboardLight.PNG?raw=true)
 
