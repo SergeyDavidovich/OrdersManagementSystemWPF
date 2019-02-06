@@ -9,6 +9,8 @@ using System.Collections.ObjectModel;
 using Prism.Regions;
 using Prism.Events;
 using Orders.Events;
+using System.Reactive.Linq;
+using System.ComponentModel;
 
 namespace Orders.ViewModels
 {
@@ -17,7 +19,7 @@ namespace Orders.ViewModels
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
 
-        //readonly ObservableCollection<Order> orders;
+        readonly IEnumerable<Order> cachedOrders;
 
         public JournalViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -25,12 +27,29 @@ namespace Orders.ViewModels
             _context = context;
             _eventAggregator = eventAggregator;
 
-            Orders = new ObservableCollection<Order>(context.Orders);
+            cachedOrders = context.Orders;
+            Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
+            var propertyChangedObservable = Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>
+                              (handler => this.PropertyChanged += handler, handler => this.PropertyChanged -= handler);
+            var searchTermObservable = propertyChangedObservable
+                                      .Where(p => p.EventArgs.PropertyName == nameof(SearchTerm))
+                                      .Select(_ => _searchTerm).Throttle(TimeSpan.FromMilliseconds(250)).Subscribe
+                                      (s =>
+                                      {
+                                          if (string.IsNullOrEmpty(s))
+                                              this.Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
+                                          else
+                                              this.Orders = new ReadOnlyCollection<Order>(cachedOrders.Where(o => o.CustomerID.Contains(s)).ToList());
+                                      }
+
+                                      );
 
         }
-        public ObservableCollection<Order> Orders
+        private ReadOnlyCollection<Order> _orders;
+        public ReadOnlyCollection<Order> Orders
         {
-            get; set;
+            get { return _orders; }
+            set { SetProperty(ref _orders, value); }
         }
 
         private Order selectedOrder;
@@ -40,12 +59,19 @@ namespace Orders.ViewModels
             set
             {
                 SetProperty(ref selectedOrder, value);
-                if (selectedOrder !=null)
+                if (selectedOrder != null)
                 {
-                _eventAggregator.GetEvent<NewOrderCreated>().Publish(selectedOrder.OrderID);
+                    _eventAggregator.GetEvent<NewOrderCreated>().Publish(selectedOrder.OrderID);
 
                 }
             }
+        }
+
+        private string _searchTerm;
+        public string SearchTerm
+        {
+            get { return _searchTerm; }
+            set { SetProperty(ref _searchTerm, value); }
         }
 
 

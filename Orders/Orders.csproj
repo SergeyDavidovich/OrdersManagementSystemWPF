@@ -144,6 +144,9 @@
       <Version>2.4.1.1101</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
+    <PackageReference Include="System.Reactive">
+      <Version>4.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validators\" />

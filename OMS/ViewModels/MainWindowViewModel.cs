@@ -9,7 +9,6 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using System.Collections.Generic;
-
 using DAL_LocalDb;
 
 namespace OMS.ViewModels
