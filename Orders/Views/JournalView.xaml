@@ -26,7 +26,7 @@
     <GroupBox
         Header="{Binding Title}"
         IsEnabled="{Binding IsGroupBoxEnabled}"
-        Style="{DynamicResource DashBoardGroupBoxStyle}">
+        Style="{DynamicResource MaterialDesignCardGroupBox}">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <DockPanel>

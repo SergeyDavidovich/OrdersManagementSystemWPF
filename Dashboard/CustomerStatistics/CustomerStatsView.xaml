@@ -44,21 +44,13 @@
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <GroupBox.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="4"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
-                <Setter Property="Margin" Value="6"/>
-            </Style>
-        </GroupBox.Resources>
-        <Grid>
+        <Grid Background="{DynamicResource MaterialDesignCardBackground}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border>
+            <Border Style="{StaticResource WidgetBorderStyle}">
                 <syncfusion:SfChart AreaBorderBrush="{x:Null}">
                     <syncfusion:SfChart.Resources>
                         <ItemsPanelTemplate x:Key="itemPanelTemplate">
@@ -104,7 +96,7 @@
                 </syncfusion:SfChart>
             </Border>
 
-            <Border Grid.Row="1">
+            <Border Style="{StaticResource WidgetBorderStyle}" Grid.Row="1">
                 <syncfusion:SfChart Margin="6">
                     <chart:SfChart.Header>
                         <TextBlock Text="Purchases by customers (top 10)"/>

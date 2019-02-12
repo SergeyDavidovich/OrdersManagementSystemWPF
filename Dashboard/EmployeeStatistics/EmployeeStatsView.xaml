@@ -44,14 +44,6 @@
                 </Grid>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <GroupBox.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="4"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueLightBrush}"/>
-                <Setter Property="Margin" Value="6"/>
-            </Style>
-        </GroupBox.Resources>
 
         <!--<Border>
             <syncfusion:SfChart3D>

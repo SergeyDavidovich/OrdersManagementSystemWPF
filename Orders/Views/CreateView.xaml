@@ -26,8 +26,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="PRODUCTS ON STORE" IsEnabled="{Binding IsGroupBoxEnabled}"
-            Style="{DynamicResource DashBoardGroupBoxStyle}">
+        <GroupBox Header="PRODUCTS ON STORE" Margin="6" IsEnabled="{Binding IsGroupBoxEnabled}"
+            Style="{DynamicResource MaterialDesignCardGroupBox}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <DockPanel>
@@ -80,7 +80,7 @@
         </GroupBox>
 
         <GroupBox Header="PRODUCTS IN ORDER" Grid.Column="1"
-            Style="{DynamicResource DashBoardGroupBoxStyle}">
+            Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="6">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <DockPanel>

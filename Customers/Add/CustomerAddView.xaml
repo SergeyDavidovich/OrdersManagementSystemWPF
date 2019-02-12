@@ -53,7 +53,7 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Border CornerRadius="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1">
+        <Border>
             <Grid 
                 Margin="60,20">
                 <Grid.RowDefinitions>

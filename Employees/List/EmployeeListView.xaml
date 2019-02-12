@@ -160,7 +160,7 @@
             </DataTemplate>
         </GroupBox.HeaderTemplate>
 
-        <Border BorderBrush="{DynamicResource PrimaryHueLightBrush}" BorderThickness="1" CornerRadius="2" >
+        <Border >
             <syncfusion:TileViewControl ItemsSource="{Binding Employees}"
                   materialDesign:ShadowAssist.ShadowDepth="Depth3"
                   Foreground = "Black" 

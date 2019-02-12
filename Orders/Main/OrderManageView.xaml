@@ -20,7 +20,8 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="ORDER MANAGEMENT" Background="{DynamicResource PrimaryHueLightBrush}"
                           Style="{DynamicResource DashBoardGroupBoxStyle}" 
-                          prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
+                 
+                                            prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <Grid>

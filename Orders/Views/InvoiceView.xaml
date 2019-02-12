@@ -37,12 +37,11 @@
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Border Margin="6" CornerRadius="2" 
-                BorderBrush="{DynamicResource PrimaryHueLightBrush}" 
-                BorderThickness="1" Background="White">
+        <Border Margin="6" >
             <syncfusion:ReportViewer x:Name="Viewer" 
                     ProcessingMode="Local" 
                     Margin="6" 
+                   
                     ShowPageLayoutControl="False" 
                     WordFormatType="Word2013" 
                     ExcelVersion="Excel2013"/>
