@@ -22,6 +22,7 @@ namespace Orders.Main
             _ordersContentRegionState = OrdersContentRegionState.Creation;
             ProcessOrdersContentRegionState(_ordersContentRegionState);
             _regionManager = regionManager;
+            UpdateBannerTitle("Orders");
         }
 
         #region Bindable properties
@@ -50,10 +51,7 @@ namespace Orders.Main
         #region Navigatet Events handlers
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
-            base.OnNavigatedTo(navigationContext);
-            _regionManager.RequestNavigate(RegionNames.OrdersContentRegion, "CreateView");
-            _regionManager.RequestNavigate(RegionNames.OrderDetailsRegion, "InvoiceView");
-            UpdateBannerTitle("Orders");
+            base.OnNavigatedTo(navigationContext);         
         }
 
 

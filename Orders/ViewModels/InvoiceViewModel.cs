@@ -35,22 +35,22 @@ namespace Orders.ViewModels
         #region INavigationAware implementation
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext) { }
-        
+
         #endregion
 
 
         private void OnNewOrderCreated(int id)
         {
-            var orders = _context.Orders.Where(o=>o.OrderID == id).ToList();
+            var orders = _context.Orders.Where(o => o.OrderID == id).ToList();
             var orderDetails = _context.Order_Details.Where(o => o.OrderID == id).ToList();
 
             Orders = new ObservableCollection<OrderObject>
@@ -64,13 +64,13 @@ namespace Orders.ViewModels
                 ));
 
             OrderDetails = new ObservableCollection<OrderDetailObject>
-                (orderDetails.Select(o=>new OrderDetailObject()
+                (orderDetails.Select(o => new OrderDetailObject()
                 {
-                    OrderId=o.OrderID,
-                    ProductName=o.Products.ProductName,
-                    UnitPrice=o.UnitPrice,
-                    Quantity=o.Quantity,
-                    Discount=o.Discount,
+                    OrderId = o.OrderID,
+                    ProductName = o.Products.ProductName,
+                    UnitPrice = o.UnitPrice,
+                    Quantity = o.Quantity,
+                    Discount = o.Discount,
                     SubTotal = (decimal)((float)o.UnitPrice * o.Quantity * (1 - o.Discount))
                 }
                 ));

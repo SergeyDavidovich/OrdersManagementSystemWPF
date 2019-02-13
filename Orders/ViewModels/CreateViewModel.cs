@@ -88,7 +88,7 @@ namespace Orders.ViewModels
 
         #region Create order
 
-        #region Events handlers
+        #region Event handlers
 
         private void OnProductInOrderCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

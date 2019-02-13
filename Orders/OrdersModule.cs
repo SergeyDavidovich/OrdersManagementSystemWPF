@@ -27,10 +27,11 @@ namespace Orders
             _container.RegisterTypeForNavigation<CreateView>();
             _container.RegisterTypeForNavigation<InvoiceView>();
             _container.RegisterTypeForNavigation<JournalView>();
-
+            _regionManager.RegisterViewWithRegion(RegionNames.OrdersContentRegion, typeof(CreateView));
+            _regionManager.RegisterViewWithRegion(RegionNames.OrderDetailsRegion, typeof(InvoiceView));
             //_container.RegisterInstance(typeof(InvoiceViewModel), new TransientLifetimeManager());
 
-       
+
 
 
         }
