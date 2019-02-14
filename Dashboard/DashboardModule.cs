@@ -25,6 +25,7 @@ namespace Dashboard
             
             _regionManager.RequestNavigate(RegionNames.ContentRegion, "DashboardView");
             //_regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DashboardView));
+
             _regionManager.RegisterViewWithRegion(RegionNames.CustomersStatRegion, typeof(CustomerStatistics.CustomerStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ProductsStatRegion, typeof(ProductStatistics.ProductStatsView));
             _regionManager.RegisterViewWithRegion(RegionNames.EmployeesStatRegion, typeof(EmployeeStatistics.EmployeeStatsView));

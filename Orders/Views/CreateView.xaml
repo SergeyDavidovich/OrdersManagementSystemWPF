@@ -26,7 +26,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="PRODUCTS ON STORE" Margin="6" IsEnabled="{Binding IsGroupBoxEnabled}"
+        <GroupBox Header="PRODUCTS ON STORE" Margin="4" IsEnabled="{Binding IsGroupBoxEnabled}"
             Style="{DynamicResource MaterialDesignCardGroupBox}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
@@ -53,7 +53,7 @@
             </GroupBox.HeaderTemplate>
 
             <Grid>
-                <syncfusion:SfDataGrid Margin="6"
+                <syncfusion:SfDataGrid Margin="4"
                 ToolTip="You can select by Mouse click and holding Ctrl or Shift keys"
                 ItemsSource="{Binding Products}"
                 behaviours:SfDataGridHelper.SelectedItems="{Binding SelectedProducts, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                       

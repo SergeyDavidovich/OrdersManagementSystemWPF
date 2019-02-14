@@ -22,7 +22,6 @@ namespace OMS.ViewModels
         {
             _regionManager = regionManager;
             _unityContainer = unityContainer;
-            //Title = "OMS " + System.DateTime.Now.ToShortTimeString();
         }
         public void ConfigureRegionManager()
         {

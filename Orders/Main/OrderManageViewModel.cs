@@ -20,7 +20,7 @@ namespace Orders.Main
         {
             SwitchOrdersContentStateCommand = new DelegateCommand(SwitchOrdersContentState);
             _ordersContentRegionState = OrdersContentRegionState.Creation;
-            ProcessOrdersContentRegionState(_ordersContentRegionState);
+            //ProcessOrdersContentRegionState(_ordersContentRegionState);
             _regionManager = regionManager;
             UpdateBannerTitle("Orders");
         }
@@ -51,7 +51,9 @@ namespace Orders.Main
         #region Navigatet Events handlers
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
-            base.OnNavigatedTo(navigationContext);         
+            //base.OnNavigatedTo(navigationContext);
+            ProcessOrdersContentRegionState(_ordersContentRegionState);
+            _regionManager.RequestNavigate(RegionNames.OrderDetailsRegion, "InvoiceView");
         }
 
 
