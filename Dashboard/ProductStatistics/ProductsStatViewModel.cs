@@ -25,7 +25,7 @@ namespace Dashboard.ProductStatistics
             context.Products.Load();
             products = context.Products.ToList<Product>();
 
-            //query for ProductByCategoryGroups
+            //query for ProductByCategoryGroups 
             var ProductsAndCountries =
                 products.Join(categories,
                 pro => pro.CategoryID,
