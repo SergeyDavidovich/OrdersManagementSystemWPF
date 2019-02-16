@@ -16,12 +16,11 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <GroupBox Header="ORDER MANAGEMENT" Background="{DynamicResource PrimaryHueLightBrush}"
-                          Style="{DynamicResource DashBoardGroupBoxStyle}" 
-                 
-                                            prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
+                  Style="{DynamicResource DashBoardGroupBoxStyle}" 
+                  prism:RegionManager.RegionName="{x:Static inf:RegionNames.OrdersContentRegion}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <Grid>

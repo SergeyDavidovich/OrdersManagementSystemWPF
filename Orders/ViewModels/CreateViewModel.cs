@@ -12,28 +12,24 @@ using Orders.Events;
 using Orders.CommonTypes;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using Prism.Regions;
 
 namespace Orders.ViewModels
 {
-    public class CreateViewModel : ViewModelBase
+    public class CreateViewModel : ViewModelBase, INavigationAware
     {
         LocalDbContext _context;
         IEventAggregator _eventAggregator;
-        Order order; 
+        Order order;
 
         public CreateViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
             _context = context;
             _eventAggregator = eventAggregator;
 
-            Products = new ObservableCollection<Product>(context.Products.
-                Where(p => p.Discontinued == false && p.UnitsInStock > 0));
             SelectCommand = new DelegateCommand(Select, CanSelect);
             UnselectCommand = new DelegateCommand(Unselect, CanUnselect);
             CreateOrderCommand = new DelegateCommand(CreateOrder, CanCreateOrder);
-
-            Customers = context.Customers.ToList<Customer>();
-            Employees = context.Employees.ToList<Employee>();
         }
         #region Select products for order
 
@@ -69,7 +65,15 @@ namespace Orders.ViewModels
 
         #region Bindable properties
 
-        public ObservableCollection<Product> Products { get; set; }
+        private List<Product> _products;
+        public List<Product> Products
+        {
+            get { return _products; }
+            set
+            {
+                SetProperty(ref _products, value);
+            }
+        }
 
         private ObservableCollection<Object> _SelectedProducts;
         public ObservableCollection<Object> SelectedProducts
@@ -224,16 +228,6 @@ namespace Orders.ViewModels
             }
         }
 
-        //int? orderID;
-        //public int? OrderID
-        //{
-        //    get => orderID;
-        //    set
-        //    {
-        //        SetProperty(ref orderID, value);
-        //    }
-        //}
-
         private string orderDate;
         public string OrderDate
         {
@@ -298,6 +292,26 @@ namespace Orders.ViewModels
         {
             return ProductInOrderCollection.Select(p => ((Double)p.UnitPrice) * p.Quantity * (1 - p.Discount)).Sum().ToString("C2");
         }
+        #endregion
+
+        #region INavigationAware implementation
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            Products = new List<Product>(_context.Products.
+                 Where(p => p.Discontinued == false && p.UnitsInStock > 0));
+
+            Customers = _context.Customers.ToList<Customer>();
+            Employees = _context.Employees.ToList<Employee>();
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return false;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        { }
         #endregion
     }
 }

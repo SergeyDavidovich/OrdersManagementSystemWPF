@@ -30,12 +30,15 @@ namespace OMS.ViewModels
         }
 
         #region Commands
+
         public DelegateCommand<string> NavigateToManageEntityViewCommand { get; set; }
+
         private void NavigateToManageEntityView(string entityName)
         {
             var navParamaters = new NavigationParameters() { { "Entity", entityName } };
             _regionManager.RequestNavigate(RegionNames.ContentRegion, "ManageEntityView", navParamaters);
         }
+
         public DelegateCommand<string> NavigateToCommand { get; set; }
 
         private void NavigateContentTo(string target)

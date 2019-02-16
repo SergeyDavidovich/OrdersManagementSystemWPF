@@ -75,27 +75,6 @@
                             </Grid>
                         </materialDesign:ColorZone>
                     </StackPanel>
-
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    -->
-                    <!--<TextBlock Text="{Binding Test}" Width="200"/>-->
-
-                    <!--<Button Background="Green" Content="ADD"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.AddCommand, ElementName=productListView}">
-                        </Button>
-
-                        <Button Background="DarkOrange" Content="EDIT"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.EditCommand, ElementName=productListView}">
-
-                        </Button>-->
-                    <!--<Button Background="Red" Content="DELETE"
-                                Style="{StaticResource ManageButtonStyle}"
-                                Command="{Binding Path=DataContext.DeleteCommand, ElementName=productListView}">
-                        </Button>-->
-                    <!--
-                    </StackPanel>-->
                 </DockPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
@@ -105,7 +84,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <syncfusion:SfDataGrid
-                Margin="6"
+                Margin="4"
                 AllowFrozenGroupHeaders="True"
                 AllowGrouping="False"
                 AutoExpandGroups="False"

@@ -29,9 +29,6 @@ namespace OMS
         /// </summary>
         protected override void ConfigureModuleCatalog()
         {
-
-
-
             //get the default ModuleCatalog
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
 
