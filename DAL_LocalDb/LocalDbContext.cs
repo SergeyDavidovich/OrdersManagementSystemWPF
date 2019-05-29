@@ -8,7 +8,7 @@ namespace DAL_LocalDb
     public partial class LocalDbContext : DbContext
     {
         public LocalDbContext()
-            : base("name=LocalDbContext")
+            : base("name=LocalSqlExpressDbContext")
         {
         }
 
