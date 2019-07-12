@@ -1,6 +1,6 @@
 # Orders Management System
 #### Prerequisites:
-Microsoft SQL Server 2012 Express Edition or higher
+Microsoft SQL Server 2012 Express Edition or higher and Nothwind database attached
 
 [View on Github](https://github.com/StupeniNET/OrdersManagementSystem)
 
