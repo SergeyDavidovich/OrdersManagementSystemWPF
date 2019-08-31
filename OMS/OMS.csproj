@@ -183,47 +183,47 @@
     <ProjectReference Include="..\Banner\Banner.csproj">
       <Project>{8e8b6c15-64ae-4bd5-b38b-25f9473dc287}</Project>
       <Name>Banner</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Customers\Customers.csproj">
       <Project>{90eb2eb3-8f64-4613-8f61-bec2e61b2384}</Project>
       <Name>Customers</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\DAL_LocalDb\DAL_LocalDb.csproj">
       <Project>{d495fb75-828d-44ff-b363-79383614bfc2}</Project>
       <Name>DAL_LocalDb</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Dashboard\Dashboard.csproj">
       <Project>{84709585-62a4-419c-b0d9-56b2bc8149a1}</Project>
       <Name>Dashboard</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Employees\Employees.csproj">
       <Project>{e761cbd0-b4d7-4bac-8474-d5f71367b76f}</Project>
       <Name>Employees</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{57f74996-a7bd-41a8-a71b-ec21c3efb639}</Project>
       <Name>Entities</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{8a7d988c-b192-4d03-8f8b-1f35c9855fb3}</Project>
       <Name>Infrastructure</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Orders\Orders.csproj">
       <Project>{D58D4377-44C9-4B8A-814E-52532A934C7F}</Project>
       <Name>Orders</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Products\Products.csproj">
       <Project>{16F59304-B389-4FBC-A3C4-0D50D96DFBC5}</Project>
       <Name>Products</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
