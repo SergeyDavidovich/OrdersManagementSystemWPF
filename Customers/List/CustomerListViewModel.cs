@@ -15,7 +15,7 @@ namespace Customers.List
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
-        IEnumerable<Customer> customers;
+        //IEnumerable<Customer> customers;
 
         public CustomerListViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {

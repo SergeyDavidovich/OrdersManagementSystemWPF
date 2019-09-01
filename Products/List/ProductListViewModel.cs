@@ -15,7 +15,7 @@ using Prism.Commands;
 
 namespace Products.List
 {
-    public class ProductListViewModel : NavigationAwareViewModelBase
+    public class ProductListViewModel : ViewModelBase, INavigationAware
     {
         IEventAggregator _eventAggregator;
         LocalDbContext _context;
@@ -31,8 +31,6 @@ namespace Products.List
             //DeleteCommand = new DelegateCommand(Delete, CanDelete);
 
             _eventAggregator.GetEvent<OnProductCompleted>().Subscribe(OnProductCompletedHandler);
-
-            PopulateBindings();
         }
 
         #region Commands
@@ -144,5 +142,22 @@ namespace Products.List
             PopulateBindings();
         }
         #endregion
+
+        void INavigationAware.OnNavigatedTo(NavigationContext navigationContext)
+        {
+            PopulateBindings();
+        }
+
+        bool INavigationAware.IsNavigationTarget(NavigationContext navigationContext)
+        {
+
+            return true;
+            //throw new NotImplementedException();
+        }
+
+        void INavigationAware.OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

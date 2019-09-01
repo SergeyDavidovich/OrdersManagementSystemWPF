@@ -16,7 +16,7 @@ using Infrastructure.Extensions;
 
 namespace Orders.ViewModels
 {
-    public class JournalViewModel : ViewModelBase//, INavigationAware, IRegionMemberLifetime
+    public class JournalViewModel : ViewModelBase, INavigationAware//, IRegionMemberLifetime
     {
         #region Fields
         LocalDbContext _context;
@@ -25,6 +25,7 @@ namespace Orders.ViewModels
         readonly IEnumerable<Order> cachedOrders;
 
         #endregion
+
         #region Constructor
         public JournalViewModel(LocalDbContext context, IEventAggregator eventAggregator)
         {
@@ -33,12 +34,14 @@ namespace Orders.ViewModels
             _eventAggregator = eventAggregator;
 
             cachedOrders = context.Orders;
-            Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
+            //Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
+
             var propertyChangedObservable = Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>
                               (handler => this.PropertyChanged += handler, handler => this.PropertyChanged -= handler);
+
             var searchTermObservable = propertyChangedObservable
                                       .Where(p => p.EventArgs.PropertyName == nameof(SearchTerm))
-                                      .Select(_ => _searchTerm).Throttle(TimeSpan.FromMilliseconds(250)).Subscribe
+                                      .Select(_ => _searchTerm).Throttle(TimeSpan.FromMilliseconds(50)).Subscribe
                                       (s =>
                                       {
                                           if (string.IsNullOrEmpty(s))
@@ -94,19 +97,25 @@ namespace Orders.ViewModels
 
         #region INavigationAware, IRegionMemberLifetime implementation
 
-        //public bool KeepAlive => false;
+        public bool KeepAlive => false;
 
-        //public bool IsNavigationTarget(NavigationContext navigationContext) => false;
+        public bool IsNavigationTarget(NavigationContext navigationContext) => false;
 
-        //public void OnNavigatedFrom(NavigationContext navigationContext)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        void INavigationAware.OnNavigatedTo(NavigationContext navigationContext)
+        {
+            Orders = new ReadOnlyCollection<Order>(cachedOrders.ToList());
+        }
 
-        //public void OnNavigatedTo(NavigationContext navigationContext)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        bool INavigationAware.IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+            //throw new NotImplementedException();
+        }
+
+        void INavigationAware.OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            //throw new NotImplementedException();
+        }
 
         #endregion
     }
