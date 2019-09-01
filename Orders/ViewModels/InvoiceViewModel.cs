@@ -26,7 +26,6 @@ namespace Orders.ViewModels
             _context = context;
             _eventAggregator = eventAggregator;
             eventAggregator.GetEvent<NewOrderCreated>().Subscribe(OnNewOrderCreated);
-
         }
 
         public ObservableCollection<OrderObject> Orders { get; set; }
