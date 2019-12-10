@@ -95,7 +95,7 @@
                         Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                         Text="{Binding}" />
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Background="Green" Content="UNSELECT"
+                            <Button Background="Green" Content="CLEAR"
                                 Style="{StaticResource ManageButtonStyle}" 
                                 Command="{Binding Path=DataContext.UnselectCommand, ElementName=createView}">
                             </Button>

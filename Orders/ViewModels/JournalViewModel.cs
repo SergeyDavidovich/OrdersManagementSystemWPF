@@ -49,7 +49,7 @@ namespace Orders.ViewModels
                                           else
                                               this.Orders =
                                               new ReadOnlyCollection<Order>(cachedOrders
-                                              .Where(o => o.CustomerID.SafeSubstring(0, s.Length).ToLower() == s.ToLower()).OrderBy(o => o.CustomerID)
+                                              .Where(o => o.OrderID.ToString().SafeSubstring(0, s.Length).ToLower() == s.ToLower()).OrderBy(o => o.CustomerID)
                                               .ToList());
                                       });
             ClearSearchCommand = new DelegateCommand(() => SearchTerm = "");

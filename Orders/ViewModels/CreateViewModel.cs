@@ -31,8 +31,8 @@ namespace Orders.ViewModels
             UnselectCommand = new DelegateCommand(Unselect, CanUnselect);
             CreateOrderCommand = new DelegateCommand(CreateOrder, CanCreateOrder);
 
-            //Customers = _context.Customers.ToList<Customer>();
-            //Employees = _context.Employees.ToList<Employee>();
+            Customers = _context.Customers.ToList<Customer>();
+            Employees = _context.Employees.ToList<Employee>();
 
         }
         #region Select products for order
