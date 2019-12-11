@@ -10,9 +10,10 @@ using Prism.Events;
 using Orders.CommonTypes;
 using Prism.Commands;
 using Prism.Regions;
-using System.Data.Entity;
+//using System.Data.Entity;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+
 
 namespace Orders.ViewModels
 {

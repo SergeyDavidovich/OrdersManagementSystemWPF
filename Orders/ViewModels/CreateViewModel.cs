@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using Prism.Regions;
 
+
 namespace Orders.ViewModels
 {
     public class CreateViewModel : ViewModelBase, INavigationAware
@@ -31,8 +32,8 @@ namespace Orders.ViewModels
             UnselectCommand = new DelegateCommand(Unselect, CanUnselect);
             CreateOrderCommand = new DelegateCommand(CreateOrder, CanCreateOrder);
 
-            Customers = _context.Customers.ToList<Customer>();
-            Employees = _context.Employees.ToList<Employee>();
+            Customers = _context.Customers.ToList();
+            Employees = _context.Employees.ToList();
 
         }
         #region Select products for order

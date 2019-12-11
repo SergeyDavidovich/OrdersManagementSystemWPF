@@ -13,6 +13,7 @@ using System.Reactive.Linq;
 using System.ComponentModel;
 using Prism.Commands;
 using Infrastructure.Extensions;
+using System.Data.Entity;
 
 namespace Orders.ViewModels
 {

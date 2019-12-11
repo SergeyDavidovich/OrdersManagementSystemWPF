@@ -106,6 +106,10 @@
       <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Oms.Model\Oms.Model.csproj">
+      <Project>{f582e30b-f9c2-4569-8061-1345b493693c}</Project>
+      <Name>Oms.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Add\EmployeeAddView.xaml">

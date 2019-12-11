@@ -114,15 +114,20 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Reports\OrderReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_LocalDb\DAL_LocalDb.csproj">
-      <Project>{d495fb75-828d-44ff-b363-79383614bfc2}</Project>
+      <Project>{D495FB75-828D-44FF-B363-79383614BFC2}</Project>
       <Name>DAL_LocalDb</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{8A7D988C-B192-4D03-8F8B-1F35C9855FB3}</Project>
       <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oms.Model\Oms.Model.csproj">
+      <Project>{f582e30b-f9c2-4569-8061-1345b493693c}</Project>
+      <Name>Oms.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

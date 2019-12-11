@@ -4,24 +4,25 @@ namespace DAL_LocalDb
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+    //using System.Data.Entity.Spatial;
 
-    public partial class CustomerDemographic
+    [Table("Region")]
+    public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerDemographic()
+        public Region()
         {
-            Customers = new HashSet<Customer>();
+            Territories = new HashSet<Territory>();
         }
 
-        [Key]
-        [StringLength(10)]
-        public string CustomerTypeID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int RegionID { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string CustomerDesc { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string RegionDescription { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Territory> Territories { get; set; }
     }
 }
