@@ -108,7 +108,8 @@
                 </chart:SfChart.SecondaryAxis>
 
                 <!--PieSeries-->
-                <chart:ColumnSeries Palette="LightCandy" 
+                <chart:ColumnSeries Palette="LightCandy"
+                             EnableAnimation="True"       
                              ItemsSource="{Binding SalesByEmployeeGroups}"
                              XBindingPath="LastName" YBindingPath="SumOfSale"/>
             </syncfusion:SfChart>

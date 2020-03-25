@@ -59,7 +59,8 @@
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis/>
                 </chart:SfChart.SecondaryAxis>
-                <chart:PieSeries Palette="LightCandy" 
+                <chart:PieSeries Palette="LightCandy"
+                             EnableAnimation="True" 
                              EnableSmartLabels="True"
                              ItemsSource="{Binding ProductByCategoryGroups}"
                              XBindingPath="CategoryName" YBindingPath="ProductCount">

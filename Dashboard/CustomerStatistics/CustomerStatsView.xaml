@@ -67,7 +67,8 @@
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
-                    <chart:PieSeries Palette="LightCandy" 
+                    <chart:PieSeries Palette="LightCandy"
+                             EnableAnimation="True"        
                              EnableSmartLabels="True"
                              ItemsSource="{Binding CustomerByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity">
@@ -110,7 +111,8 @@
                         <chart:NumericalAxis FontSize="12"/>
                     </chart:SfChart.SecondaryAxis>
 
-                    <chart:ColumnSeries Palette="LightCandy" 
+                    <chart:ColumnSeries Palette="LightCandy"
+                             EnableAnimation="True"           
                              ItemsSource="{Binding PurchasingByCustomerGroups}"
                              XBindingPath="Name" YBindingPath="SumPurchasing"/>
                 </syncfusion:SfChart>

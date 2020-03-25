@@ -78,7 +78,8 @@
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
                     <chart:PieSeries Palette="LightCandy" Margin="0"
-                             EnableSmartLabels="True"
+                             EnableAnimation="True"
+                             EnableSmartLabels="True" 
                              ItemsSource="{Binding OrderByCountryGroups}"
                              XBindingPath="Country" YBindingPath="Quantity">
 
@@ -125,6 +126,7 @@
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
                     <chart:PieSeries Palette="Elite" Margin="0"
+                             EnableAnimation="True"        
                              EnableSmartLabels="True"
                              ItemsSource="{Binding OrderByCategoryGroups}"
                              XBindingPath="CategoryName" YBindingPath="SumOfSale">
@@ -237,7 +239,7 @@
                     </chart:SfChart.SecondaryAxis>
 
                     <chart:BarSeries Palette="LightCandy" 
-                                        EnableAnimation="False" AnimationDuration="00:00:02"
+                             EnableAnimation="True"
                              ItemsSource="{Binding SalesByCountryGroups}"
                              XBindingPath="Country" YBindingPath="SumOfSale"/>
                 </syncfusion:SfChart>
